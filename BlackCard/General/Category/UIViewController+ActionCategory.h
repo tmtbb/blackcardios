@@ -27,6 +27,7 @@
 - (void)pushMainStoryboardViewControllerIdentifier:(NSString *)identifier checkLogin:(BOOL)checkLogin block:(void (^)(UIViewController * viewController))block;
 
 
+- (void)pushWithIdentifier:(NSString *)identifier complete:(void(^)(UIViewController *controller))complete ;
 
 
 - (BOOL)isLogin;

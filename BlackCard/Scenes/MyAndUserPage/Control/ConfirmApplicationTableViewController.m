@@ -189,6 +189,14 @@
     
     
 }
+- (IBAction)showWedAction:(UIButton *)sender {
+    
+    [self pushWithIdentifier:@"WebViewController" complete:^(UIViewController *controller) {
+        [controller setValue:kHttpAPIUrl_userAgreement forKey:@"url"];
+        [controller setValue:@"《精英黑卡会籍服务章程》" forKey:@"webTitle"];
+    }];
+    
+}
 
 
 @end

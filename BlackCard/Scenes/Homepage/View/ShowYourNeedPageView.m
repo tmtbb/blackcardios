@@ -42,7 +42,7 @@
 
         _showView.clipsToBounds = YES;
         _showView.contentMode = UIViewContentModeScaleAspectFill;
-        _showView.backgroundColor = [UIColor redColor];
+        _showView.backgroundColor = kUIColorWithRGB(0xa6a6a6);
         
         
         
@@ -80,12 +80,14 @@
         [baseView addSubview:_detailBackView];
         
         
-        _closeButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _closeButton.frame = CGRectMake((kMainScreenWidth - 50 ) / 2.0, baseView.frameY + baseView.frameHeight + 18, 50, 50);
         [_closeButton setImage:[UIImage imageNamed:@"waiterClose"] forState:UIControlStateNormal];
         [_closeButton addTarget:self action:@selector(closeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:_closeButton];
+        
+        
         
         
     }
@@ -95,27 +97,37 @@
 }
 
 
-- (void)setModel:(WaiterModel *)model {
+- (void)setModel:(HomePageModel *)model {
     
-    model = [[WaiterModel alloc]init];
-    model.icon = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492694069136&di=5267ac4816e932f7dbb66557f27dc18a&imgtype=0&src=http%3A%2F%2Fsc.jb51.net%2Fuploads%2Fallimg%2F150707%2F14-150FG4503G95.jpg";
-    model.title = @"私人飞机";
-    model.detail = @"高效便捷随时出发，无需办理手续 立即登机，独享私密空间。";
+//    model = [[WaiterModel alloc]init];
+//    model.icon = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492694069136&di=5267ac4816e932f7dbb66557f27dc18a&imgtype=0&src=http%3A%2F%2Fsc.jb51.net%2Fuploads%2Fallimg%2F150707%2F14-150FG4503G95.jpg";
+//    model.title = @"私人飞机";
+//    model.detail = @"高效便捷随时出发，无需办理手续 立即登机，独享私密空间。";
     
-    
-    [_showView sd_setImageWithURL:[NSURL URLWithString:model.icon] placeholderImage:nil];
-    _titleLabel.text = model.title;
-    _detailLabel.text = model.detail;
+    if ([model.privilegeImgurl hasPrefix:@"res://"]) {
+        NSString *str = [model.privilegeImgurl stringByReplacingOccurrencesOfString:@"res://" withString:@""];
+        UIImage *image = [UIImage imageNamed:str];
+        _showView.image = image;
+        
+    }else {
+        [_showView sd_setImageWithURL:[NSURL URLWithString:model.privilegeImgurl] placeholderImage:nil];
+    }
+       
+    _titleLabel.text = model.privilegeName;
+    _detailLabel.text = model.privilegeDescribe;
     
 }
 
 - (void)goButtonAction:(UIButton *)button {
     
+    [self didAction:ShowYourNeedPageViewAction_Go];
+
     
 }
 
 - (void)closeButtonAction:(UIButton *)button {
     
+    [self didAction:ShowYourNeedPageViewAction_Close];
     
 }
 @end

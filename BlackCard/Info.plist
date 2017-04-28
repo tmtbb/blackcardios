@@ -67,21 +67,21 @@
 		<string>alipayshare</string>
 		<string>weixin2</string>
 	</array>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-        <key>NSAllowsArbitraryLoadsInWebContent</key>
-        <true/>
-    </dict>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>需要照片权限</string>
-    <key>NSCameraUsageDescription</key>
-    <string>需要相机权限</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>需要麦克风权限</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>需要相机权限</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>需要麦克风权限</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>需要照片权限</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

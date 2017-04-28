@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.scrollEnabled = kMainScreenHeight < 568;
+//    self.tableView.scrollEnabled = kMainScreenHeight < 568;
     
     
     

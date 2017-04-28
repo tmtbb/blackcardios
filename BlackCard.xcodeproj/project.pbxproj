@@ -66,6 +66,9 @@
 		7C25A8311EA897380049234E /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C25A8301EA897380049234E /* libstdc++.tbd */; };
 		7C25A8391EA8B62B0049234E /* UIView+SimpleFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C25A8381EA8B62B0049234E /* UIView+SimpleFrame.m */; };
 		7C25A83F1EA8C1E10049234E /* WaiterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C25A83E1EA8C1E10049234E /* WaiterModel.m */; };
+		7C3324841EB307730065B5C3 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3324821EB307730065B5C3 /* WebViewController.m */; };
+		7C3324871EB31B8B0065B5C3 /* ChatTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3324861EB31B8B0065B5C3 /* ChatTools.m */; };
+		7C33248A1EB329FD0065B5C3 /* ChtaNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3324891EB329FD0065B5C3 /* ChtaNavigationController.m */; };
 		7C388FEB1EADD4CD008023CA /* RegisterCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C388FEA1EADD4CD008023CA /* RegisterCardCell.m */; };
 		7C388FED1EADD7F4008023CA /* RegisterCardHScollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C388FEC1EADD7F4008023CA /* RegisterCardHScollCell.xib */; };
 		7C388FF01EADF300008023CA /* WriteaApplicationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C388FEF1EADF300008023CA /* WriteaApplicationTableViewController.m */; };
@@ -208,6 +211,12 @@
 		7C25A8381EA8B62B0049234E /* UIView+SimpleFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SimpleFrame.m"; sourceTree = "<group>"; };
 		7C25A83D1EA8C1E10049234E /* WaiterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaiterModel.h; sourceTree = "<group>"; };
 		7C25A83E1EA8C1E10049234E /* WaiterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaiterModel.m; sourceTree = "<group>"; };
+		7C3324821EB307730065B5C3 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		7C3324831EB307730065B5C3 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		7C3324851EB31B8B0065B5C3 /* ChatTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTools.h; sourceTree = "<group>"; };
+		7C3324861EB31B8B0065B5C3 /* ChatTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTools.m; sourceTree = "<group>"; };
+		7C3324881EB329FD0065B5C3 /* ChtaNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChtaNavigationController.h; sourceTree = "<group>"; };
+		7C3324891EB329FD0065B5C3 /* ChtaNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChtaNavigationController.m; sourceTree = "<group>"; };
 		7C388FE91EADD4CD008023CA /* RegisterCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterCardCell.h; sourceTree = "<group>"; };
 		7C388FEA1EADD4CD008023CA /* RegisterCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterCardCell.m; sourceTree = "<group>"; };
 		7C388FEC1EADD7F4008023CA /* RegisterCardHScollCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterCardHScollCell.xib; sourceTree = "<group>"; };
@@ -318,6 +327,10 @@
 			children = (
 				7C18F0391EB20592008D247C /* WaiterViewController.h */,
 				7C18F03A1EB20592008D247C /* WaiterViewController.m */,
+				7C3324851EB31B8B0065B5C3 /* ChatTools.h */,
+				7C3324861EB31B8B0065B5C3 /* ChatTools.m */,
+				7C3324881EB329FD0065B5C3 /* ChtaNavigationController.h */,
+				7C3324891EB329FD0065B5C3 /* ChtaNavigationController.m */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -387,6 +400,8 @@
 		7C25A78C1EA8677A0049234E /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				7C3324831EB307730065B5C3 /* WebViewController.h */,
+				7C3324821EB307730065B5C3 /* WebViewController.m */,
 				7C25A81F1EA88E2C0049234E /* UIAlertCustomViewController.h */,
 				7C25A8201EA88E2C0049234E /* UIAlertCustomViewController.m */,
 				7C25A8161EA88A6C0049234E /* AppNavigationController.h */,
@@ -789,7 +804,7 @@
 				TargetAttributes = {
 					7CE70DC61EA79F00003772F1 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = N65658XVUB;
+						DevelopmentTeam = 953PSC8HAE;
 					};
 				};
 			};
@@ -902,6 +917,7 @@
 				7C18F03B1EB20592008D247C /* WaiterViewController.m in Sources */,
 				7C25A7E81EA86A3D0049234E /* BaseRequestTableViewController.m in Sources */,
 				7CC801A51EAC8A7E005B52A9 /* LoginTableViewCell.m in Sources */,
+				7C33248A1EB329FD0065B5C3 /* ChtaNavigationController.m in Sources */,
 				7C84886C1EAB4D9B0001EC82 /* MyAndUserTableViewController.m in Sources */,
 				7CE70DD21EA79F00003772F1 /* ViewController.m in Sources */,
 				7C25A7E61EA86A3D0049234E /* BaseRefreshPageTableViewController.m in Sources */,
@@ -942,12 +958,14 @@
 				7CC801A21EAC8744005B52A9 /* LoginViewController.m in Sources */,
 				7C25A7EB1EA86A3D0049234E /* BaseRefreshCustomTableViewController.m in Sources */,
 				7C25A7DE1EA86A3D0049234E /* BaseRefreshCollectionViewController.m in Sources */,
+				7C3324841EB307730065B5C3 /* WebViewController.m in Sources */,
 				7C25A7E51EA86A3D0049234E /* BaseRefreshListTableViewController.m in Sources */,
 				7C7183661EAF1C5600B40BCB /* WXPay.m in Sources */,
 				7C25A7E71EA86A3D0049234E /* BaseRefreshTableViewController.m in Sources */,
 				7C71836C1EAF1EFC00B40BCB /* PayHelperModel.m in Sources */,
 				7CC8019F1EAC578C005B52A9 /* HttpMyAndUser.m in Sources */,
 				7C25A8151EA8887F0049234E /* UIViewController+ActionCategory.m in Sources */,
+				7C3324871EB31B8B0065B5C3 /* ChatTools.m in Sources */,
 				7C71835A1EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m in Sources */,
 				7CC8019A1EAC577F005B52A9 /* AppAPIHelper.m in Sources */,
 				7C18F02D1EB039AE008D247C /* AreaModel.m in Sources */,
@@ -1072,7 +1090,7 @@
 			baseConfigurationReference = B6C1A4FAC8EA97F0871A0026 /* Pods-BlackCard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = N65658XVUB;
+				DEVELOPMENT_TEAM = 953PSC8HAE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1085,7 +1103,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BlackCard/Library/WX",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ywwl.store.mgame648-1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ywwl.mgame648-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1095,7 +1113,7 @@
 			baseConfigurationReference = 1CAA8F31B7E16109D0B3B418 /* Pods-BlackCard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = N65658XVUB;
+				DEVELOPMENT_TEAM = 953PSC8HAE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1108,7 +1126,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BlackCard/Library/WX",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ywwl.store.mgame648-1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ywwl.mgame648-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

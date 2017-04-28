@@ -9,7 +9,7 @@
 #ifndef HttpHeader_h
 #define HttpHeader_h
 
-#define Development  //开发环境宏,注掉时开启正式 生产环境
+//#define Development  //开发环境宏,注掉时开启正式 生产环境
 
 /**
  * API host
@@ -24,8 +24,10 @@
 //#define kRunMode @"debug"
 #else
 //#define kHttpAPIUrl_HOST @"" //新正式生产环境
-#define kHttpAPIUrl_HOST @"" //预发布环境
-#define kHttpAPIUrl_HOST @""
+#define kHttpAPIUrl_HOST @"http://101.37.82.111:9999"
+
+//#define kHttpAPIUrl_HOST @"" //预发布环境
+//#define kHttpAPIUrl_HOST @""
 #endif
 
 /**
@@ -53,5 +55,5 @@
 
 
 #define kHttpAPIUrl_resetPassword         kHttpAPIUrl_HOST@"/api/blackcard/repassword.json"
-
+#define kHttpAPIUrl_userAgreement         kHttpAPIUrl_HOST@"/api/static/UserAgreement.html"
 #endif /* HttpHeader_h */

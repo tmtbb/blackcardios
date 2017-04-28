@@ -194,6 +194,30 @@ typedef NS_ENUM(NSInteger, Type) {
     return NO;
 }
 
+- (void)pushWithIdentifier:(NSString *)identifier complete:(void(^)(UIViewController *controller))complete {
+    UIViewController *controller;
+    
+    @try {
+        
+        controller =  [[NSClassFromString(identifier) alloc]init];
+        
+        if (complete != nil && controller != nil ) {
+            complete(controller);
+        }
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
+    
+    
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+
+
 - (void)showAlertLoginView {
 //    LoginChooseView *loginChooseView = [LoginChooseView loadFromNib];
 //    UIAlertCustomViewController *vc = [[UIAlertCustomViewController alloc] initCustomView:loginChooseView animationType:UIAlertCustomViewAnimationTypeDown animationDelay:0.3];

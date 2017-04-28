@@ -42,7 +42,10 @@
 
 - (void)didRequestComplete:(CardListModel *)data {
     _model = data;
+
     [super didRequestComplete:data.privileges];
+    
+
     
     [self.cardCell update:data.blackcards];
     
