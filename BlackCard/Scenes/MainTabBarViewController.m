@@ -7,8 +7,8 @@
 //
 
 #import "MainTabBarViewController.h"
-
-@interface MainTabBarViewController ()
+#import "WaiterViewController.h"
+@interface MainTabBarViewController ()<UITabBarControllerDelegate>
 
 @end
 
@@ -16,15 +16,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.delegate = self;
     // Do any additional setup after loading the view.
 }
 
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    
+    if (tabBarController.selectedIndex == 1) {
+        
+        WaiterViewController *waiter = ((UINavigationController *)viewController).viewControllers.firstObject;
+        if (waiter.isViewLoaded) {
+             [waiter goToChatController];
+        }
+        
+       
+        
+    }
+   
+    
+    
+    
 }
+
+
 
 /*
 #pragma mark - Navigation

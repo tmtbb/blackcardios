@@ -13,6 +13,8 @@
 		7C18F02D1EB039AE008D247C /* AreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C18F02C1EB039AE008D247C /* AreaModel.m */; };
 		7C18F0301EB03E2A008D247C /* CustomPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C18F02F1EB03E2A008D247C /* CustomPickView.m */; };
 		7C18F0321EB03E39008D247C /* CustomPickView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C18F0311EB03E39008D247C /* CustomPickView.xib */; };
+		7C18F0351EB1BEC0008D247C /* ResetPayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C18F0341EB1BEC0008D247C /* ResetPayTableViewController.m */; };
+		7C18F03B1EB20592008D247C /* WaiterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C18F03A1EB20592008D247C /* WaiterViewController.m */; };
 		7C25A79C1EA8677A0049234E /* BlackCard_const.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C25A7921EA8677A0049234E /* BlackCard_const.m */; };
 		7C25A79D1EA8677A0049234E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C25A7961EA8677A0049234E /* LaunchScreen.storyboard */; };
 		7C25A79E1EA8677A0049234E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C25A7981EA8677A0049234E /* Main.storyboard */; };
@@ -105,6 +107,10 @@
 		7C18F02E1EB03E2A008D247C /* CustomPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPickView.h; sourceTree = "<group>"; };
 		7C18F02F1EB03E2A008D247C /* CustomPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPickView.m; sourceTree = "<group>"; };
 		7C18F0311EB03E39008D247C /* CustomPickView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPickView.xib; sourceTree = "<group>"; };
+		7C18F0331EB1BEC0008D247C /* ResetPayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPayTableViewController.h; sourceTree = "<group>"; };
+		7C18F0341EB1BEC0008D247C /* ResetPayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPayTableViewController.m; sourceTree = "<group>"; };
+		7C18F0391EB20592008D247C /* WaiterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaiterViewController.h; sourceTree = "<group>"; };
+		7C18F03A1EB20592008D247C /* WaiterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaiterViewController.m; sourceTree = "<group>"; };
 		7C25A7911EA8677A0049234E /* BlackCard_const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackCard_const.h; sourceTree = "<group>"; };
 		7C25A7921EA8677A0049234E /* BlackCard_const.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackCard_const.m; sourceTree = "<group>"; };
 		7C25A7931EA8677A0049234E /* BlackCard_prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackCard_prefix.pch; sourceTree = "<group>"; };
@@ -291,6 +297,31 @@
 			path = CityAndArea;
 			sourceTree = "<group>";
 		};
+		7C18F0361EB2054B008D247C /* Waiter */ = {
+			isa = PBXGroup;
+			children = (
+				7C18F0371EB2057A008D247C /* View */,
+				7C18F0381EB2057A008D247C /* Control */,
+			);
+			path = Waiter;
+			sourceTree = "<group>";
+		};
+		7C18F0371EB2057A008D247C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7C18F0381EB2057A008D247C /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				7C18F0391EB20592008D247C /* WaiterViewController.h */,
+				7C18F03A1EB20592008D247C /* WaiterViewController.m */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
 		7C25A7881EA8677A0049234E /* General */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +483,7 @@
 		7C25A79B1EA8677A0049234E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				7C18F0361EB2054B008D247C /* Waiter */,
 				7C25A8321EA8AA9C0049234E /* Homepage */,
 				7C25A8331EA8AA9C0049234E /* MyAndUserPage */,
 				7CA9455B1EAAFB52002AA1E1 /* MainTabBarViewController.h */,
@@ -596,6 +628,8 @@
 				7C388FEF1EADF300008023CA /* WriteaApplicationTableViewController.m */,
 				7C7183581EAEF49D00B40BCB /* ConfirmApplicationTableViewController.h */,
 				7C7183591EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m */,
+				7C18F0331EB1BEC0008D247C /* ResetPayTableViewController.h */,
+				7C18F0341EB1BEC0008D247C /* ResetPayTableViewController.m */,
 				7C71836D1EAF2CD100B40BCB /* ResetPasswordTableViewController.h */,
 				7C71836E1EAF2CD100B40BCB /* ResetPasswordTableViewController.m */,
 				7CC801A01EAC8744005B52A9 /* LoginViewController.h */,
@@ -865,12 +899,14 @@
 				7C8488721EAB4E790001EC82 /* RegisterCollectionViewCell.m in Sources */,
 				7C25A8211EA88E2C0049234E /* UIAlertCustomViewController.m in Sources */,
 				7C25A7F01EA86A3D0049234E /* BaseViewController.m in Sources */,
+				7C18F03B1EB20592008D247C /* WaiterViewController.m in Sources */,
 				7C25A7E81EA86A3D0049234E /* BaseRequestTableViewController.m in Sources */,
 				7CC801A51EAC8A7E005B52A9 /* LoginTableViewCell.m in Sources */,
 				7C84886C1EAB4D9B0001EC82 /* MyAndUserTableViewController.m in Sources */,
 				7CE70DD21EA79F00003772F1 /* ViewController.m in Sources */,
 				7C25A7E61EA86A3D0049234E /* BaseRefreshPageTableViewController.m in Sources */,
 				7C25A7F51EA86B100049234E /* UIViewController+Category.m in Sources */,
+				7C18F0351EB1BEC0008D247C /* ResetPayTableViewController.m in Sources */,
 				7C25A8021EA886210049234E /* UIViewController+LoadMoreViewController.m in Sources */,
 				7C25A7D91EA86A3D0049234E /* BaseController.m in Sources */,
 				7C25A7ED1EA86A3D0049234E /* BaseRefreshPageCustomTableViewController.m in Sources */,

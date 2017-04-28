@@ -109,10 +109,18 @@
 //    [self postModelRequest:kHttpAPIUrl_resetPwd parameters:parameters modelClass:[MyAndUserModel class] complete:complete error:errorBlock];
 }
 
-- (void)sendVerifyCode:(NSString *)code  complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+- (void)sendBlackCardVerifyCode:(NSString *)code  complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:code forKey:@"blackcardNo"];
+    [self postRequest:kHttpAPIUrl_sendBlackCardVerification parameters:parameters complete:complete error:errorBlock];
+}
+
+- (void)sendVerifyCode:(NSString *)code andType:(NSString *)type complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:code forKey:@"phoneNum"];
+     [parameters setObject:type forKey:@"codeType"];
     [self postRequest:kHttpAPIUrl_sendVerification parameters:parameters complete:complete error:errorBlock];
+    
 }
 
 - (void)suggestWithNote:(NSString *)content complete:(CompleteBlock)complete errer:(ErrorBlock)error

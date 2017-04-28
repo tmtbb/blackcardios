@@ -74,15 +74,19 @@
  */
 - (void)repassword:(NSString *)password cardNum:(NSString *)cardNum verifyCode:(NSString *)code andCodeToken:(NSString *)codeToken complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 
+
+- (void)sendBlackCardVerifyCode:(NSString *)code complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
 /**
  *  发送手机验证码
  *
- *  @param phone     手机号
- *  @param type      0:用户必须不存在,1:用户必须存在
+ *  @param code     手机号
+ *  @param type     0: 注册 3: 注册支付
  *  @param complete   成功block
  *  @param error      失败block
  */
-- (void)sendVerifyCode:(NSString *)code complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+- (void)sendVerifyCode:(NSString *)code andType:(NSString *)type complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 
 /**
  *  意见反馈

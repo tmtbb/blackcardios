@@ -7,4 +7,5 @@ pod 'SDWebImage'
 pod 'HMSegmentedControl'
 pod 'TTTAttributedLabel'
 pod 'MJRefresh'
+pod 'QIYU_iOS_SDK',  '~> 3.5.5'
 end

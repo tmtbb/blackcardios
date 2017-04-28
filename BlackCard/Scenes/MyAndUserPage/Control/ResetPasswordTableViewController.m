@@ -41,13 +41,14 @@
         [_verifyCodeButton startWithCount];
         WEAKSELF
         NSString *cardNum = _cardCodeField.text;
-        [[AppAPIHelper shared].getMyAndUserAPI sendVerifyCode:cardNum complete:^(id data) {
+        [[AppAPIHelper shared].getMyAndUserAPI sendBlackCardVerifyCode:cardNum complete:^(id data) {
             weakSelf.verifyToken = data[@"codeToken"];
             [weakSelf showTips:@"验证码已发送"];
             weakSelf.cardCodeField.enabled = NO;
             weakSelf.cardCodeField.text = cardNum;
         } error:^(NSError *error) {
             [weakSelf showError:error];
+            [weakSelf.verifyCodeButton stopWithCount];
         }];
         
     }
@@ -118,5 +119,15 @@
     
     return YES;
 }
+- (IBAction)passWorldAction:(UIButton *)sender {
+    
+    UITextField *field = [self.tableView viewWithTag:sender.tag - 100];
+    field.secureTextEntry = !field.secureTextEntry;
+    
+    [sender setImage:[UIImage imageNamed:field.secureTextEntry ? @"passWorldNone" : @"passWorldShow"] forState:UIControlStateNormal];
+    
+}
+
+
 
 @end

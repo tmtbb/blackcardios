@@ -70,5 +70,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:alphaValue]
 #define kWXAPP_SECRET     @"241b71f361d6663c12a12e0f43208ae9"
 
 
+// 网易七鱼
+
+#define KQiYuAppKey         @"9bcdb2182bde2835e2b0e7fc72a39e68"
+#define KQiYuAppName        @"云巅黑卡ios"
+
 
 #endif

@@ -94,6 +94,13 @@
         
     } error:^(NSError *error) {
         [weakSelf showError:error];
+
+        if (error.code == 10017) {
+            [self lastPayWihtPush];
+            
+        }
+        
+        
     }];
     
 }
@@ -129,7 +136,8 @@
     
     switch (payStatus) {
         case PayError: {  //支付失败
-            [self showTips:@"支付失败请重新支付"];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付失败" message:@"请重新支付" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
             [self payButtonSetting];
         }
             break;
@@ -147,7 +155,8 @@
         }
             break;
         case PayCancel:{//支付取消
-            
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付已取消" message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
             [self payButtonSetting];
         }
             break;
@@ -168,6 +177,17 @@
     
     [self showTips:error];
     [self payButtonSetting];
+}
+
+- (void)lastPayWihtPush {
+    
+    WEAKSELF
+    [self pushViewControllerWithIdentifier:@"ResetPayTableViewController" block:^(UIViewController *viewController) {
+        [viewController  setValue:weakSelf.model.phoneNum forKey:@"phoneNum"];
+    }];
+    
+    
+    
 }
 
 

@@ -12,6 +12,8 @@
 #import "UIViewController+Category.h"
 @interface LoginViewController ()<UITableViewDelegate,UITableViewDataSource,LoginTableViewCellAction>
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation LoginViewController
@@ -19,26 +21,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    if ([[CurrentUserHelper shared] isLogin]) {
-//        WEAKSELF
-//        [self showLoader:@"登录中..."];
-//
-//        
-//    [[AppAPIHelper shared].getMyAndUserAPI checkTokenWithComplete:^(id data) {
-//        [weakSelf hiddenProgress];
-//        NSString * token = data[@"token"];
-//        if (![NSString isEmpty:token]) {
-//            [[CurrentUserHelper shared] saveToken:token];
-//            [weakSelf setMainRootViewController:@"MainTabBarViewController"];
-//        }
-//        
-//        
-//    } error:^(NSError *error) {
-//        [weakSelf showError:error];
-//    }];
-//        
-//        
-//    }
+    self.tableView.scrollEnabled = kMainScreenHeight < 568;
+    
+    
+    
+    if ([[CurrentUserHelper shared] isLogin]) {
+        WEAKSELF
+        [self showLoader:@"登录中..."];
+
+        
+    [[AppAPIHelper shared].getMyAndUserAPI checkTokenWithComplete:^(id data) {
+        [weakSelf hiddenProgress];
+        NSString * token = data[@"token"];
+        if (![NSString isEmpty:token]) {
+            [[CurrentUserHelper shared] saveToken:token];
+            [weakSelf setMainRootViewController:@"MainTabBarViewController"];
+        }
+        
+        
+    } error:^(NSError *error) {
+        [weakSelf showError:error];
+    }];
+        
+        
+    }
     
     
     
@@ -53,7 +59,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    return 667;
+    return kMainScreenHeight < 667 ? 568 : kMainScreenHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -8,14 +8,19 @@
 
 #import "ViewController.h"
 #import "ShowYourNeedPageView.h"
+#import <QYSDK.h>
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[QYSDK sharedSDK] sessionViewController];
     ShowYourNeedPageView *view = [[ShowYourNeedPageView alloc]initWithFrame:self.view.bounds];
     [view setModel:nil];
     [self.view addSubview:view];

@@ -82,8 +82,7 @@
         
         _closeButton = [UIButton buttonWithType:UIButtonTypeSystem];
         _closeButton.frame = CGRectMake((kMainScreenWidth - 50 ) / 2.0, baseView.frameY + baseView.frameHeight + 18, 50, 50);
-        
-        _closeButton.backgroundColor = kUIColorWithRGB(0x434343);
+        [_closeButton setImage:[UIImage imageNamed:@"waiterClose"] forState:UIControlStateNormal];
         [_closeButton addTarget:self action:@selector(closeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:_closeButton];

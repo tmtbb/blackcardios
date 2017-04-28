@@ -48,7 +48,10 @@
 #define kHttpAPIUrl_userRegister         kHttpAPIUrl_HOST@"/api/blackcard/register.json"
 #define kHttpAPIUrl_userRegisterPay         kHttpAPIUrl_HOST@"/api/blackcard/register/pay.json"
 
-#define kHttpAPIUrl_sendVerification       kHttpAPIUrl_HOST@"/api/blackcard/sms/code.json"
+#define kHttpAPIUrl_sendBlackCardVerification       kHttpAPIUrl_HOST@"/api/blackcard/sms/code.json"
+#define kHttpAPIUrl_sendVerification       kHttpAPIUrl_HOST@"/api/sms/code.json"
+
+
 #define kHttpAPIUrl_resetPassword         kHttpAPIUrl_HOST@"/api/blackcard/repassword.json"
 
 #endif /* HttpHeader_h */

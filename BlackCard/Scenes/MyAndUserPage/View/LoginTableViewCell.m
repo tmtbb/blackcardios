@@ -9,6 +9,7 @@
 #import "LoginTableViewCell.h"
 
 @interface LoginTableViewCell ()<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerTop;
 
 
 @end
@@ -21,6 +22,12 @@
     NSAttributedString *password = [[NSAttributedString alloc]initWithString:@"请输入您的登录密码" attributes:dic];
     self.accountField.attributedPlaceholder = account;
     self.passwordField.attributedPlaceholder = password;
+    
+    
+    if (kMainScreenHeight < 667) {
+        _headerTop.constant = 44;
+    }
+    
     
     
 }
