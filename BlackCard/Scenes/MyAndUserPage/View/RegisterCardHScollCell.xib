@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RegisterCardHScollCell">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="182"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1F-Mp-VdD">
+                    <rect key="frame" x="20" y="55" width="315" height="72"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="72" id="qEM-c4-F5C"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="38"/>
+                    <state key="normal" title="云栖会籍">
+                        <color key="titleColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderRGBColor">
+                            <color key="value" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="buttonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="qgd-Vi-e16"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥199.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U52-zw-F6W">
+                    <rect key="frame" x="20" y="95.5" width="315" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.89019607840000003" green="0.65098039220000004" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="T1F-Mp-VdD" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="C1N-4G-aRj"/>
+                <constraint firstAttribute="trailing" secondItem="T1F-Mp-VdD" secondAttribute="trailing" constant="20" id="JKd-2S-v3T"/>
+                <constraint firstItem="U52-zw-F6W" firstAttribute="leading" secondItem="T1F-Mp-VdD" secondAttribute="leading" id="bnl-eh-fyU"/>
+                <constraint firstItem="U52-zw-F6W" firstAttribute="bottom" secondItem="T1F-Mp-VdD" secondAttribute="bottom" constant="-17" id="c26-NM-tO3"/>
+                <constraint firstItem="T1F-Mp-VdD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hYo-q1-5EC"/>
+                <constraint firstItem="U52-zw-F6W" firstAttribute="trailing" secondItem="T1F-Mp-VdD" secondAttribute="trailing" id="ndD-qd-zvD"/>
+                <constraint firstItem="T1F-Mp-VdD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="tdr-Zq-xgq"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="NameButton" destination="T1F-Mp-VdD" id="320-8b-EBc"/>
+                <outlet property="titleLabel" destination="U52-zw-F6W" id="hsw-uC-waI"/>
+            </connections>
+            <point key="canvasLocation" x="28" y="-177"/>
+        </view>
+    </objects>
+</document>

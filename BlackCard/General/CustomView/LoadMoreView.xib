@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LoadMoreView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FUz-2d-LKm">
+                    <rect key="frame" x="237" y="10" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="2oW-Pz-N9I"/>
+                        <constraint firstAttribute="width" constant="20" id="cwx-8i-JMM"/>
+                    </constraints>
+                </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加载数据中..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfo-wG-Hjc">
+                    <rect key="frame" x="259" y="0.0" width="83" height="40"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Qfo-wG-Hjc" firstAttribute="leading" secondItem="FUz-2d-LKm" secondAttribute="trailing" constant="2" id="bkY-XT-mA1"/>
+                <constraint firstAttribute="bottom" secondItem="Qfo-wG-Hjc" secondAttribute="bottom" id="dhe-iI-5Jz"/>
+                <constraint firstItem="FUz-2d-LKm" firstAttribute="centerY" secondItem="Qfo-wG-Hjc" secondAttribute="centerY" id="eho-T0-5ds"/>
+                <constraint firstAttribute="centerX" secondItem="Qfo-wG-Hjc" secondAttribute="centerX" id="s1G-Wj-c4P"/>
+                <constraint firstItem="Qfo-wG-Hjc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tJp-ce-z7S"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="activity" destination="FUz-2d-LKm" id="Q3Z-aV-GxK"/>
+                <outlet property="labelCenterX" destination="s1G-Wj-c4P" id="hhE-9H-bKl"/>
+                <outlet property="loadLabel" destination="Qfo-wG-Hjc" id="Yrb-nR-MJI"/>
+            </connections>
+            <point key="canvasLocation" x="244" y="271"/>
+        </view>
+    </objects>
+</document>

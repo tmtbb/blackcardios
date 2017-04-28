@@ -1,0 +1,79 @@
+#ifndef BlackCard_PREFIX_PCH
+#define BlackCard_PREFIX_PCH
+#import "BlackCard_const.h"
+#import "HttpHeader.h"
+#pragma mark - Screen相关
+#define kMainScreenBounds [[UIScreen mainScreen] bounds]
+#define kMainScreenWidth kMainScreenBounds.size.width
+#define kMainScreenHeight kMainScreenBounds.size.height
+#define kMainScreenFrame [[UIScreen mainScreen] applicationFrame]
+#define kScreenScale [[UIScreen mainScreen] scale]
+#pragma mark -  Device Version 判断版本
+#define kSystemVersion [UIDevice currentDevice].systemVersion.floatValue
+#ifdef DEBUG
+#define APPLOG(...) NSLog(__VA_ARGS__) 
+#else
+#define APPLOG(...) 
+#endif 
+
+
+
+#import "BaseHttpAPI.h"
+
+#import <UIKit/UIKit.h>
+#import <OEZCommSDK/OEZCommSDK.h>
+#import "CurrentUserHelper.h"
+#import "CurrentUserActionHelper.h"
+#import "UIView+SimpleFrame.h"
+#import "CALayer+LayerColor.h"
+#import "BaseHttpAPI.h"
+#import "AppAPIHelper.h"
+#import "UIViewController+ActionCategory.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIButton+WebCache.h>
+#define WEAKSELF __block typeof(self) __weak weakSelf = self;
+
+#define BoundIngRectWithText(text,SIZE,font) ([text boundingRectWithSize:SIZE options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:Dic(font) context:nil].size);
+// 在计算属性字符串高度的时候请先设置好字体大小
+#define BoundIngRectWithAttributedString(attributedString,SIZE,font) ([attributedString boundingRectWithSize:SIZE options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size);
+#define kFontHeigt(font) [UIFont systemFontOfSize:font].lineHeight
+
+
+
+
+
+
+#pragma mark -  UIColor Const
+/**
+ *  16进制色值转UIColor
+ *  @param rgbValue 16进制色值名
+ *  @return UIColor
+ */
+#define kUIColorWithRGB(rgbValue) [UIColor colorWithRGBHex:rgbValue]
+#define kUIColorWithRGBAlpha(rgbValue,alphaValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:alphaValue]
+
+
+#define kAppBackgroundColor kUIColorWithRGB(0xE6E6E6)
+
+
+
+
+
+
+
+
+#define kWXMcId           @"1419698402" //商户号
+#define kWXAppID          @"wx9dc39aec13ee3158"
+#define kWXAPP_SECRET     @"241b71f361d6663c12a12e0f43208ae9"
+
+
+// 网易七鱼
+
+#define KQiYuAppKey         @"9bcdb2182bde2835e2b0e7fc72a39e68"
+#define KQiYuAppName        @"云巅黑卡ios"
+
+
+#endif
