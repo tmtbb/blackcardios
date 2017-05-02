@@ -182,9 +182,10 @@
 - (void)lastPayWihtPush {
     
     WEAKSELF
-    [self pushViewControllerWithIdentifier:@"ResetPayTableViewController" block:^(UIViewController *viewController) {
-        [viewController  setValue:weakSelf.model.phoneNum forKey:@"phoneNum"];
+    [self pushStoryboardViewControllerIdentifier:@"ResetPayTableViewController" block:^(UIViewController *viewController) {
+         [viewController  setValue:weakSelf.model.phoneNum forKey:@"phoneNum"];
     }];
+
     
     
     

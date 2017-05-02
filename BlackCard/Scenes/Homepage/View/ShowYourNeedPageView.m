@@ -42,7 +42,7 @@
 
         _showView.clipsToBounds = YES;
         _showView.contentMode = UIViewContentModeScaleAspectFill;
-        _showView.backgroundColor = kUIColorWithRGB(0xa6a6a6);
+//        _showView.backgroundColor = kUIColorWithRGB(0xa6a6a6);
         
         
         
@@ -110,7 +110,7 @@
         _showView.image = image;
         
     }else {
-        [_showView sd_setImageWithURL:[NSURL URLWithString:model.privilegeImgurl] placeholderImage:nil];
+        [_showView sd_setImageWithURL:[NSURL URLWithString:model.privilegeImgurl] placeholderImage:[UIImage imageNamed:@"waiterDefault"]];
     }
        
     _titleLabel.text = model.privilegeName;

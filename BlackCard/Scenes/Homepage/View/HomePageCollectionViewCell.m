@@ -43,12 +43,9 @@
     
     BOOL  isNotGray =  [model.privilegePowers[model.privilegePowerType.type.stringValue] boolValue];
     if (isNotGray) {
-     
         self.titleLabel.textColor = kUIColorWithRGB(0x434343);
-        self.userInteractionEnabled = YES;
     }else {
         
-       self.userInteractionEnabled = NO;
         self.titleLabel.textColor = kUIColorWithRGB(0xA6A6A6);
     }
     
@@ -58,7 +55,9 @@
 
 
 - (void)setImageWithImage:(NSString *)imageStr isGray:(BOOL)isGray {
-    if ([imageStr hasPrefix:@"res://"]) {
+    if ([NSString isEmpty:imageStr]) {
+        _iconView.image = [UIImage imageNamed:@"blackCardPrivilegeDefault"];
+    }else if ([imageStr hasPrefix:@"res://"]) {
         NSString *str = [imageStr stringByReplacingOccurrencesOfString:@"res://" withString:@""];
         UIImage *image = [UIImage imageNamed:str];
         image = isGray ? [self imageWithImage:image] : image;
@@ -67,13 +66,14 @@
     }else {
         
         WEAKSELF
-        [_iconView sd_setImageWithURL:[NSURL URLWithString:imageStr] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        [_iconView sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"blackCardPrivilegeDefault"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             if (isGray) {
                 weakSelf.iconView.image = [weakSelf imageWithImage:image];
             }
-            
-            
+
         }];
+
         
         
         

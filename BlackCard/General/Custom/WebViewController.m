@@ -11,6 +11,7 @@
 @property (strong, nonatomic)  UIWebView *webView;
 @property(nonatomic,copy)NSString *url;
 @property (nonatomic, strong)NSString *webTitle;
+@property(nonatomic)BOOL needBack;
 @end
 
 @implementation WebViewController
@@ -21,7 +22,7 @@
     
     [super viewDidLoad];
     
-    
+
     self.title = self.webTitle;
     self.webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
     [self.view addSubview:_webView];
@@ -40,7 +41,7 @@
     self.webView.scalesPageToFit = YES;
     
     
-
+    [self settinghLeftBar];
     
     
     
@@ -63,6 +64,30 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (void)settinghLeftBar {
+    
+    if (_needBack) {
+        
+        UIBarButtonItem * bar =  [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"icon-back"] style:UIBarButtonItemStylePlain target:self action:@selector(backWithDismiss:)];
+        bar.tintColor = kUIColorWithRGB(0xffffff);
+        self.navigationItem.leftBarButtonItem = bar;
+        
+
+        
+        
+    }
+    
+    
+}
+- (void)backWithDismiss:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    
+}
+
+
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
 

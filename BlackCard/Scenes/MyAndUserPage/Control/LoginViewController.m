@@ -21,14 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.tableView.scrollEnabled = kMainScreenHeight < 568;
-    
     
     
     if ([[CurrentUserHelper shared] isLogin]) {
         WEAKSELF
         [self showLoader:@"登录中..."];
-
+   
         
     [[AppAPIHelper shared].getMyAndUserAPI checkTokenWithComplete:^(id data) {
         [weakSelf hiddenProgress];
@@ -81,8 +79,7 @@
             break;
             
         case LoginTableViewCellType_Register: {
-            
-            [self presentViewControllerWithIdentifier:@"RegisterTableViewController" isNavigation:YES block:nil];
+            [self presentStoryboardViewControllerIdentifier:@"RegisterTableViewController" isNavigation:YES block:nil];
             
           
             
@@ -91,8 +88,8 @@
             
             break;
         case LoginTableViewCellType_ReplacePassword: {
-            
-            [self presentViewControllerWithIdentifier:@"ResetPasswordTableViewController" isNavigation:YES block:nil];
+            [self presentStoryboardViewControllerIdentifier:@"ResetPasswordTableViewController" isNavigation:YES block:nil];
+
             
         }
             
@@ -146,8 +143,8 @@
         [weakSelf showError:error];
     }];
     
+    
 }
-
 
 /*
 #pragma mark - Navigation

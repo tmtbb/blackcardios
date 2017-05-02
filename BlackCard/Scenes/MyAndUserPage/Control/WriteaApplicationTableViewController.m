@@ -118,7 +118,7 @@ typedef NS_ENUM(NSInteger,WriteaApplicationType) {
         model.city = _locationModel.city;
         
   
-        [self pushMainStoryboardViewControllerIdentifier:@"ConfirmApplicationTableViewController" block:^(UIViewController *viewController) {
+        [self pushStoryboardViewControllerIdentifier:@"ConfirmApplicationTableViewController" block:^(UIViewController *viewController) {
             [viewController setValue:model forKey:@"model"];
         }];
  

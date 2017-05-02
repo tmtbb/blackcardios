@@ -33,7 +33,7 @@
 }
 
 - (void)update:(MyAndUserModel *)model {
-    [self.userIconButton sd_setBackgroundImageWithURL:[NSURL URLWithString:model.headpic] forState:UIControlStateNormal placeholderImage:nil];
+    [self.userIconButton sd_setBackgroundImageWithURL:[NSURL URLWithString:model.headpic] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"userHeaderDefault"]];
     self.userNameLabel.text = model.username;
     self.userLevelLabel.text = model.blackCardName;
     self.userMoneyLabel.text = [NSString stringWithFormat:@"%.2f",model.blackcardCreditline];
@@ -77,7 +77,32 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO ];
-    [self showTips:@"敬请期待"];
+    
+    
+    if (indexPath.section == 1) {
+        switch (indexPath.row) {
+            case 5: {
+                
+          
+                
+                [self  presentViewControllerWithIdentifier:@"WebViewController" isNavigation:YES  block:^(UIViewController *viewController) {
+                    [viewController setValue:kHttpAPIUrl_aboutMe forKey:@"url"];
+                    [viewController setValue:@"关于我们" forKey:@"webTitle"];
+                    [viewController setValue:@(YES) forKey:@"needBack"];
+                }];
+     
+            }
+                
+                break;
+                
+            default:{
+                [self showTips:@"敬请期待"];
+            }
+                break;
+        }
+        
+    }
+    
     
 }
 

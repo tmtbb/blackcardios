@@ -19,6 +19,7 @@
 @property(nonatomic)NSInteger chooseCount;
 @property(strong,nonatomic)ShowYourNeedPageView *needView;
 @property(strong,nonatomic)HomePageModel *waiterModel;
+@property(strong,nonatomic)CardListModel *listModel;
 @end
 
 @implementation HomePageTableViewController
@@ -46,11 +47,15 @@
 }
 
 - (void)didRequestComplete:(CardListModel *)data {
+    if (![data isKindOfClass:[CardListModel class]]) {
+        return;
+    }
     [super didRequestComplete:data.privileges];
+    
     if (data != nil) {
         [self removeRefreshControl];
     }
-    
+    _listModel = data;
     NSInteger levelid = [CurrentUserHelper shared].myAndUserModel.blackCardId;
     [data.privileges enumerateObjectsUsingBlock:^(HomePageModel   *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.privilegePowerType.type = @(levelid);
@@ -141,11 +146,43 @@
 }
 
 - (void)collectionView:(UIView *)collectionView didAction:(NSIndexPath *)action data:(id)data{
-       
-    _waiterModel = data;
-    [self showNeedViewWithModel:_waiterModel];
+    
+    if ([self hasThisPrivilege:data]) {
+        _waiterModel = data;
+        [self showNeedViewWithModel:_waiterModel];
+    }
+    
+    
+    
     APPLOG(@"%@",action);
 }
+
+- (BOOL)hasThisPrivilege:(HomePageModel *)model {
+    NSString *privilegeId = model.privilegePowerType.type.stringValue;
+    BOOL isPrivilege = [model.privilegePowers[privilegeId] boolValue];
+    if (!isPrivilege ) {
+        WEAKSELF
+       [_listModel.blackcards enumerateObjectsUsingBlock:^(BlackCardModel   *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+           
+           BOOL hasP = [model.privilegePowers[@(obj.blackcardId).stringValue] boolValue];
+
+           if (hasP) {
+               NSString *string = [NSString stringWithFormat:@"很抱歉，该特权为%@专属特权，您可通过会籍升级享受此特权",obj.blackcardName];
+               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:string delegate:weakSelf cancelButtonTitle:@"确定" otherButtonTitles: nil];
+               alert.tintColor = kUIColorWithRGB(0x434343);
+               [alert show];
+               *stop = YES;
+           }
+           
+       }];
+        
+        
+    }
+    
+    
+    return isPrivilege;
+}
+
 
 
 
