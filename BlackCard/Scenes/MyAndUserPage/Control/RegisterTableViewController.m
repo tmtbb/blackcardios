@@ -40,9 +40,19 @@
 }
 
 - (void)didRequest {
-    [[AppAPIHelper shared].getHomePageAPI cardListWithComplete:_completeBlock withError:_errorBlock];
+    WEAKSELF
+    [[AppAPIHelper shared].getMyAndUserAPI getDeviceKeyWithComplete:^(id data) {
+        [weakSelf myHttpPost];
+        
+    } withError:_errorBlock];
     
 }
+
+- (void)myHttpPost {
+    
+    [[AppAPIHelper shared].getHomePageAPI cardListWithComplete:_completeBlock withError:_errorBlock];
+}
+
 
 - (void)didRequestComplete:(CardListModel *)data {
     _model = data;

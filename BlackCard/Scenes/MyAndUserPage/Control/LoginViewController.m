@@ -114,9 +114,20 @@
     }
     
     
-    [self loginWihtAccount:account password:password];
     
     
+    
+    
+    
+    [self showLoader:@"登录中..."];
+    WEAKSELF
+  [[AppAPIHelper shared].getMyAndUserAPI getDeviceKeyWithComplete:^(id data) {
+      
+      [weakSelf loginWihtAccount:account password:password];
+  } withError:^(NSError *error) {
+      
+      [weakSelf showError:error];
+  }];
 }
 
 
@@ -124,7 +135,8 @@
 - (void)loginWihtAccount:(NSString *)account password:(NSString *)password {
     WEAKSELF
     
-    [self showLoader:@"登录中..."];
+    
+    
     [[AppAPIHelper shared].getMyAndUserAPI loginUserName:account password:password complete:^(id data) {
         NSString *token = data[@"token"];
         [[AppAPIHelper shared].getMyAndUserAPI getUserInfoWithToken:token complete:^(MyAndUserModel *userInfo) {
@@ -145,6 +157,9 @@
     
     
 }
+
+
+
 
 /*
 #pragma mark - Navigation

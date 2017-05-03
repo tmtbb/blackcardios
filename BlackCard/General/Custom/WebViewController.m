@@ -21,13 +21,19 @@
     
     
     [super viewDidLoad];
-    
-
+   WEAKSELF
     self.title = self.webTitle;
-    self.webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
-    [self.view addSubview:_webView];
-    self.webView.delegate = self;
     self.view.backgroundColor = [UIColor whiteColor];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf didloadSetting];
+    });
+   
+}
+
+- (void)didloadSetting {
+    
+    self.webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
+    self.webView.delegate = self;
     
     self.webView.dataDetectorTypes = UIDataDetectorTypeLink;
     //取消右侧，下侧滚动条，去处上下滚动边界的黑色背景
@@ -39,26 +45,39 @@
     self.webView.opaque = NO;
     self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.scalesPageToFit = YES;
-    
-    
-    [self settinghLeftBar];
-    
-    
-    
-    
-    
-//    for (UIView * view in self.webView.scrollView.subviews) {
-//        if ([view isKindOfClass:[UIImageView class]]) {
-//            view.hidden = YES;
-//            break;
-//        }
-//    }
-
     [self showLoader:@"正在加载"];
     if (![self.url hasPrefix:@"http"]) {
         self.url = [NSString stringWithFormat:@"http://%@",self.url];
     }
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];}
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
+
+    [self.view addSubview:_webView];
+    
+    
+    
+    
+    
+    
+    
+    //    for (UIView * view in self.webView.scrollView.subviews) {
+    //        if ([view isKindOfClass:[UIImageView class]]) {
+    //            view.hidden = YES;
+    //            break;
+    //        }
+    //    }
+    
+    
+    
+    
+    
+    
+    
+    [self settinghLeftBar];
+
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

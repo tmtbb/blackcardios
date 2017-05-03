@@ -1113,6 +1113,7 @@
 			baseConfigurationReference = 1CAA8F31B7E16109D0B3B418 /* Pods-BlackCard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 953PSC8HAE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

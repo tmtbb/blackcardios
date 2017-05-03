@@ -22,7 +22,8 @@
     
     [WXApi registerApp: kWXAppID];
     [[QYSDK sharedSDK] registerAppId:KQiYuAppKey appName:KQiYuAppName];
-    [self getDeviceKey];
+    [[AppAPIHelper shared].getMyAndUserAPI getDeviceKeyWithComplete:nil withError:nil];
+//    [self getDeviceKey];
     return YES;
 }
 

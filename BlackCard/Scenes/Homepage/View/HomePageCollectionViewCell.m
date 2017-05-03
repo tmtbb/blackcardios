@@ -68,7 +68,7 @@
         WEAKSELF
         
         [_iconView sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"blackCardPrivilegeDefault"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            if (isGray) {
+            if (isGray && error == nil) {
                 weakSelf.iconView.image = [weakSelf imageWithImage:image];
             }
 

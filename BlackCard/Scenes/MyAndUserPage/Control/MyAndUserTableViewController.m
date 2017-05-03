@@ -83,13 +83,14 @@
         switch (indexPath.row) {
             case 5: {
                 
-          
+          WEAKSELF
+                    [self  presentViewControllerWithIdentifier:@"WebViewController" isNavigation:YES  block:^(UIViewController *viewController) {
+                        [viewController setValue:kHttpAPIUrl_aboutMe forKey:@"url"];
+                        [viewController setValue:@"关于我们" forKey:@"webTitle"];
+                        [viewController setValue:@(YES) forKey:@"needBack"];
+                    }];
                 
-                [self  presentViewControllerWithIdentifier:@"WebViewController" isNavigation:YES  block:^(UIViewController *viewController) {
-                    [viewController setValue:kHttpAPIUrl_aboutMe forKey:@"url"];
-                    [viewController setValue:@"关于我们" forKey:@"webTitle"];
-                    [viewController setValue:@(YES) forKey:@"needBack"];
-                }];
+              
      
             }
                 
