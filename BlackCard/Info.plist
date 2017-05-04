@@ -30,11 +30,12 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wx9dc39aec13ee3158</string>
+				<string>wx35033533241b997e</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>4</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>mqq</string>

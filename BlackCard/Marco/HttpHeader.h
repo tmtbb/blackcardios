@@ -25,7 +25,7 @@
 #else
 //#define kHttpAPIUrl_HOST @"" //新正式生产环境
 
-#define kHttpAPIUrl_HOST @"http://app.jingyingheika.com"
+#define kHttpAPIUrl_HOST @"https://app.jingyingheika.com"
 //#define kHttpAPIUrl_HOST @"http://101.37.82.111:9999"
 
 //#define kHttpAPIUrl_HOST @"" //预发布环境

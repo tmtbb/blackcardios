@@ -85,6 +85,7 @@
 		7C8488751EAB53490001EC82 /* RegisterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8488741EAB53490001EC82 /* RegisterTableViewController.m */; };
 		7C8488781EAB61F30001EC82 /* CALayer+LayerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8488771EAB61F30001EC82 /* CALayer+LayerColor.m */; };
 		7CA9455D1EAAFB52002AA1E1 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA9455C1EAAFB52002AA1E1 /* MainTabBarViewController.m */; };
+		7CC14DE41EB9E929008B32ED /* app.jingyingheika.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 7CC14DE31EB9E929008B32ED /* app.jingyingheika.com.cer */; };
 		7CC47CF21EA9AD0B006FBB53 /* SubviewWithCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC47CF11EA9AD0B006FBB53 /* SubviewWithCollectionView.m */; };
 		7CC47CF51EA9AD4D006FBB53 /* HomePageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC47CF41EA9AD4D006FBB53 /* HomePageCollectionViewCell.m */; };
 		7CC47CF81EA9B1AB006FBB53 /* HomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC47CF71EA9B1AB006FBB53 /* HomePageModel.m */; };
@@ -249,6 +250,7 @@
 		7C8488771EAB61F30001EC82 /* CALayer+LayerColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+LayerColor.m"; sourceTree = "<group>"; };
 		7CA9455B1EAAFB52002AA1E1 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		7CA9455C1EAAFB52002AA1E1 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
+		7CC14DE31EB9E929008B32ED /* app.jingyingheika.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = app.jingyingheika.com.cer; sourceTree = "<group>"; };
 		7CC47CF01EA9AD0B006FBB53 /* SubviewWithCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubviewWithCollectionView.h; sourceTree = "<group>"; };
 		7CC47CF11EA9AD0B006FBB53 /* SubviewWithCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubviewWithCollectionView.m; sourceTree = "<group>"; };
 		7CC47CF31EA9AD4D006FBB53 /* HomePageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCollectionViewCell.h; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 		7C25A7951EA8677A0049234E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7CC14DE31EB9E929008B32ED /* app.jingyingheika.com.cer */,
 				7C25A7961EA8677A0049234E /* LaunchScreen.storyboard */,
 				7C25A7981EA8677A0049234E /* Main.storyboard */,
 				7C25A79A1EA8677A0049234E /* Images.xcassets */,
@@ -831,6 +834,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CC14DE41EB9E929008B32ED /* app.jingyingheika.com.cer in Resources */,
 				7C25A79F1EA8677A0049234E /* Images.xcassets in Resources */,
 				7C25A79D1EA8677A0049234E /* LaunchScreen.storyboard in Resources */,
 				7C25A80C1EA886E50049234E /* EveryNoneView.xib in Resources */,
@@ -1105,6 +1109,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ywwl.mgame648-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1129,6 +1134,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ywwl.mgame648-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
