@@ -21,14 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.scrollEnabled = kMainScreenHeight < 568;
-    
     
     
     if ([[CurrentUserHelper shared] isLogin]) {
         WEAKSELF
         [self showLoader:@"登录中..."];
-
+   
         
     [[AppAPIHelper shared].getMyAndUserAPI checkTokenWithComplete:^(id data) {
         [weakSelf hiddenProgress];
@@ -81,8 +79,7 @@
             break;
             
         case LoginTableViewCellType_Register: {
-            
-            [self presentViewControllerWithIdentifier:@"RegisterTableViewController" isNavigation:YES block:nil];
+            [self presentStoryboardViewControllerIdentifier:@"RegisterTableViewController" isNavigation:YES block:nil];
             
           
             
@@ -91,8 +88,8 @@
             
             break;
         case LoginTableViewCellType_ReplacePassword: {
-            
-            [self presentViewControllerWithIdentifier:@"ResetPasswordTableViewController" isNavigation:YES block:nil];
+            [self presentStoryboardViewControllerIdentifier:@"ResetPasswordTableViewController" isNavigation:YES block:nil];
+
             
         }
             
@@ -117,9 +114,20 @@
     }
     
     
-    [self loginWihtAccount:account password:password];
     
     
+    
+    
+    
+    [self showLoader:@"登录中..."];
+    WEAKSELF
+  [[AppAPIHelper shared].getMyAndUserAPI getDeviceKeyWithComplete:^(id data) {
+      
+      [weakSelf loginWihtAccount:account password:password];
+  } withError:^(NSError *error) {
+      
+      [weakSelf showError:error];
+  }];
 }
 
 
@@ -127,7 +135,8 @@
 - (void)loginWihtAccount:(NSString *)account password:(NSString *)password {
     WEAKSELF
     
-    [self showLoader:@"登录中..."];
+    
+    
     [[AppAPIHelper shared].getMyAndUserAPI loginUserName:account password:password complete:^(id data) {
         NSString *token = data[@"token"];
         [[AppAPIHelper shared].getMyAndUserAPI getUserInfoWithToken:token complete:^(MyAndUserModel *userInfo) {
@@ -146,7 +155,10 @@
         [weakSelf showError:error];
     }];
     
+    
 }
+
+
 
 
 /*

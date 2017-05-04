@@ -13,11 +13,11 @@
 //const CGFloat  KCGFloatExample = 320.0f
 
 
-NSString *const kAppNSErrorDomain                 = @"com.xxxx.blackCard";
-NSString *const kAppDevice_key                    = @"com.xxxx.blackCard.appDevice_key";
-NSString *const kAppDevice_keyid                  = @"com.xxxx.blackCard.appDevice_id";
+NSString *const kAppNSErrorDomain                 = @"com.youdian.blackcard.ios";
+NSString *const kAppDevice_key                    = @"com.youdian.blackcard.ios.appDevice_key";
+NSString *const kAppDevice_keyid                  = @"com.youdian.blackcard.ios.appDevice_id";
 NSString *const kAppDevice_Normal_key             = @"24BFA1509B794899834AA9E24B447322";
-NSString *const kAppAdvertisingIdentifier         = @"com.xxxx.blackCard.advertisingIdentifier";
+NSString *const kAppAdvertisingIdentifier         = @"com.youdian.blackcard.ios.advertisingIdentifier";
 NSString *const kAppDevice_Normal_keyid           = @"34474661562457";
 
 

@@ -16,9 +16,9 @@
         <!--我的-->
         <scene sceneID="say-vk-zTX">
             <objects>
-                <tableViewController storyboardIdentifier="MyAndUserTableViewController" id="Uan-7z-6cD" customClass="MyAndUserTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MyAndUserTableViewController" hidesBottomBarWhenPushed="YES" id="Uan-7z-6cD" customClass="MyAndUserTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wRc-wQ-iyz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="AK2-bq-mzL">
@@ -255,6 +255,7 @@
                             <outlet property="delegate" destination="Uan-7z-6cD" id="IA9-9F-1fz"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="我的" image="tabbarMyNone" selectedImage="tabbarMySel" id="88c-7c-FJe"/>
                     <connections>
                         <outlet property="userBackImage" destination="z2f-0H-lxh" id="ovu-Mr-8XL"/>
@@ -520,14 +521,14 @@
             <objects>
                 <tableViewController storyboardIdentifier="ResetPasswordTableViewController" title="重置密码" id="Gg8-wf-T05" customClass="ResetPasswordTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="N4y-Br-UEL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="1pH-Cj-kDz">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="221"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="registerCard" translatesAutoresizingMaskIntoConstraints="NO" id="1aL-cI-baD">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RegisterDefaultCard" translatesAutoresizingMaskIntoConstraints="NO" id="1aL-cI-baD">
                                     <rect key="frame" x="40.5" y="15" width="293" height="190"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="1aL-cI-baD" secondAttribute="height" multiplier="293:190" id="ZS9-KR-0qi"/>
@@ -869,7 +870,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="221"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="registerCard" translatesAutoresizingMaskIntoConstraints="NO" id="hcY-G9-ghC">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RegisterDefaultCard" translatesAutoresizingMaskIntoConstraints="NO" id="hcY-G9-ghC">
                                     <rect key="frame" x="40.5" y="15" width="293" height="190"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="hcY-G9-ghC" secondAttribute="height" multiplier="293:190" id="JeG-Lf-PLc"/>
@@ -1356,7 +1357,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="221"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="registerCard" translatesAutoresizingMaskIntoConstraints="NO" id="Hb9-zo-7We">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RegisterDefaultCard" translatesAutoresizingMaskIntoConstraints="NO" id="Hb9-zo-7We">
                                     <rect key="frame" x="40.5" y="15" width="293" height="190"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Hb9-zo-7We" secondAttribute="height" multiplier="293:190" id="imN-d6-YiO"/>
@@ -1519,6 +1520,9 @@
                                                     <state key="normal" title="我已经完全阅读并同意《精英黑卡会籍服务章程》">
                                                         <color key="titleColor" red="0.65098039215686276" green="0.65098039215686276" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="showWedAction:" destination="bEO-J3-xUO" eventType="touchUpInside" id="joe-zk-i0r"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1601,7 +1605,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="221"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="registerCard" translatesAutoresizingMaskIntoConstraints="NO" id="nkF-if-sSE">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RegisterDefaultCard" translatesAutoresizingMaskIntoConstraints="NO" id="nkF-if-sSE">
                                     <rect key="frame" x="40.5" y="15" width="293" height="190"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="nkF-if-sSE" secondAttribute="height" multiplier="293:190" id="IVv-Mo-ftV"/>
@@ -1638,21 +1642,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="云栖会籍专属特权" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSI-WU-VGj">
-                                                    <rect key="frame" x="130" y="0.0" width="114.5" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会籍专属特权" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSI-WU-VGj">
+                                                    <rect key="frame" x="144.5" y="0.0" width="86" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.89019607840000003" green="0.65098039220000004" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qV-W1-zSF" userLabel="leftview">
-                                                    <rect key="frame" x="24" y="8" width="91" height="1"/>
+                                                    <rect key="frame" x="24" y="8" width="105.5" height="1"/>
                                                     <color key="backgroundColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="hGX-6l-uph"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lsD-gZ-vy0" userLabel="rightview">
-                                                    <rect key="frame" x="259.5" y="8" width="91.5" height="1"/>
+                                                    <rect key="frame" x="245.5" y="8" width="105.5" height="1"/>
                                                     <color key="backgroundColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="axb-a9-eiv"/>
@@ -1716,30 +1720,27 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多特权…" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ad3-23-5YT">
-                                                    <rect key="frame" x="87.5" y="217" width="200" height="14.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="200" id="2HA-DR-Hop"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.65098039220000004" green="0.65098039220000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NhU-5W-WfG">
+                                                    <rect key="frame" x="0.0" y="217" width="375" height="38"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="NhU-5W-WfG" firstAttribute="leading" secondItem="a2h-tb-tqo" secondAttribute="leading" id="0yY-Ag-N8T"/>
                                                 <constraint firstItem="fSI-WU-VGj" firstAttribute="top" secondItem="a2h-tb-tqo" secondAttribute="top" id="1fz-te-Y8d"/>
                                                 <constraint firstAttribute="trailing" secondItem="lsD-gZ-vy0" secondAttribute="trailing" constant="24" id="8gc-Rv-hDD"/>
                                                 <constraint firstItem="lsD-gZ-vy0" firstAttribute="leading" secondItem="fSI-WU-VGj" secondAttribute="trailing" constant="15" id="MOt-Di-ZBK"/>
                                                 <constraint firstItem="RlM-ab-CKx" firstAttribute="top" secondItem="fSI-WU-VGj" secondAttribute="bottom" id="MaM-6O-oJ3"/>
-                                                <constraint firstItem="Ad3-23-5YT" firstAttribute="top" secondItem="RlM-ab-CKx" secondAttribute="bottom" id="PYw-3c-nSk"/>
                                                 <constraint firstItem="fSI-WU-VGj" firstAttribute="centerY" secondItem="5qV-W1-zSF" secondAttribute="centerY" id="PaS-xo-MEM"/>
-                                                <constraint firstItem="Ad3-23-5YT" firstAttribute="centerX" secondItem="a2h-tb-tqo" secondAttribute="centerX" id="TMT-hV-zWi"/>
+                                                <constraint firstItem="NhU-5W-WfG" firstAttribute="top" secondItem="RlM-ab-CKx" secondAttribute="bottom" id="eFa-SE-6gK"/>
                                                 <constraint firstAttribute="trailing" secondItem="RlM-ab-CKx" secondAttribute="trailing" id="g9s-45-ReV"/>
                                                 <constraint firstItem="RlM-ab-CKx" firstAttribute="leading" secondItem="a2h-tb-tqo" secondAttribute="leading" id="hCJ-JT-w7C"/>
                                                 <constraint firstItem="fSI-WU-VGj" firstAttribute="centerX" secondItem="a2h-tb-tqo" secondAttribute="centerX" id="jSP-1s-eZZ"/>
                                                 <constraint firstItem="fSI-WU-VGj" firstAttribute="leading" secondItem="5qV-W1-zSF" secondAttribute="trailing" constant="15" id="kP0-s0-LMp"/>
+                                                <constraint firstAttribute="trailing" secondItem="NhU-5W-WfG" secondAttribute="trailing" id="oNS-Oa-o9R"/>
                                                 <constraint firstItem="5qV-W1-zSF" firstAttribute="leading" secondItem="a2h-tb-tqo" secondAttribute="leading" constant="24" id="q14-Nh-nPW"/>
                                                 <constraint firstItem="lsD-gZ-vy0" firstAttribute="centerY" secondItem="fSI-WU-VGj" secondAttribute="centerY" id="q5z-eb-yMi"/>
+                                                <constraint firstAttribute="bottom" secondItem="NhU-5W-WfG" secondAttribute="bottom" id="zcD-dB-lNj"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1939,13 +1940,15 @@
                         <outlet property="NameSettingView" destination="vTg-hx-Hj4" id="A7A-jg-tn6"/>
                         <outlet property="backButton" destination="33z-ez-Z41" id="KY8-CL-00v"/>
                         <outlet property="cardCell" destination="YFY-JX-bmF" id="O90-c7-mXO"/>
+                        <outlet property="levelLabel" destination="fSI-WU-VGj" id="vm9-23-Fco"/>
                         <outlet property="nameField" destination="ayh-Az-n0z" id="0au-i9-Anb"/>
+                        <outlet property="pageCountView" destination="NhU-5W-WfG" id="qCX-MD-pe8"/>
                         <outlet property="subCollctionView" destination="RlM-ab-CKx" id="AoZ-Ay-ZHu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n7K-er-job" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2231" y="3104"/>
+            <point key="canvasLocation" x="2229.5999999999999" y="3103.8980509745129"/>
         </scene>
         <!--App Navigation Controller-->
         <scene sceneID="Jw8-AP-zOX">
@@ -2130,16 +2133,16 @@
         <!--首页-->
         <scene sceneID="44M-lQ-LT2">
             <objects>
-                <tableViewController storyboardIdentifier="HomePageTableViewController" title="首页" id="JWp-7d-CaF" customClass="HomePageTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HomePageTableViewController" title="首页" hidesBottomBarWhenPushed="YES" id="JWp-7d-CaF" customClass="HomePageTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Rb-Eb-Hpq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Iku-1y-EnP">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="281"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="registerCard" translatesAutoresizingMaskIntoConstraints="NO" id="dMh-uf-kN7">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomePageDefaultCard" translatesAutoresizingMaskIntoConstraints="NO" id="dMh-uf-kN7">
                                     <rect key="frame" x="8" y="44.5" width="358" height="232"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="dMh-uf-kN7" secondAttribute="height" multiplier="715:463" id="ouY-nE-dJ4"/>
@@ -2321,6 +2324,7 @@
                             <outlet property="delegate" destination="JWp-7d-CaF" id="Knt-Gm-2fT"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="黑卡" image="tabbarBalckCardNone" selectedImage="tabbarBalckCardSel" id="nEi-n1-R6H"/>
                     <connections>
                         <outlet property="nameLabel" destination="le5-FL-9ko" id="azv-d5-fh4"/>
@@ -2336,7 +2340,7 @@
         <scene sceneID="P1a-sI-F32">
             <objects>
                 <navigationController storyboardIdentifier="AppNavigationResetPasswordController" title="重置密码" id="XBE-ZL-Ko1" customClass="AppNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Dd-eA-rFa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="0Dd-eA-rFa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -2361,7 +2365,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="221"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="registerCard" translatesAutoresizingMaskIntoConstraints="NO" id="0vZ-TS-eKd">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RegisterDefaultCard" translatesAutoresizingMaskIntoConstraints="NO" id="0vZ-TS-eKd">
                                     <rect key="frame" x="40.5" y="15" width="293" height="190"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="0vZ-TS-eKd" secondAttribute="height" multiplier="293:190" id="W0I-hd-93w"/>
@@ -2565,13 +2569,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="HomePageDefaultCard" width="358" height="231"/>
+        <image name="RegisterDefaultCard" width="293" height="187"/>
         <image name="icon-back" width="11" height="22"/>
         <image name="loginBack" width="375" height="667"/>
         <image name="loginBackHeader" width="166" height="133"/>
         <image name="loginCode" width="17" height="18"/>
         <image name="loginPassworld" width="15" height="18"/>
         <image name="passWorldNone" width="28" height="20"/>
-        <image name="registerCard" width="293" height="189"/>
         <image name="tabbarBalckCardNone" width="22" height="18"/>
         <image name="tabbarBalckCardSel" width="22" height="17"/>
         <image name="tabbarMyNone" width="20" height="22"/>

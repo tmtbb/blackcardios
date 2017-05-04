@@ -20,7 +20,9 @@ HELPER_SHARED(WXPay);
     if ([WXPay isWXAppInstalled]) {
         [self weixinpay:model];
     }else {
-        [self didPayStrError:@"未安装微信"];
+//        [self didPayStrError:@"未安装微信"];
+        [self didPayStrError:@"支付失败"];
+
     }
 }
 
@@ -29,7 +31,9 @@ HELPER_SHARED(WXPay);
     if ([WXPay isWXAppInstalled]) {
         [self weiXinPayWithWXPayModel:model];
     }else {
-        [self didPayStrError:@"未安装微信"];
+//        [self didPayStrError:@"未安装微信"];
+        [self didPayStrError:@"支付失败"];
+
     }
 }
 

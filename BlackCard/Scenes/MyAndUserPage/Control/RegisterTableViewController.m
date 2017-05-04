@@ -11,8 +11,8 @@
 #import "HomePageModel.h"
 #import "RegisterCardCell.h"
 #import "ValidateHelper.h"
-@interface RegisterTableViewController ()<UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet SubviewWithCollectionView *subCollctionView;
+@interface RegisterTableViewController ()<UITextFieldDelegate,SubviewWithCollectionViewDelegate>
+@property (weak, nonatomic) IBOutlet RegisterWithCollectionView *subCollctionView;
 @property (weak, nonatomic) IBOutlet RegisterCardCell *cardCell;
 
 @property(strong,nonatomic)CardListModel *model;
@@ -22,6 +22,11 @@
 @property(nonatomic)NSInteger nameTag;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
+@property (weak, nonatomic) IBOutlet UIView *pageCountView;
+@property (weak, nonatomic) IBOutlet UILabel *levelLabel;
+@property(nonatomic)NSInteger pageCount;
+@property(nonatomic)NSInteger chooseCount;
+
 @end
 
 @implementation RegisterTableViewController
@@ -29,20 +34,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _chooseLevel = [PrivilegePowerPoint new];
-    
+    _subCollctionView.myDelegate = self;
     [self backButtonSetting];
-    
     [self setNameButtonTransformWithTag:101];
 }
 
 - (void)didRequest {
-    [[AppAPIHelper shared].getHomePageAPI cardListWithComplete:_completeBlock withError:_errorBlock];
+    WEAKSELF
+    [[AppAPIHelper shared].getMyAndUserAPI getDeviceKeyWithComplete:^(id data) {
+        [weakSelf myHttpPost];
+        
+    } withError:_errorBlock];
     
 }
 
+- (void)myHttpPost {
+    
+    [[AppAPIHelper shared].getHomePageAPI cardListWithComplete:_completeBlock withError:_errorBlock];
+}
+
+
 - (void)didRequestComplete:(CardListModel *)data {
     _model = data;
+
     [super didRequestComplete:data.privileges];
+    
+
     
     [self.cardCell update:data.blackcards];
     
@@ -51,8 +68,9 @@
         obj.privilegePowerType = weakSelf.chooseLevel;
     }];
     
-    
-    [_subCollctionView update:data.privileges];
+    [self pageRemoveFromView:_pageCount];
+   _pageCount =  [_subCollctionView update:data.privileges];
+    [self pageCountViewSetting];
     [self.tableView reloadData];
 }
 
@@ -103,6 +121,7 @@
 - (void)tableView:(UITableView *)tableView rowAtIndexPath:(NSIndexPath *)indexPath didSelectColumnAtIndex:(NSInteger)column {
     _cardModel = [_model.blackcards objectAtIndex:column];
     _chooseLevel.type = @(_cardModel.blackcardId);
+    _levelLabel.text = [NSString stringWithFormat:@"%@专属特权",_cardModel.blackcardName];
     
     [_subCollctionView  reloadData];
     
@@ -152,7 +171,7 @@
         
     }
     WEAKSELF
-    [self pushMainStoryboardViewControllerIdentifier:@"WriteaApplicationTableViewController" block:^(UIViewController *viewController) {
+    [self pushStoryboardViewControllerIdentifier:@"WriteaApplicationTableViewController" block:^(UIViewController *viewController) {
         if (customizeName) {
              [viewController setValue:customizeName forKey:@"customizeName"];
         }
@@ -171,5 +190,58 @@
     
     return [textField resignFirstResponder];
 }
+
+
+
+- (void)pageCountViewSetting {
+    
+    CGFloat width = _pageCount * 8   + (_pageCount -1)* 1;
+    CGFloat  x = (kMainScreenWidth - width) / 2.0;
+    CGFloat  y =  (38 - 4) / 2.0;
+    for (NSInteger i = 0 ; i < _pageCount; i++) {
+        UIImageView *imageView =  [[UIImageView alloc]initWithFrame:CGRectMake(x + i * 9, y, 8, 4)];
+        imageView.image = [UIImage imageNamed:@"pageCountPointNone"];
+        imageView.tag = 100 + i;
+        imageView.contentMode = UIViewContentModeCenter;
+        [_pageCountView addSubview:imageView];
+    }
+    
+    UIImageView *image = [_pageCountView viewWithTag:100 + _chooseCount];
+    image.image = [UIImage imageNamed:@"pageCountPointChoose"];
+    
+}
+
+- (void)pageRemoveFromView:(NSInteger)count{
+    if (count != 0) {
+        
+        for (UIView *view  in _pageCountView.subviews) {
+            if (view.tag >= 100) {
+                [view removeFromSuperview];
+            }
+        }
+        
+    }
+    
+}
+
+- (void)setChoosePageCount:(NSInteger)page {
+    if (_chooseCount != page) {
+        
+        UIImageView *oldImage = [_pageCountView viewWithTag:100 + _chooseCount];
+        UIImageView *image = [_pageCountView viewWithTag:100 + page];
+        oldImage.image = [UIImage imageNamed:@"pageCountPointNone"];
+        image.image = [UIImage imageNamed:@"pageCountPointChoose"];
+        
+        
+        _chooseCount = page;
+        
+    }
+}
+
+- (void)view:(UIView *)view pageIndex:(NSInteger)pageIndex {
+    
+    [self setChoosePageCount:pageIndex];
+}
+
 
 @end

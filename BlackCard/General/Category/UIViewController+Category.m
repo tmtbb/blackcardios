@@ -24,26 +24,59 @@ static char *CustomNavigationBarKey = "CustomNavigationBarKey";
 
 - (void)showError:(NSError *)error {
     NSString *stringError = [[error userInfo] objectForKey:NSLocalizedDescriptionKey];
-    if( error.code == 10002 )//token过期
-    {
-
-        [[CurrentUserHelper shared] logout:self];
-        [self removeMBProgressHUD];
-        if ( [self respondsToSelector:@selector(tokenExpired)] ) {
-            [self performSelector:@selector(tokenExpired)];
+    
+    switch (error.code) {
+        case 10002: {
+            
+            [self logoutWithErrorCode];
+            
+            
         }
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"账号在别处登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录", nil];
-        [alertView showWithCompleteBlock:^(NSInteger buttonIndex) {
-            if (buttonIndex != alertView.cancelButtonIndex) {
-//                [self pushMainStoryboardViewControllerIdentifier:@"LoginTableViewController" checkLogin:NO block:nil];
-                if (![self.view.window.rootViewController isMemberOfClass:NSClassFromString(@"LoginViewController")]) {
-                    [self setMainRootViewController:@"LoginViewController"];
-                }
-
-            }
-        }];
-        return;
+            return;
+        case 10005:
+        case 10006:
+        case 10010:
+        case 10011:
+        case 10012:
+        case 10013:
+        case 10014:
+        case 10015:
+        case 10017:{
+            
+            [self showTips:stringError afterDelay:1.5];
+            
+        }
+            return;
+        case 10001:
+        case 10003:
+        case 10004:{
+#ifndef DEBUG
+            stringError = @"服务器异常，请稍后再试";
+#endif
+        }
+            break;
+            
+        default: {
+            //#ifndef DEBUG
+            //
+            //            if (error.code != 0 &&  error.code != kAppNSErrorCheckDataCode && error.code != kAppNSErrorLoginCode) {
+            //                stringError = @"网络不给力，请稍后再试";
+            //            }
+            //#endif
+            
+            
+            
+        }
+            break;
     }
+    
+    [self showTips:stringError afterDelay:1.5];
+    
+    
+   
+    
+    
+    
 //    if (error.code == 502) {//服务器维护
 //        [self showNoServer];
 //        return;
@@ -56,15 +89,15 @@ static char *CustomNavigationBarKey = "CustomNavigationBarKey";
 //       //由filterError内处理
 //        return ;
 //    }
-#ifndef DEBUG
-    else if(  error.code == -1 ) {
-         stringError = @"服务器异常，请稍后再试";
-    }
-    else if (error.code != 0 &&  error.code != kAppNSErrorCheckDataCode && error.code != kAppNSErrorLoginCode) {
-        stringError = @"网络不给力，请稍后再试";
-    }
-#endif
-    [self showTips:stringError afterDelay:1.5];
+//#ifndef DEBUG
+//    else if(  error.code == -1 ) {
+//         stringError = @"服务器异常，请稍后再试";
+//    }
+//    else if (error.code != 0 &&  error.code != kAppNSErrorCheckDataCode && error.code != kAppNSErrorLoginCode) {
+//        stringError = @"网络不给力，请稍后再试";
+//    }
+//#endif
+//    [self showTips:stringError afterDelay:1.5];
 }
 
 - (BOOL)filterError:(NSError*) error {
@@ -76,6 +109,30 @@ static char *CustomNavigationBarKey = "CustomNavigationBarKey";
     }
     return NO;
 }
+
+- (void)logoutWithErrorCode {
+    
+    [[CurrentUserHelper shared] logout:self];
+    [self removeMBProgressHUD];
+    if ( [self respondsToSelector:@selector(tokenExpired)] ) {
+        [self performSelector:@selector(tokenExpired)];
+    }
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"账号在别处登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录", nil];
+    [alertView showWithCompleteBlock:^(NSInteger buttonIndex) {
+        if (buttonIndex != alertView.cancelButtonIndex) {
+            //                [self pushMainStoryboardViewControllerIdentifier:@"LoginTableViewController" checkLogin:NO block:nil];
+            if (![self.view.window.rootViewController isMemberOfClass:NSClassFromString(@"LoginViewController")]) {
+                [self setMainRootViewController:@"LoginViewController"];
+            }
+            
+        }
+    }];
+
+    
+    
+    
+}
+
 
 - (BOOL)filterNetworkError:(NSError*) error {
     return NO;

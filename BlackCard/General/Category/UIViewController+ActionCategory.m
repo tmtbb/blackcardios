@@ -57,7 +57,8 @@ typedef NS_ENUM(NSInteger, Type) {
     {
         present = self;
     }
-    UIViewController *viewController = [present.storyboard instantiateViewControllerWithIdentifier:identifier];
+    UIViewController *viewController = [[NSClassFromString(identifier) alloc]init];
+    
     if (block != nil) {
         block(viewController);
     }
@@ -69,8 +70,8 @@ typedef NS_ENUM(NSInteger, Type) {
     
 }
 
-- (void) presentStoreStoryboardViewControllerIdentifier:(NSString *)identifier isNavigation:(BOOL)isNavigation block:(void (^)(UIViewController * viewController))block {
-    UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"StoreMain" bundle:nil];
+- (void) presentStoryboardViewControllerIdentifier:(NSString *)identifier isNavigation:(BOOL)isNavigation block:(void (^)(UIViewController * viewController))block {
+    UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:identifier];
     if (block != nil) {
         block(viewController);
@@ -82,36 +83,36 @@ typedef NS_ENUM(NSInteger, Type) {
     [self presentViewController:viewController animated:YES completion:nil];
 }
 
+//
+//- (void)pushViewControllerWithIdentifier:(NSString *)identifier block:(void (^)(UIViewController *viewController))block {
+//
+//    [self pushViewControllerWithIdentifier:identifier animated:YES block:block];
+//}
+//
+//
+//- (void)pushViewControllerWithIdentifier:(NSString *)identifier animated:(BOOL)animated block:(void (^)(UIViewController *viewController))block
+//{
+//    
+//    UIViewController *viewController = [self instantiateViewControllerWithIdentifier:identifier storyboard:self.storyboard block:block];
+//    if( viewController == nil)
+//    {
+//        viewController = [self instantiateViewControllerWithIdentifier:identifier storyboard:self.navigationController.storyboard block:block];
+//    }
+//    [self.navigationController pushViewController:viewController animated:animated];
+//    
+//
+//}
 
-- (void)pushViewControllerWithIdentifier:(NSString *)identifier block:(void (^)(UIViewController *viewController))block {
 
-    [self pushViewControllerWithIdentifier:identifier animated:YES block:block];
-}
-
-
-- (void)pushViewControllerWithIdentifier:(NSString *)identifier animated:(BOOL)animated block:(void (^)(UIViewController *viewController))block
-{
-    
-    UIViewController *viewController = [self instantiateViewControllerWithIdentifier:identifier storyboard:self.storyboard block:block];
-    if( viewController == nil)
-    {
-        viewController = [self instantiateViewControllerWithIdentifier:identifier storyboard:self.navigationController.storyboard block:block];
-    }
-    [self.navigationController pushViewController:viewController animated:animated];
-    
-
-}
-
-
-- (void)pushMainStoryboardViewControllerIdentifier:(NSString *)identifier  animated:(BOOL)animated block:(void (^)(UIViewController * viewController))block {
+- (void)pushStoryboardViewControllerIdentifier:(NSString *)identifier  animated:(BOOL)animated block:(void (^)(UIViewController * viewController))block {
     [self pushViewControllerWithStoryboard:nil Identifier:identifier animated:animated block:block];
 }
 
-- (void)pushMainStoryboardViewControllerIdentifier:(NSString *)identifier  block:(void (^)(UIViewController * viewController))block {
-    [self pushMainStoryboardViewControllerIdentifier:identifier animated:YES block:block];
+- (void)pushStoryboardViewControllerIdentifier:(NSString *)identifier  block:(void (^)(UIViewController * viewController))block {
+    [self pushStoryboardViewControllerIdentifier:identifier animated:YES block:block];
 }
 
-- (void)pushMainStoryboardViewControllerIdentifier:(NSString *)identifier checkLogin:(BOOL)checkLogin block:(void (^)(UIViewController * viewController))block {
+- (void)pushStoryboardViewControllerIdentifier:(NSString *)identifier checkLogin:(BOOL)checkLogin block:(void (^)(UIViewController * viewController))block {
     [self pushViewControllerWithStoryboard:nil Identifier:identifier checkLogin:checkLogin block:block];
 }
 
@@ -174,14 +175,10 @@ typedef NS_ENUM(NSInteger, Type) {
 }
 - (void)presentLoginViewController:(void(^)(UIViewController* viewController)) block
 {
-    [self presentViewControllerWithIdentifier:@"LoginTableViewController" isNavigation:YES block:nil];
+    [self presentStoryboardViewControllerIdentifier:@"LoginTableViewController"  isNavigation:YES block:nil];
 }
 
-- (void)presentRegisteredViewController:(void(^)(UIViewController* viewController)) block {
-    [self presentViewControllerWithIdentifier:@"RegisteredViewController" isNavigation:YES block:^(UIViewController *viewController) {
-        [viewController setValue:@(3) forKey:@"type"];
-    }];
-}
+
 
 
 
@@ -194,7 +191,33 @@ typedef NS_ENUM(NSInteger, Type) {
     return NO;
 }
 
+- (void)pushWithIdentifier:(NSString *)identifier complete:(void(^)(UIViewController *controller))complete {
+    UIViewController *controller;
+    
+    @try {
+        
+        controller =  [[NSClassFromString(identifier) alloc]init];
+        
+        if (complete != nil && controller != nil ) {
+            complete(controller);
+        }
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
+    
+    
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+
+
 - (void)showAlertLoginView {
+    
+    
 //    LoginChooseView *loginChooseView = [LoginChooseView loadFromNib];
 //    UIAlertCustomViewController *vc = [[UIAlertCustomViewController alloc] initCustomView:loginChooseView animationType:UIAlertCustomViewAnimationTypeDown animationDelay:0.3];
 //    vc.delegate = self;

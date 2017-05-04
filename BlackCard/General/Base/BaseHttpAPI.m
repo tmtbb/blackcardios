@@ -29,16 +29,22 @@
     manager.requestSerializer.timeoutInterval = timeoutInterval;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     manager.responseSerializer.acceptableContentTypes = contentTypes;
-//#ifndef DEBUG
-//    manager.securityPolicy = [self createSecurityPolicy];
-//#endif
+#ifndef DEBUG
+    manager.securityPolicy = [self createSecurityPolicy];
+#endif
     return manager;
 }
-
 - (AFSecurityPolicy*) createSecurityPolicy {
     AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
     [securityPolicy setAllowInvalidCertificates:NO];
-//    [securityPolicy setPinnedCertificates:[[CertificateHelper shared] certificates]];
+    //    [securityPolicy setPinnedCertificates:[[CertificateHelper shared] certificates]];
+    
+    
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"app.jingyingheika.com" ofType:@"cer"];//自签名证书
+    NSData* caCert = [NSData dataWithContentsOfFile:cerPath];
+    
+    [securityPolicy setPinnedCertificates:@[caCert]];
+    [securityPolicy setAllowInvalidCertificates:YES];
     [securityPolicy setValidatesDomainName:YES];
     return securityPolicy;
 }

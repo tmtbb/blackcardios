@@ -21,7 +21,7 @@ HELPER_SHARED(CurrentUserHelper)
     self = [super init];
     if (self) {
         _softMutableArray = [[OEZSoftLockMutableArray alloc] init];
-        _keychain = [[OEZKeychainItemWrapper alloc] initWithIdentifier:@"com.xxxx.BlackCard.token" accessGroup:nil];
+        _keychain = [[OEZKeychainItemWrapper alloc] initWithIdentifier:@"com.youdian.blackcard.ios.token" accessGroup:nil];
         [self readUserInfo];
 //        [self readChannel];
     }

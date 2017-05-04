@@ -121,7 +121,8 @@
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.myDelegate respondsToSelector:@selector(collectionView:didAction:data: )]) {
-        [self.myDelegate collectionView:collectionView didAction:indexPath data:nil];
+        id data = [self collectionView:collectionView cellForDataInSection:indexPath];
+        [self.myDelegate collectionView:collectionView didAction:indexPath data:data];
     }
     
     

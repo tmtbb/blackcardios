@@ -8,8 +8,7 @@
 
 #import "WaiterViewController.h"
 #import <QYSDK.h>
-#import <QYSessionViewController.h>
-#import <QYPOPSessionViewController.h>
+#import "ChatTools.h"
 
 
 @interface WaiterViewController ()
@@ -22,18 +21,19 @@
     
     
     [super viewDidLoad];
-    QYSource *source = [[QYSource alloc] init];
-    source.title =  @"云巅黑卡";
-    source.urlString = @"https://8.163.com/";
     
-    QYSessionViewController *sessionViewController = [[QYSDK sharedSDK] sessionViewController];
-    sessionViewController.sessionTitle = @"管家";
-    sessionViewController.source = source;
+   
+    
+    
+//    QYSource *source = [[QYSource alloc] init];
+//    source.title =  @"云巅黑卡iOS";
+//    source.urlString = @"https://8.163.com/";
+//    
+//    
+//    [self setQYUserIndfo];
 
-    sessionViewController.hidesBottomBarWhenPushed = YES;
-
-    [self.navigationController pushViewController:sessionViewController animated:YES];
-    [[QYSDK sharedSDK] customUIConfig].bottomMargin = 0;
+    
+    [ChatTools chatViewControllerWithTitle:nil navigation:self.navigationController];
     _isChat = 1;
 
     // Do any additional setup after loading the view.
@@ -57,7 +57,32 @@
     
 }
 
-
+//-(void)setQYUserIndfo {
+//    MyAndUserModel *model =  [CurrentUserHelper shared].myAndUserModel;
+//    QYUserInfo *info = [[QYUserInfo alloc]init];
+//    info.userId = model.userId;
+//
+//    info.data = [NSString stringWithFormat:
+//                 @"[{\"key\":\"real_name\", \"value\":\"%@\"},"
+//                 "{\"key\":\"mobile_phone\", \"hidden\":true},"
+//                 "{\"key\":\"email\", \"hidden\":true},"
+//                 "{\"index\":0, \"key\":\"userID\", \"label\":\"用户ID\", \"value\":\"%@\"},"
+//                 "{\"index\":1, \"key\":\"blackCardNo\", \"label\":\"黑卡卡号\", \"value\":\"%@\"},"
+//                 "{\"index\":2, \"key\":\"blackCard\", \"label\":\"黑卡类型\", \"value\":\"%@\"}]",model.username,model.userId,model.blackCardNo,model.blackCardName];
+//    
+//    
+////    "{\"index\":1, \"key\":\"blackCardNo\", \"label\":\"黑卡卡号\", \"value\":\"%@\"}"
+//    
+//   //    "{\"index\":0, \"key\":\"userID\", \"label\":\"用户ID\", \"value\":\"%@\"}"
+//    
+//    
+////    "{\"index\":1, \"key\":\"sex\", \"label\":\"性别\", \"value\":\"先生\"},"
+////    "{\"index\":5, \"key\":\"reg_date\", \"label\":\"注册日期\", \"value\":\"2015-11-16\"},"
+////    
+////    
+////    "{\"index\":6, \"key\":\"last_login\", \"label\":\"上次登录时间\", \"value\":\"2015-12-22 15:38:54\"}]";
+//    [[QYSDK sharedSDK] setUserInfo:info];
+//}
 
 
 
@@ -67,21 +92,7 @@
     
     if (self.navigationController.viewControllers.count < 2) {
         
-        QYSource *source = [[QYSource alloc] init];
-//        source.title =  @"云巅黑卡";
-//        source.urlString = @"https://8.163.com/";
-        
-        QYSessionViewController *sessionViewController = [[QYSDK sharedSDK] sessionViewController];
-        //设置聊天头像
-        [[QYSDK sharedSDK] customUIConfig].customerHeadImageUrl = @"http://cnews.chinadaily.com.cn/img/attachement/jpg/site1/20170314/a41f726b573a1a31f26554.jpg";
-
-        
-        
-        sessionViewController.sessionTitle = @"管家";
-        sessionViewController.source = source;
-        sessionViewController.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:sessionViewController animated:YES];
-        [[QYSDK sharedSDK] customUIConfig].bottomMargin = 0;
+        [ChatTools chatViewControllerWithTitle:nil navigation:self.navigationController];
         _isChat = 2;
     }
    

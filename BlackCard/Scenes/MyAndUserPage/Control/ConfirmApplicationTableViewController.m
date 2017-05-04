@@ -182,11 +182,20 @@
 - (void)lastPayWihtPush {
     
     WEAKSELF
-    [self pushViewControllerWithIdentifier:@"ResetPayTableViewController" block:^(UIViewController *viewController) {
-        [viewController  setValue:weakSelf.model.phoneNum forKey:@"phoneNum"];
+    [self pushStoryboardViewControllerIdentifier:@"ResetPayTableViewController" block:^(UIViewController *viewController) {
+         [viewController  setValue:weakSelf.model.phoneNum forKey:@"phoneNum"];
     }];
+
     
     
+    
+}
+- (IBAction)showWedAction:(UIButton *)sender {
+    
+    [self pushWithIdentifier:@"WebViewController" complete:^(UIViewController *controller) {
+        [controller setValue:kHttpAPIUrl_userAgreement forKey:@"url"];
+        [controller setValue:@"《精英黑卡会籍服务章程》" forKey:@"webTitle"];
+    }];
     
 }
 

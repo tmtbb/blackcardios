@@ -14,6 +14,8 @@
 @protocol MyAndUserAPI <NSObject>
 
 
+- (void)getDeviceKeyWithComplete:(CompleteBlock)complete withError:(ErrorBlock)error;
+
 - (void)getRegisterDeviceWithComplete:(CompleteBlock)complete withError:(ErrorBlock)error;
 /**
  *  用户注册

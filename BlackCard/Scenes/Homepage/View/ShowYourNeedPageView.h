@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-@class WaiterModel;
-@interface ShowYourNeedPageView : UIView
-- (void)setModel:(WaiterModel *)model;
+@class HomePageModel;
+typedef NS_ENUM(NSInteger,ShowYourNeedPageViewAction)  {
+    ShowYourNeedPageViewAction_Close = 500,
+    ShowYourNeedPageViewAction_Go
+    
+    
+};
+
+
+@interface ShowYourNeedPageView : OEZBaseView
+- (void)setModel:(HomePageModel *)model;
 @end
