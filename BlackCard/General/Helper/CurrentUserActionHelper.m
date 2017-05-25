@@ -30,6 +30,12 @@ HELPER_SHARED(CurrentUserActionHelper)
     [_softMutableArray removeObject:delegate];
 }
 
+
+- (void)removeAllDelegate {
+    _softMutableArray = [[OEZSoftLockMutableArray alloc] init];
+    
+}
+
 - (void)didDelegate:(void (^)(id<CurrentUserActionDelegate> delegate))block {
     if( block != nil)
     {
@@ -89,21 +95,7 @@ HELPER_SHARED(CurrentUserActionHelper)
     }];
 }
 
-- (void)sender:(id)sender didChangeOrderStauts:(NSInteger) status orderId:(NSString*) orderId {
-    [self didDelegate:^(id<CurrentUserActionDelegate> delegate) {
-        if ( [delegate respondsToSelector:@selector(sender:didChangeOrderStauts:orderId:)]) {
-            [delegate sender:sender didChangeOrderStauts:status orderId:orderId];
-        }
-    }];
-}
 
-- (void)sender:(id)sender didFeedBackOrderId:(NSString *)orderId {
-    [self didDelegate:^(id<CurrentUserActionDelegate> delegate) {
-        if ([delegate respondsToSelector:@selector(sender:didFeedBackOrderId:)]) {
-            [delegate sender:sender didFeedBackOrderId:orderId];
-        }
-    }];
-}
 
 
 - (void)sender:(id)sender didPublishDynamic:(id)dynamic {
@@ -122,13 +114,6 @@ HELPER_SHARED(CurrentUserActionHelper)
     }];
 }
 
-- (void)sender:(id)sender didModalWeiXinInvitation:(id)isFirst {
-    [self didDelegate:^(id<CurrentUserActionDelegate> delegate) {
-        if ([delegate respondsToSelector:@selector(sender:didModalWeiXinInvitation:)]) {
-            [delegate sender:sender didModalWeiXinInvitation:isFirst];
-        }
-    }];
-}
 
 - (void)sender:(id)sender didIsSpread:(id)isSpread {
     [self didDelegate:^(id<CurrentUserActionDelegate> delegate) {

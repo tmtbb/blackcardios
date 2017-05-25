@@ -26,6 +26,20 @@
     
     [self update:[CurrentUserHelper shared].myAndUserModel];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];;
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+}
+
 - (void)setUserSetting {
     self.userIconButton.layer.borderColor = [UIColor whiteColor].CGColor;
     
@@ -81,9 +95,17 @@
     
     if (indexPath.section == 1) {
         switch (indexPath.row) {
+            case 2:
+            case 4:{
+                [self showTips:@"敬请期待"];
+            }
+                break;
+            case 1:{
+                [self pushStoryboardViewControllerIdentifier:@"ShoppingListLogViewController" block:nil];
+            }
+                break;
             case 5: {
                 
-          WEAKSELF
                     [self  presentViewControllerWithIdentifier:@"WebViewController" isNavigation:YES  block:^(UIViewController *viewController) {
                         [viewController setValue:kHttpAPIUrl_aboutMe forKey:@"url"];
                         [viewController setValue:@"关于我们" forKey:@"webTitle"];
@@ -95,11 +117,7 @@
             }
                 
                 break;
-                
-            default:{
-                [self showTips:@"敬请期待"];
-            }
-                break;
+            
         }
         
     }

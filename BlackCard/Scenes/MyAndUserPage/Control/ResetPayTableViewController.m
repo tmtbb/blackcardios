@@ -8,7 +8,7 @@
 
 #import "ResetPayTableViewController.h"
 #import "SendVerifyCodeButton.h"
-#import "WXPay.h"
+#import "PayManagerHelper.h"
 #import "ValidateHelper.h"
 @interface ResetPayTableViewController ()<PayHelperDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneField;
@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [WXPay shared].delegate = self;
+    [[PayManagerHelper shared] setDelegate:self];
     self.phoneField.text = _phoneNum;
  
     
@@ -99,7 +99,7 @@
             [self payButtonSetting];
         }
             break;
-        case PayHandle:{ //处理中
+        case PayUFO:{ //处理中
             APPLOG(@"处理中");
             
         }
@@ -108,15 +108,6 @@
     
 }
 
-- (void)payStart {
-    
-}
-
-- (void)payError:(NSString *)error {
-    
-    [self showTips:error];
-    [self payButtonSetting];
-}
 
 - (void)payButtonSetting {
     _isRepay = YES;
@@ -131,7 +122,7 @@
     
     [[AppAPIHelper shared].getMyAndUserAPI registerWithPay:dic complete:^(PayInfoModel *model) {
         [weakSelf hiddenProgress];
-        [[WXPay shared] payWithWXModel:model.wxPayInfo];
+        [[PayManagerHelper shared].wxPay payWithWXModel:model.wxPayInfo];
         
     } error:^(NSError *error) {
         [weakSelf showError:error];

@@ -49,6 +49,10 @@
 - (NSString *)addSpace;
 
 - (NSString *)appendInformationWithUrl;
+
+// 毫秒转时间
++ (NSString *)convertStrToTime:(NSString *)timeStr;
++ (NSString *)convertStrToTime:(NSString *)timeStr timeStyle:(NSString *)style;
 @end
 
 

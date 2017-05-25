@@ -9,7 +9,7 @@
 #import "ConfirmApplicationTableViewController.h"
 #import "HomePageModel.h"
 #import "PayModel.h"
-#import "WXPay.h"
+#import "PayManagerHelper.h"
 #define kButtonRePayAction 999
 
 @interface ConfirmApplicationTableViewController ()<PayHelperDelegate>
@@ -29,9 +29,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [WXPay shared].delegate = self;
     [self buttonSetting];
     [self contentFillSetting];
+    [[PayManagerHelper shared] setDelegate:self];
 }
 
 
@@ -114,7 +114,7 @@
     
     [[AppAPIHelper shared].getMyAndUserAPI registerWithPay:dic complete:^(PayInfoModel *model) {
         [weakSelf hiddenProgress];
-        [[WXPay shared] payWithWXModel:model.wxPayInfo];
+        [[PayManagerHelper shared].wxPay payWithWXModel:model.wxPayInfo];
         
     } error:^(NSError *error) {
         [weakSelf showError:error];
@@ -160,7 +160,7 @@
             [self payButtonSetting];
         }
             break;
-        case PayHandle:{ //处理中
+        case PayUFO:{ //处理中
             APPLOG(@"处理中");
             
         }
@@ -169,15 +169,7 @@
 
 }
 
-- (void)payStart {
-    
-}
 
-- (void)payError:(NSString *)error {
-    
-    [self showTips:error];
-    [self payButtonSetting];
-}
 
 - (void)lastPayWihtPush {
     

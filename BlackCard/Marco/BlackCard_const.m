@@ -28,7 +28,7 @@ NSInteger const kAppNSErrorCheckDataCode  = kAppNSErrorLoginCode+ 1;
 NSInteger const kAppNSErrorTokenCode      = kAppNSErrorCheckDataCode +1;
 NSInteger const kAppNSErrorJsonCode       = kAppNSErrorTokenCode+ 1;
 
-
+NSInteger const kAppRechargeMoneyType     = 0;// 0 可充值非整数，1整数
 
 const char * signKey(){
     static char signKey[1000] = {'\0',};

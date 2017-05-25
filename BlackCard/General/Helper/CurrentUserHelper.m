@@ -81,7 +81,7 @@ HELPER_SHARED(CurrentUserHelper)
 }
 
 - (void)saveToken:(NSString *)token{
-    
+    _myAndUserModel.token = token;
      [_keychain setObject:token forKey:CFBridgingRelease(kSecAttrAccount)];
 }
 
@@ -162,6 +162,7 @@ HELPER_SHARED(CurrentUserHelper)
         [fileManager removeItemAtPath:_filename error:&error];
     }
     [[CurrentUserActionHelper shared] didLogoutSender:sender];
+    [[CurrentUserActionHelper shared] removeAllDelegate];
 }
 
 

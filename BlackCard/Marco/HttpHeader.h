@@ -9,7 +9,7 @@
 #ifndef HttpHeader_h
 #define HttpHeader_h
 
-//#define Development  //开发环境宏,注掉时开启正式 生产环境
+#define Development  //开发环境宏,注掉时开启正式 生产环境
 
 /**
  * API host
@@ -19,8 +19,8 @@
 #ifdef Development
 
 //#define kHttpAPIUrl_HOST @"" //预发布环境
-#define kHttpAPIUrl_HOST @"http://101.37.82.111:9999"
-//#define kHttpAPIUrl_HOST @"http://192.168.112.231:8080"
+//#define kHttpAPIUrl_HOST @"http://101.37.82.111:9999"
+#define kHttpAPIUrl_HOST @"http://192.168.104.241:8080"
 //#define kRunMode @"debug"
 #else
 //#define kHttpAPIUrl_HOST @"" //新正式生产环境
@@ -54,6 +54,20 @@
 
 #define kHttpAPIUrl_sendBlackCardVerification       kHttpAPIUrl_HOST@"/api/blackcard/sms/code.json"
 #define kHttpAPIUrl_sendVerification       kHttpAPIUrl_HOST@"/api/sms/code.json"
+#define kHttpAPIUrl_checkVerification       kHttpAPIUrl_HOST@"/api/sms/code/validate.json"
+#define kHttpAPIUrl_rechargeMoney      kHttpAPIUrl_HOST@"/api/user/balance/recharge.json"
+#define kHttpAPIUrl_repassword      kHttpAPIUrl_HOST@"/api/user/repassword.json"
+
+#define kHttpAPIUrl_rePayPassword      kHttpAPIUrl_HOST@"/api/user/pay/repassword.json"
+
+#define kHttpAPIUrl_myPurseDetail     kHttpAPIUrl_HOST@"/api/user/balance/details.json"
+#define kHttpAPIUrl_userBlance    kHttpAPIUrl_HOST@"/api/user/balance.json"
+#define kHttpAPIUrl_userShoppingList    kHttpAPIUrl_HOST@"/api/trade/usertrades.json"
+
+#define kHttpAPIUrl_userDetail    kHttpAPIUrl_HOST@"/api/user/detail.json"
+#define kHttpAPIUrl_changeUserDetail   kHttpAPIUrl_HOST@"/api/user/edit.json"
+
+#define kHttpAPIUrl_upLoad   kHttpAPIUrl_HOST@"/api/file/upload.json"
 
 
 #define kHttpAPIUrl_resetPassword         kHttpAPIUrl_HOST@"/api/blackcard/repassword.json"

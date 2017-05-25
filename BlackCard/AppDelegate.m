@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 #import "WXApi.h"
-#import "WXPay.h"
+#import "PayManagerHelper.h"
 #import <QYSDK.h>
+#import <AlipaySDK/AlipaySDK.h>
 @interface AppDelegate ()
 
 @end
@@ -55,23 +56,38 @@
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
-    //跳转支付宝钱包进行支付，处理支付结果
-//    [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-//        APPLOG(@"results = %@",resultDic);
-//    }];
-    return  [WXApi handleOpenURL:url delegate:[WXPay shared]];//[[OEZHandleOpenURLHelper shared] handleOpenURL:url];
+
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            [[PayManagerHelper shared].aliPay handlePayResultDic:resultDic];
+            
+        }];
+    }
+    
+    
+    
+    return  [WXApi handleOpenURL:url delegate:[PayManagerHelper shared].wxPay];//[[OEZHandleOpenURLHelper shared] handleOpenURL:url];
 }
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary*)options {
-    //跳转支付宝钱包进行支付，处理支付结果
-//    [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-//        APPLOG(@"results = %@",resultDic);
-//    }];
-    return  [WXApi handleOpenURL:url delegate:[WXPay shared]];//[[OEZHandleOpenURLHelper shared] handleOpenURL:url];
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            [[PayManagerHelper shared].aliPay handlePayResultDic:resultDic];
+            
+            
+        }];
+    }
+    
+    
+    
+    
+    return  [WXApi handleOpenURL:url delegate:[PayManagerHelper shared].wxPay];//[[OEZHandleOpenURLHelper shared] handleOpenURL:url];
 }
 
 #pragma mark handleOpenURL
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    [WXApi handleOpenURL:url delegate:[WXPay shared]];
+    [WXApi handleOpenURL:url delegate:[PayManagerHelper shared].wxPay];
 //    //跳转支付宝钱包进行支付，处理支付结果
 //    [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
 //        APPLOG(@"results = %@",resultDic);

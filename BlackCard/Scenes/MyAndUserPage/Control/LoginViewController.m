@@ -32,6 +32,7 @@
         [weakSelf hiddenProgress];
         NSString * token = data[@"token"];
         if (![NSString isEmpty:token]) {
+            
             [[CurrentUserHelper shared] saveToken:token];
             [weakSelf setMainRootViewController:@"MainTabBarViewController"];
         }
@@ -140,6 +141,8 @@
     [[AppAPIHelper shared].getMyAndUserAPI loginUserName:account password:password complete:^(id data) {
         NSString *token = data[@"token"];
         [[AppAPIHelper shared].getMyAndUserAPI getUserInfoWithToken:token complete:^(MyAndUserModel *userInfo) {
+            
+            
             [weakSelf hiddenProgress];
             userInfo.token = token;
             [[CurrentUserHelper shared] login:userInfo];

@@ -57,6 +57,7 @@
  *  @return 返回是否合法
  */
 - (BOOL) checkUserPass:(NSString*)userPass error:(NSError **)error;
+- (BOOL)checkUserPass:(NSString *)userPass emptyString:(NSString *)empty  error:(NSError *__autoreleasing *)error;
 /**
  *  检测用户密码（老版只检测长度 兼容老用户密码）
  *
@@ -107,7 +108,16 @@
 
 -(BOOL)  isPhoneNumber:(NSString*) phoneNumber;
 
+
+
 -(BOOL)checkNumber:(NSString *)number emptyString:(NSString *)empty errorString:(NSString *)errorStr error:(NSError **)error;
+
+- (BOOL)checkDecimalNumber:(NSString *)number emptyString:(NSString *)empty errorString:(NSString *)errorStr error:(NSError **)error;
+
+
+- (BOOL)checkMoneyIsDecimal:(BOOL)isDecimal money:(NSString *)money error:(NSError **)error ;
+
+
 /**
  *  <#Description#>
  *
