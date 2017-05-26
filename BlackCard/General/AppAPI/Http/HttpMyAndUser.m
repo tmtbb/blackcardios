@@ -9,6 +9,7 @@
 #import "HttpMyAndUser.h"
 #import "MyAndUserModel.h"
 #import "PayModel.h"
+#import "PurchaseHistoryModel.h"
 //#import "UIAlertView+Block.h"
 
 
@@ -135,14 +136,18 @@
 
     
 }
-- (void)resetPwd:(NSString *)telphone withCode:(NSString *)code withPwd:(NSString *)pwd complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock
-{
-//    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-//    [parameters setObject:telphone forKey:@"telphone"];
-//    [parameters setObject:code forKey:@"code"];
-//    [parameters setObject:pwd forKey:@"pwd"];
-//    [self setPushToken:parameters];
-//    [self postModelRequest:kHttpAPIUrl_resetPwd parameters:parameters modelClass:[MyAndUserModel class] complete:complete error:errorBlock];
+
+- (void)repasswordOldPassword:(NSString *)oldPass andNewPassword:(NSString *)pass complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:oldPass forKey:@"password"];
+    [parameters setObject:pass forKey:@"newPassword"];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postRequest:kHttpAPIUrl_repassword parameters:parameters complete:complete error:errorBlock];
+
+    }
+    
+    
 }
 
 - (void)sendBlackCardVerifyCode:(NSString *)code  complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
@@ -158,6 +163,120 @@
     [self postRequest:kHttpAPIUrl_sendVerification parameters:parameters complete:complete error:errorBlock];
     
 }
+
+- (void)checkVerifyCode:(NSString *)code phone:(NSString *)phone token:(NSString *)token  andType:(NSString *)type  complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:code forKey:@"phoneCode"];
+    [parameters setObject:type forKey:@"codeType"];
+    [parameters setObject:phone forKey:@"phoneNum"];
+    [parameters setObject:token forKey:@"codeToken"];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postRequest:kHttpAPIUrl_checkVerification parameters:parameters complete:complete error:errorBlock];
+    }
+    
+    
+}
+
+- (void)changePayPassword:(NSString *)password phone:(NSString *)phone codeToken:(NSString *)codeToken phoneCode:(NSString *)phoneCode complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock{
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:password forKey:@"password"];
+    [parameters setObject:codeToken forKey:@"codeToken"];
+    [parameters setObject:phone forKey:@"phoneNum"];
+    [parameters setObject:phoneCode forKey:@"phoneCode"];
+    
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postRequest:kHttpAPIUrl_rePayPassword parameters:parameters complete:complete error:errorBlock];
+    }
+}
+
+
+- (void)rechargeMoneyWithPayType:(NSInteger)payType andMoney:(NSString *)money complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:@(payType) forKey:@"payType"];
+    [parameters setObject:money forKey:@"amount"];
+    if ([self  addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postModelRequest:kHttpAPIUrl_rechargeMoney parameters:parameters modelClass:[PayInfoModel class] complete:complete error:errorBlock];
+    }
+    
+    
+}
+
+
+
+- (void)getMyPurseDetailWihtPage:(NSInteger)page complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:@(page) forKey:@"page"];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postModelsRequest:kHttpAPIUrl_myPurseDetail parameters:parameters modelClass:[MyPurseDetailModel class] complete:complete error:errorBlock];
+    }
+    
+}
+
+- (void)getUserShoppingListWihtPage:(NSInteger)page complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:@(page) forKey:@"page"];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postModelsRequest:kHttpAPIUrl_userShoppingList parameters:parameters modelClass:[PurchaseHistoryModel class] complete:complete error:errorBlock];
+    }
+    
+}
+
+- (void)getUserBlanceComplete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postRequest:kHttpAPIUrl_userBlance parameters:parameters complete:complete error:errorBlock];
+    }
+
+    
+}
+
+
+- (void)getUserDetailComplete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        
+        [self postModelRequest:kHttpAPIUrl_userDetail parameters:parameters modelClass:[UserDetailModel class] complete:complete error:errorBlock];
+    }
+    
+}
+
+
+- (void)doChangeUserDetail:(NSDictionary *)dic complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:dic];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        
+        [self postRequest:kHttpAPIUrl_changeUserDetail parameters:parameters complete:complete error:errorBlock];
+    }
+    
+}
+
+- (void)doUpLoadUserHeaderIcon:(NSData *)image complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        
+        [self uploadFiles:kHttpAPIUrl_upLoad parameters:parameters fileDataArray:@[image] complete:complete error:errorBlock];
+    }
+    
+}
+
+
+
+- (void)doLog:(NSDictionary *)dic complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:dic];
+    
+    [self postRequest:kHttpAPIUrl_log parameters:parameters complete:complete error:errorBlock];
+    
+    
+    
+}
+
+
+
+
 
 - (void)suggestWithNote:(NSString *)content complete:(CompleteBlock)complete errer:(ErrorBlock)error
 {

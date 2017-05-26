@@ -14,17 +14,6 @@
 @end
 
 @implementation WXPay
-HELPER_SHARED(WXPay);
-- (void)payWithModel:(PayHelperModel *)model {
-
-    if ([WXPay isWXAppInstalled]) {
-        [self weixinpay:model];
-    }else {
-//        [self didPayStrError:@"未安装微信"];
-        [self didPayStrError:@"支付失败"];
-
-    }
-}
 
 - (void)payWithWXModel:(WXPayModel *)model {
     
@@ -32,25 +21,11 @@ HELPER_SHARED(WXPay);
         [self weiXinPayWithWXPayModel:model];
     }else {
 //        [self didPayStrError:@"未安装微信"];
-        [self didPayStrError:@"支付失败"];
+         [self payHelperWithType:PayTypeWeiXinPay withPayStatus:PayError withData:@"支付失败"];
 
     }
 }
 
-- (void)weixinpay:(PayHelperModel *)model {
-    [super payWithModel:model];
-    [self orderPayWithOrderModel:model payType:PayTypeALiPay complete:nil error:nil];
-//    WEAKSELF
-    
-    
-//    [[[AppAPIHelper shared] getOrderAPI] getWechatpayWithBatchNo:[model payOrderNo] complete:^(id data) {
-//        WXPayModel *weChatPayModel = (WXPayModel *)data;
-//        [weakSelf weiXinPayWithWXPayModel:weChatPayModel];
-//            [weakSelf weiXinPayWithPrepayId:weChatPayModel.prepayid withNonceStr:weChatPayModel.noncestr withTimeStamp:weChatPayModel.timestamp withPackage:weChatPayModel.package withSign:weChatPayModel.sign];
-//    } error:^(NSError *error) {
-//        [weakSelf didPayError:error];
-//    }];
-}
 
 
 - (void)weiXinPayWithWXPayModel:(WXPayModel *)payModel {
@@ -67,32 +42,12 @@ HELPER_SHARED(WXPay);
     //    [WXApi sendReq:request];
     //    APPLOG(@"kWXAppID＝%@",kWXAppID);
     [WXApi safeSendReq:request];
-    
-    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(PayRespNotification:) name:kPayRespNotification object:nil];
+
     
     
 }
 
-- (void)weiXinPayWithPrepayId:(NSString *)prepayId
-                 withNonceStr:(NSString *)nonceStr
-                withTimeStamp:(NSString *)timeStamp
-                  withPackage:(NSString *)package
-                     withSign:(NSString *)sign {
-    //注册微信APPID
-    [WXApi registerApp:kWXAppID];
-    PayReq *request = [[PayReq alloc] init];
-    request.partnerId = kWXMcId;
-    request.prepayId= prepayId;
-    request.package = package;
-    request.nonceStr= nonceStr;
-    request.timeStamp = timeStamp.intValue;
-    request.sign= sign;
-    //    [WXApi sendReq:request];
-//    APPLOG(@"kWXAppID＝%@",kWXAppID);
-    [WXApi safeSendReq:request];
-    
-    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(PayRespNotification:) name:kPayRespNotification object:nil];
-}
+
 
 - (void)PayRespNotification:(NSNotification*)notification {
     NSDictionary *response = [notification userInfo];
@@ -102,7 +57,7 @@ HELPER_SHARED(WXPay);
 -(void) onResp:(BaseResp *)resp {
     switch (resp.errCode) {
         case WXSuccess://支付成功
-            [self payHelperWithType:PayTypeWeiXinPay withPayStatus:PayOK withData:@""];
+            [self payHelperWithType:PayTypeWeiXinPay withPayStatus:PayOK withData:@"支付成功"];
             break;
         case WXErrCodeUserCancel://取消
             [self payHelperWithType:PayTypeWeiXinPay withPayStatus:PayCancel withData:@"支付取消"];

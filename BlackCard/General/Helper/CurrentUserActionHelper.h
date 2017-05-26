@@ -37,32 +37,12 @@
  *  @param money  正数为充值、负数为消费
  */
 - (void) sender:(id)sender didChangeMoney:(CGFloat) money;
-/**
- *  订单状态变更
- *
- *  @param sender  sender description
- *  @param status  变更后状态
- *  @param orderId 订单ID
- */
-- (void)sender:(id)sender didChangeOrderStauts:(NSInteger) status orderId:(NSString*) orderId;
-
-/**
- *  指定跳转订单列表进入订单详情
- *
- *  @param sender  sender description
- *  @param index   index description
- *  @param orderId 订单ID
- */
-- (void)sender:(id)sender didFeedBackOrderId:(NSString *)orderId;
 
 
-/**
- *  是否弹出邀请码弹框
- *
- *  @param sender  <#sender description#>
- *  @param isFirst <#isFirst description#>
- */
-- (void)sender:(id)sender didModalWeiXinInvitation:(id)isFirst;
+
+
+
+
 #pragma mark - 动态
 /**
  *  发布动态操作
@@ -125,5 +105,7 @@
  *  @param delegate <#delegate description#>
  */
 - (void)removeDelegate:(id<CurrentUserActionDelegate>) delegate;
+
+- (void)removeAllDelegate;
 @end
 

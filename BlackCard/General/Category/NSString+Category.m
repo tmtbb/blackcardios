@@ -99,6 +99,35 @@
    
 }
 
+
++ (NSString *)convertStrToTime:(NSString *)timeStr
+
+{
+
+    NSString*timeString=[self convertStrToTime:timeStr timeStyle:@"yyyy-MM-dd HH:mm"];
+    
+    return timeString;
+    
+}
+
++ (NSString *)convertStrToTime:(NSString *)timeStr timeStyle:(NSString *)style
+
+{
+    
+    long long time=[timeStr longLongValue];
+    
+    NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970:time/1000.0];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:style];
+    
+    NSString*timeString=[formatter stringFromDate:d];
+    
+    return timeString;
+    
+}
+
 @end
 
 

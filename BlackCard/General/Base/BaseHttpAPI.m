@@ -176,6 +176,25 @@
     return [strSing  md5Hex];
 }
 
++ (NSString *)localSignWithParameters:(NSDictionary *)parameters{
+    
+    __block NSString *strSing = [NSString string];
+    NSArray *keys = [[parameters allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    [keys enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if( ! [obj isKindOfClass:[NSArray class]] ) {
+            NSString *value = [NSString stringWithFormat:@"%@",[parameters objectForKey:obj]];
+            if( ! [NSString isStringEmpty:value]) {
+                strSing = [strSing stringByAppendingFormat:@"%@=%@",obj,value];
+            }
+        }
+        
+    }];
+    strSing = [strSing stringByAppendingFormat:@"%@",[self device_key]];
+    return [strSing  md5Hex];
+
+    
+}
+
 - (void)uploadFiles:(NSString *)path parameters:(NSDictionary *)parameters fileDataArray:(NSArray *)fileDataArray complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
     NSMutableDictionary *postDictionary = [NSMutableDictionary dictionaryWithDictionary:parameters];
      [BaseHttpAPI postRequestSign:path parameters:postDictionary];
@@ -187,9 +206,9 @@
         // 上传多张图片
         for (NSInteger i = 0; i < fileDataArray.count; i++) {
             NSData *imageData = [fileDataArray objectAtIndex:i];
-            NSString *argument = @"filename";                                               // 上传的参数名
+            NSString *argument = @"file";                                               // 上传的参数名
             NSString *filename = [NSString stringWithFormat:@"%@%zi.jpg", argument, i + 1];
-            [formData appendPartWithFileData:imageData name:@"filename" fileName:filename mimeType:@"image/jpeg"];
+            [formData appendPartWithFileData:imageData name:@"file" fileName:filename mimeType:@"image/jpeg"];
         }
     }     success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SELF success:operation responseObject:responseObject complete:complete error:errorBlock];

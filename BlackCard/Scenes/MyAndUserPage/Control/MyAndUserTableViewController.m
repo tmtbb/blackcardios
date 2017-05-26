@@ -8,7 +8,8 @@
 
 #import "MyAndUserTableViewController.h"
 #import "MyAndUserModel.h"
-@interface MyAndUserTableViewController ()
+#import "UserSetInfoTableViewController.h"
+@interface MyAndUserTableViewController ()<UserSetInfoUpdateProcotol>
 @property (weak, nonatomic) IBOutlet UIButton *userIconButton;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userBackImage;
@@ -26,6 +27,20 @@
     
     [self update:[CurrentUserHelper shared].myAndUserModel];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];;
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+}
+
 - (void)setUserSetting {
     self.userIconButton.layer.borderColor = [UIColor whiteColor].CGColor;
     
@@ -33,7 +48,7 @@
 }
 
 - (void)update:(MyAndUserModel *)model {
-    [self.userIconButton sd_setBackgroundImageWithURL:[NSURL URLWithString:model.headpic] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"userHeaderDefault"]];
+    [self.userIconButton sd_setImageWithURL:[NSURL URLWithString:model.headpic] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"userHeaderDefault"]];
     self.userNameLabel.text = model.username;
     self.userLevelLabel.text = model.blackCardName;
     self.userMoneyLabel.text = [NSString stringWithFormat:@"%.2f",model.blackcardCreditline];
@@ -81,9 +96,25 @@
     
     if (indexPath.section == 1) {
         switch (indexPath.row) {
+            case 2:
+            case 4:{
+                [self showTips:@"敬请期待"];
+            }
+                break;
+            case 1:{
+                [self pushStoryboardViewControllerIdentifier:@"ShoppingListLogViewController" block:nil];
+            }
+                break;
+                
+            case 3:{
+                WEAKSELF
+                [self pushStoryboardViewControllerIdentifier:@"UserSetInfoTableViewController" block:^(UIViewController *viewController) {
+                    [viewController setValue:weakSelf forKey:@"delegate"];
+                }];
+            }
+                break;
             case 5: {
                 
-          WEAKSELF
                     [self  presentViewControllerWithIdentifier:@"WebViewController" isNavigation:YES  block:^(UIViewController *viewController) {
                         [viewController setValue:kHttpAPIUrl_aboutMe forKey:@"url"];
                         [viewController setValue:@"关于我们" forKey:@"webTitle"];
@@ -95,14 +126,34 @@
             }
                 
                 break;
-                
-            default:{
-                [self showTips:@"敬请期待"];
-            }
-                break;
+            
         }
         
     }
+    
+    
+}
+
+- (void)saveUserInformation:(id )data {
+    if (data != nil && [data isKindOfClass:[UIImage class]]) {
+        
+        [self.userIconButton setImage:data forState:UIControlStateNormal];
+    }
+    
+    
+//    MyAndUserModel *model = [CurrentUserHelper shared].myAndUserModel;
+//    WEAKSELF
+//    [[CurrentUserHelper shared] updateWihtToken:model.token update:^(MyAndUserModel *data, CurrentUserHelper *currentUserHelper) {
+//        [currentUserHelper upUserModel:data];
+//        [weakSelf update:data];
+//        
+//    } error:nil];
+    
+    
+    
+    
+    
+
     
     
 }

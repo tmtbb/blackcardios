@@ -9,7 +9,7 @@
 #import "PayHelper.h"
 #import "WXApi.h"
 @class WXPayModel;
-@interface WXPay : PayHelper<OEZHelperProtocol,WXApiDelegate>
+@interface WXPay : PayHelper<WXApiDelegate>
 + (BOOL) isWXAppInstalled;
 - (void)payWithWXModel:(WXPayModel *)model;
 @end

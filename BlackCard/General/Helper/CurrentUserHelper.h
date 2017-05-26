@@ -68,4 +68,7 @@
  *  退出
  */
 - (void)logout:(id)sender;
+
+
+- (void)updateWihtToken:(NSString *)token update:(void (^)(MyAndUserModel *data,CurrentUserHelper *currentUserHelper))upBlock error:(void(^)(NSError *error))error;
 @end

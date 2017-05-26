@@ -81,7 +81,7 @@ HELPER_SHARED(CurrentUserHelper)
 }
 
 - (void)saveToken:(NSString *)token{
-    
+    _myAndUserModel.token = token;
      [_keychain setObject:token forKey:CFBridgingRelease(kSecAttrAccount)];
 }
 
@@ -162,9 +162,26 @@ HELPER_SHARED(CurrentUserHelper)
         [fileManager removeItemAtPath:_filename error:&error];
     }
     [[CurrentUserActionHelper shared] didLogoutSender:sender];
+    [[CurrentUserActionHelper shared] removeAllDelegate];
 }
 
 
+
+
+- (void)updateWihtToken:(NSString *)token update:(void (^)(MyAndUserModel *data, CurrentUserHelper *currentUserHelper))upBlock error:(void (^)(NSError *))error{
+    WEAKSELF
+    [[AppAPIHelper shared].getMyAndUserAPI getUserInfoWithToken:token complete:^(MyAndUserModel *userInfo) {
+        
+        userInfo.token = token;
+        if (upBlock) {
+           upBlock(userInfo,weakSelf);
+        }
+            
+    } error:error];
+
+    
+    
+}
 //- (void)sender:(id)sender didChangeMoney:(CGFloat)money {
 //    double stock = [[self stock] doubleValue];
 //    stock = stock + money;

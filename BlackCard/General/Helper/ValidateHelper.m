@@ -171,6 +171,11 @@ HELPER_SHARED(ValidateHelper)
     return [self checkOldUserPwd:userPass error:error strError:@"请输入密码"];
 }
 
+- (BOOL)checkUserPass:(NSString *)userPass emptyString:(NSString *)empty  error:(NSError *__autoreleasing *)error {
+    return [self checkOldUserPwd:userPass error:error strError:empty];
+}
+
+
 - (BOOL)isPhoneNumber:(NSString *)phoneNumber {
     //^((13[0-9])|(17[0-9])|(147)|(15[^4,\\D])|(18[0-9]))\\d{8}$
     NSString *regex = @"^1\\d{10}$";
@@ -184,6 +189,28 @@ HELPER_SHARED(ValidateHelper)
     return [self checkStringWithRegular:@"^[0-9]*$" checkString:number error:error strError:errorStr emptyStr:empty];
     
 }
+
+
+- (BOOL)checkDecimalNumber:(NSString *)number emptyString:(NSString *)empty errorString:(NSString *)errorStr error:(NSError *__autoreleasing *)error  {
+    
+    return  [self checkStringWithRegular:@"^[0-9]+(\\.[0-9]{1,2})?$" checkString:number error:error strError:errorStr emptyStr:empty];
+    
+    
+    
+}
+
+
+- (BOOL)checkMoneyIsDecimal:(BOOL)isDecimal money:(NSString *)money error:(NSError *__autoreleasing *)error {
+    
+    if (isDecimal) {
+     return    [self checkDecimalNumber:money emptyString:@"请输入金额" errorString:@"请输入正确的金额" error:error];
+    }else {
+        
+     return    [self checkStringWithRegular:@"^-?[1-9]\\d*$" checkString:money error:error strError:@"请输入正确的金额" emptyStr:@"请输入金额"];
+    }
+    
+}
+
 
 - (BOOL)checkNumberAndLetter:(NSString *)number emptyString:(NSString *)empty errorString:(NSString *)errorStr error:(NSError *__autoreleasing *)error {
     
