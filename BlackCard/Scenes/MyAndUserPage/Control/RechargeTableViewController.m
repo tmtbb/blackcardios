@@ -24,6 +24,8 @@ typedef NS_ENUM(NSInteger,RechargeTableViewControllerPayType){
 @property (weak, nonatomic) IBOutlet UITextField *moneyField;
 @property(copy,nonatomic)NSString *payMoney;
 
+@property(strong,nonatomic)NSMutableDictionary *logDic;
+
 @end
 
 @implementation RechargeTableViewController
@@ -90,6 +92,9 @@ typedef NS_ENUM(NSInteger,RechargeTableViewControllerPayType){
         sender.userInteractionEnabled = YES;
         [weakSelf showLoader:@"支付中..."];
         _payMoney = _moneyField.text;
+        
+        
+        
          [[AppAPIHelper shared].getMyAndUserAPI rechargeMoneyWithPayType:_payType andMoney:_payMoney complete:^(PayInfoModel *data) {
              [weakSelf hiddenProgress];
              switch (weakSelf.payType) {
@@ -103,6 +108,7 @@ typedef NS_ENUM(NSInteger,RechargeTableViewControllerPayType){
                      break;
              }
     
+             weakSelf.logDic =[@{@"event" : @"recharge_pay",@"amount" : weakSelf.payMoney,@"payType":@(weakSelf.payType),@"tradeNo":data.tradeNo} mutableCopy];
              
              
          } error:^(NSError *error) {
@@ -129,14 +135,32 @@ typedef NS_ENUM(NSInteger,RechargeTableViewControllerPayType){
 
 
 - (void)payHelperWithType:(PayType)type withPayStatus:(PayStatus)payStatus withData:(id)data {
-    if (payStatus == PayOK) {
-        
-        [[CurrentUserActionHelper shared] sender:self didChangeMoney:_payMoney.floatValue];
+    
+    
+    
+
+    switch (payStatus) {
+        case PayOK:{
+            [[CurrentUserActionHelper shared] sender:self didChangeMoney:_payMoney.floatValue];
+            self.moneyField.text = nil;
+        }
+            break;
     }
+    
+    [self LogPayStatus:payStatus withData:data];
     
     
 }
-
+- (void)LogPayStatus:(PayStatus)payStatus withData:(id)data{
+    
+    NSString *returnCode = payStatus == PayOK ? @"0" : @"2";
+    returnCode =  payStatus == PayCancel ?  @"1" : returnCode;
+    NSString *memo = [data isKindOfClass:[NSString  class]] ? data : @"";
+    [self.logDic setObject:returnCode forKey:@"returnCode"];
+    [self.logDic setObject:memo forKey:@"returnMsg"];
+    [[AppAPIHelper shared].getMyAndUserAPI doLog:self.logDic complete:nil error:nil];
+    self.logDic = nil;
+}
 
 
 @end

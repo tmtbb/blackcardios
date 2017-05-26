@@ -20,6 +20,7 @@
 
 @property(copy,nonatomic)NSString *phoneNum;
 @property(copy,nonatomic)NSString *verifyToken;
+@property(strong,nonatomic)NSMutableDictionary *logDic;
 @end
 
 @implementation ResetPayTableViewController
@@ -73,9 +74,10 @@
 }
 
 - (void)payHelperWithType:(PayType)type withPayStatus:(PayStatus)payStatus withData:(id)data {
+    [self LogPayStatus:payStatus withData:data];
     switch (payStatus) {
         case PayError: {  //支付失败
-             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付失败" message:@"请重新支付" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付失败" message: data delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
             [self payButtonSetting];
         }
@@ -83,14 +85,13 @@
         case PayOK:{ //支付成功
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付成功" message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             WEAKSELF
+            
             [alert showWithCompleteBlock:^(NSInteger buttonIndex) {
                 [weakSelf.navigationController  dismissViewControllerAnimated:YES completion:nil];
                 
                 
             }];
-            
-            
-            
+
         }
             break;
         case PayCancel:{//支付取消
@@ -99,13 +100,21 @@
             [self payButtonSetting];
         }
             break;
-        case PayUFO:{ //处理中
-            APPLOG(@"处理中");
-            
-        }
-            break;
+               
     }
     
+   
+}
+
+- (void)LogPayStatus:(PayStatus)payStatus withData:(id)data{
+    
+    NSString *returnCode = payStatus == PayOK ? @"0" : @"2";
+    returnCode =  payStatus == PayCancel ?  @"1" : returnCode;
+    NSString *memo = [data isKindOfClass:[NSString  class]] ? data : @"";
+    [self.logDic setObject:returnCode forKey:@"returnCode"];
+    [self.logDic setObject:memo forKey:@"returnMsg"];
+    [[AppAPIHelper shared].getMyAndUserAPI doLog:self.logDic complete:nil error:nil];
+    self.logDic = nil;
 }
 
 
@@ -122,6 +131,9 @@
     
     [[AppAPIHelper shared].getMyAndUserAPI registerWithPay:dic complete:^(PayInfoModel *model) {
         [weakSelf hiddenProgress];
+        
+         weakSelf.logDic =[@{@"event" : @"register_pay",@"amount" : @(model.payTotalPrice),@"payType":@(model.payType),@"tradeNo":model.tradeNo} mutableCopy];
+        
         [[PayManagerHelper shared].wxPay payWithWXModel:model.wxPayInfo];
         
     } error:^(NSError *error) {

@@ -148,6 +148,7 @@
 - (void)doUpLoadUserHeaderIcon:(NSData *)data  complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 
 
+-(void)doLog:(NSDictionary *)dic complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 
 /**
  *  意见反馈

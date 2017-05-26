@@ -45,7 +45,7 @@
 
 - (void)handlePayResultDic:(NSDictionary *)resultDic{
     NSInteger status = [[resultDic objectForKey:@"resultStatus"] intValue];
-    
+    NSString *memo = [resultDic objectForKey:@"memo"];
     switch (status) {
         case 9000:{ //订单支付成功
             [self payHelperWithType:PayTypeALiPay withPayStatus:PayOK withData:@"支付成功"];
@@ -57,7 +57,7 @@
         }
             break;
         case 5000:{ //重复请求
-            [self payHelperWithType:PayTypeALiPay withPayStatus:PayRePay withData:@""];
+            [self payHelperWithType:PayTypeALiPay withPayStatus:PayRePay withData:memo];
         }
             break;
         case 6001:{ //用户中途取消
@@ -65,17 +65,17 @@
         }
             break;
         case 6002:{ //网络连接出错
-            [self payHelperWithType:PayTypeALiPay withPayStatus:PayInternetError withData:@"网络连接出错了"];
+            [self payHelperWithType:PayTypeALiPay withPayStatus:PayInternetError withData:memo];
         }
             break;
         case 8000:
         case 6004:{ //支付结果未知（有可能已经支付成功）
             
-            [self payHelperWithType:PayTypeALiPay withPayStatus:PayUFO withData:@"支付异常,请查看充值是否成功"];
+            [self payHelperWithType:PayTypeALiPay withPayStatus:PayUFO withData:memo];
         }
             break;
         default:{// 其他
-            [self payHelperWithType:PayTypeALiPay withPayStatus:PayNone withData:@"支付出错,请稍后再试"];
+            [self payHelperWithType:PayTypeALiPay withPayStatus:PayNone withData:memo];
             
         }
             

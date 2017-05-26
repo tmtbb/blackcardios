@@ -265,6 +265,17 @@
 
 
 
+- (void)doLog:(NSDictionary *)dic complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:dic];
+    
+    [self postRequest:kHttpAPIUrl_log parameters:parameters complete:complete error:errorBlock];
+    
+    
+    
+}
+
+
+
 
 
 - (void)suggestWithNote:(NSString *)content complete:(CompleteBlock)complete errer:(ErrorBlock)error

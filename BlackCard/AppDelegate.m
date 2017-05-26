@@ -24,6 +24,7 @@
     [WXApi registerApp: kWXAppID];
     [[QYSDK sharedSDK] registerAppId:KQiYuAppKey appName:KQiYuAppName];
     [[AppAPIHelper shared].getMyAndUserAPI getDeviceKeyWithComplete:nil withError:nil];
+    [self registerUserNotificationSettings];
 //    [self getDeviceKey];
     return YES;
 }
@@ -96,6 +97,22 @@
 }
 
 
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings{
+    [application registerForRemoteNotifications];
+}
+
+
+- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+
+     [[QYSDK sharedSDK] updateApnsToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+}
+
+
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -117,5 +134,19 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark RemoteNotification
+- (void)registerUserNotificationSettings {
+    //消息推送注册
+    if ( kSystemVersion < 8.0 ) {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge];
+    }
+    else{
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+}
+
 
 @end

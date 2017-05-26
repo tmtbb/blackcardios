@@ -100,48 +100,50 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate, VPImageCropperD
 #pragma mark [设置头像]
 #pragma mark VPImageCropperDelegate
 - (void)imageCropper:(UIViewController *)cropperViewController didFinished:(UIImage *)editedImage {
-    
+    WEAKSELF
     [cropperViewController dismissViewControllerAnimated:YES completion:^{
-        if (self.imageProvider_delegate && [self.imageProvider_delegate respondsToSelector:@selector(hasSelectImage:)]) {
+        if (weakSelf.imageProvider_delegate && [weakSelf.imageProvider_delegate respondsToSelector:@selector(hasSelectImage:)]) {
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-            [self.imageProvider_delegate hasSelectImage:editedImage];
+            [weakSelf.imageProvider_delegate hasSelectImage:editedImage];
         }
     }];
 }
 
 - (void)imageCropperDidCancel:(VPImageCropperViewController *)cropperViewController {
+    WEAKSELF
     [cropperViewController dismissViewControllerAnimated:YES completion:^{
-        if (self.imageProvider_delegate && [self.imageProvider_delegate respondsToSelector:@selector(desSelectImage)]) {
+        if (weakSelf.imageProvider_delegate && [weakSelf.imageProvider_delegate respondsToSelector:@selector(desSelectImage)]) {
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-            [self.imageProvider_delegate desSelectImage];
+            [weakSelf.imageProvider_delegate desSelectImage];
         }
     }];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    WEAKSELF
     [picker dismissViewControllerAnimated:YES completion:^() {
         UIImage *portraitImg = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         //[NSAssistant saveImage:portraitImg To:[NSString stringWithFormat:@"%@/wkq_001.png", self.oneS.cachesPath]];// 当初测试第三方列表.
-        if (self.isAutoImageFrame) {
+        if (weakSelf.isAutoImageFrame) {
             // 不进行剪切
-            portraitImg =[self imageByScalingAndCroppingForSourceImage:portraitImg targetSize:portraitImg.size];
-            if (self.imageProvider_delegate && [self.imageProvider_delegate respondsToSelector:@selector(hasSelectImage:)]) {
+            portraitImg =[weakSelf imageByScalingAndCroppingForSourceImage:portraitImg targetSize:portraitImg.size];
+            if (weakSelf.imageProvider_delegate && [weakSelf.imageProvider_delegate respondsToSelector:@selector(hasSelectImage:)]) {
                 [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-                [self.imageProvider_delegate hasSelectImage:portraitImg];
+                [weakSelf.imageProvider_delegate hasSelectImage:portraitImg];
             }
             return ;
         }
-        portraitImg = [self imageByScalingToMaxSize:portraitImg];
+        portraitImg = [weakSelf imageByScalingToMaxSize:portraitImg];
         // 裁剪
-        if (CGRectEqualToRect(self.editPhotoFrame, CGRectZero)) {
-            self.editPhotoFrame=CGRectMake(0, 0, self.superVC.view.frame.size.width, self.superVC.view.frame.size.width);
+        if (CGRectEqualToRect(weakSelf.editPhotoFrame, CGRectZero)) {
+            weakSelf.editPhotoFrame=CGRectMake(0, 0, weakSelf.superVC.view.frame.size.width, weakSelf.superVC.view.frame.size.width);
         }
-        self.editPhotoFrame=CGRectMake(0, (kMainScreenHeight-self.editPhotoFrame.size.height)/2, self.editPhotoFrame.size.width
-                                       , self.editPhotoFrame.size.height);
-        VPImageCropperViewController *imgEditorVC = [[VPImageCropperViewController alloc] initWithImage:portraitImg cropFrame:self.editPhotoFrame limitScaleRatio:3.0];
-        imgEditorVC.delegate = self;
-        [self.superVC presentViewController:imgEditorVC animated:NO completion:^{
+        weakSelf.editPhotoFrame=CGRectMake(0, (kMainScreenHeight-weakSelf.editPhotoFrame.size.height)/2, weakSelf.editPhotoFrame.size.width
+                                       , weakSelf.editPhotoFrame.size.height);
+        VPImageCropperViewController *imgEditorVC = [[VPImageCropperViewController alloc] initWithImage:portraitImg cropFrame:weakSelf.editPhotoFrame limitScaleRatio:3.0];
+        imgEditorVC.delegate = weakSelf;
+        [weakSelf.superVC presentViewController:imgEditorVC animated:NO completion:^{
             // TO DO
         }];
     }];

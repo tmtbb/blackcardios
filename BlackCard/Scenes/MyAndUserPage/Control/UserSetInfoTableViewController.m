@@ -328,6 +328,8 @@
             [self upLoadImage:^(id data) {
                 weakSelf.model.headUrl = [data firstObject][@"url"];
                 [weakSelf changeUserDetail];
+                
+                
             } error:^(NSError *error) {
                 [weakSelf showError:error];
             }];
@@ -346,8 +348,10 @@
     if (error == nil) {
         WEAKSELF
         [[AppAPIHelper shared].getMyAndUserAPI  doChangeUserDetail:dic complete:^(id data) {
+            [weakSelf saveUserInfo:weakSelf.theNewIcon];
             [weakSelf showTips:@"修改成功"];
             [weakSelf didRequest];
+           
         } error:^(NSError *error) {
             [weakSelf showError:error];
         }];
@@ -357,6 +361,13 @@
    
 }
 
+
+- (void)saveUserInfo:(id )model {
+    
+    if ([self.delegate respondsToSelector:@selector(saveUserInformation:)]) {
+        [self.delegate  saveUserInformation:model];
+    }
+}
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

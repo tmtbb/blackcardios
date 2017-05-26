@@ -33,8 +33,14 @@
         NSString * token = data[@"token"];
         if (![NSString isEmpty:token]) {
             
-            [[CurrentUserHelper shared] saveToken:token];
-            [weakSelf setMainRootViewController:@"MainTabBarViewController"];
+            [[CurrentUserHelper shared] updateWihtToken:token update:^(MyAndUserModel *data, CurrentUserHelper *currentUserHelper) {
+                [currentUserHelper upUserModel:data];
+                [weakSelf setMainRootViewController:@"MainTabBarViewController"];
+
+            } error:^(NSError *error) {
+                 [weakSelf showError:error];
+            }];
+            
         }
         
         
@@ -140,14 +146,13 @@
     
     [[AppAPIHelper shared].getMyAndUserAPI loginUserName:account password:password complete:^(id data) {
         NSString *token = data[@"token"];
-        [[AppAPIHelper shared].getMyAndUserAPI getUserInfoWithToken:token complete:^(MyAndUserModel *userInfo) {
-            
-            
-            [weakSelf hiddenProgress];
-            userInfo.token = token;
-            [[CurrentUserHelper shared] login:userInfo];
-            
-
+        
+        
+        
+        
+        [[CurrentUserHelper shared] updateWihtToken:token update:^(MyAndUserModel *data, CurrentUserHelper *currentUserHelper) {
+             [weakSelf hiddenProgress];
+             [currentUserHelper login:data];
              [weakSelf setMainRootViewController:@"MainTabBarViewController"];
             
         } error:^(NSError *error) {
@@ -164,14 +169,7 @@
 
 
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end

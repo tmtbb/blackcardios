@@ -19,6 +19,7 @@ typedef  void (^ __nullable CustomIndexHandle)(UIAlertAction *action,NSInteger b
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
     // Do any additional setup after loading the view.
 }
 
@@ -27,7 +28,7 @@ typedef  void (^ __nullable CustomIndexHandle)(UIAlertAction *action,NSInteger b
     self = [super init];
     if (self) {
         WEAKSELF
-       self.block = ^(UIAlertAction *action) {
+       _block = ^(UIAlertAction *action) {
            [weakSelf.actions enumerateObjectsUsingBlock:^(UIAlertAction * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                if (obj == action) {
                    [weakSelf clcikButtonWithAction:action andButtonIndex:idx];
@@ -39,6 +40,42 @@ typedef  void (^ __nullable CustomIndexHandle)(UIAlertAction *action,NSInteger b
     }
     return self;
 }
+
+
++ (instancetype)alertControllerWithTitle:(NSString *)title
+                                 message:(NSString *)message
+                          preferredStyle:(UIAlertControllerStyle)preferredStyle
+                       cancelButtonTitle:(nullable NSString *)cancelButton
+                       otherButtonTitles:(nullable NSString *)otherButton, ...{
+    
+    CustomAlertController *alert = [self alertControllerWithTitle:title message:message preferredStyle:preferredStyle];
+    
+    va_list arguments;
+    id eachObject;
+    if (otherButton) {
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:otherButton style:UIAlertActionStyleDefault handler:alert.block];
+        
+        [alert addAction:action];
+        va_start(arguments,otherButton);
+        
+        while ((eachObject = va_arg(arguments, id))) {
+            
+            UIAlertAction *action = [UIAlertAction actionWithTitle:eachObject style:UIAlertActionStyleDefault handler:alert.block];
+            
+            [alert addAction:action];
+            
+        }
+        va_end(arguments);
+    }
+    
+    if (cancelButton) {
+        [alert addCancleButton:cancelButton];
+    }
+    
+    return  alert;
+}
+
 
 - (void)addButtonTitles:(NSString *)title, ... {
     va_list arguments;
@@ -95,6 +132,13 @@ typedef  void (^ __nullable CustomIndexHandle)(UIAlertAction *action,NSInteger b
 - (void)addCancleButton:(NSString *)title {
     
     UIAlertAction *action = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleCancel handler:_block];
+    
+    [self addAction:action];
+}
+
+- (void)addButtonWithTitle:(NSString *)title andStyle:(UIAlertActionStyle)style {
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:title style:style handler:_block];
     
     [self addAction:action];
 }

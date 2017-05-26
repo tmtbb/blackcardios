@@ -34,7 +34,7 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-VL-5zO">
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-VL-5zO">
                                     <rect key="frame" x="147.5" y="80" width="80" height="80"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="80" id="2PV-RX-azN"/>
@@ -213,9 +213,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="X3s-vl-81U" kind="push" id="GBB-Bm-BUN"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="oMb-Df-BK7" style="IBUITableViewCellStyleDefault" id="NeW-To-d42">
                                         <rect key="frame" x="0.0" y="526" width="375" height="44"/>
@@ -734,7 +731,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llW-xn-umR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-581.60000000000002" y="3555.4722638680664"/>
+            <point key="canvasLocation" x="-743" y="3602"/>
         </scene>
         <!--钱包-->
         <scene sceneID="ZN7-9o-4Or">

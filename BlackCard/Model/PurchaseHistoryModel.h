@@ -26,6 +26,7 @@
 
 
 @property(nonatomic)NSInteger tradeStatus; //交易状态
+@property(copy,nonatomic)NSString *tradeStatusTitle;//交易状态title
 @property(copy,nonatomic)NSString  *tradeTime; //交易时间毫秒
 
 

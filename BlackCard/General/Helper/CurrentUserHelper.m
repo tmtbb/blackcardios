@@ -166,6 +166,22 @@ HELPER_SHARED(CurrentUserHelper)
 }
 
 
+
+
+- (void)updateWihtToken:(NSString *)token update:(void (^)(MyAndUserModel *data, CurrentUserHelper *currentUserHelper))upBlock error:(void (^)(NSError *))error{
+    WEAKSELF
+    [[AppAPIHelper shared].getMyAndUserAPI getUserInfoWithToken:token complete:^(MyAndUserModel *userInfo) {
+        
+        userInfo.token = token;
+        if (upBlock) {
+           upBlock(userInfo,weakSelf);
+        }
+            
+    } error:error];
+
+    
+    
+}
 //- (void)sender:(id)sender didChangeMoney:(CGFloat)money {
 //    double stock = [[self stock] doubleValue];
 //    stock = stock + money;

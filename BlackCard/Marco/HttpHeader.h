@@ -19,8 +19,8 @@
 #ifdef Development
 
 //#define kHttpAPIUrl_HOST @"" //预发布环境
-//#define kHttpAPIUrl_HOST @"http://101.37.82.111:9999"
-#define kHttpAPIUrl_HOST @"http://192.168.104.241:8080"
+#define kHttpAPIUrl_HOST @"http://101.37.82.111:9999"
+//#define kHttpAPIUrl_HOST @"http://192.168.104.241:8080"
 //#define kRunMode @"debug"
 #else
 //#define kHttpAPIUrl_HOST @"" //新正式生产环境
@@ -68,6 +68,8 @@
 #define kHttpAPIUrl_changeUserDetail   kHttpAPIUrl_HOST@"/api/user/edit.json"
 
 #define kHttpAPIUrl_upLoad   kHttpAPIUrl_HOST@"/api/file/upload.json"
+
+#define kHttpAPIUrl_log   kHttpAPIUrl_HOST@"/api/sys/log.josn"
 
 
 #define kHttpAPIUrl_resetPassword         kHttpAPIUrl_HOST@"/api/blackcard/repassword.json"

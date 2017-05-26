@@ -34,10 +34,9 @@
     self.orderNumLabel.text = _model.tradeNo;
     self.orderMoneyLabel.text = [NSString stringWithFormat:@"¥%.2f",_model.tradeTotalPrice];
     self.payMoneyLabel.text = [NSString stringWithFormat:@"¥%.2f",_model.tradePayPrice];
-    
     self.orderTime.text = _model.formatCreateTime;
     
-    self.orderStatusLabel.text = @"";
+    self.orderStatusLabel.text = _model.tradeStatusTitle;
     
 }
 

@@ -8,6 +8,13 @@
 
 #import "BaseRefreshTableViewController.h"
 
-@interface UserSetInfoTableViewController : BaseRefreshTableViewController
+@class UserDetailModel;
+@protocol UserSetInfoUpdateProcotol <NSObject>
 
+- (void)saveUserInformation:(id )data;
+
+@end
+
+@interface UserSetInfoTableViewController : BaseRefreshTableViewController
+@property(weak,nonatomic)id<UserSetInfoUpdateProcotol> delegate;
 @end
