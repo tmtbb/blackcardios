@@ -64,7 +64,8 @@
     UITabBar *tabBar = self.tabBar;
     UITabBarItem *item0 = [tabBar.items objectAtIndex:0];
     UITabBarItem *item1 = [tabBar.items objectAtIndex:1];
-    UITabBarItem *item2 = [tabBar.items objectAtIndex:2];
+    UITabBarItem *item2 = [tabBar.items objectAtIndex:3];
+    UITabBarItem *item3 = [tabBar.items objectAtIndex:2];
     // 对item设置相应地图片
     item0.selectedImage = [[UIImage imageNamed:@"tabbarBalckCardSel"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
     item0.image = [[UIImage imageNamed:@"tabbarBalckCardNone"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -74,6 +75,9 @@
     
     item2.selectedImage = [[UIImage imageNamed:@"tabbarMySel"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
     item2.image = [[UIImage imageNamed:@"tabbarMyNone"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    item3.selectedImage = [[UIImage imageNamed:@"tabbarBalckCardSel"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
+    item3.image = [[UIImage imageNamed:@"tabbarBalckCardNone"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UIColor *titleHighlightedColor = kUIColorWithRGB(0x070707);
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: titleHighlightedColor,NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];

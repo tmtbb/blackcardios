@@ -1301,12 +1301,32 @@
                     <connections>
                         <segue destination="JWp-7d-CaF" kind="relationship" relationship="viewControllers" id="OCA-fn-Zyi"/>
                         <segue destination="Kxw-V6-hTM" kind="relationship" relationship="viewControllers" id="TrC-s5-5Tb"/>
+                        <segue destination="R2y-g5-4l3" kind="relationship" relationship="viewControllers" id="xAy-Do-tf0"/>
                         <segue destination="Uan-7z-6cD" kind="relationship" relationship="viewControllers" id="Qpg-Ou-XAP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N7u-ha-YhR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1126" y="1766"/>
+        </scene>
+        <!--部落-->
+        <scene sceneID="QD7-xE-Hil">
+            <objects>
+                <viewController id="R2y-g5-4l3" customClass="TribeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g4Y-hh-BT8"/>
+                        <viewControllerLayoutGuide type="bottom" id="dUX-4L-XYB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gV4-CV-K77">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="部落" id="ybp-hQ-lRR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6RH-9r-esf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1404" y="2480"/>
         </scene>
         <!--管家-->
         <scene sceneID="DR5-ZW-yyL">
