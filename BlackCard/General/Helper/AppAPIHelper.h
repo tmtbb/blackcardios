@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MyAndUserAPI.h"
 #import "HomePageAPI.h"
-
+#import "WaiterServiceAPI.h"
 
 @protocol MessageAPI;
 
@@ -25,4 +25,5 @@
 
 
 - (id<HomePageAPI>)getHomePageAPI;
+- (id<WaiterServiceAPI>)getWaiterServiceAPI;
 @end

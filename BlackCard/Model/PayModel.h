@@ -49,5 +49,9 @@
 @end
 
 
-
+@interface DefaultModel : OEZModel
+@property(nonatomic,copy)NSString *serviceNo;
+@property(nonatomic,copy)NSString *payPassword;
+@property(nonatomic)double money;
+@end
 

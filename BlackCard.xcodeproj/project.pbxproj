@@ -76,6 +76,13 @@
 		7C388FEB1EADD4CD008023CA /* RegisterCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C388FEA1EADD4CD008023CA /* RegisterCardCell.m */; };
 		7C388FED1EADD7F4008023CA /* RegisterCardHScollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C388FEC1EADD7F4008023CA /* RegisterCardHScollCell.xib */; };
 		7C388FF01EADF300008023CA /* WriteaApplicationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C388FEF1EADF300008023CA /* WriteaApplicationTableViewController.m */; };
+		7C55C6FB1ED93875000991AF /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C6FA1ED93875000991AF /* OrderDetailViewController.m */; };
+		7C55C6FE1ED94686000991AF /* ChoosePayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C6FD1ED94686000991AF /* ChoosePayTypeView.m */; };
+		7C55C7001ED94692000991AF /* ChoosePayTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C55C6FF1ED94691000991AF /* ChoosePayTypeView.xib */; };
+		7C55C7041ED95DD0000991AF /* ChoosePayHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C7031ED95DD0000991AF /* ChoosePayHandle.m */; };
+		7C55C7061ED9696A000991AF /* WaiterServiceAPI.h in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C7051ED9696A000991AF /* WaiterServiceAPI.h */; };
+		7C55C7091ED969DB000991AF /* HttpWaiterService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C7081ED969DB000991AF /* HttpWaiterService.m */; };
+		7C55C70C1ED97871000991AF /* DefaultPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C70B1ED97871000991AF /* DefaultPay.m */; };
 		7C71835A1EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7183591EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m */; };
 		7C71835F1EAF1BD400B40BCB /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C71835C1EAF1BD400B40BCB /* libWeChatSDK.a */; };
 		7C7183651EAF1C5600B40BCB /* PayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7183621EAF1C5600B40BCB /* PayHelper.m */; };
@@ -257,6 +264,19 @@
 		7C388FEC1EADD7F4008023CA /* RegisterCardHScollCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterCardHScollCell.xib; sourceTree = "<group>"; };
 		7C388FEE1EADF300008023CA /* WriteaApplicationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteaApplicationTableViewController.h; sourceTree = "<group>"; };
 		7C388FEF1EADF300008023CA /* WriteaApplicationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteaApplicationTableViewController.m; sourceTree = "<group>"; };
+		7C55C6F81ED919CD000991AF /* BlackCard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlackCard.entitlements; sourceTree = "<group>"; };
+		7C55C6F91ED93875000991AF /* OrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
+		7C55C6FA1ED93875000991AF /* OrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
+		7C55C6FC1ED94686000991AF /* ChoosePayTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoosePayTypeView.h; sourceTree = "<group>"; };
+		7C55C6FD1ED94686000991AF /* ChoosePayTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoosePayTypeView.m; sourceTree = "<group>"; };
+		7C55C6FF1ED94691000991AF /* ChoosePayTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChoosePayTypeView.xib; sourceTree = "<group>"; };
+		7C55C7021ED95DD0000991AF /* ChoosePayHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoosePayHandle.h; sourceTree = "<group>"; };
+		7C55C7031ED95DD0000991AF /* ChoosePayHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoosePayHandle.m; sourceTree = "<group>"; };
+		7C55C7051ED9696A000991AF /* WaiterServiceAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaiterServiceAPI.h; sourceTree = "<group>"; };
+		7C55C7071ED969DB000991AF /* HttpWaiterService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpWaiterService.h; sourceTree = "<group>"; };
+		7C55C7081ED969DB000991AF /* HttpWaiterService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpWaiterService.m; sourceTree = "<group>"; };
+		7C55C70A1ED97871000991AF /* DefaultPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultPay.h; sourceTree = "<group>"; };
+		7C55C70B1ED97871000991AF /* DefaultPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultPay.m; sourceTree = "<group>"; };
 		7C7183581EAEF49D00B40BCB /* ConfirmApplicationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmApplicationTableViewController.h; sourceTree = "<group>"; };
 		7C7183591EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmApplicationTableViewController.m; sourceTree = "<group>"; };
 		7C71835C1EAF1BD400B40BCB /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
@@ -312,7 +332,7 @@
 		7C8E78A81ED2EBDD000CADAA /* ALiPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALiPay.m; sourceTree = "<group>"; };
 		7C8E78A91ED2EBDD000CADAA /* ALiPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALiPay.h; sourceTree = "<group>"; };
 		7CA9455B1EAAFB52002AA1E1 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
-		7CA9455C1EAAFB52002AA1E1 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
+		7CA9455C1EAAFB52002AA1E1 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		7CC14DE31EB9E929008B32ED /* app.jingyingheika.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = app.jingyingheika.com.cer; sourceTree = "<group>"; };
 		7CC47CF01EA9AD0B006FBB53 /* SubviewWithCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubviewWithCollectionView.h; sourceTree = "<group>"; };
 		7CC47CF11EA9AD0B006FBB53 /* SubviewWithCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubviewWithCollectionView.m; sourceTree = "<group>"; };
@@ -388,6 +408,7 @@
 		7C18F0361EB2054B008D247C /* Waiter */ = {
 			isa = PBXGroup;
 			children = (
+				7C55C7011ED95D9B000991AF /* Custom */,
 				7C18F0371EB2057A008D247C /* View */,
 				7C18F0381EB2057A008D247C /* Control */,
 			);
@@ -397,6 +418,9 @@
 		7C18F0371EB2057A008D247C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7C55C6FC1ED94686000991AF /* ChoosePayTypeView.h */,
+				7C55C6FD1ED94686000991AF /* ChoosePayTypeView.m */,
+				7C55C6FF1ED94691000991AF /* ChoosePayTypeView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -410,6 +434,8 @@
 				7C3324861EB31B8B0065B5C3 /* ChatTools.m */,
 				7C3324881EB329FD0065B5C3 /* ChtaNavigationController.h */,
 				7C3324891EB329FD0065B5C3 /* ChtaNavigationController.m */,
+				7C55C6F91ED93875000991AF /* OrderDetailViewController.h */,
+				7C55C6FA1ED93875000991AF /* OrderDetailViewController.m */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -433,6 +459,7 @@
 				7CC8019C1EAC578C005B52A9 /* Http */,
 				7CC8019B1EAC578C005B52A9 /* MyAndUserAPI.h */,
 				7CC801A61EACAB6C005B52A9 /* HomePageAPI.h */,
+				7C55C7051ED9696A000991AF /* WaiterServiceAPI.h */,
 			);
 			path = AppAPI;
 			sourceTree = "<group>";
@@ -722,6 +749,15 @@
 			path = VPImageCropper;
 			sourceTree = "<group>";
 		};
+		7C55C7011ED95D9B000991AF /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				7C55C7021ED95DD0000991AF /* ChoosePayHandle.h */,
+				7C55C7031ED95DD0000991AF /* ChoosePayHandle.m */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		7C71835B1EAF1BD400B40BCB /* WX */ = {
 			isa = PBXGroup;
 			children = (
@@ -741,6 +777,8 @@
 				7C7183621EAF1C5600B40BCB /* PayHelper.m */,
 				7C7183631EAF1C5600B40BCB /* WXPay.h */,
 				7C7183641EAF1C5600B40BCB /* WXPay.m */,
+				7C55C70A1ED97871000991AF /* DefaultPay.h */,
+				7C55C70B1ED97871000991AF /* DefaultPay.m */,
 				7CD68FA01ED3CF1900A3AD3E /* PayManagerHelper.h */,
 				7CD68FA11ED3CF1900A3AD3E /* PayManagerHelper.m */,
 			);
@@ -849,6 +887,8 @@
 				7CC8019E1EAC578C005B52A9 /* HttpMyAndUser.m */,
 				7CC801A71EACAD53005B52A9 /* HttpHomePage.h */,
 				7CC801A81EACAD53005B52A9 /* HttpHomePage.m */,
+				7C55C7071ED969DB000991AF /* HttpWaiterService.h */,
+				7C55C7081ED969DB000991AF /* HttpWaiterService.m */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -874,6 +914,7 @@
 		7CE70DC91EA79F00003772F1 /* BlackCard */ = {
 			isa = PBXGroup;
 			children = (
+				7C55C6F81ED919CD000991AF /* BlackCard.entitlements */,
 				7C25A7A01EA869CB0049234E /* Frameworks */,
 				7C25A7881EA8677A0049234E /* General */,
 				7C25A78F1EA8677A0049234E /* Library */,
@@ -955,7 +996,12 @@
 				TargetAttributes = {
 					7CE70DC61EA79F00003772F1 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 953PSC8HAE;
+						DevelopmentTeam = 96YGS7NXK5;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -984,6 +1030,7 @@
 			files = (
 				7CC14DE41EB9E929008B32ED /* app.jingyingheika.com.cer in Resources */,
 				7C8E78A01ED2E5A0000CADAA /* AlipaySDK.bundle in Resources */,
+				7C55C7001ED94692000991AF /* ChoosePayTypeView.xib in Resources */,
 				7C25A79F1EA8677A0049234E /* Images.xcassets in Resources */,
 				7C25A79D1EA8677A0049234E /* LaunchScreen.storyboard in Resources */,
 				7C25A80C1EA886E50049234E /* EveryNoneView.xib in Resources */,
@@ -1058,6 +1105,7 @@
 				7C25A7FC1EA883F30049234E /* UINavigationBar+Category.m in Sources */,
 				7C25A7DF1EA86A3D0049234E /* BaseRefreshListCollectionViewController.m in Sources */,
 				7C7183651EAF1C5600B40BCB /* PayHelper.m in Sources */,
+				7C55C70C1ED97871000991AF /* DefaultPay.m in Sources */,
 				7CC47CF51EA9AD4D006FBB53 /* HomePageCollectionViewCell.m in Sources */,
 				7C25A7E01EA86A3D0049234E /* BaseRefreshPageCollectionViewController.m in Sources */,
 				7C25A7EA1EA86A3D0049234E /* BaseCustomTableViewController.m in Sources */,
@@ -1072,6 +1120,7 @@
 				7CD68FAB1ED44D9700A3AD3E /* ModifyCardPasswordTableViewController.m in Sources */,
 				7CD68FA21ED3CF1900A3AD3E /* PayManagerHelper.m in Sources */,
 				7C8488721EAB4E790001EC82 /* RegisterCollectionViewCell.m in Sources */,
+				7C55C6FE1ED94686000991AF /* ChoosePayTypeView.m in Sources */,
 				7C25A8211EA88E2C0049234E /* UIAlertCustomViewController.m in Sources */,
 				7C25A7F01EA86A3D0049234E /* BaseViewController.m in Sources */,
 				7C18F03B1EB20592008D247C /* WaiterViewController.m in Sources */,
@@ -1079,6 +1128,7 @@
 				7CC801A51EAC8A7E005B52A9 /* LoginTableViewCell.m in Sources */,
 				7C33248A1EB329FD0065B5C3 /* ChtaNavigationController.m in Sources */,
 				7C84886C1EAB4D9B0001EC82 /* MyAndUserTableViewController.m in Sources */,
+				7C55C7041ED95DD0000991AF /* ChoosePayHandle.m in Sources */,
 				7C26ADC11ED6D92700E32E87 /* UpLoadModel.m in Sources */,
 				7CE70DD21EA79F00003772F1 /* ViewController.m in Sources */,
 				7C25A7E61EA86A3D0049234E /* BaseRefreshPageTableViewController.m in Sources */,
@@ -1107,6 +1157,7 @@
 				7C25A7EC1EA86A3D0049234E /* BaseRefreshListCustomTableViewController.m in Sources */,
 				7C71836B1EAF1EFC00B40BCB /* PayModel.m in Sources */,
 				7CA9455D1EAAFB52002AA1E1 /* MainTabBarViewController.m in Sources */,
+				7C55C6FB1ED93875000991AF /* OrderDetailViewController.m in Sources */,
 				7C8488751EAB53490001EC82 /* RegisterTableViewController.m in Sources */,
 				7C25A7FF1EA885A80049234E /* NSString+Category.m in Sources */,
 				7C84886F1EAB4DD50001EC82 /* RegisterWithCollectionView.m in Sources */,
@@ -1123,6 +1174,7 @@
 				7C25A7EF1EA86A3D0049234E /* BaseRequestViewController.m in Sources */,
 				7CC47CFB1EA9B2D4006FBB53 /* ShowYourNeedPageView.m in Sources */,
 				7C25A7F61EA86B100049234E /* UIViewController+RefreshViewController.m in Sources */,
+				7C55C7061ED9696A000991AF /* WaiterServiceAPI.h in Sources */,
 				7CC801A21EAC8744005B52A9 /* LoginViewController.m in Sources */,
 				7C25A7EB1EA86A3D0049234E /* BaseRefreshCustomTableViewController.m in Sources */,
 				7C8E78841ED18F32000CADAA /* MyPurseDetailTableViewController.m in Sources */,
@@ -1143,6 +1195,7 @@
 				7CD68FA51ED3E26E00A3AD3E /* DisableTextField.m in Sources */,
 				7C8E78991ED27F80000CADAA /* PayPasswordTextField.m in Sources */,
 				7CC47CF21EA9AD0B006FBB53 /* SubviewWithCollectionView.m in Sources */,
+				7C55C7091ED969DB000991AF /* HttpWaiterService.m in Sources */,
 				7CE70DCF1EA79F00003772F1 /* AppDelegate.m in Sources */,
 				7CC47CF81EA9B1AB006FBB53 /* HomePageModel.m in Sources */,
 				7CE70DCC1EA79F00003772F1 /* main.m in Sources */,
@@ -1264,7 +1317,8 @@
 			baseConfigurationReference = B6C1A4FAC8EA97F0871A0026 /* Pods-BlackCard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 953PSC8HAE;
+				CODE_SIGN_ENTITLEMENTS = BlackCard/BlackCard.entitlements;
+				DEVELOPMENT_TEAM = 96YGS7NXK5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1278,7 +1332,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BlackCard/Library/WX",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ywwl.mgame648-2";
+				PRODUCT_BUNDLE_IDENTIFIER = com.youdian.blackcard.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1289,8 +1343,9 @@
 			baseConfigurationReference = 1CAA8F31B7E16109D0B3B418 /* Pods-BlackCard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BlackCard/BlackCard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 953PSC8HAE;
+				DEVELOPMENT_TEAM = 96YGS7NXK5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1304,7 +1359,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BlackCard/Library/WX",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ywwl.mgame648-2";
+				PRODUCT_BUNDLE_IDENTIFIER = com.youdian.blackcard.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

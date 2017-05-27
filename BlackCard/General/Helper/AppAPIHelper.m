@@ -9,14 +9,14 @@
 #import "AppAPIHelper.h"
 #import "HttpMyAndUser.h"
 #import "HttpHomePage.h"
-
+#import "HttpWaiterService.h"
 
 @implementation AppAPIHelper
 {
     id<MyAndUserAPI> _myAndUserAPI;
     id<HomePageAPI>_myHomePageAPI;
-
-
+    id<WaiterServiceAPI>_myWaiterServiceAPI;
+ 
 }
 
 HELPER_SHARED(AppAPIHelper);
@@ -26,6 +26,7 @@ HELPER_SHARED(AppAPIHelper);
     if (self) {
         _myAndUserAPI = [[HttpMyAndUser alloc] init];
         _myHomePageAPI = [[HttpHomePage alloc]init];
+        _myWaiterServiceAPI = [[HttpWaiterService  alloc]init];
     }
     
     return self; 
@@ -40,5 +41,11 @@ HELPER_SHARED(AppAPIHelper);
 {
     return _myHomePageAPI;
 }
+
+- (id <WaiterServiceAPI>)getWaiterServiceAPI
+{
+    return _myWaiterServiceAPI;
+}
+
 
 @end

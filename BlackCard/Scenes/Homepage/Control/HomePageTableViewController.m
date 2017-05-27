@@ -65,6 +65,8 @@
     _pageCount =  [_privilegeCollectionView update:data.privileges];
     [self  pageCountViewSetting];
     [self.tableView reloadData];
+    
+
 }
 
 - (void)setHeaderNewFrame {

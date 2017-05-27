@@ -9,7 +9,7 @@
 #import "MainTabBarViewController.h"
 #import "WaiterViewController.h"
 #import <QYSDK.h>
-@interface MainTabBarViewController ()<UITabBarControllerDelegate,CurrentUserActionDelegate>
+@interface MainTabBarViewController ()<UITabBarControllerDelegate,CurrentUserActionDelegate,QYConversationManagerDelegate>
 
 @end
 
@@ -23,8 +23,24 @@
     
    
     [self settingTabBarImage];
-    
-    
+   
+   
+   [self unReadCount:[QYSDK sharedSDK].conversationManager.allUnreadCount];
+    [[QYSDK sharedSDK].conversationManager setDelegate:self];
+   
+   
+}
+
+-(void)unReadCount:(NSInteger)count {
+  
+   if (count == 0) {
+      self.tabBar.items[1].badgeValue = nil;
+   }else {
+      
+     self.tabBar.items[1].badgeValue = count > 99 ? @"99+" : @(count).stringValue;
+   }
+   
+   
 }
 
 
@@ -48,7 +64,7 @@
              [waiter goToChatController];
         }
         
-       
+       [[QYSDK sharedSDK].conversationManager clearUnreadCount];
         
     }
    
@@ -81,17 +97,19 @@
     titleHighlightedColor = kUIColorWithRGB(0x434343);
     
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:titleHighlightedColor, NSForegroundColorAttributeName,nil] forState:UIControlStateSelected];
-    
+   
+   
+   item1.badgeColor = [UIColor redColor];
     
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+- (void)onUnreadCountChanged:(NSInteger)count{
+    
+   [self unReadCount:count];
+   
+    
 }
-*/
+
 
 @end
