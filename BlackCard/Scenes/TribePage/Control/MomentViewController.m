@@ -8,16 +8,23 @@
 
 #import "MomentViewController.h"
 
-@interface MomentViewController ()<UITextViewDelegate>
+@interface MomentViewController ()<UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(strong,nonatomic)UITextView *textView;
 @property(strong,nonatomic)UILabel *placeholderLabel;
 @property(strong,nonatomic)UILabel *countLabel;
+@property(assign,nonatomic)NSInteger selectTag;
+@property(strong,nonatomic)NSMutableArray *imageArray;
+@property(strong,nonatomic)NSArray *myArray;
+@property(strong,nonatomic)NSMutableDictionary *imageDict;
 @end
 
 @implementation MomentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _imageArray=[NSMutableArray array];
+    _imageDict=[[NSMutableDictionary alloc] init];
+    _myArray=@[@"image1",@"image2",@"image3",@"image4",@"image5",@"image6"];
     // 设置导航条内容
     [self setupNavgationBar];
     
@@ -81,6 +88,36 @@
     [self.view addSubview:_countLabel];
     [self.view addSubview:_textView];
     
+    //分割线
+    UILabel *partingLine=[[UILabel alloc] initWithFrame:CGRectMake(10, 255, kMainScreenWidth-20, 2)];
+    partingLine.backgroundColor=kUIColorWithRGB(0xA6A6A6);
+    [self.view addSubview:partingLine];
+    
+    CGFloat width=(kMainScreenWidth-40)/3;
+    //上传图片
+    for (int i=0; i<6; i++)
+    {
+        int a= i/3;
+        int b= i%3;
+        UIButton *photo=[UIButton buttonWithType:UIButtonTypeCustom];
+        photo.frame=CGRectMake(10+b*(10+width), 265+a*(10+width), width,width );
+        [photo setBackgroundImage:[UIImage imageNamed:@"addPhotos"] forState:UIControlStateNormal];
+        [photo addTarget:self action:@selector(clickImage:) forControlEvents:UIControlEventTouchUpInside];
+        photo.tag=i+1;
+            
+        UIButton *delete=[UIButton buttonWithType:UIButtonTypeCustom];
+        delete.frame=CGRectMake(width-30, 0,30 ,30 );
+        [delete setBackgroundImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
+        [delete addTarget:self action:@selector(deleteImage:) forControlEvents:UIControlEventTouchUpInside];
+        delete.hidden=YES;
+        delete.tag=100+i+1;
+        [photo addSubview:delete];
+            
+        [self.view addSubview:photo];
+    
+        
+    }
+    
 }
 #pragma mark -返回
 -(void)backBtnClicked {
@@ -90,8 +127,77 @@
 -(void)publishBtnClicked {
     NSLog(@"发布作品");
 }
+#pragma mark -选择图片
+-(void)clickImage:(UIButton *)sender{
+    _selectTag=sender.tag;
+    UIButton *btn=[self.view viewWithTag:100+sender.tag];
+    if (btn.hidden) {
+        UIAlertController *alertView=[UIAlertController alertControllerWithTitle:@"请选择照片来源" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            
+            if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+            {
+                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            }
+            [self presentViewController:picker animated:YES completion:nil];
+        }];
+        UIAlertAction *archiveAction = [UIAlertAction actionWithTitle:@"从相册中选" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+           
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            
+            if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+            {
+                picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            }
+            [self presentViewController:picker animated:YES completion:nil];
+        }];
+        
+        [alertView addAction:cancelAction];
+        [alertView addAction:deleteAction];
+        [alertView addAction:archiveAction];
+       
+        
+        [self presentViewController:alertView animated:YES completion:nil];
+    
+    
+    }
+
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    //将image压缩
+    UIButton *btn=[self.view viewWithTag:_selectTag];
+    [btn setBackgroundImage:nil forState:UIControlStateNormal];
+    [btn setBackgroundImage:image forState:UIControlStateNormal];
+    UIButton *delBtn=[self.view viewWithTag:_selectTag+100];
+    delBtn.hidden=NO;
+    
+    NSData *imageData= UIImageJPEGRepresentation(image, 0.5);//保存图片要以data形式，ios保存图片形式，压缩系数0.5
+    //    [self showLoader:@"正在上传头像..."];
+    
+    [_imageDict setObject:imageData forKey:_myArray[_selectTag-1]];
+}
+-(void)deleteImage:(UIButton *)sender{
+    UIButton *btn=[self.view viewWithTag:sender.tag-100];
+    sender.hidden=YES;
+    [btn setBackgroundImage:nil forState:UIControlStateNormal];
+    [_imageDict setObject:@"" forKey:_myArray[sender.tag-100-1]];
+    [btn setImage:[UIImage imageNamed:@"addPhotos"] forState:UIControlStateNormal];
+}
 #pragma mark -UITextView代理
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    //监控占位符
     if (![text isEqualToString:@""]) {
         _placeholderLabel.hidden = YES;
     }
@@ -99,6 +205,7 @@
     if ([text isEqualToString:@""] && range.location == 0 && range.length == 1) {
         _placeholderLabel.hidden = NO;
     }
+    //控制输入字数
     NSString *comcatstr = [textView.text stringByReplacingCharactersInRange:range withString:text];
     
     NSInteger caninputlen = 300 - comcatstr.length;

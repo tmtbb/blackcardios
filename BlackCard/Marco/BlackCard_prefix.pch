@@ -33,9 +33,10 @@
 #import <SDWebImage/UIButton+WebCache.h>
 #define WEAKSELF __block typeof(self) __weak weakSelf = self;
 
+#define Dic(font) @{NSFontAttributeName: [UIFont systemFontOfSize:(font)]}
 #define BoundIngRectWithText(text,SIZE,font) ([text boundingRectWithSize:SIZE options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:Dic(font) context:nil].size);
 // 在计算属性字符串高度的时候请先设置好字体大小
-#define BoundIngRectWithAttributedString(attributedString,SIZE,font) ([attributedString boundingRectWithSize:SIZE options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size);
+#define BoundIngRectWithAttributedString(attributedString,SIZE) ([attributedString boundingRectWithSize:SIZE options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size);
 #define kFontHeigt(font) [UIFont systemFontOfSize:font].lineHeight
 
 
@@ -56,10 +57,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 alpha:alphaValue]
 
 
-#define kAppBackgroundColor kUIColorWithRGB(0xE6E6E6)
+#define kAppBackgroundColor kUIColorWithRGB(0xF8F8F8)
 
 
-
+#define kUIColor_Red kUIColorWithRGB(0xE43931)
 
 
 

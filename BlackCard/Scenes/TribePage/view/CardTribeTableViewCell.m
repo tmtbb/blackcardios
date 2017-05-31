@@ -69,30 +69,30 @@
     image=[UIImage circleImage:image borderColor:[UIColor redColor] borderWidth:1.0f];
     _headerImageView.image=image;
     _levelImageView.image=[UIImage imageNamed:@"goldenAuthenticated"];
-    
+    NSLog(@"999=%@",model.id);
     //名称
-    _nameLabel.text=model.name;
+    _nameLabel.text=model.nickName;
     _nameLabel.font=[UIFont systemFontOfSize:14];
     _nameLabel.textAlignment=NSTextAlignmentLeft;
     //日期
-    _dateLabel.text=model.date;
+    _dateLabel.text=[NSString stringWithFormat:@"%ld",model.yearMonth];
     _dateLabel.font=[UIFont systemFontOfSize:12];
     _dateLabel.textAlignment=NSTextAlignmentLeft;
     _dateLabel.textColor=kUIColorWithRGB(0xA6A6A6);
     //时间
-    _timeLabel.text=model.time;
+    _timeLabel.text=[NSString stringWithFormat:@"%ld",model.yearMonth];
     _timeLabel.font=[UIFont systemFontOfSize:12];
     _timeLabel.textAlignment=NSTextAlignmentLeft;
     _timeLabel.textColor=kUIColorWithRGB(0xA6A6A6);
     
     
     //文章内容
-    NSInteger length=model.title.length;
+    NSInteger length=model.message.length;
     if (length<=200)
     {
-        _titleLabel.text=model.title;
+        _titleLabel.text=model.message;
     }else{
-        NSString *string=[NSString stringWithFormat:@"%@...",[model.title substringToIndex:200]];
+        NSString *string=[NSString stringWithFormat:@"%@...",[model.message substringToIndex:200]];
         _titleLabel.text=string;
     }
     
@@ -107,6 +107,7 @@
     //图片区域
     _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, kMainScreenWidth-90, 160);
     _showImageView.backgroundColor=[UIColor blueColor];
+//    NSLog(@"%@",model.tribeMessageImgs[0][@"img"]);
     
     for (int i=0; i<2; i++) {
         UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(i*((kMainScreenWidth-90-10)/2+10), 10, (kMainScreenWidth-90-10)/2, (kMainScreenWidth-90-10)/2)];
@@ -118,9 +119,10 @@
     //点赞按钮
     _praiseBtn.frame=CGRectMake(10, _showImageView.frame.size.height+_showImageView.frame.origin.y+10, 15, 15);
     [_praiseBtn setBackgroundImage:[UIImage imageNamed:@"bottomPraise"] forState:UIControlStateNormal];
+    [_praiseBtn addTarget:self action:@selector(praiseBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     //点赞数目
     _praiseLabel.frame=CGRectMake(28, _praiseBtn.frame.origin.y, 40, 15);
-    _praiseLabel.text=model.praiseNumber;
+    _praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
     _praiseLabel.font=[UIFont systemFontOfSize:12];
     _praiseLabel.textColor=kUIColorWithRGB(0xA6A6A6);
     _praiseLabel.textAlignment=NSTextAlignmentLeft;
@@ -129,9 +131,10 @@
     //评论按钮
     _commentBtn.frame=CGRectMake(80,_praiseBtn.frame.origin.y, 15, 15);
     [_commentBtn setBackgroundImage:[UIImage imageNamed:@"bottomComment"] forState:UIControlStateNormal];
+    [_commentBtn addTarget:self action:@selector(commentBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     //评论数目
     _commentLabel.frame=CGRectMake(98, _praiseBtn.frame.origin.y, 40, 15);
-    _commentLabel.text=model.commentNumber;
+    _commentLabel.text=[NSString stringWithFormat:@"%d",model.commentNum];
     _commentLabel.font=[UIFont systemFontOfSize:12];
     _commentLabel.textColor=kUIColorWithRGB(0xA6A6A6);
     _commentLabel.textAlignment=NSTextAlignmentLeft;
@@ -139,6 +142,7 @@
     //更多
     _moreBtn.frame=CGRectMake(kMainScreenWidth-70-60, _praiseBtn.frame.origin.y, 15, 15);
     [_moreBtn setBackgroundImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
+    [_moreBtn addTarget:self action:@selector(moreBtnBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     //更多label
     _moreLabel.frame=CGRectMake(kMainScreenWidth-70-40, _praiseBtn.frame.origin.y, 30, 15);
     _moreLabel.text=@"更多";
@@ -152,6 +156,23 @@
     frame.size.height=_whiteView.frame.size.height+_whiteView.frame.origin.y+50;
     self.frame=frame;
     
+}
+-(void)praiseBtnClicked{
+    NSLog(@"nihao");
+    if ([_delegate respondsToSelector:@selector(praise:)]) {
+        [_delegate praise:self];
+    }
+}
+-(void)commentBtnClicked{
+    if ([_delegate respondsToSelector:@selector(comment:)]) {
+        [_delegate comment:self];
+    }
+    
+}
+-(void)moreBtnBtnClicked{
+    if ([_delegate respondsToSelector:@selector(more:)]) {
+        [_delegate more:self];
+    }
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -66,6 +66,10 @@
 		7C25A8311EA897380049234E /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C25A8301EA897380049234E /* libstdc++.tbd */; };
 		7C25A8391EA8B62B0049234E /* UIView+SimpleFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C25A8381EA8B62B0049234E /* UIView+SimpleFrame.m */; };
 		7C25A83F1EA8C1E10049234E /* WaiterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C25A83E1EA8C1E10049234E /* WaiterModel.m */; };
+		7C26ADBE1ED6B2B800E32E87 /* CustomAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C26ADBD1ED6B2B800E32E87 /* CustomAlertController.m */; };
+		7C26ADC11ED6D92700E32E87 /* UpLoadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C26ADC01ED6D92700E32E87 /* UpLoadModel.m */; };
+		7C26ADC81ED6DBD500E32E87 /* ImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C26ADC41ED6DBD500E32E87 /* ImageProvider.m */; };
+		7C26ADC91ED6DBD500E32E87 /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C26ADC71ED6DBD500E32E87 /* VPImageCropperViewController.m */; };
 		7C3324841EB307730065B5C3 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3324821EB307730065B5C3 /* WebViewController.m */; };
 		7C3324871EB31B8B0065B5C3 /* ChatTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3324861EB31B8B0065B5C3 /* ChatTools.m */; };
 		7C33248A1EB329FD0065B5C3 /* ChtaNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3324891EB329FD0065B5C3 /* ChtaNavigationController.m */; };
@@ -84,6 +88,23 @@
 		7C8488721EAB4E790001EC82 /* RegisterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8488711EAB4E790001EC82 /* RegisterCollectionViewCell.m */; };
 		7C8488751EAB53490001EC82 /* RegisterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8488741EAB53490001EC82 /* RegisterTableViewController.m */; };
 		7C8488781EAB61F30001EC82 /* CALayer+LayerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8488771EAB61F30001EC82 /* CALayer+LayerColor.m */; };
+		7C8E787E1ED175B6000CADAA /* UserSetInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E787D1ED175B6000CADAA /* UserSetInfoTableViewController.m */; };
+		7C8E78811ED18888000CADAA /* MyPurseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E78801ED18888000CADAA /* MyPurseTableViewController.m */; };
+		7C8E78841ED18F32000CADAA /* MyPurseDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E78831ED18F32000CADAA /* MyPurseDetailTableViewController.m */; };
+		7C8E78871ED18FAE000CADAA /* MyPurseDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E78861ED18FAE000CADAA /* MyPurseDetailCell.m */; };
+		7C8E788A1ED193D8000CADAA /* ShoppingListLogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E78891ED193D8000CADAA /* ShoppingListLogCell.m */; };
+		7C8E788D1ED195A4000CADAA /* ShoppingListLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E788C1ED195A4000CADAA /* ShoppingListLogViewController.m */; };
+		7C8E78901ED198E1000CADAA /* ShoppingDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E788F1ED198E0000CADAA /* ShoppingDetailTableViewController.m */; };
+		7C8E78931ED19F88000CADAA /* SetPasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E78921ED19F88000CADAA /* SetPasswordTableViewController.m */; };
+		7C8E78961ED19FA8000CADAA /* RechargeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E78951ED19FA8000CADAA /* RechargeTableViewController.m */; };
+		7C8E78991ED27F80000CADAA /* PayPasswordTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E78981ED27F80000CADAA /* PayPasswordTextField.m */; };
+		7C8E789C1ED29CD1000CADAA /* SetPayPasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E789B1ED29CD1000CADAA /* SetPayPasswordTableViewController.m */; };
+		7C8E78A01ED2E5A0000CADAA /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E789E1ED2E5A0000CADAA /* AlipaySDK.bundle */; };
+		7C8E78A11ED2E5A0000CADAA /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E789F1ED2E5A0000CADAA /* AlipaySDK.framework */; };
+		7C8E78A31ED2E5E6000CADAA /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E78A21ED2E5E6000CADAA /* libc++.tbd */; };
+		7C8E78A51ED2E602000CADAA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E78A41ED2E602000CADAA /* libz.tbd */; };
+		7C8E78A71ED2EB22000CADAA /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E78A61ED2EB22000CADAA /* CoreMotion.framework */; };
+		7C8E78AA1ED2EBDD000CADAA /* ALiPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E78A81ED2EBDD000CADAA /* ALiPay.m */; };
 		7CA9455D1EAAFB52002AA1E1 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA9455C1EAAFB52002AA1E1 /* MainTabBarViewController.m */; };
 		7CC14DE41EB9E929008B32ED /* app.jingyingheika.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 7CC14DE31EB9E929008B32ED /* app.jingyingheika.com.cer */; };
 		7CC47CF21EA9AD0B006FBB53 /* SubviewWithCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC47CF11EA9AD0B006FBB53 /* SubviewWithCollectionView.m */; };
@@ -96,9 +117,22 @@
 		7CC801A21EAC8744005B52A9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC801A11EAC8744005B52A9 /* LoginViewController.m */; };
 		7CC801A51EAC8A7E005B52A9 /* LoginTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC801A41EAC8A7E005B52A9 /* LoginTableViewCell.m */; };
 		7CC801A91EACAD53005B52A9 /* HttpHomePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC801A81EACAD53005B52A9 /* HttpHomePage.m */; };
+		7CD68FA21ED3CF1900A3AD3E /* PayManagerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD68FA11ED3CF1900A3AD3E /* PayManagerHelper.m */; };
+		7CD68FA51ED3E26E00A3AD3E /* DisableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD68FA41ED3E26E00A3AD3E /* DisableTextField.m */; };
+		7CD68FA81ED439E000A3AD3E /* ModifyPayPasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD68FA71ED439E000A3AD3E /* ModifyPayPasswordTableViewController.m */; };
+		7CD68FAB1ED44D9700A3AD3E /* ModifyCardPasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD68FAA1ED44D9700A3AD3E /* ModifyCardPasswordTableViewController.m */; };
 		7CE70DCC1EA79F00003772F1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE70DCB1EA79F00003772F1 /* main.m */; };
 		7CE70DCF1EA79F00003772F1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE70DCE1EA79F00003772F1 /* AppDelegate.m */; };
 		7CE70DD21EA79F00003772F1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE70DD11EA79F00003772F1 /* ViewController.m */; };
+		7CF8437C1ED569DF0032C9E1 /* PurchaseHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF8437B1ED569DF0032C9E1 /* PurchaseHistoryModel.m */; };
+		A616F0D31ED85E37004EAA42 /* EliteLifeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A616F0D21ED85E37004EAA42 /* EliteLifeTableViewCell.m */; };
+		A616F0D61ED85EB2004EAA42 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A616F0D51ED85EB2004EAA42 /* CommentViewController.m */; };
+		A62D5F081ED94E840023E6C2 /* EliteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D5F071ED94E840023E6C2 /* EliteDetailViewController.m */; };
+		A62D5F0B1ED950800023E6C2 /* CardTribeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D5F0A1ED950800023E6C2 /* CardTribeDetailViewController.m */; };
+		A62D5F111ED950EB0023E6C2 /* CardDetailBottomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D5F101ED950EB0023E6C2 /* CardDetailBottomTableViewCell.m */; };
+		A62D5F141ED9510C0023E6C2 /* CardDetailTopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D5F131ED9510C0023E6C2 /* CardDetailTopTableViewCell.m */; };
+		A62D5F171EDBC7140023E6C2 /* EliteDetailTopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D5F161EDBC7140023E6C2 /* EliteDetailTopTableViewCell.m */; };
+		A659F81F1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A659F81E1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.m */; };
 		A6F46A0D1ED7C6D200D5C212 /* UIImage+ALinExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F46A0C1ED7C6D200D5C212 /* UIImage+ALinExtension.m */; };
 		A6F46A101ED811AB00D5C212 /* MomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F46A0F1ED811AB00D5C212 /* MomentViewController.m */; };
 		A6FAC2211ED6B18C002CB042 /* UIView+XJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC2201ED6B18C002CB042 /* UIView+XJExtension.m */; };
@@ -221,6 +255,14 @@
 		7C25A8381EA8B62B0049234E /* UIView+SimpleFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SimpleFrame.m"; sourceTree = "<group>"; };
 		7C25A83D1EA8C1E10049234E /* WaiterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaiterModel.h; sourceTree = "<group>"; };
 		7C25A83E1EA8C1E10049234E /* WaiterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaiterModel.m; sourceTree = "<group>"; };
+		7C26ADBC1ED6B2B800E32E87 /* CustomAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAlertController.h; sourceTree = "<group>"; };
+		7C26ADBD1ED6B2B800E32E87 /* CustomAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAlertController.m; sourceTree = "<group>"; };
+		7C26ADBF1ED6D92700E32E87 /* UpLoadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpLoadModel.h; sourceTree = "<group>"; };
+		7C26ADC01ED6D92700E32E87 /* UpLoadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpLoadModel.m; sourceTree = "<group>"; };
+		7C26ADC31ED6DBD500E32E87 /* ImageProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageProvider.h; sourceTree = "<group>"; };
+		7C26ADC41ED6DBD500E32E87 /* ImageProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageProvider.m; sourceTree = "<group>"; };
+		7C26ADC61ED6DBD500E32E87 /* VPImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPImageCropperViewController.h; sourceTree = "<group>"; };
+		7C26ADC71ED6DBD500E32E87 /* VPImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPImageCropperViewController.m; sourceTree = "<group>"; };
 		7C3324821EB307730065B5C3 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		7C3324831EB307730065B5C3 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		7C3324851EB31B8B0065B5C3 /* ChatTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTools.h; sourceTree = "<group>"; };
@@ -257,6 +299,35 @@
 		7C8488741EAB53490001EC82 /* RegisterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTableViewController.m; sourceTree = "<group>"; };
 		7C8488761EAB61F30001EC82 /* CALayer+LayerColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+LayerColor.h"; sourceTree = "<group>"; };
 		7C8488771EAB61F30001EC82 /* CALayer+LayerColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+LayerColor.m"; sourceTree = "<group>"; };
+		7C8E787C1ED175B6000CADAA /* UserSetInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetInfoTableViewController.h; sourceTree = "<group>"; };
+		7C8E787D1ED175B6000CADAA /* UserSetInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSetInfoTableViewController.m; sourceTree = "<group>"; };
+		7C8E787F1ED18888000CADAA /* MyPurseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPurseTableViewController.h; sourceTree = "<group>"; };
+		7C8E78801ED18888000CADAA /* MyPurseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPurseTableViewController.m; sourceTree = "<group>"; };
+		7C8E78821ED18F32000CADAA /* MyPurseDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPurseDetailTableViewController.h; sourceTree = "<group>"; };
+		7C8E78831ED18F32000CADAA /* MyPurseDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPurseDetailTableViewController.m; sourceTree = "<group>"; };
+		7C8E78851ED18FAE000CADAA /* MyPurseDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPurseDetailCell.h; sourceTree = "<group>"; };
+		7C8E78861ED18FAE000CADAA /* MyPurseDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPurseDetailCell.m; sourceTree = "<group>"; };
+		7C8E78881ED193D8000CADAA /* ShoppingListLogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListLogCell.h; sourceTree = "<group>"; };
+		7C8E78891ED193D8000CADAA /* ShoppingListLogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListLogCell.m; sourceTree = "<group>"; };
+		7C8E788B1ED195A4000CADAA /* ShoppingListLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListLogViewController.h; sourceTree = "<group>"; };
+		7C8E788C1ED195A4000CADAA /* ShoppingListLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListLogViewController.m; sourceTree = "<group>"; };
+		7C8E788E1ED198E0000CADAA /* ShoppingDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingDetailTableViewController.h; sourceTree = "<group>"; };
+		7C8E788F1ED198E0000CADAA /* ShoppingDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingDetailTableViewController.m; sourceTree = "<group>"; };
+		7C8E78911ED19F88000CADAA /* SetPasswordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPasswordTableViewController.h; sourceTree = "<group>"; };
+		7C8E78921ED19F88000CADAA /* SetPasswordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPasswordTableViewController.m; sourceTree = "<group>"; };
+		7C8E78941ED19FA8000CADAA /* RechargeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeTableViewController.h; sourceTree = "<group>"; };
+		7C8E78951ED19FA8000CADAA /* RechargeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeTableViewController.m; sourceTree = "<group>"; };
+		7C8E78971ED27F80000CADAA /* PayPasswordTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPasswordTextField.h; sourceTree = "<group>"; };
+		7C8E78981ED27F80000CADAA /* PayPasswordTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPasswordTextField.m; sourceTree = "<group>"; };
+		7C8E789A1ED29CD1000CADAA /* SetPayPasswordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPayPasswordTableViewController.h; sourceTree = "<group>"; };
+		7C8E789B1ED29CD1000CADAA /* SetPayPasswordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPayPasswordTableViewController.m; sourceTree = "<group>"; };
+		7C8E789E1ED2E5A0000CADAA /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		7C8E789F1ED2E5A0000CADAA /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		7C8E78A21ED2E5E6000CADAA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		7C8E78A41ED2E602000CADAA /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		7C8E78A61ED2EB22000CADAA /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		7C8E78A81ED2EBDD000CADAA /* ALiPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALiPay.m; sourceTree = "<group>"; };
+		7C8E78A91ED2EBDD000CADAA /* ALiPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALiPay.h; sourceTree = "<group>"; };
 		7CA9455B1EAAFB52002AA1E1 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		7CA9455C1EAAFB52002AA1E1 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		7CC14DE31EB9E929008B32ED /* app.jingyingheika.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = app.jingyingheika.com.cer; sourceTree = "<group>"; };
@@ -283,6 +354,14 @@
 		7CC801A61EACAB6C005B52A9 /* HomePageAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageAPI.h; sourceTree = "<group>"; };
 		7CC801A71EACAD53005B52A9 /* HttpHomePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHomePage.h; sourceTree = "<group>"; };
 		7CC801A81EACAD53005B52A9 /* HttpHomePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHomePage.m; sourceTree = "<group>"; };
+		7CD68FA01ED3CF1900A3AD3E /* PayManagerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayManagerHelper.h; sourceTree = "<group>"; };
+		7CD68FA11ED3CF1900A3AD3E /* PayManagerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayManagerHelper.m; sourceTree = "<group>"; };
+		7CD68FA31ED3E26E00A3AD3E /* DisableTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisableTextField.h; sourceTree = "<group>"; };
+		7CD68FA41ED3E26E00A3AD3E /* DisableTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisableTextField.m; sourceTree = "<group>"; };
+		7CD68FA61ED439E000A3AD3E /* ModifyPayPasswordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPayPasswordTableViewController.h; sourceTree = "<group>"; };
+		7CD68FA71ED439E000A3AD3E /* ModifyPayPasswordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPayPasswordTableViewController.m; sourceTree = "<group>"; };
+		7CD68FA91ED44D9700A3AD3E /* ModifyCardPasswordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyCardPasswordTableViewController.h; sourceTree = "<group>"; };
+		7CD68FAA1ED44D9700A3AD3E /* ModifyCardPasswordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyCardPasswordTableViewController.m; sourceTree = "<group>"; };
 		7CE70DC71EA79F00003772F1 /* BlackCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE70DCB1EA79F00003772F1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7CE70DCD1EA79F00003772F1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -290,6 +369,24 @@
 		7CE70DD01EA79F00003772F1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		7CE70DD11EA79F00003772F1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7CE70DDB1EA79F00003772F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CF8437A1ED569DF0032C9E1 /* PurchaseHistoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseHistoryModel.h; sourceTree = "<group>"; };
+		7CF8437B1ED569DF0032C9E1 /* PurchaseHistoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseHistoryModel.m; sourceTree = "<group>"; };
+		A616F0D11ED85E37004EAA42 /* EliteLifeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EliteLifeTableViewCell.h; sourceTree = "<group>"; };
+		A616F0D21ED85E37004EAA42 /* EliteLifeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EliteLifeTableViewCell.m; sourceTree = "<group>"; };
+		A616F0D41ED85EB2004EAA42 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		A616F0D51ED85EB2004EAA42 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		A62D5F061ED94E840023E6C2 /* EliteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EliteDetailViewController.h; sourceTree = "<group>"; };
+		A62D5F071ED94E840023E6C2 /* EliteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EliteDetailViewController.m; sourceTree = "<group>"; };
+		A62D5F091ED950800023E6C2 /* CardTribeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTribeDetailViewController.h; sourceTree = "<group>"; };
+		A62D5F0A1ED950800023E6C2 /* CardTribeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTribeDetailViewController.m; sourceTree = "<group>"; };
+		A62D5F0F1ED950EB0023E6C2 /* CardDetailBottomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailBottomTableViewCell.h; sourceTree = "<group>"; };
+		A62D5F101ED950EB0023E6C2 /* CardDetailBottomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailBottomTableViewCell.m; sourceTree = "<group>"; };
+		A62D5F121ED9510C0023E6C2 /* CardDetailTopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailTopTableViewCell.h; sourceTree = "<group>"; };
+		A62D5F131ED9510C0023E6C2 /* CardDetailTopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailTopTableViewCell.m; sourceTree = "<group>"; };
+		A62D5F151EDBC7140023E6C2 /* EliteDetailTopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EliteDetailTopTableViewCell.h; sourceTree = "<group>"; };
+		A62D5F161EDBC7140023E6C2 /* EliteDetailTopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EliteDetailTopTableViewCell.m; sourceTree = "<group>"; };
+		A659F81D1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTribeDetailTabelViewController.h; sourceTree = "<group>"; };
+		A659F81E1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTribeDetailTabelViewController.m; sourceTree = "<group>"; };
 		A6F46A0B1ED7C6D200D5C212 /* UIImage+ALinExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ALinExtension.h"; sourceTree = "<group>"; };
 		A6F46A0C1ED7C6D200D5C212 /* UIImage+ALinExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ALinExtension.m"; sourceTree = "<group>"; };
 		A6F46A0E1ED811AB00D5C212 /* MomentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentViewController.h; sourceTree = "<group>"; };
@@ -316,7 +413,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C8E78A71ED2EB22000CADAA /* CoreMotion.framework in Frameworks */,
+				7C8E78A51ED2E602000CADAA /* libz.tbd in Frameworks */,
+				7C8E78A31ED2E5E6000CADAA /* libc++.tbd in Frameworks */,
 				7C25A8311EA897380049234E /* libstdc++.tbd in Frameworks */,
+				7C8E78A11ED2E5A0000CADAA /* AlipaySDK.framework in Frameworks */,
 				7C25A7A21EA869CB0049234E /* OEZCommSDK.framework in Frameworks */,
 				7C71835F1EAF1BD400B40BCB /* libWeChatSDK.a in Frameworks */,
 				516F79148534BDDE1D7B2E06 /* libPods-BlackCard.a in Frameworks */,
@@ -433,6 +534,7 @@
 		7C25A78C1EA8677A0049234E /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				7C26ADC21ED6DBD500E32E87 /* OnePhoto */,
 				7C3324831EB307730065B5C3 /* WebViewController.h */,
 				7C3324821EB307730065B5C3 /* WebViewController.m */,
 				7C25A81F1EA88E2C0049234E /* UIAlertCustomViewController.h */,
@@ -448,6 +550,12 @@
 			children = (
 				7C25A82B1EA8944B0049234E /* SendVerifyCodeButton.h */,
 				7C25A82C1EA8944B0049234E /* SendVerifyCodeButton.m */,
+				7C26ADBC1ED6B2B800E32E87 /* CustomAlertController.h */,
+				7C26ADBD1ED6B2B800E32E87 /* CustomAlertController.m */,
+				7C8E78971ED27F80000CADAA /* PayPasswordTextField.h */,
+				7C8E78981ED27F80000CADAA /* PayPasswordTextField.m */,
+				7CD68FA31ED3E26E00A3AD3E /* DisableTextField.h */,
+				7CD68FA41ED3E26E00A3AD3E /* DisableTextField.m */,
 				7C25A80D1EA887F70049234E /* BaseCollectionViewCell.h */,
 				7C25A80E1EA887F70049234E /* BaseCollectionViewCell.m */,
 				7C25A80F1EA887F70049234E /* BaseTableViewHScrollCell.h */,
@@ -483,6 +591,7 @@
 		7C25A78F1EA8677A0049234E /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7C8E789D1ED2E5A0000CADAA /* AliPay */,
 				7C71835B1EAF1BD400B40BCB /* WX */,
 			);
 			path = Library;
@@ -504,6 +613,10 @@
 			children = (
 				7C7183681EAF1EFC00B40BCB /* PayModel.h */,
 				7C7183671EAF1EFC00B40BCB /* PayModel.m */,
+				7C26ADBF1ED6D92700E32E87 /* UpLoadModel.h */,
+				7C26ADC01ED6D92700E32E87 /* UpLoadModel.m */,
+				7CF8437A1ED569DF0032C9E1 /* PurchaseHistoryModel.h */,
+				7CF8437B1ED569DF0032C9E1 /* PurchaseHistoryModel.m */,
 				7C7183691EAF1EFC00B40BCB /* PayHelperModel.m */,
 				7C71836A1EAF1EFC00B40BCB /* PayHelperModel.h */,
 				7C25A81C1EA88D380049234E /* MyAndUserModel.h */,
@@ -648,6 +761,25 @@
 			path = MyAndUserPage;
 			sourceTree = "<group>";
 		};
+		7C26ADC21ED6DBD500E32E87 /* OnePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				7C26ADC31ED6DBD500E32E87 /* ImageProvider.h */,
+				7C26ADC41ED6DBD500E32E87 /* ImageProvider.m */,
+				7C26ADC51ED6DBD500E32E87 /* VPImageCropper */,
+			);
+			path = OnePhoto;
+			sourceTree = "<group>";
+		};
+		7C26ADC51ED6DBD500E32E87 /* VPImageCropper */ = {
+			isa = PBXGroup;
+			children = (
+				7C26ADC61ED6DBD500E32E87 /* VPImageCropperViewController.h */,
+				7C26ADC71ED6DBD500E32E87 /* VPImageCropperViewController.m */,
+			);
+			path = VPImageCropper;
+			sourceTree = "<group>";
+		};
 		7C71835B1EAF1BD400B40BCB /* WX */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,10 +793,14 @@
 		7C7183601EAF1C5600B40BCB /* PayHelper */ = {
 			isa = PBXGroup;
 			children = (
+				7C8E78A91ED2EBDD000CADAA /* ALiPay.h */,
+				7C8E78A81ED2EBDD000CADAA /* ALiPay.m */,
 				7C7183611EAF1C5600B40BCB /* PayHelper.h */,
 				7C7183621EAF1C5600B40BCB /* PayHelper.m */,
 				7C7183631EAF1C5600B40BCB /* WXPay.h */,
 				7C7183641EAF1C5600B40BCB /* WXPay.m */,
+				7CD68FA01ED3CF1900A3AD3E /* PayManagerHelper.h */,
+				7CD68FA11ED3CF1900A3AD3E /* PayManagerHelper.m */,
 			);
 			path = PayHelper;
 			sourceTree = "<group>";
@@ -686,6 +822,26 @@
 				7C71836E1EAF2CD100B40BCB /* ResetPasswordTableViewController.m */,
 				7CC801A01EAC8744005B52A9 /* LoginViewController.h */,
 				7CC801A11EAC8744005B52A9 /* LoginViewController.m */,
+				7C8E787C1ED175B6000CADAA /* UserSetInfoTableViewController.h */,
+				7C8E787D1ED175B6000CADAA /* UserSetInfoTableViewController.m */,
+				7C8E787F1ED18888000CADAA /* MyPurseTableViewController.h */,
+				7C8E78821ED18F32000CADAA /* MyPurseDetailTableViewController.h */,
+				7C8E78801ED18888000CADAA /* MyPurseTableViewController.m */,
+				7C8E78831ED18F32000CADAA /* MyPurseDetailTableViewController.m */,
+				7C8E788B1ED195A4000CADAA /* ShoppingListLogViewController.h */,
+				7C8E788C1ED195A4000CADAA /* ShoppingListLogViewController.m */,
+				7C8E788E1ED198E0000CADAA /* ShoppingDetailTableViewController.h */,
+				7C8E788F1ED198E0000CADAA /* ShoppingDetailTableViewController.m */,
+				7C8E78911ED19F88000CADAA /* SetPasswordTableViewController.h */,
+				7C8E78921ED19F88000CADAA /* SetPasswordTableViewController.m */,
+				7C8E78941ED19FA8000CADAA /* RechargeTableViewController.h */,
+				7C8E78951ED19FA8000CADAA /* RechargeTableViewController.m */,
+				7C8E789A1ED29CD1000CADAA /* SetPayPasswordTableViewController.h */,
+				7C8E789B1ED29CD1000CADAA /* SetPayPasswordTableViewController.m */,
+				7CD68FA61ED439E000A3AD3E /* ModifyPayPasswordTableViewController.h */,
+				7CD68FA71ED439E000A3AD3E /* ModifyPayPasswordTableViewController.m */,
+				7CD68FA91ED44D9700A3AD3E /* ModifyCardPasswordTableViewController.h */,
+				7CD68FAA1ED44D9700A3AD3E /* ModifyCardPasswordTableViewController.m */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -705,8 +861,21 @@
 				7C388FE91EADD4CD008023CA /* RegisterCardCell.h */,
 				7C388FEA1EADD4CD008023CA /* RegisterCardCell.m */,
 				7C388FEC1EADD7F4008023CA /* RegisterCardHScollCell.xib */,
+				7C8E78851ED18FAE000CADAA /* MyPurseDetailCell.h */,
+				7C8E78861ED18FAE000CADAA /* MyPurseDetailCell.m */,
+				7C8E78881ED193D8000CADAA /* ShoppingListLogCell.h */,
+				7C8E78891ED193D8000CADAA /* ShoppingListLogCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7C8E789D1ED2E5A0000CADAA /* AliPay */ = {
+			isa = PBXGroup;
+			children = (
+				7C8E789E1ED2E5A0000CADAA /* AlipaySDK.bundle */,
+				7C8E789F1ED2E5A0000CADAA /* AlipaySDK.framework */,
+			);
+			path = AliPay;
 			sourceTree = "<group>";
 		};
 		7CC47CEF1EA9ACD8006FBB53 /* View */ = {
@@ -819,6 +988,14 @@
 				A6FAC2351ED6DAAF002CB042 /* CEOThinkingViewController.m */,
 				A6F46A0E1ED811AB00D5C212 /* MomentViewController.h */,
 				A6F46A0F1ED811AB00D5C212 /* MomentViewController.m */,
+				A616F0D41ED85EB2004EAA42 /* CommentViewController.h */,
+				A616F0D51ED85EB2004EAA42 /* CommentViewController.m */,
+				A62D5F061ED94E840023E6C2 /* EliteDetailViewController.h */,
+				A62D5F071ED94E840023E6C2 /* EliteDetailViewController.m */,
+				A62D5F091ED950800023E6C2 /* CardTribeDetailViewController.h */,
+				A62D5F0A1ED950800023E6C2 /* CardTribeDetailViewController.m */,
+				A659F81D1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.h */,
+				A659F81E1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.m */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -828,6 +1005,14 @@
 			children = (
 				A6FAC2371ED6E1A4002CB042 /* CardTribeTableViewCell.h */,
 				A6FAC2381ED6E1A4002CB042 /* CardTribeTableViewCell.m */,
+				A616F0D11ED85E37004EAA42 /* EliteLifeTableViewCell.h */,
+				A616F0D21ED85E37004EAA42 /* EliteLifeTableViewCell.m */,
+				A62D5F0F1ED950EB0023E6C2 /* CardDetailBottomTableViewCell.h */,
+				A62D5F101ED950EB0023E6C2 /* CardDetailBottomTableViewCell.m */,
+				A62D5F121ED9510C0023E6C2 /* CardDetailTopTableViewCell.h */,
+				A62D5F131ED9510C0023E6C2 /* CardDetailTopTableViewCell.m */,
+				A62D5F151EDBC7140023E6C2 /* EliteDetailTopTableViewCell.h */,
+				A62D5F161EDBC7140023E6C2 /* EliteDetailTopTableViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -835,6 +1020,9 @@
 		B3E26985AF0BADBBE494E5D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C8E78A61ED2EB22000CADAA /* CoreMotion.framework */,
+				7C8E78A41ED2E602000CADAA /* libz.tbd */,
+				7C8E78A21ED2E5E6000CADAA /* libc++.tbd */,
 				7C25A8301EA897380049234E /* libstdc++.tbd */,
 				7C25A82E1EA896970049234E /* libstdc++.6.0.9.tbd */,
 				26852388F36C0BF8472372E2 /* libPods-BlackCard.a */,
@@ -905,6 +1093,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CC14DE41EB9E929008B32ED /* app.jingyingheika.com.cer in Resources */,
+				7C8E78A01ED2E5A0000CADAA /* AlipaySDK.bundle in Resources */,
 				7C25A79F1EA8677A0049234E /* Images.xcassets in Resources */,
 				7C25A79D1EA8677A0049234E /* LaunchScreen.storyboard in Resources */,
 				7C25A80C1EA886E50049234E /* EveryNoneView.xib in Resources */,
@@ -984,36 +1173,51 @@
 				7C25A7E01EA86A3D0049234E /* BaseRefreshPageCollectionViewController.m in Sources */,
 				7C25A7EA1EA86A3D0049234E /* BaseCustomTableViewController.m in Sources */,
 				A6FAC22D1ED6D96E002CB042 /* TribeViewController.m in Sources */,
+				A62D5F0B1ED950800023E6C2 /* CardTribeDetailViewController.m in Sources */,
 				A6FAC2301ED6D9A6002CB042 /* CardTribeViewController.m in Sources */,
+				7C8E78901ED198E1000CADAA /* ShoppingDetailTableViewController.m in Sources */,
+				7C8E78AA1ED2EBDD000CADAA /* ALiPay.m in Sources */,
+				7C8E78871ED18FAE000CADAA /* MyPurseDetailCell.m in Sources */,
+				7C8E789C1ED29CD1000CADAA /* SetPayPasswordTableViewController.m in Sources */,
+				7C8E788A1ED193D8000CADAA /* ShoppingListLogCell.m in Sources */,
 				7C25A7DD1EA86A3D0049234E /* BaseCollectionViewController.m in Sources */,
 				7C25A7F91EA883B00049234E /* UINavigationController+Category.m in Sources */,
 				A6F46A0D1ED7C6D200D5C212 /* UIImage+ALinExtension.m in Sources */,
 				7C25A82A1EA893AE0049234E /* ValidateHelper.m in Sources */,
+				7CD68FAB1ED44D9700A3AD3E /* ModifyCardPasswordTableViewController.m in Sources */,
+				7CD68FA21ED3CF1900A3AD3E /* PayManagerHelper.m in Sources */,
 				7C8488721EAB4E790001EC82 /* RegisterCollectionViewCell.m in Sources */,
 				7C25A8211EA88E2C0049234E /* UIAlertCustomViewController.m in Sources */,
 				7C25A7F01EA86A3D0049234E /* BaseViewController.m in Sources */,
 				7C18F03B1EB20592008D247C /* WaiterViewController.m in Sources */,
+				A62D5F111ED950EB0023E6C2 /* CardDetailBottomTableViewCell.m in Sources */,
 				7C25A7E81EA86A3D0049234E /* BaseRequestTableViewController.m in Sources */,
 				A6FAC2331ED6DA04002CB042 /* EliteLifeViewController.m in Sources */,
+				A62D5F141ED9510C0023E6C2 /* CardDetailTopTableViewCell.m in Sources */,
 				7CC801A51EAC8A7E005B52A9 /* LoginTableViewCell.m in Sources */,
 				A6FAC2241ED6C16C002CB042 /* TribeModel.m in Sources */,
 				7C33248A1EB329FD0065B5C3 /* ChtaNavigationController.m in Sources */,
 				7C84886C1EAB4D9B0001EC82 /* MyAndUserTableViewController.m in Sources */,
+				7C26ADC11ED6D92700E32E87 /* UpLoadModel.m in Sources */,
 				7CE70DD21EA79F00003772F1 /* ViewController.m in Sources */,
 				7C25A7E61EA86A3D0049234E /* BaseRefreshPageTableViewController.m in Sources */,
 				7C25A7F51EA86B100049234E /* UIViewController+Category.m in Sources */,
 				7C18F0351EB1BEC0008D247C /* ResetPayTableViewController.m in Sources */,
 				7C25A8021EA886210049234E /* UIViewController+LoadMoreViewController.m in Sources */,
 				7C25A7D91EA86A3D0049234E /* BaseController.m in Sources */,
+				7C26ADC91ED6DBD500E32E87 /* VPImageCropperViewController.m in Sources */,
 				7C25A7ED1EA86A3D0049234E /* BaseRefreshPageCustomTableViewController.m in Sources */,
 				A6F46A101ED811AB00D5C212 /* MomentViewController.m in Sources */,
 				7C25A79C1EA8677A0049234E /* BlackCard_const.m in Sources */,
 				7C25A83F1EA8C1E10049234E /* WaiterModel.m in Sources */,
 				7C25A81E1EA88D380049234E /* MyAndUserModel.m in Sources */,
 				7C25A8261EA88EBF0049234E /* CurrentUserActionHelper.m in Sources */,
+				7CF8437C1ED569DF0032C9E1 /* PurchaseHistoryModel.m in Sources */,
+				A62D5F081ED94E840023E6C2 /* EliteDetailViewController.m in Sources */,
 				7C25A82D1EA8944B0049234E /* SendVerifyCodeButton.m in Sources */,
 				7C71836F1EAF2CD100B40BCB /* ResetPasswordTableViewController.m in Sources */,
 				7CC47CFF1EA9B2F8006FBB53 /* HomePageTableViewController.m in Sources */,
+				7C8E78811ED18888000CADAA /* MyPurseTableViewController.m in Sources */,
 				7C25A8391EA8B62B0049234E /* UIView+SimpleFrame.m in Sources */,
 				7C388FF01EADF300008023CA /* WriteaApplicationTableViewController.m in Sources */,
 				7C18F0301EB03E2A008D247C /* CustomPickView.m in Sources */,
@@ -1026,32 +1230,45 @@
 				7C71836B1EAF1EFC00B40BCB /* PayModel.m in Sources */,
 				7CA9455D1EAAFB52002AA1E1 /* MainTabBarViewController.m in Sources */,
 				7C8488751EAB53490001EC82 /* RegisterTableViewController.m in Sources */,
+				A62D5F171EDBC7140023E6C2 /* EliteDetailTopTableViewCell.m in Sources */,
 				7C25A7FF1EA885A80049234E /* NSString+Category.m in Sources */,
 				7C84886F1EAB4DD50001EC82 /* RegisterWithCollectionView.m in Sources */,
 				7C25A8121EA887F70049234E /* BaseTableViewHScrollCell.m in Sources */,
 				7C25A7E21EA86A3D0049234E /* BaseRefreshCustomCollectionViewController.m in Sources */,
+				7C26ADC81ED6DBD500E32E87 /* ImageProvider.m in Sources */,
+				7C8E78961ED19FA8000CADAA /* RechargeTableViewController.m in Sources */,
 				7C25A8061EA886340049234E /* LoadMoreView.m in Sources */,
 				7C25A8181EA88A6C0049234E /* AppNavigationController.m in Sources */,
 				7C388FEB1EADD4CD008023CA /* RegisterCardCell.m in Sources */,
+				A616F0D61ED85EB2004EAA42 /* CommentViewController.m in Sources */,
 				7C25A8111EA887F70049234E /* BaseCollectionViewCell.m in Sources */,
+				7C8E78931ED19F88000CADAA /* SetPasswordTableViewController.m in Sources */,
+				7CD68FA81ED439E000A3AD3E /* ModifyPayPasswordTableViewController.m in Sources */,
+				A659F81F1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.m in Sources */,
 				7C25A7EF1EA86A3D0049234E /* BaseRequestViewController.m in Sources */,
 				7CC47CFB1EA9B2D4006FBB53 /* ShowYourNeedPageView.m in Sources */,
 				7C25A7F61EA86B100049234E /* UIViewController+RefreshViewController.m in Sources */,
 				7CC801A21EAC8744005B52A9 /* LoginViewController.m in Sources */,
 				7C25A7EB1EA86A3D0049234E /* BaseRefreshCustomTableViewController.m in Sources */,
+				7C8E78841ED18F32000CADAA /* MyPurseDetailTableViewController.m in Sources */,
 				7C25A7DE1EA86A3D0049234E /* BaseRefreshCollectionViewController.m in Sources */,
 				A6FAC2211ED6B18C002CB042 /* UIView+XJExtension.m in Sources */,
+				7C26ADBE1ED6B2B800E32E87 /* CustomAlertController.m in Sources */,
+				7C8E787E1ED175B6000CADAA /* UserSetInfoTableViewController.m in Sources */,
 				7C3324841EB307730065B5C3 /* WebViewController.m in Sources */,
 				7C25A7E51EA86A3D0049234E /* BaseRefreshListTableViewController.m in Sources */,
 				7C7183661EAF1C5600B40BCB /* WXPay.m in Sources */,
 				7C25A7E71EA86A3D0049234E /* BaseRefreshTableViewController.m in Sources */,
 				7C71836C1EAF1EFC00B40BCB /* PayHelperModel.m in Sources */,
+				A616F0D31ED85E37004EAA42 /* EliteLifeTableViewCell.m in Sources */,
 				7CC8019F1EAC578C005B52A9 /* HttpMyAndUser.m in Sources */,
 				7C25A8151EA8887F0049234E /* UIViewController+ActionCategory.m in Sources */,
 				7C3324871EB31B8B0065B5C3 /* ChatTools.m in Sources */,
 				7C71835A1EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m in Sources */,
 				7CC8019A1EAC577F005B52A9 /* AppAPIHelper.m in Sources */,
 				7C18F02D1EB039AE008D247C /* AreaModel.m in Sources */,
+				7CD68FA51ED3E26E00A3AD3E /* DisableTextField.m in Sources */,
+				7C8E78991ED27F80000CADAA /* PayPasswordTextField.m in Sources */,
 				7CC47CF21EA9AD0B006FBB53 /* SubviewWithCollectionView.m in Sources */,
 				7CE70DCF1EA79F00003772F1 /* AppDelegate.m in Sources */,
 				7CC47CF81EA9B1AB006FBB53 /* HomePageModel.m in Sources */,
@@ -1059,6 +1276,7 @@
 				7C25A7DA1EA86A3D0049234E /* BaseHttpAPI.m in Sources */,
 				7C25A7E31EA86A3D0049234E /* BaseRefreshListCustomCollectionViewController.m in Sources */,
 				7C25A7EE1EA86A3D0049234E /* BasePhoneVerifyCodeTableViewController.m in Sources */,
+				7C8E788D1ED195A4000CADAA /* ShoppingListLogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1180,6 +1398,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BlackCard/Frameworks",
+					"$(PROJECT_DIR)/BlackCard/Library/AliPay",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BlackCard/Marco/BlackCard_prefix.pch";
 				INFOPLIST_FILE = BlackCard/Info.plist;
@@ -1209,6 +1428,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BlackCard/Frameworks",
+					"$(PROJECT_DIR)/BlackCard/Library/AliPay",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BlackCard/Marco/BlackCard_prefix.pch";
 				INFOPLIST_FILE = BlackCard/Info.plist;

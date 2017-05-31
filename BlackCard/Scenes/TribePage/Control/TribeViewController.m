@@ -18,6 +18,7 @@
 #import "CEOThinkingViewController.h"
 #import "UIView+XJExtension.h"
 #import "MomentViewController.h"
+#import "CommentViewController.h"
 
 static NSString * const ID = @"CELL";
 @interface TribeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
@@ -49,7 +50,7 @@ static NSString * const ID = @"CELL";
     [self setupAllChildViewController];
     
     [self setupAllTitle];
-    
+    self.navigationController.navigationBar.hidden=YES;
     // 不添加额外滚动区域
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -124,7 +125,7 @@ static NSString * const ID = @"CELL";
 }
 #pragma mark - 发布此刻心情
 -(void)momentClicked{
-    MomentViewController *mvc=[[MomentViewController alloc] init];
+    CommentViewController *mvc=[[CommentViewController alloc] init];
     
     [self presentViewController:mvc animated:NO completion:nil];
 }

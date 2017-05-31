@@ -74,10 +74,10 @@
     item1.image = [[UIImage imageNamed:@"tabbarWaiterNone"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     item2.selectedImage = [[UIImage imageNamed:@"tabbarMySel"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
-    item2.image = [[UIImage imageNamed:@"tabbarMyNone"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    item2.image = [[UIImage imageNamed:@"tabbarMySel-1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    item3.selectedImage = [[UIImage imageNamed:@"tabbarBalckCardSel"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
-    item3.image = [[UIImage imageNamed:@"tabbarBalckCardNone"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    item3.selectedImage = [[UIImage imageNamed:@"tabbarTribeSel"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
+    item3.image = [[UIImage imageNamed:@"tabbarTribeNon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UIColor *titleHighlightedColor = kUIColorWithRGB(0x070707);
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: titleHighlightedColor,NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];

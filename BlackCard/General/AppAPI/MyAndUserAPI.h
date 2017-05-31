@@ -75,6 +75,16 @@
  *  @param errorBlock <#errorBlock description#>
  */
 - (void)repassword:(NSString *)password cardNum:(NSString *)cardNum verifyCode:(NSString *)code andCodeToken:(NSString *)codeToken complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+/**
+ *  修改密码
+ *
+ *  @param oldPass   旧密码
+ *  @param pass      新密码
+ *  @param complete   <#complete description#>
+ *  @param errorBlock <#errorBlock description#>
+ */
+
+- (void)repasswordOldPassword:(NSString *)oldPass andNewPassword:(NSString *)pass complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 
 
 - (void)sendBlackCardVerifyCode:(NSString *)code complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
@@ -89,6 +99,56 @@
  */
 
 - (void)sendVerifyCode:(NSString *)code andType:(NSString *)type complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+- (void)checkVerifyCode:(NSString *)code phone:(NSString *)phone token:(NSString *)token  andType:(NSString *)type  complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+
+
+- (void)changePayPassword:(NSString *)password  phone:(NSString *)phone codeToken:(NSString *)token  phoneCode:(NSString *)phoneCode  complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+
+/**
+ *  充值余额
+ *
+ *  @param payType     支付类型 (1:微信 2:支付宝)
+ *  @param money       支付金额
+ *  @param complete   成功block
+ *  @param error      失败block
+ */
+- (void)rechargeMoneyWithPayType:(NSInteger )payType andMoney:(NSString *)money complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+
+/**
+ *  零钱明细
+ *
+ *  @param page       页码
+ *  @param complete   成功block
+ *  @param error      失败block
+ */
+
+- (void)getMyPurseDetailWihtPage:(NSInteger)page complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+/**
+ *  交易明细
+ *
+ *  @param page       页码
+ *  @param complete   成功block
+ *  @param error      失败block
+ */
+- (void)getUserShoppingListWihtPage:(NSInteger)page complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+- (void)getUserBlanceComplete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+
+- (void)getUserDetailComplete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+
+- (void)doChangeUserDetail:(NSDictionary *)dic complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+- (void)doUpLoadUserHeaderIcon:(NSData *)data  complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+
+-(void)doLog:(NSDictionary *)dic complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 
 /**
  *  意见反馈
@@ -125,8 +185,12 @@
  *  @param errorBlock    <#errorBlock description#>
  */
 - (void)userBandWith:(UserBandModel *)userBandModel withComplete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
-
-
-
-
+//获取消息列表
+- (void)getTribeListWihtPage:(NSInteger)page complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+//发表评论
+-(void)postTribeCommentTribeMessageId:(NSString *)tribeMessageId message:(NSString *)message  complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+//获取评论列表
+- (void)getTribeCommentListWihtPage:(NSInteger)page tribeMessageId:(NSString *)tribeMessageId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+//点赞
+-(void)postTribePraiseTribeMessageId:(NSString *)tribeMessageId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 @end

@@ -9,7 +9,7 @@
 #import "ConfirmApplicationTableViewController.h"
 #import "HomePageModel.h"
 #import "PayModel.h"
-#import "WXPay.h"
+#import "PayManagerHelper.h"
 #define kButtonRePayAction 999
 
 @interface ConfirmApplicationTableViewController ()<PayHelperDelegate>
@@ -23,15 +23,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *payMoneyLabel;
 @property (strong,nonatomic)NSDictionary *tokenDic;
 @property(strong,nonatomic)RegisterModel *model;
+
+@property(strong,nonatomic)NSMutableDictionary *logDic;
+
 @end
 
 @implementation ConfirmApplicationTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [WXPay shared].delegate = self;
     [self buttonSetting];
     [self contentFillSetting];
+    [[PayManagerHelper shared] setDelegate:self];
 }
 
 
@@ -96,7 +99,7 @@
         [weakSelf showError:error];
 
         if (error.code == 10017) {
-            [self lastPayWihtPush];
+            [weakSelf lastPayWihtPush];
             
         }
         
@@ -114,7 +117,8 @@
     
     [[AppAPIHelper shared].getMyAndUserAPI registerWithPay:dic complete:^(PayInfoModel *model) {
         [weakSelf hiddenProgress];
-        [[WXPay shared] payWithWXModel:model.wxPayInfo];
+        [[PayManagerHelper shared].wxPay payWithWXModel:model.wxPayInfo];
+         weakSelf.logDic =[@{@"event" : @"register_pay",@"amount" : @(model.payTotalPrice),@"payType":@(model.payType),@"tradeNo":model.tradeNo} mutableCopy];
         
     } error:^(NSError *error) {
         [weakSelf showError:error];
@@ -133,7 +137,7 @@
 
 
 - (void)payHelperWithType:(PayType)type withPayStatus:(PayStatus)payStatus withData:(id)data {
-    
+    [self LogPayStatus:payStatus withData:data];
     switch (payStatus) {
         case PayError: {  //支付失败
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付失败" message:@"请重新支付" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
@@ -160,24 +164,12 @@
             [self payButtonSetting];
         }
             break;
-        case PayHandle:{ //处理中
-            APPLOG(@"处理中");
-            
-        }
-            break;
+
     }
 
 }
 
-- (void)payStart {
-    
-}
 
-- (void)payError:(NSString *)error {
-    
-    [self showTips:error];
-    [self payButtonSetting];
-}
 
 - (void)lastPayWihtPush {
     
@@ -199,5 +191,15 @@
     
 }
 
+- (void)LogPayStatus:(PayStatus)payStatus withData:(id)data{
+    
+    NSString *returnCode = payStatus == PayOK ? @"0" : @"2";
+    returnCode =  payStatus == PayCancel ?  @"1" : returnCode;
+    NSString *memo = [data isKindOfClass:[NSString  class]] ? data : @"";
+    [self.logDic setObject:returnCode forKey:@"returnCode"];
+    [self.logDic setObject:memo forKey:@"returnMsg"];
+    [[AppAPIHelper shared].getMyAndUserAPI doLog:self.logDic complete:nil error:nil];
+    self.logDic = nil;
+}
 
 @end

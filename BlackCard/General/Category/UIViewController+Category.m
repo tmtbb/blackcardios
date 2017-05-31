@@ -118,11 +118,12 @@ static char *CustomNavigationBarKey = "CustomNavigationBarKey";
         [self performSelector:@selector(tokenExpired)];
     }
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"账号在别处登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录", nil];
+    WEAKSELF
     [alertView showWithCompleteBlock:^(NSInteger buttonIndex) {
         if (buttonIndex != alertView.cancelButtonIndex) {
             //                [self pushMainStoryboardViewControllerIdentifier:@"LoginTableViewController" checkLogin:NO block:nil];
-            if (![self.view.window.rootViewController isMemberOfClass:NSClassFromString(@"LoginViewController")]) {
-                [self setMainRootViewController:@"LoginViewController"];
+            if (![weakSelf.view.window.rootViewController isMemberOfClass:NSClassFromString(@"LoginViewController")]) {
+                [weakSelf setMainRootViewController:@"LoginViewController"];
             }
             
         }

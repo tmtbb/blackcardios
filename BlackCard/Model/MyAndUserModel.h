@@ -26,40 +26,42 @@
 
 
 
+@end
 
 
 
 
 
-/**
- *  预加参数  动态入口数组
- */
-//@property (nonatomic, strong) NSMutableArray *insertObjectArrays;
+@interface UserDetailModel : OEZModel
+
+@property(copy,nonatomic)NSString  *blackCardNo; //黑卡卡号
+
+@property(copy,nonatomic)NSString  *position;      //职务
+@property(copy,nonatomic)NSString  *phoneNum;      //手机号
+@property(copy,nonatomic)NSString  *sex;           //性别
+@property(copy,nonatomic)NSString  *email;         //email
+@property(copy,nonatomic)NSString  *nickName;      //呢称
+@property(copy,nonatomic)NSString  *headUrl;       //头像
+@property(copy,nonatomic)NSString  *company;       //公司
+@property(copy,nonatomic)NSString  *identityCard;  //身份证
+@property(copy,nonatomic)NSString  *fullName;      //真实姓名
+
 
 @end
 
-/**
-// *  账户余额明细
-// */
-//@interface  MyAccountModel: OEZModel
-//@property (nonatomic, strong)NSString *source;
-///**
-// *  变动金额
-// */
-//@property (nonatomic, strong) NSString *money;
-///**
-// *  变动时间
-// */
-//@property (nonatomic, strong) NSString *createTime;
-//@end
-//
-//@interface MySettingCheckVersion : OEZModel
-//@property (nonatomic, strong) NSString *version;
-//@property (nonatomic, strong) NSString *url;
-//@property (nonatomic, strong) NSString *intro;
-//@property (nonatomic, strong) NSString *must;
-//@property (nonatomic, strong) NSString *rcgStatus;
-//@end
+
+@interface CheckPayPasswordModel : OEZModel
+
+@property(copy,nonatomic)NSString  *phoneNum;      //手机号
+@property(copy,nonatomic)NSString  *codeToken;      //验证码token
+@property(copy,nonatomic)NSString  *phoneCode;      //验证码
+@property(copy,nonatomic)NSString  *codeType;      //4:修改支付密码
+
+@end
+
+
+
+
 //
 ///**
 // *  第三方登陆 所需参数
@@ -73,36 +75,5 @@
 @property (nonatomic, strong) NSString *appType;
 @property (nonatomic, strong) NSString *unionid;
 @end
-//
-//
-//@interface AdvertisementPopupModel : OEZModel
-//@property (nonatomic, strong) NSString *img;
-//@property (copy,nonatomic)NSString *url;
-//@property (copy,nonatomic)NSString *advertisementId;
-//@end
-//
-//
-//@interface BaseMenuModel: OEZModel
-//@property (nonatomic, copy) NSString *name;
-//@property (nonatomic, copy) NSString *icon;
-//@property (nonatomic)NSInteger tag;
-//@end
-//
-//@interface LocalMenuModel : BaseMenuModel
-//@property (nonatomic, copy)  NSString *isShare;
-//+ (instancetype)menuName:(NSString *)name icon:(NSString *)icon tag:(NSInteger)tag;
-//@end
-//
-//@interface LocalMenuMessageModel : LocalMenuModel
-//
-//@property (nonatomic,copy)NSString *num;
-//@end
-//
-//@interface CustommenuListModel: BaseMenuModel
-//@property (nonatomic, copy)  NSString *jumpType; //(1:app内部，2：外部)
-//
-//@property (nonatomic, strong) NSString *menuId;
-//@property (nonatomic, strong) NSString *jumpUrl;
-//@property (nonatomic, strong) NSString *subTitle;
-//@end
+
 

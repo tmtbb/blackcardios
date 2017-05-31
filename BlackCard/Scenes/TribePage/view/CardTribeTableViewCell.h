@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "TribeModel.h"
 #import "UIImage+ALinExtension.h"
+@class CardTribeTableViewCell;
+@protocol CardTribeCellDelegate<NSObject>
+-(void)praise:(CardTribeTableViewCell *)cell;
+-(void)comment:(CardTribeTableViewCell *)cell;
+-(void)more:(CardTribeTableViewCell *)cell;
+@end
 
 @interface CardTribeTableViewCell : UITableViewCell
 
+@property(assign,nonatomic)id <CardTribeCellDelegate>delegate;
 @property(strong,nonatomic)UIImageView *headerImageView;
 @property(strong,nonatomic)UIImageView *levelImageView;
 @property(strong,nonatomic)UILabel *nameLabel;
@@ -28,3 +35,4 @@
 @property(strong,nonatomic)UIView *whiteView;
 @property(strong,nonatomic)TribeModel *model;
 @end
+

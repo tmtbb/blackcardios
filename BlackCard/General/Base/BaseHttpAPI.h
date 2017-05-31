@@ -33,6 +33,8 @@ typedef void (^ErrorBlock)(NSError* error);
  *  @param error            失败block
  */
 - (void)uploadFiles:(NSString *)path parameters:(NSDictionary *)parameters fileDataArray:(NSArray *)fileDataArray complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+
 - (void)uploadFiles:(NSString *)path parameters:(NSDictionary *)parameters fileDataDict:(NSDictionary *)fileDataDict complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 /**
  *  追加token
@@ -85,6 +87,8 @@ typedef void (^ErrorBlock)(NSError* error);
 
 
 -(void) getReqeust:(NSString*) url parameters:(NSDictionary *)parameters complete:(CompleteBlock) complete error:(ErrorBlock)error;
+
++ (NSString *)localSignWithParameters:(NSDictionary *)parameters;
 +(NSString*) requestSign:(NSString *)method url:(NSString*) url  parameters:(NSDictionary *)parameters;
 +(NSString*) getRequestSign:(NSString*) url parameters:(NSMutableDictionary*) parameters;
 -(void) didError:(NSInteger) errorCode strError:(NSString*) strError error:(ErrorBlock)error;

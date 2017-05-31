@@ -30,6 +30,10 @@
     
     return [WXPayModel class];
 }
++ (Class)aliPayInfoModelClass {
+    
+    return [AliPayModel class];
+}
 
 @end
 
@@ -44,6 +48,13 @@
     
     
 }
+
+
+
+@end
+
+@implementation AliPayModel
+
 
 
 @end
