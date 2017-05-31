@@ -22,7 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setUserSetting];
     
     [self update:[CurrentUserHelper shared].myAndUserModel];
@@ -48,7 +47,8 @@
 }
 
 - (void)update:(MyAndUserModel *)model {
-    [self.userIconButton sd_setImageWithURL:[NSURL URLWithString:model.headpic] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"userHeaderDefault"]];
+    [self.userIconButton sd_setBackgroundImageWithURL:[NSURL URLWithString:model.headpic] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"userHeaderDefault"]];
+
     self.userNameLabel.text = model.username;
     self.userLevelLabel.text = model.blackCardName;
     self.userMoneyLabel.text = [NSString stringWithFormat:@"%.2f",model.blackcardCreditline];
@@ -99,6 +99,8 @@
             case 2:
             case 4:{
                 [self showTips:@"敬请期待"];
+                [self pushStoryboardViewControllerIdentifier:@"OrderDetailViewController" block:nil];
+                
             }
                 break;
             case 1:{
@@ -133,11 +135,18 @@
     
     
 }
+- (IBAction)headerButtonAction:(UIButton *)sender {
+    WEAKSELF
+    [self pushStoryboardViewControllerIdentifier:@"UserSetInfoTableViewController" block:^(UIViewController *viewController) {
+        [viewController setValue:weakSelf forKey:@"delegate"];
+    }];
+    
+}
 
 - (void)saveUserInformation:(id )data {
     if (data != nil && [data isKindOfClass:[UIImage class]]) {
         
-        [self.userIconButton setImage:data forState:UIControlStateNormal];
+        [self.userIconButton setBackgroundImage:data forState:UIControlStateNormal];
     }
     
     

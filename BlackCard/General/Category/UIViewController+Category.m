@@ -63,12 +63,14 @@ static char *CustomNavigationBarKey = "CustomNavigationBarKey";
             //                stringError = @"网络不给力，请稍后再试";
             //            }
             //#endif
-            
+            stringError = [NSString isEmpty:stringError] ? @"服务出错了!" : stringError;
             
             
         }
             break;
     }
+    
+    
     
     [self showTips:stringError afterDelay:1.5];
     

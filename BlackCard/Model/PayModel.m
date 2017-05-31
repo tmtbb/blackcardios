@@ -58,3 +58,9 @@
 
 
 @end
+
+@implementation DefaultModel
+
+
+
+@end

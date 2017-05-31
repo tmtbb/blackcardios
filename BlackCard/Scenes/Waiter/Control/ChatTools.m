@@ -22,8 +22,8 @@
     
     QYSessionViewController *sessionViewController = [[QYSDK sharedSDK] sessionViewController];
     //设置聊天头像
-//    [[QYSDK sharedSDK] customUIConfig].customerHeadImageUrl = @"http://cnews.chinadaily.com.cn/img/attachement/jpg/site1/20170314/a41f726b573a1a31f26554.jpg";
-    
+    [[QYSDK sharedSDK] customUIConfig].customerHeadImageUrl = [[CurrentUserHelper shared] userLogoImage];
+    [[QYSDK sharedSDK]customUIConfig].rightBarButtonItemColorBlackOrWhite = NO;
     
     
     sessionViewController.sessionTitle = title ? title : @"管家";
