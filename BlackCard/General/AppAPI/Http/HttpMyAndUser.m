@@ -10,6 +10,7 @@
 #import "MyAndUserModel.h"
 #import "PayModel.h"
 #import "PurchaseHistoryModel.h"
+#import "TribeModel.h"
 //#import "UIAlertView+Block.h"
 
 
@@ -222,6 +223,45 @@
     
 }
 
+- (void)getTribeListWihtPage:(NSInteger)page complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:@(page) forKey:@"page"];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postModelsRequest:kHttpAPIUrl_tribeList parameters:parameters modelClass:[TribeModel class] complete:complete error:errorBlock];
+    }
+    
+}
+-(void)postTribePraiseTribeMessageId:(NSString *)tribeMessageId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock{
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:tribeMessageId forKey:@"tribeMessageId"];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postRequest:kHttpAPIUrl_tribeLikeAdd parameters:parameters complete:complete error:errorBlock];
+    }
+}
+-(void)deletePostTribePraiseTribeMessageId:(NSString *)tribeMessageId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock{
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:tribeMessageId forKey:@"tribeMessageId"];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postRequest:kHttpAPIUrl_tribeLikeDel parameters:parameters complete:complete error:errorBlock];
+    }
+}
+- (void)getTribeCommentListWihtPage:(NSInteger)page tribeMessageId:(NSString *)tribeMessageId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock{
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:@(page) forKey:@"page"];
+    [parameters setObject:tribeMessageId forKey:@"tribeMessageId"];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postModelsRequest:kHttpAPIUrl_tribeCommentList parameters:parameters modelClass:[CommentListModel class] complete:complete error:errorBlock];
+    }
+}
+-(void)postTribeCommentTribeMessageId:(NSString *)tribeMessageId message:(NSString *)message  complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock{
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:tribeMessageId forKey:@"tribeMessageId"];
+    [parameters setObject:message forKey:@"comment"];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+    [self postRequest:kHttpAPIUrl_tribeComment parameters:parameters complete:complete error:errorBlock];
+    }
+    
+}
 - (void)getUserBlanceComplete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
     
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
@@ -263,7 +303,13 @@
     
 }
 
-
+-(void)postMessageWithMessage:(NSString *)message imageArray:(NSArray *)imageArray complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock{
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setValue:message forKey:@"message"];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self uploadFiles:kHttpAPIUrl_tribeAdd parameters:parameters fileDataArray:imageArray complete:complete error:errorBlock];
+    }
+}
 
 - (void)doLog:(NSDictionary *)dic complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:dic];
