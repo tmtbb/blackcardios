@@ -71,6 +71,8 @@
 
 #define kHttpAPIUrl_log   kHttpAPIUrl_HOST@"/api/sys/log.josn"
 
+#define kHttpAPIUrl_waiterServiceDetail   kHttpAPIUrl_HOST@"/api/butlerservice/info.json"
+#define kHttpAPIUrl_waiterPay   kHttpAPIUrl_HOST@"/api/butlerservice/pay.json"
 
 #define kHttpAPIUrl_resetPassword         kHttpAPIUrl_HOST@"/api/blackcard/repassword.json"
 #define kHttpAPIUrl_userAgreement         kHttpAPIUrl_HOST@"/api/static/UserAgreement.html"

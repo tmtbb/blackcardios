@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ALiPay.h"
 #import "WXPay.h"
-
+#import "DefaultPay.h"
 @interface PayManagerHelper : NSObject<OEZHelperProtocol>
 
 
@@ -21,5 +21,5 @@
 
 - (WXPay *)wxPay;
 
-
+- (DefaultPay *)defaultPay;
 @end

@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *identityCell;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *changeButton;
+@property (weak, nonatomic) IBOutlet UIView *myFootView;
 
 @property(strong,nonatomic)UIImage *theNewIcon;
 
@@ -50,7 +51,7 @@
     self.changeButton.enabled = NO;
   
     
-
+    _myFootView.hidden = YES;
 }
 
 
@@ -62,6 +63,7 @@
 - (void)didRequestComplete:(UserDetailModel *)data {
     
     _model = data;
+    _myFootView.hidden = NO;
     _changeButton.title = nil;
     _changeButton.enabled = NO;
     [self userInformationSetting];
@@ -165,6 +167,13 @@
     [_identityCell.layer addSublayer:cellLayer];
     
     
+    
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return _model ? [super numberOfSectionsInTableView:tableView] : 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

@@ -13,6 +13,7 @@
 
 @property(strong,nonatomic)ALiPay *alipay;
 @property(strong,nonatomic)WXPay *wxpay;
+@property(strong,nonatomic)DefaultPay *defaultPay;
 @property(weak,nonatomic)id<PayHelperDelegate> delegate;
 @property(nonatomic)BOOL isLazyDelegate;
 
@@ -53,6 +54,14 @@ HELPER_SHARED(PayManagerHelper)
     return _wxpay;
 }
 
+- (DefaultPay *)defaultPay {
+    if (_defaultPay == nil) {
+        _defaultPay = [[DefaultPay alloc]init];
+        _defaultPay.delegate = self;
+        
+    }
+    return _defaultPay;
+}
 
 
 
@@ -97,9 +106,13 @@ HELPER_SHARED(PayManagerHelper)
 
         }
             break;
-        case PayUFO:{ //处理中
-            title = @"提示";
-            message = data;
+        default:{ //处理中
+            if ([data isKindOfClass:[NSString class]]) {
+                message = data;
+            }
+            title = @"支付出错";
+            
+            
 
         }
             break;

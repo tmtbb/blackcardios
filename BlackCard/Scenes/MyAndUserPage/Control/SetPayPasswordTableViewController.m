@@ -74,7 +74,7 @@
         [self showLoader:@"设置中..."];
         [[AppAPIHelper shared].getMyAndUserAPI changePayPassword:_password phone:_model.phoneNum codeToken:_model.codeToken phoneCode:_model.phoneCode complete:^(id data) {
             [weakSelf showTips:@"设置成功"];
-            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+            [weakSelf popViewController];
         } error:^(NSError *error) {
             [weakSelf showError:error];
         }];
@@ -107,14 +107,20 @@
 
 - (void)popViewController{
    __block BOOL isFind = NO;
-    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    WEAKSELF
+    
+    [self.navigationController.viewControllers enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        if ([obj isMemberOfClass:NSClassFromString(@"SetPasswordTableViewController")]) {
-            [self.navigationController  popToViewController:obj animated:YES];
+        
+        if ([obj isMemberOfClass:NSClassFromString(@"ModifyPayPasswordTableViewController")]) {
+            UIViewController *control = weakSelf.navigationController.viewControllers[idx - 1];
+            [weakSelf.navigationController  popToViewController:control animated:YES];
             isFind = YES;
             *stop = YES;
         }
+
     }];
+    
     if (!isFind) {
       [self.navigationController popToRootViewControllerAnimated:YES];
     }

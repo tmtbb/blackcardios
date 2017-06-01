@@ -7,7 +7,23 @@
 //
 
 #import "WaiterModel.h"
-
+#import "NSString+Category.h"
 @implementation WaiterModel
+
+@end
+
+@implementation WaiterServiceMDetailModel
+
++(NSDictionary *)jsonKeysByPropertyKey
+{
+    return @{
+             
+             };
+}
+
+
+- (NSString *)createTime {
+    return  [NSString convertStrToTime:_createTime];
+}
 
 @end

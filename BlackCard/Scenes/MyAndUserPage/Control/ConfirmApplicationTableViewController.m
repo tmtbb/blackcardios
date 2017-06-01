@@ -164,6 +164,15 @@
             [self payButtonSetting];
         }
             break;
+        default:{
+            if ([data isKindOfClass:[NSString class]]) {
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付出错" message:data delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                [self payButtonSetting];
+            }
+            
+        }
+            break;
 
     }
 
