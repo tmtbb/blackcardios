@@ -8,6 +8,7 @@
 //#import "UIAlertView+Block.h"
 #import "UINavigationController+Category.h"
 #import "UIViewController+ActionCategory.h"
+#import "CustomAlertController.h"
 //#import "LoginChooseView.h"
 //#import "NoServerView.h"
 //#import "UIAlertCustomViewController.h"
@@ -47,6 +48,20 @@ static char *CustomNavigationBarKey = "CustomNavigationBarKey";
             
         }
             return;
+        case 10020:{
+            CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"提示" message:@"您尚未设置支付密码,是否立即设置" preferredStyle:UIAlertControllerStyleAlert cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
+            WEAKSELF
+            [alert didClickedButtonWithHandler:^(UIAlertAction * _Nullable action, NSInteger buttonIndex) {
+                if (action.style != UIAlertActionStyleCancel) {
+                    
+                    [weakSelf pushStoryboardViewControllerIdentifier:@"ModifyPayPasswordTableViewController" block:nil];
+                }
+                
+            }];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        }
+            break;
         case 10001:
         case 10003:
         case 10004:{

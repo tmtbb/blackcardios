@@ -11,7 +11,8 @@
 #import "PayManagerHelper.h"
 #import <QYSDK.h>
 #import <AlipaySDK/AlipaySDK.h>
-@interface AppDelegate ()
+#import "GuideViewController.h"
+@interface AppDelegate ()<GuideViewControllerDelegate>
 
 @end
 
@@ -25,32 +26,16 @@
     [[QYSDK sharedSDK] registerAppId:KQiYuAppKey appName:KQiYuAppName];
     [[AppAPIHelper shared].getMyAndUserAPI getDeviceKeyWithComplete:nil withError:nil];
     [self registerUserNotificationSettings];
-//    [self getDeviceKey];
+    [self getDeviceKey];
+    [self guidePageView];
     return YES;
 }
 
 - (void)getDeviceKey {
-    OEZKeychainItemWrapper* keychain = [[OEZKeychainItemWrapper alloc] initWithIdentifier:kAppDevice_key accessGroup:nil];
-   NSString  *device_key = [keychain objectForKey:CFBridgingRelease(kSecAttrAccount)];
-    if( [NSString isEmpty:device_key] ) {
-        
-        [[AppAPIHelper shared].getMyAndUserAPI getRegisterDeviceWithComplete:^(id data) {
-            NSString *key = data[@"deviceKey"];
-            NSString *keyid = [NSString stringWithFormat:@"%@",data[@"deviceKeyId"]];
-            if (key && data[@"deviceKeyId"] != nil ) {
-                [keychain setObject:key forKey:CFBridgingRelease(kSecAttrAccount)];
-                OEZKeychainItemWrapper* keyidchain = [[OEZKeychainItemWrapper alloc] initWithIdentifier:kAppDevice_keyid accessGroup:nil];
-                [keyidchain setObject:keyid forKey:CFBridgingRelease(kSecAttrAccount)];
-                
-            }
-            
-        } withError:^(NSError *error) {
-            
-        
-        }];
-        
-    }
     
+    
+    [[AppAPIHelper shared].getMyAndUserAPI getDeviceKeyWithComplete:nil withError:nil];
+   
     
 }
 - (BOOL)application:(UIApplication *)application
@@ -150,6 +135,35 @@
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     }
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+}
+
+
+- (void) guidePageView {//引导页
+    
+    if (kMainScreenHeight <= 480) {
+        return;
+    }
+    
+    
+    NSUserDefaults *fistInstallation = [NSUserDefaults standardUserDefaults];
+    NSString *first = [fistInstallation  valueForKey:@"fistInstallation"];
+    if (![first isEqualToString:kAppVersion]) {
+        GuideViewController  *controller = [[GuideViewController alloc]init];
+        controller.delegate= self;
+        self.window.rootViewController = controller;
+        [fistInstallation setObject:kAppVersion forKey:@"fistInstallation"];
+    }
+}
+
+- (void)guideViewClose {
+    
+    NSString *storyboardName = @"Main";
+    NSString *identifier = @"LoginViewController";
+    UIStoryboard *storyboard= [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
+    UIViewController *gpVC = [storyboard instantiateViewControllerWithIdentifier:identifier];
+    UIWindow *window =[UIApplication sharedApplication].keyWindow;
+    window.rootViewController = gpVC;
+    
 }
 
 

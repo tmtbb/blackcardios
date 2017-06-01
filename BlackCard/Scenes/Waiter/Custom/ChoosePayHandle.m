@@ -14,7 +14,6 @@
 @property(strong,nonatomic)ChoosePayTypeView *payTypeView;
 @property(weak,nonatomic)UIViewController *controller;
 @property(strong,nonatomic)WaiterServiceMDetailModel *model;
-@property(strong,nonatomic)NSMutableDictionary *logDic;
 @end
 @implementation ChoosePayHandle
 
@@ -52,6 +51,13 @@
 - (void)handleShow {
     if (self.payTypeView.superview == nil) {
          [_controller.view.window addSubview:self.payTypeView];
+        WEAKSELF
+        [[AppAPIHelper shared].getMyAndUserAPI getUserBlanceComplete:^(id data) {
+            NSString *money = [NSString stringWithFormat:@"%.2f",[data[@"balance"] doubleValue]];
+            [weakSelf.payTypeView update:money];
+            
+        } error:nil];
+        
     }
 }
 
@@ -65,7 +71,7 @@
         }
             break;
         case ChoosePayTypeViewStatus_ForgetPassword:{
-            
+            [self.payTypeView removeFromSuperview];
             [_controller pushStoryboardViewControllerIdentifier:@"ModifyPayPasswordTableViewController" block:nil];
             
             
@@ -73,7 +79,7 @@
             break;
         case ChoosePayTypeViewStatus_PursePay:{
             [self.payTypeView showKeyboard];
-            
+
         }
             break;
         case ChoosePayTypeViewStatus_AliPay:
@@ -93,10 +99,10 @@
                         break;
                 }
                 
-                weakSelf.logDic =[@{@"event" : @"recharge_pay",
+                [[BlackLogHelper shared] setPayDic: @{@"event" : @"recharge_pay",
                                     @"amount" : @(weakSelf.model.serviceAmount),
                                     @"payType":@(1),
-                                    @"tradeNo":data.tradeNo} mutableCopy];
+                                    @"tradeNo":data.tradeNo}];
                 
                 
             } withError:^(NSError *error) {
@@ -171,15 +177,14 @@
 }
 
 - (void)LogPayStatus:(PayStatus)payStatus withData:(id)data{
-    if (self.logDic) {
-        NSString *returnCode = payStatus == PayOK ? @"0" : @"2";
-        returnCode =  payStatus == PayCancel ?  @"1" : returnCode;
-        NSString *memo = [data isKindOfClass:[NSString  class]] ? data : @"";
-        [self.logDic setObject:returnCode forKey:@"returnCode"];
-        [self.logDic setObject:memo forKey:@"returnMsg"];
-        [[AppAPIHelper shared].getMyAndUserAPI doLog:self.logDic complete:nil error:nil];
-        self.logDic = nil;
-    }
+    
+    
+    NSString *returnCode = payStatus == PayOK ? @"0" : @"2";
+    returnCode =  payStatus == PayCancel ?  @"1" : returnCode;
+    NSString *memo = [data isKindOfClass:[NSString  class]] ? data : @"";
+    
+    [[BlackLogHelper shared] addOtherPayInformationWithPost:@{@"returnCode":returnCode,@"returnMsg":memo}];
+
    
 }
 

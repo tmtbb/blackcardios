@@ -9,12 +9,12 @@
 #import "WaiterViewController.h"
 #import <QYSDK.h>
 #import "ChatTools.h"
-
+#import "ValidateHelper.h"
 
 @interface WaiterViewController ()
 @property(nonatomic)NSInteger isChat;
 @end
-
+static  NSString *OrderReg = @"ydservice\\:\\/\\/app\\.jingyingheika\\.com/service/0/(.+)/pay\\.html";
 @implementation WaiterViewController
 
 - (void)viewDidLoad {
@@ -35,8 +35,9 @@
     
     [ChatTools chatViewControllerWithTitle:nil navigation:self.navigationController];
     _isChat = 1;
-
-    // Do any additional setup after loading the view.
+  
+    
+    [self qyClickHandle];
 }
 
 
@@ -101,19 +102,21 @@
 
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)qyClickHandle {
+    
+    WEAKSELF
+    [QYSDK sharedSDK].customActionConfig.linkClickBlock = ^(NSString *linkAddress) {
+        
+        NSString *orderNum = [[ValidateHelper shared] regularSubStrWithReg:OrderReg useString:linkAddress];
+        if (![NSString isEmpty:orderNum]) {
+            [weakSelf pushStoryboardViewControllerIdentifier:@"OrderDetailViewController" block:^(UIViewController *viewController) {
+                [viewController setValue:orderNum forKey:@"orderNum"];
+            }];
+        }
+    };
+    
+    
+    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

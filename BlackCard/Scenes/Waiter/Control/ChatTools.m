@@ -21,13 +21,15 @@
     source.urlString = @"https://8.163.com/";
     
     QYSessionViewController *sessionViewController = [[QYSDK sharedSDK] sessionViewController];
+    sessionViewController.sessionTitle = title ? title : @"管家";
+    sessionViewController.source = source;
+    
     //设置聊天头像
     [[QYSDK sharedSDK] customUIConfig].customerHeadImageUrl = [[CurrentUserHelper shared] userLogoImage];
     [[QYSDK sharedSDK]customUIConfig].rightBarButtonItemColorBlackOrWhite = NO;
     
     
-    sessionViewController.sessionTitle = title ? title : @"管家";
-    sessionViewController.source = source;
+
     sessionViewController.hidesBottomBarWhenPushed = YES;
     [[QYSDK sharedSDK] customUIConfig].bottomMargin = 0;
 
@@ -134,6 +136,10 @@
     
 }
 
+- (void)customCommodSetting {
+    
+    
+}
 
 
 

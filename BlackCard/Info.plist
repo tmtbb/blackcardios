@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>china</string>
 	<key>CFBundleDisplayName</key>
-	<string>精英黑卡</string>
+	<string>精英管家</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -31,9 +31,18 @@
 			<array>
 				<string>wx9dc39aec13ee3158</string>
 				<string>wx35033533241b997e</string>
-				<string>alipayBlackCard123456</string>
 			</array>
 		</dict>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>alipay</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>alipayBlackCard123456</string>
+            </array>
+        </dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>4</string>

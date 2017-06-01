@@ -77,5 +77,5 @@
 #define kHttpAPIUrl_resetPassword         kHttpAPIUrl_HOST@"/api/blackcard/repassword.json"
 #define kHttpAPIUrl_userAgreement         kHttpAPIUrl_HOST@"/api/static/UserAgreement.html"
 #define kHttpAPIUrl_aboutMe               kHttpAPIUrl_HOST@"/api/static/about.html"
-
+#define kHttpAPIUrl_webCallWaiter         @"http://www.jingyingheika.com/"
 #endif /* HttpHeader_h */

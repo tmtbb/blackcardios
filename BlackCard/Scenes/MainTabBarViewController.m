@@ -9,6 +9,7 @@
 #import "MainTabBarViewController.h"
 #import "WaiterViewController.h"
 #import <QYSDK.h>
+#define kChatIndex  1
 @interface MainTabBarViewController ()<UITabBarControllerDelegate,CurrentUserActionDelegate,QYConversationManagerDelegate>
 
 @end
@@ -29,15 +30,21 @@
     [[QYSDK sharedSDK].conversationManager setDelegate:self];
    
    
+
+   
 }
+
+
+
+
 
 -(void)unReadCount:(NSInteger)count {
   
    if (count == 0) {
-      self.tabBar.items[1].badgeValue = nil;
+      self.tabBar.items[kChatIndex].badgeValue = nil;
    }else {
       
-     self.tabBar.items[1].badgeValue = count > 99 ? @"99+" : @(count).stringValue;
+     self.tabBar.items[kChatIndex].badgeValue = count > 99 ? @"99+" : @(count).stringValue;
    }
    
    
@@ -48,6 +55,7 @@
     
 }
 
+
 - (void)didLogoutSender:(id)sender {
     [[QYSDK sharedSDK]logout:^{
         
@@ -57,7 +65,7 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
     
-    if (tabBarController.selectedIndex == 1) {
+    if (tabBarController.selectedIndex == kChatIndex) {
         
         WaiterViewController *waiter = ((UINavigationController *)viewController).viewControllers.firstObject;
         if (waiter.isViewLoaded) {

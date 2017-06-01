@@ -18,9 +18,9 @@
     
 }
 
-- (void)update:(id)data {
-    
-    
+
+- (void)update:(NSString *)data {
+    self.currentPurseMoneyLabel.text = [NSString stringWithFormat:@"当前可用余额¥%@",data];
 }
 
 

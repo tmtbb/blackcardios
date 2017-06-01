@@ -39,7 +39,8 @@
 
 
 - (void)didRequest {
-    [[AppAPIHelper shared].getWaiterServiceAPI getWaiterServiceDetailWithServiceNum:@"20170427120656023314" Complete:_completeBlock withError:_errorBlock];
+
+    [[AppAPIHelper shared].getWaiterServiceAPI getWaiterServiceDetailWithServiceNum:_orderNum Complete:_completeBlock withError:_errorBlock];
 }
 
 - (void)didRequestComplete:(WaiterServiceMDetailModel *)data {
