@@ -13,9 +13,8 @@
 #import "CardTribeDetailTabelViewController.h"
 #import "CommentViewController.h"
 
-@interface CardTribeDetailViewController ()
+@interface CardTribeDetailViewController ()<sendMymodelDelegate>
 @property(strong,nonatomic)CardTribeDetailTabelViewController *cardTridDetailTableView;
-@property(strong,nonatomic)NSMutableArray *dataArray;
 @end
 
 @implementation CardTribeDetailViewController
@@ -67,27 +66,13 @@
     UIView *myTableView=[[UIView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, kMainScreenHeight-115)];
     [self.view addSubview:myTableView];
     _cardTridDetailTableView=[[CardTribeDetailTabelViewController alloc] init];
+    _cardTridDetailTableView.delegate=self;
     CGRect frame=_cardTridDetailTableView.view.frame;
     frame.size.height=frame.size.height-120;
     _cardTridDetailTableView.myModel=_myModel;
     _cardTridDetailTableView.view.frame=frame;
     [myTableView addSubview:_cardTridDetailTableView.view];
-//    _cardTridDetailTableView.dataSource=self;
-//    _cardTridDetailTableView.delegate=self;
-//    _cardTridDetailTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-    _dataArray=[[NSMutableArray alloc] init];
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//    for (int i=0; i<10; i++)
-//    {
-//        CommentListModel *model=[[CommentListModel alloc] init];
-//        model.name=@"你好你好你好";
-//        model.date=@"2017-05-25";
-//        model.time=@"15:30";
-//        model.comment=@"说的太好了太好了太好了太好了太好了太好了太好了说的太好了太好了太好了太好了太好了太好了太好了说的太好了太好了太好了太好了太好了太好了太好了说的太好了太好了太好了太好了太好了太好了太好了说的太好了太好了太好了太好了太好了太好了太好了";
-//        [_dataArray addObject:model];
-//    }
-//    });
-//    [self.view addSubview:_cardTridDetailTableView];
+
 }
 #pragma mark -设置底部图
 -(void)setupBottomContentView{
@@ -104,6 +89,7 @@
     bottomPraiseBtn.titleLabel.font=[UIFont systemFontOfSize:14];
     [bottomPraiseBtn setTitleColor:kUIColorWithRGB(0x434343) forState:UIControlStateNormal];
     bottomPraiseBtn.titleEdgeInsets=UIEdgeInsetsMake(15, kMainScreenWidth/4-10, 15, kMainScreenWidth/4-25);
+    bottomPraiseBtn.tag=100;
     if (_myModel.isLike==0) {
         [bottomPraiseBtn addTarget:self action:@selector(bottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }else{
@@ -190,25 +176,30 @@
 }
 -(void)bottomPraiseBtnClicked:(UIButton *)sender {
     WEAKSELF
+    sender.userInteractionEnabled=NO;
     TribeModel *model=_myModel;
     [[AppAPIHelper shared].getMyAndUserAPI postTribePraiseTribeMessageId:model.id complete:^(id data) {
         model.likeNum=model.likeNum+1;
         model.isLike=1;
         _myModel=model;
+        sender.userInteractionEnabled=YES;
         [sender removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         [sender addTarget:self action:@selector(deleteBottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [_cardTridDetailTableView.tableView reloadData];
     } error:^(NSError *error) {
         [weakSelf showError:error];
+        sender.userInteractionEnabled=YES;
     }];
 }
 -(void)deleteBottomPraiseBtnClicked:(UIButton *)sender{
     WEAKSELF
+    sender.userInteractionEnabled=NO;
     TribeModel *model=_myModel;
     [[AppAPIHelper shared].getMyAndUserAPI deletePostTribePraiseTribeMessageId:model.id complete:^(id data) {
         model.likeNum=model.likeNum-1;
         _myModel=model;
         model.isLike=0;
+        sender.userInteractionEnabled=YES;
         [sender removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         [sender addTarget:self action:@selector(bottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [_cardTridDetailTableView.tableView reloadData];
@@ -216,7 +207,20 @@
 //        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
     } error:^(NSError *error) {
         [weakSelf showError:error];
+        sender.userInteractionEnabled=YES;
     }];
+}
+#pragma mark -sendMymodelDelegate
+-(void)sendMyModel:(TribeModel *)model{
+    _myModel=model;
+    UIButton *btn=[self.view viewWithTag:100];
+    if (model.isLike==1) {
+        [btn removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(deleteBottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }else{
+        [btn removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(bottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 /*
 #pragma mark - Navigation

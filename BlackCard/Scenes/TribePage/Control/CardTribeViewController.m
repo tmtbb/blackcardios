@@ -52,9 +52,6 @@
     cell.selectionStyle =UITableViewCellSelectionStyleNone;
     return cell;
 }
--(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 10;
-}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CardTribeTableViewCell *cell=(CardTribeTableViewCell*)[self tableView:self.tableView cellForRowAtIndexPath:indexPath];
     return cell.frame.size.height;
@@ -73,16 +70,19 @@
 #pragma mark -CardTribeCellDelegate
 -(void)praise:(CardTribeTableViewCell *)cell{
     WEAKSELF
+    cell.praiseBtn.userInteractionEnabled=NO;
     TribeModel *model=_dataArray[cell.tag];
     [[AppAPIHelper shared].getMyAndUserAPI postTribePraiseTribeMessageId:model.id complete:^(id data) {
         model.likeNum=model.likeNum+1;
         model.isLike=1;
         _dataArray[cell.tag]=model;
+        cell.praiseBtn.userInteractionEnabled=YES;
 //        [_dataArray removeObjectAtIndex:cell.tag];
 //        [_dataArray insertObject:model atIndex:cell.tag];
 //        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
         [self.tableView reloadData];
     } error:^(NSError *error) {
+        cell.praiseBtn.userInteractionEnabled=YES;
         [weakSelf showError:error];
     }];
 }
@@ -94,14 +94,17 @@
 }
 -(void)deletePraise:(CardTribeTableViewCell *)cell{
     WEAKSELF
+    cell.praiseBtn.userInteractionEnabled=NO;
     TribeModel *model=_dataArray[cell.tag];
     [[AppAPIHelper shared].getMyAndUserAPI deletePostTribePraiseTribeMessageId:model.id complete:^(id data) {
         model.likeNum=model.likeNum-1;
+        cell.praiseBtn.userInteractionEnabled=YES;
         model.isLike=0;
         _dataArray[cell.tag]=model;
 //        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
         [self.tableView reloadData];
     } error:^(NSError *error) {
+        cell.praiseBtn.userInteractionEnabled=YES;
         [weakSelf showError:error];
     }];
 }

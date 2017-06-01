@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "BaseRefreshPageTableViewController.h"
 #import "TribeModel.h"
-
+@protocol sendMymodelDelegate <NSObject>
+-(void)sendMyModel:(TribeModel *)model;
+@end
 @interface CardTribeDetailTabelViewController : BaseRefreshPageTableViewController
 @property(strong,nonatomic)TribeModel *myModel;
 @property(strong,nonatomic)NSIndexPath *myIndexPath;
+@property(assign,nonatomic)id <sendMymodelDelegate>delegate;
 @end

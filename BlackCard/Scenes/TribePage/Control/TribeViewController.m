@@ -39,6 +39,7 @@ static NSString * const ID = @"CELL";
 @implementation TribeViewController
 
 - (void)viewDidLoad {
+    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
     [super viewDidLoad];
     // 设置导航条内容
     [self setupNavgationBar];
@@ -80,7 +81,7 @@ static NSString * const ID = @"CELL";
 
 #pragma mark - 设置导航条内容
 - (void)setupNavgationBar {
-    UIView *myTopView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, NavBarHeight)];
+    UIView *myTopView=[[UIView alloc] initWithFrame:CGRectMake(0,0, kMainScreenWidth, NavBarHeight)];
     UIButton *cameraBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     cameraBtn.frame=CGRectMake(kMainScreenWidth-45, 20, 40, 40);
 //    [cameraBtn setBackgroundImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
@@ -91,7 +92,10 @@ static NSString * const ID = @"CELL";
     UIScrollView *topView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 0, kMainScreenWidth-70, NavBarHeight)];
     myTopView.backgroundColor = kUIColorWithRGB(0xFFFFFF);
     _topView = topView;
+    UIView *blackView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 20)];
+    blackView.backgroundColor=[UIColor blackColor];
     [myTopView addSubview:topView];
+    [myTopView addSubview:blackView];
     [myTopView addSubview:cameraBtn];
     [self.view addSubview:myTopView];
 }
@@ -244,7 +248,9 @@ static NSString * const ID = @"CELL";
     
     // 取出对应的子控制器添加到对应cell上
     UIViewController *vc = self.childViewControllers[indexPath.row];
-    
+    CGRect frame=vc.view.frame;
+    frame.size.height=frame.size.height-130;
+    vc.view.frame=frame;
     [cell.contentView addSubview:vc.view];
     
     return cell;
