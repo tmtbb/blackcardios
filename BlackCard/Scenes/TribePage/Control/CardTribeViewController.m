@@ -22,53 +22,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    NSInteger pageIndex=1;
-//    [[AppAPIHelper shared].getMyAndUserAPI getTribeListWihtPage:pageIndex complete:_completeBlock error:_errorBlock];
-//    _cardTribeTabelView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, self.view.frame.size.height-123) style:UITableViewStylePlain];
-//    _cardTribeTabelView.separatorStyle=UITableViewCellSeparatorStyleNone;
-//    _cardTribeTabelView.showsVerticalScrollIndicator=NO;
-//    [self.view addSubview:_cardTribeTabelView];
-//    
-//    _dataArray=[[NSMutableArray alloc] init];
-//    for (int i=0; i<10; i++) {
-//        TribeModel *model=[[TribeModel alloc] init];
-//        model.nickName=@"大王";
-//        model.createTime=10000000;
-//        model.message=@"大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀大家好我是王小琳啊呀你好";
-//        model.likeNum=1000;
-//        model.commentNum=800;
-//        [_dataArray addObject:model];
-//        
-//    }
-//    _cardTribeTabelView.dataSource=self;
-//    _cardTribeTabelView.delegate=self;
+//    [self.tableView registerClass:[CardTribeTableViewCell class] forCellReuseIdentifier:@"CardTribeTableViewCell"];
+//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
 }
 - (void)didRequest:(NSInteger)pageIndex {
     
-    [[AppAPIHelper shared].getMyAndUserAPI getTribeListWihtPage:pageIndex complete:_completeBlock error:_errorBlock];
+        [[AppAPIHelper shared].getMyAndUserAPI getTribeListWihtPage:pageIndex complete:_completeBlock error:_errorBlock];
 }
-
 - (void)didRequestComplete:(id)data {
-    
-    
-    
     [super didRequestComplete:data];
     
 }
-//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//    return 1;
-//}
 //-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 //    return _dataArray.count;
+//}
+//- (NSString *)tableView:(UITableView *)tableView cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"=======================");
+//    
+//    return @"UITableViewCell";
 //}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CardTribeTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"order"];
     if (!cell) {
         cell=[[CardTribeTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"order"];
-        cell.model=_dataArray[indexPath.row];
-        cell.tag=indexPath.row;
-        cell.delegate=self;
     }
+    cell.model=_dataArray[indexPath.row];
+    cell.tag=indexPath.row;
+    cell.delegate=self;
     cell.selectionStyle =UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -95,7 +75,13 @@
     WEAKSELF
     TribeModel *model=_dataArray[cell.tag];
     [[AppAPIHelper shared].getMyAndUserAPI postTribePraiseTribeMessageId:model.id complete:^(id data) {
-        
+        model.likeNum=model.likeNum+1;
+        model.isLike=1;
+        _dataArray[cell.tag]=model;
+//        [_dataArray removeObjectAtIndex:cell.tag];
+//        [_dataArray insertObject:model atIndex:cell.tag];
+//        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
+        [self.tableView reloadData];
     } error:^(NSError *error) {
         [weakSelf showError:error];
     }];
@@ -105,6 +91,19 @@
     CommentViewController *cvc=[[CommentViewController alloc] init];
     cvc.id=model.id;
     [self presentViewController:cvc animated:YES completion:nil];
+}
+-(void)deletePraise:(CardTribeTableViewCell *)cell{
+    WEAKSELF
+    TribeModel *model=_dataArray[cell.tag];
+    [[AppAPIHelper shared].getMyAndUserAPI deletePostTribePraiseTribeMessageId:model.id complete:^(id data) {
+        model.likeNum=model.likeNum-1;
+        model.isLike=0;
+        _dataArray[cell.tag]=model;
+//        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
+        [self.tableView reloadData];
+    } error:^(NSError *error) {
+        [weakSelf showError:error];
+    }];
 }
 /*
 #pragma mark - Navigation

@@ -14,6 +14,7 @@
 -(void)praise:(CardTribeTableViewCell *)cell;
 -(void)comment:(CardTribeTableViewCell *)cell;
 -(void)more:(CardTribeTableViewCell *)cell;
+-(void)deletePraise:(CardTribeTableViewCell *)cell;
 @end
 
 @interface CardTribeTableViewCell : UITableViewCell

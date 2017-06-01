@@ -11,6 +11,10 @@
 #import "CardDetailTopTableViewCell.h"
 #import "CardDetailBottomTableViewCell.h"
 #import "CardTribeViewController.h"
+#import "CommentViewController.h"
+@interface CardTribeDetailTabelViewController ()<CardDetailTopCellDelegate>
+
+@end
 
 @implementation CardTribeDetailTabelViewController
 - (void)viewDidLoad {
@@ -37,7 +41,10 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row==0) {
         CardDetailTopTableViewCell *cell=[[CardDetailTopTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+        _myIndexPath=indexPath;
         cell.model=_myModel;
+        cell.delegate=self;
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         return cell;
     }else{
         static NSString *CellIdentifier = @"commentCell";
@@ -46,6 +53,7 @@
         {
             cell=[[CardDetailBottomTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         }
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         cell.model=_dataArray[indexPath.row-1];
         return cell;
     }
@@ -64,7 +72,39 @@
     }
 
 }
-
+#pragma mark -CardDetailTopCellDelegate
+-(void)praise:(CardDetailTopTableViewCell *)cell{
+    WEAKSELF
+    TribeModel *model=_myModel;
+    [[AppAPIHelper shared].getMyAndUserAPI postTribePraiseTribeMessageId:model.id complete:^(id data) {
+        model.likeNum=model.likeNum+1;
+         model.isLike=1;
+        _myModel=model;
+        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
+        [self.tableView reloadData];
+    } error:^(NSError *error) {
+        [weakSelf showError:error];
+    }];
+}
+-(void)comment:(CardDetailTopTableViewCell *)cell{
+    TribeModel *model=_myModel;
+    CommentViewController *cvc=[[CommentViewController alloc] init];
+    cvc.id=model.id;
+    [self presentViewController:cvc animated:YES completion:nil];
+}
+-(void)deletePraise:(CardDetailTopTableViewCell *)cell{
+    WEAKSELF
+    TribeModel *model=_myModel;
+    [[AppAPIHelper shared].getMyAndUserAPI deletePostTribePraiseTribeMessageId:model.id complete:^(id data) {
+        model.likeNum=model.likeNum-1;
+        model.isLike=0;
+        _myModel=model;
+        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
+        [self.tableView reloadData];
+    } error:^(NSError *error) {
+        [weakSelf showError:error];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

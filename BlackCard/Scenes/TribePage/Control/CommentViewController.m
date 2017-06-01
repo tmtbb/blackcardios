@@ -9,11 +9,13 @@
 #import "CommentViewController.h"
 #import "BaseHttpAPI.h"
 #import "UIViewController+Category.h"
+#import "ImageProvider.h"
 
 @interface CommentViewController ()<UITextViewDelegate>
 @property(strong,nonatomic)UITextView *textView;
 @property(strong,nonatomic)UILabel *placeholderLabel;
 @property(strong,nonatomic)UILabel *countLabel;
+@property(nonatomic, strong)ImageProvider * imageProvider;
 
 @end
 
@@ -35,9 +37,9 @@
     
     //返回按钮
     UIButton *backBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame=CGRectMake(10, 25, 50, 30) ;
+    backBtn.frame=CGRectMake(10, 20, 50, 40) ;
     [backBtn setImage:[UIImage imageNamed:@"icon-back"] forState:UIControlStateNormal];
-    backBtn.imageEdgeInsets = UIEdgeInsetsMake(5, 0, 5, 40);
+    backBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 0, 10, 40);
     [backBtn addTarget:self action:@selector(backBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:backBtn];
     
@@ -91,6 +93,15 @@
 }
 #pragma mark -发布
 -(void)publishBtnClicked {
+    if (_textView.text.length==0)
+    {
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:nil message:@"评论不能为空" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
     WEAKSELF
 
     [[AppAPIHelper shared].getMyAndUserAPI postTribeCommentTribeMessageId:@"89C97C660605430C834DFADFFFA5CFE6" message:_textView.text complete:^(id data) {

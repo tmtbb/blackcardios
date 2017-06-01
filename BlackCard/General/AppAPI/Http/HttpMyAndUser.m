@@ -238,6 +238,13 @@
         [self postRequest:kHttpAPIUrl_tribeLikeAdd parameters:parameters complete:complete error:errorBlock];
     }
 }
+-(void)deletePostTribePraiseTribeMessageId:(NSString *)tribeMessageId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock{
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:tribeMessageId forKey:@"tribeMessageId"];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postRequest:kHttpAPIUrl_tribeLikeDel parameters:parameters complete:complete error:errorBlock];
+    }
+}
 - (void)getTribeCommentListWihtPage:(NSInteger)page tribeMessageId:(NSString *)tribeMessageId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock{
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:@(page) forKey:@"page"];
@@ -296,7 +303,13 @@
     
 }
 
-
+-(void)postMessageWithMessage:(NSString *)message imageArray:(NSArray *)imageArray complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock{
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setValue:message forKey:@"message"];
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self uploadFiles:kHttpAPIUrl_tribeAdd parameters:parameters fileDataArray:imageArray complete:complete error:errorBlock];
+    }
+}
 
 - (void)doLog:(NSDictionary *)dic complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] initWithDictionary:dic];

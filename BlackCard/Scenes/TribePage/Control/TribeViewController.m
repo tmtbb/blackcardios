@@ -62,19 +62,19 @@ static NSString * const ID = @"CELL";
     
     CardTribeViewController *cardVc = [[CardTribeViewController alloc] init];
     cardVc.title = @"卡友部落";
-    cardVc.view.backgroundColor = [UIColor purpleColor];
+    cardVc.view.backgroundColor = kUIColorWithRGB(0xF8F8F8);
     [self addChildViewController:cardVc];
     
     
     EliteLifeViewController *eliteVc = [[EliteLifeViewController alloc] init];
     eliteVc.title = @"精英生活";
-    eliteVc.view.backgroundColor = [UIColor redColor];
+    eliteVc.view.backgroundColor = kUIColorWithRGB(0xF8F8F8);
     [self addChildViewController:eliteVc];
     
     //
     CEOThinkingViewController *ceoVc = [[CEOThinkingViewController alloc] init];
     ceoVc.title = @"总裁思维";
-    ceoVc.view.backgroundColor = [UIColor yellowColor];
+    ceoVc.view.backgroundColor = kUIColorWithRGB(0xF8F8F8);
     [self addChildViewController:ceoVc];
 }
 
@@ -82,8 +82,10 @@ static NSString * const ID = @"CELL";
 - (void)setupNavgationBar {
     UIView *myTopView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, NavBarHeight)];
     UIButton *cameraBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    cameraBtn.frame=CGRectMake(kMainScreenWidth-40, 30, 25, 20);
-    [cameraBtn setBackgroundImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
+    cameraBtn.frame=CGRectMake(kMainScreenWidth-45, 20, 40, 40);
+//    [cameraBtn setBackgroundImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
+    [cameraBtn setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
+    cameraBtn.imageEdgeInsets=UIEdgeInsetsMake(10, 8, 10, 7);
     [cameraBtn addTarget:self action:@selector(momentClicked) forControlEvents:UIControlEventTouchUpInside];
     
     UIScrollView *topView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 0, kMainScreenWidth-70, NavBarHeight)];
@@ -125,9 +127,9 @@ static NSString * const ID = @"CELL";
 }
 #pragma mark - 发布此刻心情
 -(void)momentClicked{
-    CommentViewController *mvc=[[CommentViewController alloc] init];
-    
-    [self presentViewController:mvc animated:NO completion:nil];
+    MomentViewController *mvc=[[MomentViewController alloc] init];
+    mvc.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:mvc animated:YES];
 }
 #pragma mark - 添加标题
 - (void)setupAllTitle{
@@ -195,7 +197,7 @@ static NSString * const ID = @"CELL";
     
     // 创建UICollectionView
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,74, YYScreenW, YYScreenH-123) collectionViewLayout:layout];
-    collectionView.backgroundColor = [UIColor redColor];
+    collectionView.backgroundColor = kUIColorWithRGB(0xF8F8F8);
     [self.view addSubview:collectionView];
     _collectionView = collectionView;
     collectionView.scrollsToTop = NO;

@@ -12,4 +12,5 @@
 
 @interface CardTribeDetailTabelViewController : BaseRefreshPageTableViewController
 @property(strong,nonatomic)TribeModel *myModel;
+@property(strong,nonatomic)NSIndexPath *myIndexPath;
 @end

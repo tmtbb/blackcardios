@@ -52,12 +52,15 @@
         [self.contentView addSubview:_timeLabel];
         [_whiteView addSubview:_titleLabel];
         [_whiteView addSubview:_showImageView];
+        [_praiseBtn addSubview:_praiseLabel];
+        [_commentBtn addSubview:_commentLabel];
+        [_moreBtn addSubview:_moreLabel];
         [_whiteView addSubview:_praiseBtn];
         [_whiteView addSubview:_commentBtn];
         [_whiteView addSubview:_moreBtn];
-        [_whiteView addSubview:_praiseLabel];
-        [_whiteView addSubview:_commentLabel];
-        [_whiteView addSubview:_moreLabel];
+//        [_whiteView addSubview:_praiseLabel];
+//        [_whiteView addSubview:_commentLabel];
+//        [_whiteView addSubview:_moreLabel];
         [self.contentView addSubview:_listTitle];
         [self.contentView addSubview:_underLine];
         [self.contentView addSubview:_whiteView];
@@ -108,24 +111,57 @@
     CGSize maximumLabelSize1 = CGSizeMake(kMainScreenWidth-85, 999);//labelsize的最大值
     CGSize expectSize1 = [_titleLabel sizeThatFits:maximumLabelSize1];
     _titleLabel.frame=CGRectMake(10, 10, kMainScreenWidth-85, expectSize1.height);
-    _titleLabel.backgroundColor=[UIColor redColor];
+//    _titleLabel.backgroundColor=[UIColor redColor];
     
     //图片区域
-    _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, kMainScreenWidth-90, 160);
-    _showImageView.backgroundColor=[UIColor blueColor];
-    
-    for (int i=0; i<2; i++) {
-        UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(i*((kMainScreenWidth-90-10)/2+10), 10, (kMainScreenWidth-90-10)/2, (kMainScreenWidth-90-10)/2)];
-        photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
-        photo.contentMode=UIViewContentModeScaleAspectFit;
-        [_showImageView addSubview:photo];
+    if (model.tribeMessageImgs.count>0)
+    {
+        
+        //        _showImageView.backgroundColor=[UIColor blueColor];
+        if (model.tribeMessageImgs.count<=2)
+        {
+            for (int i=0; i<2; i++) {
+                UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(i*((kMainScreenWidth-90-10)/2+10), 10, (kMainScreenWidth-90-10)/2, (kMainScreenWidth-90-10)/2)];
+                photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
+                photo.contentMode=UIViewContentModeScaleAspectFit;
+                [_showImageView addSubview:photo];
+            }
+            _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, kMainScreenWidth-90, 160);
+        }else{
+            for (int i=0; i<model.tribeMessageImgs.count; i++ ) {
+            int a= i/3;
+            int b= i%3;
+            UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(b*((kMainScreenWidth-90-10)/3+10), a*((kMainScreenWidth-90-10)/3+10), (kMainScreenWidth-90-10)/3, (kMainScreenWidth-90-10)/3)];
+            photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
+            photo.contentMode=UIViewContentModeScaleAspectFit;
+            [_showImageView addSubview:photo];
+            }
+            NSInteger c=model.tribeMessageImgs.count/3;
+               _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, (c+1)*(kMainScreenWidth-90-10)/3+20, 160);
+            
+        }
+        
+        
+        
+    }else{
+        _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, kMainScreenWidth-90,0);
     }
+
     
     //点赞按钮
-    _praiseBtn.frame=CGRectMake(10, _showImageView.frame.size.height+_showImageView.frame.origin.y+10, 15, 15);
-    [_praiseBtn setBackgroundImage:[UIImage imageNamed:@"bottomPraise"] forState:UIControlStateNormal];
+    _praiseBtn.frame=CGRectMake(10, _showImageView.frame.size.height+_showImageView.frame.origin.y+10, 80, 30);
+    [_praiseBtn setImage:[UIImage imageNamed:@"bottomPraise"] forState:UIControlStateNormal];
+    _praiseBtn.imageEdgeInsets=UIEdgeInsetsMake(7, 0, 8, 65);
+    if (model.isLike==0)
+    {
+        [_praiseBtn removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+        [_praiseBtn addTarget:self action:@selector(praiseBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    }else{
+        [_praiseBtn removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+        [_praiseBtn addTarget:self action:@selector(deletePraiseBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    }
     //点赞数目
-    _praiseLabel.frame=CGRectMake(28, _praiseBtn.frame.origin.y, 40, 15);
+    _praiseLabel.frame=CGRectMake(20, 7, 60, 15);
     _praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
     _praiseLabel.font=[UIFont systemFontOfSize:12];
     _praiseLabel.textColor=kUIColorWithRGB(0xA6A6A6);
@@ -133,24 +169,29 @@
     
     
     //评论按钮
-    _commentBtn.frame=CGRectMake(80,_praiseBtn.frame.origin.y, 15, 15);
-    [_commentBtn setBackgroundImage:[UIImage imageNamed:@"bottomComment"] forState:UIControlStateNormal];
+    _commentBtn.frame=CGRectMake(100,_praiseBtn.frame.origin.y, 80, 30);
+    [_commentBtn setImage:[UIImage imageNamed:@"bottomComment"] forState:UIControlStateNormal];
+    _commentBtn.imageEdgeInsets=UIEdgeInsetsMake(7, 0, 8, 65);
+    [_commentBtn addTarget:self action:@selector(commentBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     //评论数目
-    _commentLabel.frame=CGRectMake(98, _praiseBtn.frame.origin.y, 40, 15);
-    _commentLabel.text=[NSString stringWithFormat:@"%d",model.commentNum];
+    _commentLabel.frame=CGRectMake(20,7, 60, 15);
+    _commentLabel.text=[NSString stringWithFormat:@"%d",10000];
     _commentLabel.font=[UIFont systemFontOfSize:12];
     _commentLabel.textColor=kUIColorWithRGB(0xA6A6A6);
     _commentLabel.textAlignment=NSTextAlignmentLeft;
     
     //更多
-    _moreBtn.frame=CGRectMake(kMainScreenWidth-70-60, _praiseBtn.frame.origin.y, 15, 15);
-    [_moreBtn setBackgroundImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
+    _moreBtn.frame=CGRectMake(kMainScreenWidth-70-60, _praiseBtn.frame.origin.y, 80, 30);
+    [_moreBtn setImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
+    _moreBtn.imageEdgeInsets=UIEdgeInsetsMake(7, 0, 8, 65);
+    [_moreBtn addTarget:self action:@selector(moreBtnBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     //更多label
-    _moreLabel.frame=CGRectMake(kMainScreenWidth-70-40, _praiseBtn.frame.origin.y, 30, 15);
+    _moreLabel.frame=CGRectMake(20, 7, 60, 15);
     _moreLabel.text=@"更多";
     _moreLabel.font=[UIFont systemFontOfSize:12];
     _moreLabel.textColor=kUIColorWithRGB(0xA6A6A6);
     _moreLabel.textAlignment=NSTextAlignmentLeft;
+
     
     _whiteView.frame=CGRectMake(50, _timeLabel.frame.size.height+_timeLabel.frame.origin.y+10, kMainScreenWidth-70, _commentBtn.frame.size.height+_commentBtn.frame.origin.y+10);
     //评论标题
@@ -170,7 +211,29 @@
     
 }
 
-- (void)awakeFromNib {
+-(void)praiseBtnClicked{
+    NSLog(@"nihao");
+    if ([_delegate respondsToSelector:@selector(praise:)]) {
+        [_delegate praise:self];
+    }
+}
+-(void)commentBtnClicked{
+    if ([_delegate respondsToSelector:@selector(comment:)]) {
+        [_delegate comment:self];
+    }
+    
+}
+-(void)moreBtnBtnClicked{
+    if ([_delegate respondsToSelector:@selector(more:)]) {
+        [_delegate more:self];
+    }
+}
+-(void)deletePraiseBtnClicked{
+    if ([_delegate respondsToSelector:@selector(deletePraise:)]) {
+        [_delegate deletePraise:self];
+    }
+}
+-(void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }

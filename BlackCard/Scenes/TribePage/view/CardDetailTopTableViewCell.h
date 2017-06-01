@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "TribeModel.h"
 #import "UIImage+ALinExtension.h"
+@class CardDetailTopTableViewCell;
+@protocol CardDetailTopCellDelegate<NSObject>
+-(void)praise:(CardDetailTopTableViewCell *)cell;
+-(void)comment:(CardDetailTopTableViewCell *)cell;
+-(void)more:(CardDetailTopTableViewCell *)cell;
+-(void)deletePraise:(CardDetailTopTableViewCell *)cell;
+@end
 
 @interface CardDetailTopTableViewCell : UITableViewCell
+@property(assign,nonatomic)id <CardDetailTopCellDelegate>delegate;
 @property(strong,nonatomic)UIImageView *headerImageView;
 @property(strong,nonatomic)UIImageView *levelImageView;
 @property(strong,nonatomic)UILabel *nameLabel;

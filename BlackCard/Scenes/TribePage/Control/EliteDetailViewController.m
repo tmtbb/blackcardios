@@ -46,9 +46,9 @@
     
     //返回按钮
     UIButton *backBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame=CGRectMake(10, 25, 50, 30) ;
+    backBtn.frame=CGRectMake(10, 20, 50, 40) ;
     [backBtn setImage:[UIImage imageNamed:@"icon-back"] forState:UIControlStateNormal];
-    backBtn.imageEdgeInsets = UIEdgeInsetsMake(5, 0, 5, 40);
+    backBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 0, 10, 40);
     [backBtn addTarget:self action:@selector(backBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:backBtn];
     

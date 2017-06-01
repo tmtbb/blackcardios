@@ -7,6 +7,8 @@
 //
 
 #import "MomentViewController.h"
+#import "ImageProvider.h"
+#import "CustomAlertController.h"
 
 @interface MomentViewController ()<UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(strong,nonatomic)UITextView *textView;
@@ -16,6 +18,7 @@
 @property(strong,nonatomic)NSMutableArray *imageArray;
 @property(strong,nonatomic)NSArray *myArray;
 @property(strong,nonatomic)NSMutableDictionary *imageDict;
+@property(nonatomic, strong)ImageProvider * imageProvider;
 @end
 
 @implementation MomentViewController
@@ -39,9 +42,9 @@
     
     //返回按钮
     UIButton *backBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame=CGRectMake(10, 25, 50, 30) ;
+    backBtn.frame=CGRectMake(10, 20, 50, 40) ;
     [backBtn setImage:[UIImage imageNamed:@"icon-back"] forState:UIControlStateNormal];
-    backBtn.imageEdgeInsets = UIEdgeInsetsMake(5, 0, 5, 40);
+    backBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 0, 10, 40);
     [backBtn addTarget:self action:@selector(backBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:backBtn];
     
@@ -121,52 +124,99 @@
 }
 #pragma mark -返回
 -(void)backBtnClicked {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark -发布
 -(void)publishBtnClicked {
-    NSLog(@"发布作品");
+    if (_textView.text.length==0&&_imageArray.count==0)
+    {
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:nil message:@"内容和图片不能同时为空" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+
+    WEAKSELF
+    for (NSString *key in _myArray)
+    {
+        if ([_imageDict valueForKey:key] !=nil)
+        {
+            [_imageArray addObject:[_imageDict objectForKey:key]];
+        }
+    }
+    [[AppAPIHelper shared].getMyAndUserAPI postMessageWithMessage:_textView.text imageArray:_imageArray complete:^(id data) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } error:^(NSError *error) {
+        [weakSelf showError:error];
+    }];
 }
 #pragma mark -选择图片
 -(void)clickImage:(UIButton *)sender{
     _selectTag=sender.tag;
     UIButton *btn=[self.view viewWithTag:100+sender.tag];
     if (btn.hidden) {
-        UIAlertController *alertView=[UIAlertController alertControllerWithTitle:@"请选择照片来源" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+//        UIAlertController *alertView=[UIAlertController alertControllerWithTitle:@"请选择照片来源" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+//        
+//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+//        UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+//            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//            
+//            picker.delegate = self;
+//            picker.allowsEditing = YES;
+//            
+//            if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+//            {
+//                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//            }
+//            [self presentViewController:picker animated:YES completion:nil];
+//        }];
+//        UIAlertAction *archiveAction = [UIAlertAction actionWithTitle:@"从相册中选" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+//           
+//            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//            
+//            picker.delegate = self;
+//            picker.allowsEditing = YES;
+//            
+//            if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+//            {
+//                picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//            }
+//            [self presentViewController:picker animated:YES completion:nil];
+//        }];
+//        
+//        [alertView addAction:cancelAction];
+//        [alertView addAction:deleteAction];
+//        [alertView addAction:archiveAction];
+//       
+//        [self presentViewController:alertView animated:YES completion:nil];
+
+        CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"上传照片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert addCancleButton:@"取消" otherButtonTitles:@"拍一张照片",@"从相册选择",nil];
         
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-            
-            picker.delegate = self;
-            picker.allowsEditing = YES;
-            
-            if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-            {
-                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        WEAKSELF
+        [alert didClickedButtonWithHandler:^(UIAlertAction * _Nullable action, NSInteger buttonIndex) {
+            if (action.style != UIAlertActionStyleCancel) {
+                switch (buttonIndex) {
+                    case 0:{
+                        [weakSelf.imageProvider selectPhotoFromCamera];
+                        
+                    }
+                        break;
+                    case 1:{
+                        
+                        [weakSelf.imageProvider selectPhotoFromPhotoLibrary];
+                    }
+                        
+                        break;
+                }
+                
             }
-            [self presentViewController:picker animated:YES completion:nil];
-        }];
-        UIAlertAction *archiveAction = [UIAlertAction actionWithTitle:@"从相册中选" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-           
-            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
             
-            picker.delegate = self;
-            picker.allowsEditing = YES;
-            
-            if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-            {
-                picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            }
-            [self presentViewController:picker animated:YES completion:nil];
         }];
-        
-        [alertView addAction:cancelAction];
-        [alertView addAction:deleteAction];
-        [alertView addAction:archiveAction];
-       
-        
-        [self presentViewController:alertView animated:YES completion:nil];
+        [self presentViewController:alert animated:YES completion:nil];
+
     
     
     }
@@ -184,7 +234,6 @@
     delBtn.hidden=NO;
     
     NSData *imageData= UIImageJPEGRepresentation(image, 0.5);//保存图片要以data形式，ios保存图片形式，压缩系数0.5
-    //    [self showLoader:@"正在上传头像..."];
     
     [_imageDict setObject:imageData forKey:_myArray[_selectTag-1]];
 }
@@ -192,11 +241,16 @@
     UIButton *btn=[self.view viewWithTag:sender.tag-100];
     sender.hidden=YES;
     [btn setBackgroundImage:nil forState:UIControlStateNormal];
-    [_imageDict setObject:@"" forKey:_myArray[sender.tag-100-1]];
+//    [_imageDict setObject:@"" forKey:_myArray[sender.tag-100-1]];
+    [_imageDict setValue:nil forKey:_myArray[sender.tag-100-1]];
     [btn setImage:[UIImage imageNamed:@"addPhotos"] forState:UIControlStateNormal];
 }
 #pragma mark -UITextView代理
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
     //监控占位符
     if (![text isEqualToString:@""]) {
         _placeholderLabel.hidden = YES;
@@ -250,7 +304,29 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (ImageProvider *)imageProvider {
+    if (_imageProvider  == nil) {
+        _imageProvider=[[ImageProvider alloc] init];
+        _imageProvider.editPhotoFrame = CGRectMake(0, 0, kMainScreenWidth, kMainScreenWidth);
+        [_imageProvider setImageDelegate:self];
+    }
+    return _imageProvider;
+}
+- (void)hasSelectImage:(UIImage *)editedImage{
+    
+    UIButton *btn=[self.view viewWithTag:_selectTag];
+    [btn setBackgroundImage:nil forState:UIControlStateNormal];
+    [btn setBackgroundImage:editedImage forState:UIControlStateNormal];
+    UIButton *delBtn=[self.view viewWithTag:_selectTag+100];
+    delBtn.hidden=NO;
+    
+    NSData *imageData= UIImageJPEGRepresentation(editedImage, 0.5);//保存图片要以data形式，ios保存图片形式，压缩系数0.5
+    //    [self showLoader:@"正在上传头像..."];
+    
+    [_imageDict setObject:imageData forKey:_myArray[_selectTag-1]];
+    
+    
+}
 /*
 #pragma mark - Navigation
 

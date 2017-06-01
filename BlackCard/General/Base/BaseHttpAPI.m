@@ -244,11 +244,7 @@
         NSInteger status = [[responseObject objectForKey:@"status"] integerValue];
         if (status == STATUS_OK) {
             if (complete != nil)
-                if ([[responseObject objectForKey:@"data"] count]!=0)
-                {
-                    complete([responseObject objectForKey:@"data"]);
-                }
-            
+                complete([responseObject objectForKey:@"data"]);
         }
         else if( errorBlock ){
             NSString *failed = [responseObject objectForKey:@"msg"];
