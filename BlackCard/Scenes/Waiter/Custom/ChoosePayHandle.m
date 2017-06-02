@@ -99,7 +99,7 @@
                         break;
                 }
                 
-                [[BlackLogHelper shared] setPayDic: @{@"event" : @"recharge_pay",
+                [[BlackLogHelper shared] setPayDic: @{@"event" : @"butlerservice_pay",
                                     @"amount" : @(weakSelf.model.serviceAmount),
                                     @"payType":@(1),
                                     @"tradeNo":data.tradeNo}];
@@ -145,8 +145,7 @@
     
     switch (payStatus) {
         case PayError: {  //支付失败
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付失败" message:@"请重新支付" delegate:_controller cancelButtonTitle:@"确定" otherButtonTitles: nil];
-            [alert show];
+            [self alertError:type withData:data];
         }
             break;
         case PayOK:{ //支付成功
@@ -174,7 +173,27 @@
     }
     [self myPayWithType:type withPayStatus:payStatus withData:data];
     
-    [self LogPayStatus:payStatus withData:data];
+    if (type != PayTypeDefaultPay) {
+        [self LogPayStatus:payStatus withData:data];
+    }
+    
+    
+    
+}
+
+- (void)alertError:(PayType)type withData:(id)data {
+    if (type == PayTypeDefaultPay) {
+        NSError *error = data;
+        if (error.code == 10020) {
+            [_controller showError:error];
+            return;
+        }
+        
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付失败" message:@"请重新支付" delegate:_controller cancelButtonTitle:@"确定" otherButtonTitles: nil];
+    [alert show];
+    
 }
 
 

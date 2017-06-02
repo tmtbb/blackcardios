@@ -87,7 +87,7 @@
 //   NSArray *images =    @[@"tabbarBalckCardNone",@"tabbarWaiterNone",@"tabbarTribeNon",@"tabbarMySel-1"];
    UITabBar *tabBar = self.tabBar;
    NSMutableArray *imageArr = [NSMutableArray arrayWithArray:
-                               @[@[@"tabbarBalckCardSel",@"tabbarBalckCardSel"],
+                               @[@[@"tabbarBalckCardSel",@"tabbarBalckCardNone"],
                                  @[@"tabbarWaiterSel",@"tabbarWaiterNone"],
                                  @[@"tabbarMySel",@"tabbarMySel-1"]]];
    if (tabBar.items.count == 4) {

@@ -21,9 +21,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guideViewTwo" translatesAutoresizingMaskIntoConstraints="NO" id="MGc-2P-0pr">
-                    <rect key="frame" x="55.5" y="278" width="264" height="230.5"/>
+                    <rect key="frame" x="28" y="278" width="319" height="232"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="MGc-2P-0pr" secondAttribute="height" multiplier="132:115" id="HDN-SJ-hu6"/>
+                        <constraint firstAttribute="width" secondItem="MGc-2P-0pr" secondAttribute="height" multiplier="319:232" id="HDN-SJ-hu6"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDi-ck-rH9">
@@ -55,7 +55,7 @@
                 <constraint firstItem="DDi-ck-rH9" firstAttribute="top" secondItem="imK-iO-sg9" secondAttribute="top" constant="27" id="ErG-7z-3wf"/>
                 <constraint firstAttribute="trailing" secondItem="i9M-NM-pNw" secondAttribute="trailing" id="RYO-WW-qE9"/>
                 <constraint firstAttribute="bottom" secondItem="i9M-NM-pNw" secondAttribute="bottom" id="S0w-cT-PWa"/>
-                <constraint firstItem="MGc-2P-0pr" firstAttribute="width" secondItem="i9M-NM-pNw" secondAttribute="width" multiplier="88:125" id="Zda-vj-0wO"/>
+                <constraint firstItem="MGc-2P-0pr" firstAttribute="width" secondItem="i9M-NM-pNw" secondAttribute="width" multiplier="319:375" id="Zda-vj-0wO"/>
                 <constraint firstItem="i9M-NM-pNw" firstAttribute="top" secondItem="imK-iO-sg9" secondAttribute="top" id="gb5-f2-Lw8"/>
                 <constraint firstItem="i9M-NM-pNw" firstAttribute="leading" secondItem="imK-iO-sg9" secondAttribute="leading" id="idW-I4-KjI"/>
                 <constraint firstItem="MGc-2P-0pr" firstAttribute="top" secondItem="imK-iO-sg9" secondAttribute="top" constant="278" id="kvq-HO-TEf"/>
