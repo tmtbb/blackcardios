@@ -158,6 +158,7 @@
 		A6FAC2331ED6DA04002CB042 /* EliteLifeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC2321ED6DA04002CB042 /* EliteLifeViewController.m */; };
 		A6FAC2361ED6DAAF002CB042 /* CEOThinkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC2351ED6DAAF002CB042 /* CEOThinkingViewController.m */; };
 		A6FAC2391ED6E1A4002CB042 /* CardTribeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC2381ED6E1A4002CB042 /* CardTribeTableViewCell.m */; };
+		B025A8131EE115610032DBF6 /* DeviceKeyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B025A8121EE115610032DBF6 /* DeviceKeyHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -449,6 +450,8 @@
 		A6FAC2351ED6DAAF002CB042 /* CEOThinkingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEOThinkingViewController.m; sourceTree = "<group>"; };
 		A6FAC2371ED6E1A4002CB042 /* CardTribeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTribeTableViewCell.h; sourceTree = "<group>"; };
 		A6FAC2381ED6E1A4002CB042 /* CardTribeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTribeTableViewCell.m; sourceTree = "<group>"; };
+		B025A8111EE115610032DBF6 /* DeviceKeyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceKeyHelper.h; sourceTree = "<group>"; };
+		B025A8121EE115610032DBF6 /* DeviceKeyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceKeyHelper.m; sourceTree = "<group>"; };
 		B6C1A4FAC8EA97F0871A0026 /* Pods-BlackCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackCard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlackCard/Pods-BlackCard.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -638,6 +641,8 @@
 				7C25A81A1EA88CAF0049234E /* BaseUserBandLogin.m */,
 				7C55C70D1EDE5B41000991AF /* BlackLogHelper.h */,
 				7C55C70E1EDE5B41000991AF /* BlackLogHelper.m */,
+				B025A8111EE115610032DBF6 /* DeviceKeyHelper.h */,
+				B025A8121EE115610032DBF6 /* DeviceKeyHelper.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1153,13 +1158,12 @@
 					7CE70DC61EA79F00003772F1 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 96YGS7NXK5;
-
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
 							};
 						};
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -1334,6 +1338,7 @@
 				7C25A7E11EA86A3D0049234E /* BaseReqeustCollectionViewController.m in Sources */,
 				7C25A7EC1EA86A3D0049234E /* BaseRefreshListCustomTableViewController.m in Sources */,
 				7C71836B1EAF1EFC00B40BCB /* PayModel.m in Sources */,
+				B025A8131EE115610032DBF6 /* DeviceKeyHelper.m in Sources */,
 				7CA9455D1EAAFB52002AA1E1 /* MainTabBarViewController.m in Sources */,
 				7C55C6FB1ED93875000991AF /* OrderDetailViewController.m in Sources */,
 				7C8488751EAB53490001EC82 /* RegisterTableViewController.m in Sources */,

@@ -26,18 +26,11 @@
     [[QYSDK sharedSDK] registerAppId:KQiYuAppKey appName:KQiYuAppName];
     [[AppAPIHelper shared].getMyAndUserAPI getDeviceKeyWithComplete:nil withError:nil];
     [self registerUserNotificationSettings];
-    [self getDeviceKey];
+   
     [self guidePageView];
     return YES;
 }
 
-- (void)getDeviceKey {
-    
-    
-    [[AppAPIHelper shared].getMyAndUserAPI getDeviceKeyWithComplete:nil withError:nil];
-   
-    
-}
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
