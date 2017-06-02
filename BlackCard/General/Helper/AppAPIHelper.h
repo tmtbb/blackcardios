@@ -25,5 +25,6 @@
 
 
 - (id<HomePageAPI>)getHomePageAPI;
+
 - (id<WaiterServiceAPI>)getWaiterServiceAPI;
 @end

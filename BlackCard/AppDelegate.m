@@ -26,32 +26,11 @@
     [[QYSDK sharedSDK] registerAppId:KQiYuAppKey appName:KQiYuAppName];
     [[AppAPIHelper shared].getMyAndUserAPI getDeviceKeyWithComplete:nil withError:nil];
     [self registerUserNotificationSettings];
-    [self getDeviceKey];
+   
     [self guidePageView];
     return YES;
 }
 
-- (void)getDeviceKey {
-    OEZKeychainItemWrapper* keychain = [[OEZKeychainItemWrapper alloc] initWithIdentifier:kAppDevice_key accessGroup:nil];
-    
-        [[AppAPIHelper shared].getMyAndUserAPI getRegisterDeviceWithComplete:^(id data) {
-            NSString *key = data[@"deviceKey"];
-            NSString *keyid = [NSString stringWithFormat:@"%@",data[@"deviceKeyId"]];
-            
-            
-            if (![NSString isEmpty:key] && data[@"deviceKeyId"] != nil && ![NSString isEmpty:keyid]) {
-                [keychain setObject:key forKey:CFBridgingRelease(kSecAttrAccount)];
-                OEZKeychainItemWrapper* keyidchain = [[OEZKeychainItemWrapper alloc] initWithIdentifier:kAppDevice_keyid accessGroup:nil];
-                [keyidchain setObject:keyid forKey:CFBridgingRelease(kSecAttrAccount)];
-                
-            }
-        } withError:nil];
-  
-    
-
-    
-   
-}
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication

@@ -60,6 +60,7 @@
         if ( count > 0  ) {
             [self performSelector:@selector(endLoadMore) withObject:nil afterDelay:0.5];
             [_dataArray addObjectsFromArray:data];
+            [self endRefreshing];
             
         }
         else {

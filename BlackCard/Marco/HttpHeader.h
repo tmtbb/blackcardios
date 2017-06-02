@@ -81,4 +81,19 @@
 #define kHttpAPIUrl_userAgreement         @"http://app.jingyingheika.com/static/UserAgreement.html"
 #define kHttpAPIUrl_aboutMe               @"http://app.jingyingheika.com/static/about.html"
 #define kHttpAPIUrl_webCallWaiter         @"http://www.jingyingheika.com/"
+
+//消息列表
+#define kHttpAPIUrl_tribeList             kHttpAPIUrl_HOST@"/api/tribe/message/list.json"
+//发布评论
+#define kHttpAPIUrl_tribeComment         kHttpAPIUrl_HOST@"/api/tribe/message/comment/add.json"
+//评论列表
+#define kHttpAPIUrl_tribeCommentList     kHttpAPIUrl_HOST@"/api/tribe/message/comment/list.json"
+//发布消息
+#define kHttpAPIUrl_tribeAdd             kHttpAPIUrl_HOST@"/api/tribe/message/add.json"
+//点赞
+#define kHttpAPIUrl_tribeLikeAdd         kHttpAPIUrl_HOST@"/api/tribe/message/like/add.json"
+//删除点赞
+#define kHttpAPIUrl_tribeLikeDel         kHttpAPIUrl_HOST@"/api/tribe/message/like/delete.json"
+//点赞列表
+#define kHttpAPIUrl_tribeLikeList        kHttpAPIUrl_HOST@"/api/tribe/message/like/list.json"
 #endif /* HttpHeader_h */
