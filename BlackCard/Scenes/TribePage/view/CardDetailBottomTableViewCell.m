@@ -40,12 +40,15 @@
 }
 -(void)setModel:(CommentListModel *)model{
     //头像
-    if (model.headUrl)
+    if (model.headUrl.length)
     {
         [_headerImageView sd_setImageWithURL:[NSURL URLWithString:model.headUrl]];
+        UIImage *image=_headerImageView.image;
+        image=[UIImage circleImage:image borderColor:[UIColor redColor] borderWidth:1.0f];
+        _headerImageView.image=image;
     }else
     {
-        UIImage *image=[UIImage imageNamed:@"HomePageDefaultCard"];
+        UIImage *image=[UIImage imageNamed:@"userHeaderDefault"];
         image=[UIImage circleImage:image borderColor:[UIColor redColor] borderWidth:1.0f];
         _headerImageView.image=image;
     }

@@ -94,7 +94,6 @@
 }
 #pragma mark -发布
 -(void)publishBtnClicked {
-    UIButton *btn=[self.view viewWithTag:200];
     if (_textView.text.length==0)
     {
         UIAlertController *alert=[UIAlertController alertControllerWithTitle:nil message:@"评论不能为空" preferredStyle:UIAlertControllerStyleAlert];
@@ -104,15 +103,27 @@
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
-    btn.userInteractionEnabled=NO;
+    [self showLoader:@"评论发布中"];
     WEAKSELF
 
-    [[AppAPIHelper shared].getMyAndUserAPI postTribeCommentTribeMessageId:@"89C97C660605430C834DFADFFFA5CFE6" message:_textView.text complete:^(id data) {
-        btn.userInteractionEnabled=YES;
+    [[AppAPIHelper shared].getMyAndUserAPI postTribeCommentTribeMessageId:_myModel.id message:_textView.text complete:^(id data) {
+        [weakSelf removeMBProgressHUD];
+        [weakSelf showTips:@"评论成功"];
+        TribeModel *model=_myModel;
+        model.commentNum=model.commentNum+1;
+        _myModel=model;
+        NSMutableDictionary *dict=[[NSMutableDictionary alloc] init];
+        [dict setValue:_id forKey:@"id"];
+        [dict setValue:_myModel forKey:@"model"];
+        if ([_delegate respondsToSelector:@selector(refresh:)])
+        {
+            [_delegate refresh:dict];
+        }
+
         [self dismissViewControllerAnimated:YES completion:nil];
         
     } error:^(NSError *error) {
-        btn.userInteractionEnabled=YES;
+        [weakSelf removeMBProgressHUD];
         [weakSelf showError:error];
     }];
 

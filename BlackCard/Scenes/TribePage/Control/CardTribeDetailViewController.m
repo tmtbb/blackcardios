@@ -13,7 +13,7 @@
 #import "CardTribeDetailTabelViewController.h"
 #import "CommentViewController.h"
 
-@interface CardTribeDetailViewController ()<sendMymodelDelegate>
+@interface CardTribeDetailViewController ()<sendMymodelDelegate,CommentRefresh>
 @property(strong,nonatomic)CardTribeDetailTabelViewController *cardTridDetailTableView;
 @end
 
@@ -122,6 +122,13 @@
 }
 #pragma mark -返回
 -(void)backBtnClicked {
+    NSMutableDictionary *dict=[[NSMutableDictionary alloc] init];
+    [dict setValue:_id forKey:@"id"];
+    [dict setValue:_myModel forKey:@"model"];
+    if ([_delegate respondsToSelector:@selector(cardTribeRefresh:)])
+    {
+        [_delegate cardTribeRefresh:dict];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark -UITableViewDelegate
@@ -170,44 +177,48 @@
 #pragma mark -下部视图点击事件
 -(void)bottomCommentBtnClicked {
     CommentViewController *cvc=[[CommentViewController alloc] init];
-    cvc.id=_myModel.id;
+    cvc.myModel=_myModel;
+    cvc.delegate=self;
+    cvc.id=@"0";
     [self presentViewController:cvc animated:YES completion:nil];
     
 }
 -(void)bottomPraiseBtnClicked:(UIButton *)sender {
+    [self showLoader:@"点赞中"];
     WEAKSELF
-    sender.userInteractionEnabled=NO;
     TribeModel *model=_myModel;
     [[AppAPIHelper shared].getMyAndUserAPI postTribePraiseTribeMessageId:model.id complete:^(id data) {
         model.likeNum=model.likeNum+1;
         model.isLike=1;
         _myModel=model;
-        sender.userInteractionEnabled=YES;
         [sender removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         [sender addTarget:self action:@selector(deleteBottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [_cardTridDetailTableView.tableView reloadData];
+        [weakSelf removeMBProgressHUD];
+        [weakSelf showTips:@"点赞成功"];
     } error:^(NSError *error) {
+        [weakSelf removeMBProgressHUD];
         [weakSelf showError:error];
-        sender.userInteractionEnabled=YES;
     }];
 }
 -(void)deleteBottomPraiseBtnClicked:(UIButton *)sender{
+    [self showLoader:@"取消点赞中"];
     WEAKSELF
-    sender.userInteractionEnabled=NO;
     TribeModel *model=_myModel;
     [[AppAPIHelper shared].getMyAndUserAPI deletePostTribePraiseTribeMessageId:model.id complete:^(id data) {
         model.likeNum=model.likeNum-1;
         _myModel=model;
         model.isLike=0;
-        sender.userInteractionEnabled=YES;
         [sender removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         [sender addTarget:self action:@selector(bottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [_cardTridDetailTableView.tableView reloadData];
+        [weakSelf removeMBProgressHUD];
+        [weakSelf showTips:@"取消点赞成功"];
 //        CardDetailTopTableViewCell *cell=[self.view viewWithTag:1];
 //        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
     } error:^(NSError *error) {
+        [weakSelf removeMBProgressHUD];
         [weakSelf showError:error];
-        sender.userInteractionEnabled=YES;
     }];
 }
 #pragma mark -sendMymodelDelegate
@@ -221,6 +232,18 @@
         [btn removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         [btn addTarget:self action:@selector(bottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
+}
+-(void)pushComment:(TribeModel *)model{
+    CommentViewController *cvc=[[CommentViewController alloc] init];
+    cvc.myModel=model;
+    cvc.id=@"0";
+    cvc.delegate=self;
+    [self presentViewController:cvc animated:YES completion:nil];
+}
+-(void)refresh:(NSDictionary *)dict{
+    _myModel=[dict objectForKey:@"model"];
+    [_cardTridDetailTableView didRequest:1];
+    [_cardTridDetailTableView.tableView reloadData];
 }
 /*
 #pragma mark - Navigation

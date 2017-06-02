@@ -74,12 +74,15 @@
 }
 -(void)setModel:(TribeModel *)model{
     //头像
-    if (model.headUrl)
+    if (model.headUrl.length)
     {
         [_headerImageView sd_setImageWithURL:[NSURL URLWithString:model.headUrl]];
+         UIImage *image=_headerImageView.image;
+         image=[UIImage circleImage:image borderColor:[UIColor redColor] borderWidth:1.0f];
+         _headerImageView.image=image;
     }else
     {
-        UIImage *image=[UIImage imageNamed:@"HomePageDefaultCard"];
+        UIImage *image=[UIImage imageNamed:@"userHeaderDefault"];
         image=[UIImage circleImage:image borderColor:[UIColor redColor] borderWidth:1.0f];
         _headerImageView.image=image;
     }
@@ -128,7 +131,8 @@
         {
             for (int i=0; i<2; i++) {
                 UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(i*((kMainScreenWidth-90-10)/2+10), 10, (kMainScreenWidth-90-10)/2, (kMainScreenWidth-90-10)/2)];
-                photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
+//                photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
+                [photo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.tribeMessageImgs[i][@"img"]]]];
                 photo.contentMode=UIViewContentModeScaleAspectFit;
                 [_showImageView addSubview:photo];
             }
@@ -138,7 +142,8 @@
             int a= i/3;
             int b= i%3;
             UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(b*((kMainScreenWidth-90-10)/3+10), a*((kMainScreenWidth-90-10)/3+10), (kMainScreenWidth-90-10)/3, (kMainScreenWidth-90-10)/3)];
-            photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
+//            photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
+            [photo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.tribeMessageImgs[i][@"img"]]]];
             photo.contentMode=UIViewContentModeScaleAspectFit;
             [_showImageView addSubview:photo];
             }

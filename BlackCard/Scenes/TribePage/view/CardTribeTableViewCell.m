@@ -71,12 +71,15 @@
 -(void)setModel:(TribeModel *)model{
     NSLog(@"999=%@",model.headUrl);
     //头像
-    if (model.headUrl)
+    if (model.headUrl.length)
     {
         [_headerImageView sd_setImageWithURL:[NSURL URLWithString:model.headUrl]];
+        UIImage *image=_headerImageView.image;
+        image=[UIImage circleImage:image borderColor:[UIColor redColor] borderWidth:1.0f];
+        _headerImageView.image=image;
     }else
     {
-        UIImage *image=[UIImage imageNamed:@"HomePageDefaultCard"];
+        UIImage *image=[UIImage imageNamed:@"userHeaderDefault"];
         image=[UIImage circleImage:image borderColor:[UIColor redColor] borderWidth:1.0f];
         _headerImageView.image=image;
     }
@@ -125,7 +128,7 @@
     if (model.tribeMessageImgs.count>0)
     {
         _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, kMainScreenWidth-90, 160);
-        _showImageView.backgroundColor=[UIColor blueColor];
+//        _showImageView.backgroundColor=[UIColor blueColor];
         NSInteger imageNum;
         if (model.tribeMessageImgs.count>2) {
             imageNum=2;
@@ -134,7 +137,6 @@
         }
         for (int i=0; i<2; i++) {
             UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(i*((kMainScreenWidth-90-10)/2+10), 10, (kMainScreenWidth-90-10)/2, (kMainScreenWidth-90-10)/2)];
-//            [SDWebImageManager sharedManager]
             [photo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.tribeMessageImgs[i][@"img"]]]];
 //            photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
             photo.contentMode=UIViewContentModeScaleAspectFit;

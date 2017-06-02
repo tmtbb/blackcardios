@@ -129,8 +129,6 @@
 }
 #pragma mark -发布
 -(void)publishBtnClicked {
-    UIButton *btn=[self.view viewWithTag:200];
-    btn.userInteractionEnabled=NO;
     for (NSString *key in _myArray)
     {
         if ([_imageDict valueForKey:key] !=nil)
@@ -145,16 +143,17 @@
         [alert addAction:okAction];
         
         [self presentViewController:alert animated:YES completion:nil];
-        btn.userInteractionEnabled=YES;
+        
         return;
     }
-
+    [self showLoader:@"消息发布中"];
     WEAKSELF
     [[AppAPIHelper shared].getMyAndUserAPI postMessageWithMessage:_textView.text imageArray:_imageArray complete:^(id data) {
-        btn.userInteractionEnabled=YES;
-        [self.navigationController popViewControllerAnimated:YES];
+        [weakSelf removeMBProgressHUD];
+        [weakSelf showTips:@"消息发布成功"];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     } error:^(NSError *error) {
-        btn.userInteractionEnabled=YES;
+        [weakSelf removeMBProgressHUD];
         [weakSelf showError:error];
     }];
 }
