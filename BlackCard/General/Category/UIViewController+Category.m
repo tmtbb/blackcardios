@@ -61,7 +61,7 @@ static char *CustomNavigationBarKey = "CustomNavigationBarKey";
             [self presentViewController:alert animated:YES completion:nil];
             
         }
-            break;
+            return;
         case 10001:
         case 10003:
         case 10004:{

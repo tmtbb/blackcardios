@@ -37,6 +37,10 @@
     return self;
 }
 
+- (void)upDate:(id)data {
+    
+    _model = data;
+}
 - (ChoosePayTypeView *)payTypeView {
     if (_payTypeView == nil) {
         _payTypeView = [ChoosePayTypeView loadFromNib];
@@ -51,14 +55,23 @@
 - (void)handleShow {
     if (self.payTypeView.superview == nil) {
          [_controller.view.window addSubview:self.payTypeView];
-        WEAKSELF
-        [[AppAPIHelper shared].getMyAndUserAPI getUserBlanceComplete:^(id data) {
-            NSString *money = [NSString stringWithFormat:@"%.2f",[data[@"balance"] doubleValue]];
-            [weakSelf.payTypeView update:money];
-            
-        } error:nil];
+        
+        [self showWithDefaultPay];
         
     }
+}
+
+- (void)showWithDefaultPay {
+    WEAKSELF
+    [[AppAPIHelper shared].getMyAndUserAPI getUserBlanceComplete:^(id data) {
+        double myBalance = [data[@"balance"] doubleValue];
+        NSString *money = [NSString stringWithFormat:@"%.2f",myBalance];
+        
+        [weakSelf.payTypeView update:money];
+        
+        [weakSelf.payTypeView purseButtonCanUse:myBalance > weakSelf.model.serviceAmount];
+    } error:nil];
+    
 }
 
 
@@ -182,16 +195,17 @@
 }
 
 - (void)alertError:(PayType)type withData:(id)data {
+    NSString *errorStr = @"请重新支付";
     if (type == PayTypeDefaultPay) {
         NSError *error = data;
         if (error.code == 10020) {
             [_controller showError:error];
             return;
         }
-        
+        errorStr = [[error userInfo] objectForKey:NSLocalizedDescriptionKey];
     }
     
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付失败" message:@"请重新支付" delegate:_controller cancelButtonTitle:@"确定" otherButtonTitles: nil];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付失败" message:errorStr delegate:_controller cancelButtonTitle:@"确定" otherButtonTitles: nil];
     [alert show];
     
 }
