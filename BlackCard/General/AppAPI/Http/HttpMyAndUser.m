@@ -11,6 +11,7 @@
 #import "PayModel.h"
 #import "PurchaseHistoryModel.h"
 #import "TribeModel.h"
+#import "DeviceKeyHelper.h"
 //#import "UIAlertView+Block.h"
 
 
@@ -18,20 +19,13 @@
 
 
 - (void)getDeviceKeyWithComplete:(CompleteBlock)complete withError:(ErrorBlock)error {
-    OEZKeychainItemWrapper* keychain = [[OEZKeychainItemWrapper alloc] initWithIdentifier:kAppDevice_key accessGroup:nil];
-    NSString  *device_key = [keychain objectForKey:CFBridgingRelease(kSecAttrAccount)];
-    if( [NSString isEmpty:device_key] ) {
-        
+    
         [[AppAPIHelper shared].getMyAndUserAPI getRegisterDeviceWithComplete:^(id data) {
             NSString *key = data[@"deviceKey"];
-            NSString *keyid = [NSString stringWithFormat:@"%@",data[@"deviceKeyId"]];
-            
-            
-            if (![NSString isEmpty:key] && data[@"deviceKeyId"] != nil && ![NSString isEmpty:keyid]) {
-                [keychain setObject:key forKey:CFBridgingRelease(kSecAttrAccount)];
-                OEZKeychainItemWrapper* keyidchain = [[OEZKeychainItemWrapper alloc] initWithIdentifier:kAppDevice_keyid accessGroup:nil];
-                [keyidchain setObject:keyid forKey:CFBridgingRelease(kSecAttrAccount)];
-                
+            NSString *keyid = data[@"deviceKeyId"] ?  [NSString stringWithFormat:@"%@",data[@"deviceKeyId"]] : nil;
+            if ( ! [NSString isEmpty:key] && ![NSString isEmpty:keyid]) {
+                [[DeviceKeyHelper shared] setDeviceKeyId:keyid];
+                [[DeviceKeyHelper shared] setDeviceKey:key];
             }
             if (complete) {
                 complete(data);
@@ -39,17 +33,6 @@
             
             
         } withError:error];
-        
-    }else {
-        
-        if (complete) {
-            complete(@{});
-        }
-        
-    }
-    
-    
-    
 }
 
 - (void)getRegisterDeviceWithComplete:(CompleteBlock)complete withError:(ErrorBlock)error {

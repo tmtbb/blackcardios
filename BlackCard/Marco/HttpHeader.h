@@ -19,8 +19,8 @@
 #ifdef Development
 
 //#define kHttpAPIUrl_HOST @"" //预发布环境
-#define kHttpAPIUrl_HOST @"http://101.37.82.111:9999"
-//#define kHttpAPIUrl_HOST @"http://192.168.104.241:8080"
+//#define kHttpAPIUrl_HOST @"http://101.37.82.111:9999"
+#define kHttpAPIUrl_HOST @"http://192.168.104.241:8080"
 //#define kRunMode @"debug"
 #else
 //#define kHttpAPIUrl_HOST @"" //新正式生产环境
@@ -77,6 +77,8 @@
 #define kHttpAPIUrl_resetPassword         kHttpAPIUrl_HOST@"/api/blackcard/repassword.json"
 #define kHttpAPIUrl_userAgreement         kHttpAPIUrl_HOST@"/api/static/UserAgreement.html"
 #define kHttpAPIUrl_aboutMe               kHttpAPIUrl_HOST@"/api/static/about.html"
+
+#define kHttpAPIUrl_webCallWaiter         @"http://www.jingyingheika.com/"
 
 //消息列表
 #define kHttpAPIUrl_tribeList             kHttpAPIUrl_HOST@"/api/tribe/message/list.json"

@@ -57,7 +57,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate, VPImageCropperD
 - (void)selectPhotoFromCamera
 {
     if (![self CameraIsEnabled]) {
-        UIAlertView * oneAV=[[UIAlertView alloc] initWithTitle:@"警告" message:@"请在iPhone的“设置-隐私-相机”选项中，允许精英黑卡访问您的相机。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        UIAlertView * oneAV=[[UIAlertView alloc] initWithTitle:@"警告" message:@"请在iPhone的“设置-隐私-相机”选项中，允许精英管家访问您的相机。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
         
         [oneAV show];
         return;

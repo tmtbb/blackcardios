@@ -24,7 +24,6 @@ typedef NS_ENUM(NSInteger,RechargeTableViewControllerPayType){
 @property (weak, nonatomic) IBOutlet UITextField *moneyField;
 @property(copy,nonatomic)NSString *payMoney;
 
-@property(strong,nonatomic)NSMutableDictionary *logDic;
 
 @end
 
@@ -108,8 +107,7 @@ typedef NS_ENUM(NSInteger,RechargeTableViewControllerPayType){
                      break;
              }
     
-             weakSelf.logDic =[@{@"event" : @"recharge_pay",@"amount" : weakSelf.payMoney,@"payType":@(weakSelf.payType),@"tradeNo":data.tradeNo} mutableCopy];
-             
+             [[BlackLogHelper shared] setPayDic:@{@"event" : @"recharge_pay",@"amount" : weakSelf.payMoney,@"payType":@(weakSelf.payType),@"tradeNo":data.tradeNo}];
              
          } error:^(NSError *error) {
              [weakSelf showError:error];
@@ -156,10 +154,8 @@ typedef NS_ENUM(NSInteger,RechargeTableViewControllerPayType){
     NSString *returnCode = payStatus == PayOK ? @"0" : @"2";
     returnCode =  payStatus == PayCancel ?  @"1" : returnCode;
     NSString *memo = [data isKindOfClass:[NSString  class]] ? data : @"";
-    [self.logDic setObject:returnCode forKey:@"returnCode"];
-    [self.logDic setObject:memo forKey:@"returnMsg"];
-    [[AppAPIHelper shared].getMyAndUserAPI doLog:self.logDic complete:nil error:nil];
-    self.logDic = nil;
+    [[BlackLogHelper shared] addOtherPayInformationWithPost:@{@"returnCode":returnCode,@"returnMsg":memo}];
+
 }
 
 

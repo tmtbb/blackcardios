@@ -21,7 +21,7 @@
         [dic setObject:@0 forKey:@"returnCode"];
         [dic  setObject:@"成功" forKey:@"returnMsg"];
         [weakSelf payHelperWithType:PayTypeDefaultPay withPayStatus:PayOK withData:@"支付成功"];
-        [[AppAPIHelper shared].getMyAndUserAPI doLog:dic complete:nil error:nil];
+        [[BlackLogHelper shared] postPayLogHttp:dic];
 
         
     } withError:^(NSError *error) {
@@ -31,7 +31,7 @@
         [dic  setObject:stringError  forKey:@"returnMsg"];
         
          [weakSelf payHelperWithType:PayTypeDefaultPay withPayStatus:PayError withData:@"支付失败"];
-        [[AppAPIHelper shared].getMyAndUserAPI doLog:dic complete:nil error:nil];
+        [[BlackLogHelper shared] postPayLogHttp:dic];
 
     }];
     

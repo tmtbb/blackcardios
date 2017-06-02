@@ -9,5 +9,5 @@
 #import "BaseRefreshTableViewController.h"
 
 @interface OrderDetailViewController : BaseRefreshTableViewController
-
+@property(copy,nonatomic)NSString *orderNum;
 @end

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="DYK-hB-MZe" customClass="GuidePageThreeView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guideViewBackGround" translatesAutoresizingMaskIntoConstraints="NO" id="mp2-4S-Qna">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guideViewThree" translatesAutoresizingMaskIntoConstraints="NO" id="EJk-ch-Kx1">
+                    <rect key="frame" x="28" y="278" width="319" height="232"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="EJk-ch-Kx1" secondAttribute="height" multiplier="11:8" id="TA5-gr-8go"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUI-5Z-1l9">
+                    <rect key="frame" x="12" y="537" width="351" height="45"/>
+                    <color key="backgroundColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="jgp-V7-3vP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="立即体验">
+                        <color key="titleColor" red="0.85098039215686272" green="0.76862745098039209" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <real key="value" value="22.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="closeButtonAction:" destination="DYK-hB-MZe" eventType="touchUpInside" id="DZY-Xh-PC4"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mp2-4S-Qna" firstAttribute="top" secondItem="DYK-hB-MZe" secondAttribute="top" id="07P-w8-tel"/>
+                <constraint firstItem="qUI-5Z-1l9" firstAttribute="leading" secondItem="DYK-hB-MZe" secondAttribute="leading" constant="12" id="0Ra-7C-wp1"/>
+                <constraint firstItem="EJk-ch-Kx1" firstAttribute="width" secondItem="mp2-4S-Qna" secondAttribute="width" multiplier="319:375" id="7LA-2h-RzQ"/>
+                <constraint firstAttribute="bottom" secondItem="qUI-5Z-1l9" secondAttribute="bottom" constant="85" id="7vy-rX-c9n"/>
+                <constraint firstItem="EJk-ch-Kx1" firstAttribute="top" secondItem="DYK-hB-MZe" secondAttribute="top" constant="278" id="MQH-IA-sRE"/>
+                <constraint firstItem="mp2-4S-Qna" firstAttribute="leading" secondItem="DYK-hB-MZe" secondAttribute="leading" id="OaQ-fd-Fwz"/>
+                <constraint firstAttribute="trailing" secondItem="qUI-5Z-1l9" secondAttribute="trailing" constant="12" id="RLb-Jx-lz4"/>
+                <constraint firstAttribute="trailing" secondItem="mp2-4S-Qna" secondAttribute="trailing" id="VIe-hQ-Jbc"/>
+                <constraint firstItem="EJk-ch-Kx1" firstAttribute="centerX" secondItem="DYK-hB-MZe" secondAttribute="centerX" id="phc-ou-z9U"/>
+                <constraint firstAttribute="bottom" secondItem="mp2-4S-Qna" secondAttribute="bottom" id="wVp-Hw-16S"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="buttonBottom" destination="7vy-rX-c9n" id="RQ5-m6-z0E"/>
+                <outlet property="pageViewTop" destination="MQH-IA-sRE" id="YVb-zg-hRF"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="121.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="guideViewBackGround" width="375" height="667"/>
+        <image name="guideViewThree" width="264" height="230"/>
+    </resources>
+</document>

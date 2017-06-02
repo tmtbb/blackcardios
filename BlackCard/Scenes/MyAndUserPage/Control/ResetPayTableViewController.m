@@ -20,7 +20,6 @@
 
 @property(copy,nonatomic)NSString *phoneNum;
 @property(copy,nonatomic)NSString *verifyToken;
-@property(strong,nonatomic)NSMutableDictionary *logDic;
 @end
 
 @implementation ResetPayTableViewController
@@ -121,10 +120,7 @@
     NSString *returnCode = payStatus == PayOK ? @"0" : @"2";
     returnCode =  payStatus == PayCancel ?  @"1" : returnCode;
     NSString *memo = [data isKindOfClass:[NSString  class]] ? data : @"";
-    [self.logDic setObject:returnCode forKey:@"returnCode"];
-    [self.logDic setObject:memo forKey:@"returnMsg"];
-    [[AppAPIHelper shared].getMyAndUserAPI doLog:self.logDic complete:nil error:nil];
-    self.logDic = nil;
+    [[BlackLogHelper shared] addOtherPayInformationWithPost:@{@"returnCode":returnCode,@"returnMsg":memo}];
 }
 
 
@@ -142,7 +138,7 @@
     [[AppAPIHelper shared].getMyAndUserAPI registerWithPay:dic complete:^(PayInfoModel *model) {
         [weakSelf hiddenProgress];
         
-         weakSelf.logDic =[@{@"event" : @"register_pay",@"amount" : @(model.payTotalPrice),@"payType":@(model.payType),@"tradeNo":model.tradeNo} mutableCopy];
+        [[BlackLogHelper shared] setPayDic: @{@"event" : @"register_pay",@"amount" : @(model.payTotalPrice),@"payType":@(model.payType),@"tradeNo":model.tradeNo}];
         
         [[PayManagerHelper shared].wxPay payWithWXModel:model.wxPayInfo];
         

@@ -168,6 +168,18 @@
 -(NSString*)textValueChange:(UITextField*)testFiled withOrirRemarkName:(NSString*)orirRemarkName withWordCount:(int)wordCount;
 -(CGFloat)getTextViewContentH:(UITextView *)textView;
 
+
+/**
+ *  正则截取字符串
+ *
+ *  @reg 正则表达式
+ *
+ *  @useStr 需截取的字符串
+ *
+ *  @return 截取到的字符串
+ */
+- (NSString *)regularSubStrWithReg:(NSString *)reg useString:(NSString *)useStr;
+
 /**
  *  联系客服QQ
  *

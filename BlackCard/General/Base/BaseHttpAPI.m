@@ -11,6 +11,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "NSString+Category.h"
 #import <sys/utsname.h>
+#import "DeviceKeyHelper.h"
 //#import "CertificateHelper.h"
 #define STATUS_OK 0
 
@@ -29,9 +30,9 @@
     manager.requestSerializer.timeoutInterval = timeoutInterval;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     manager.responseSerializer.acceptableContentTypes = contentTypes;
-#ifndef DEBUG
+//#ifndef DEBUG
     manager.securityPolicy = [self createSecurityPolicy];
-#endif
+//#endif
     return manager;
 }
 - (AFSecurityPolicy*) createSecurityPolicy {
@@ -108,33 +109,6 @@
 }
 
 
-+ (NSString *)device_key {
-    
-    static NSString *device_key = nil;
-    if( [NSString isEmpty:device_key]) {
-        OEZKeychainItemWrapper* keychain = [[OEZKeychainItemWrapper alloc] initWithIdentifier:kAppDevice_key accessGroup:nil];
-        device_key = [keychain objectForKey:CFBridgingRelease(kSecAttrAccount)];
-        if( [NSString isEmpty:device_key] ) {
-            return kAppDevice_Normal_key;
-        }
-    }
-    return device_key;
-}
-
-+ (NSString *)device_keyid {
-    
-    static NSString  *device_keyid = nil;
-    if( [NSString isEmpty:device_keyid]) {
-        
-        OEZKeychainItemWrapper* keychain = [[OEZKeychainItemWrapper alloc] initWithIdentifier:kAppDevice_keyid accessGroup:nil];
-        device_keyid = [keychain objectForKey:CFBridgingRelease(kSecAttrAccount)];
-        if([NSString isEmpty:device_keyid] ) {
-            return kAppDevice_Normal_keyid;
-        }
-    }
-    return device_keyid;
-}
-
 + (void) requestSignWithMethod:(NSString*) method url:(NSString*) url parameters:(NSMutableDictionary*) parameters {
     
 
@@ -144,7 +118,7 @@
     NSDictionary *sysInfoDictionary = [NSBundle mainBundle].infoDictionary;
     [parameters setObject:[sysInfoDictionary objectForKey:@"CFBundleShortVersionString"] forKey:@"appVersion"];
     [parameters setObject:@((long)[[NSDate date] timeIntervalSince1970]) forKey:@"timestamp"];
-    [parameters setObject:[self device_keyid] forKey:@"keyId"];
+    [parameters setObject:[[DeviceKeyHelper shared] deviceKeyId] forKey:@"keyId"];
     
 //    [parameters setObject:[NSBundle mainBundle].bundleIdentifier forKey:@"appname"];
 //    [parameters setObject:[[UIDevice currentDevice] systemVersion] forKey:@"sysVersion"];
@@ -171,28 +145,13 @@
         }
         
     }];
-    strSing = [strSing stringByAppendingFormat:@"%@",[self device_key]];
+    strSing = [strSing stringByAppendingFormat:@"%@",[[DeviceKeyHelper shared] deviceKey]];
     
     return [strSing  md5Hex];
 }
 
 + (NSString *)localSignWithParameters:(NSDictionary *)parameters{
-    
-    __block NSString *strSing = [NSString string];
-    NSArray *keys = [[parameters allKeys] sortedArrayUsingSelector:@selector(compare:)];
-    [keys enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if( ! [obj isKindOfClass:[NSArray class]] ) {
-            NSString *value = [NSString stringWithFormat:@"%@",[parameters objectForKey:obj]];
-            if( ! [NSString isStringEmpty:value]) {
-                strSing = [strSing stringByAppendingFormat:@"%@=%@",obj,value];
-            }
-        }
-        
-    }];
-    strSing = [strSing stringByAppendingFormat:@"%@",[self device_key]];
-    return [strSing  md5Hex];
-
-    
+    return [self  requestSign:@"" url:@"" parameters:parameters];
 }
 
 - (void)uploadFiles:(NSString *)path parameters:(NSDictionary *)parameters fileDataArray:(NSArray *)fileDataArray complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
