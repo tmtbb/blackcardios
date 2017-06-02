@@ -9,7 +9,7 @@
 #import "OrderDetailViewController.h"
 #import "WaiterModel.h"
 #import "ChoosePayHandle.h"
-@interface OrderDetailViewController ()
+@interface OrderDetailViewController ()<ChoosePayHandlePayStatusDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *orderTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *orderNumlabel;
@@ -96,6 +96,13 @@
     
 }
 
+- (void)choosePayHandleWithType:(PayType)type withPayStatus:(PayStatus)payStatus withData:(id)data {
+    if (payStatus == PayOK) {
+        
+        _myFootView.hidden = YES;
+    }
+}
+
 - (IBAction)payButtonAction:(UIButton *)sender {
     
     
@@ -105,6 +112,7 @@
 - (ChoosePayHandle *)handle {
     if (_handle == nil) {
         _handle = [[ChoosePayHandle alloc]initWithController:self andModel:_model];
+        _handle.delegate = self;
     }
     return _handle;
 }

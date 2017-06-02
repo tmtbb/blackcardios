@@ -14,7 +14,6 @@
 @interface WaiterViewController ()
 @property(nonatomic)NSInteger isChat;
 @end
-static  NSString *OrderReg = @"ydservice\\:\\/\\/app\\.jingyingheika\\.com/service/0/(.+)/pay\\.html";
 @implementation WaiterViewController
 
 - (void)viewDidLoad {
@@ -37,7 +36,6 @@ static  NSString *OrderReg = @"ydservice\\:\\/\\/app\\.jingyingheika\\.com/servi
     _isChat = 1;
   
     
-    [self qyClickHandle];
 }
 
 
@@ -90,7 +88,6 @@ static  NSString *OrderReg = @"ydservice\\:\\/\\/app\\.jingyingheika\\.com/servi
 
 - (void)goToChatController {
     
-    
     if (self.navigationController.viewControllers.count < 2) {
         
         [ChatTools chatViewControllerWithTitle:nil navigation:self.navigationController];
@@ -101,22 +98,5 @@ static  NSString *OrderReg = @"ydservice\\:\\/\\/app\\.jingyingheika\\.com/servi
 }
 
 
-
-- (void)qyClickHandle {
-    
-    WEAKSELF
-    [QYSDK sharedSDK].customActionConfig.linkClickBlock = ^(NSString *linkAddress) {
-        
-        NSString *orderNum = [[ValidateHelper shared] regularSubStrWithReg:OrderReg useString:linkAddress];
-        if (![NSString isEmpty:orderNum]) {
-            [weakSelf pushStoryboardViewControllerIdentifier:@"OrderDetailViewController" block:^(UIViewController *viewController) {
-                [viewController setValue:orderNum forKey:@"orderNum"];
-            }];
-        }
-    };
-    
-    
-    
-}
 
 @end

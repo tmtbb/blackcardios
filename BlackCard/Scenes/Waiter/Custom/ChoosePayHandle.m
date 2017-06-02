@@ -172,9 +172,19 @@
         }
             break;
     }
+    [self myPayWithType:type withPayStatus:payStatus withData:data];
     
     [self LogPayStatus:payStatus withData:data];
 }
+
+
+- (void)myPayWithType:(PayType)type withPayStatus:(PayStatus)payStatus withData:(id)data{
+    
+    if ([self.delegate respondsToSelector:@selector(choosePayHandleWithType:withPayStatus:withData:)]) {
+        [self.delegate choosePayHandleWithType:type withPayStatus:payStatus withData:data];
+    }
+}
+
 
 - (void)LogPayStatus:(PayStatus)payStatus withData:(id)data{
     

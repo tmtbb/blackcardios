@@ -8,8 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ChoosePayHandle : NSObject
 
+@protocol ChoosePayHandlePayStatusDelegate <NSObject>
+
+- (void)choosePayHandleWithType:(PayType)type withPayStatus:(PayStatus)payStatus withData:(id)data;
+
+@end
+@interface ChoosePayHandle : NSObject
+@property(weak,nonatomic)id<ChoosePayHandlePayStatusDelegate>delegate;
 
 - (instancetype)initWithController:(UIViewController *)controller andModel:(id)model;
 - (void)handleShow;

@@ -131,9 +131,9 @@ static char *CustomNavigationBarKey = "CustomNavigationBarKey";
     
     [[CurrentUserHelper shared] logout:self];
     [self removeMBProgressHUD];
-    if ( [self respondsToSelector:@selector(tokenExpired)] ) {
-        [self performSelector:@selector(tokenExpired)];
-    }
+//    if ( [self respondsToSelector:@selector(tokenExpired)] ) {
+//        [self performSelector:@selector(tokenExpired)];
+//    }
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"账号在别处登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录", nil];
     WEAKSELF
     [alertView showWithCompleteBlock:^(NSInteger buttonIndex) {

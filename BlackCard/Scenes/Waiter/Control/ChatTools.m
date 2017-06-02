@@ -9,7 +9,9 @@
 #import "ChatTools.h"
 #import "AppNavigationController.h"
 #import "ChtaNavigationController.h"
+#import "ValidateHelper.h"
 @implementation ChatTools
+static  NSString *OrderReg = @"ydservice\\:\\/\\/app\\.jingyingheika\\.com/service/0/(.+)/pay\\.html";
 
 
 
@@ -40,6 +42,7 @@
     [self setQYUserIndfoWithPrivilegeName:title];
     
     UIViewController *sessionViewController = [self chatViewControllerWithTitle:title];
+    UIViewController *control = sessionViewController;
     
     if (navigation) {
         [navigation pushViewController:sessionViewController animated:YES];
@@ -51,20 +54,37 @@
         bar.tintColor = kUIColorWithRGB(0xffffff);
         sessionViewController.navigationItem.leftBarButtonItem = bar;
      
-        ChtaNavigationController  *nav =
+        control  =
         [[ChtaNavigationController alloc] initWithRootViewController:sessionViewController];
-        bar.target = nav;
+        bar.target = control;
         
         
-        return nav;
     }
     
     
+    [[QYSDK sharedSDK].conversationManager clearUnreadCount];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    UINavigationController *navi = navigation ? navigation : (UINavigationController *)control;
+    [self qyClickHandle:navi];
     
-    return  sessionViewController;
+    return  control;
 }
 
-
++ (void)qyClickHandle:(UINavigationController *)navi {
+    
+    [QYSDK sharedSDK].customActionConfig.linkClickBlock = ^(NSString *linkAddress) {
+        
+        NSString *orderNum = [[ValidateHelper shared] regularSubStrWithReg:OrderReg useString:linkAddress];
+        if (![NSString isEmpty:orderNum] && navi) {
+            [navi pushStoryboardViewControllerIdentifier:@"OrderDetailViewController" block:^(UIViewController *viewController) {
+                [viewController setValue:orderNum forKey:@"orderNum"];
+            }];
+        }
+    };
+    
+    
+    
+}
 
 
 
@@ -132,7 +152,7 @@
     
     UIViewController *navi  = [self chatViewControllerWithTitle:title navigation:nil];
     [viewController presentViewController:navi animated:YES completion:nil];
-
+    
     
 }
 

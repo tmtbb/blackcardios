@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
     
     if ([[CurrentUserHelper shared] isLogin]) {

@@ -134,7 +134,7 @@
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     }
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+//    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 

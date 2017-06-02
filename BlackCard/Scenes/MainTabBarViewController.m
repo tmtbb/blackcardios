@@ -71,9 +71,7 @@
         if (waiter.isViewLoaded) {
              [waiter goToChatController];
         }
-        
-       [[QYSDK sharedSDK].conversationManager clearUnreadCount];
-        
+
     }
    
     
