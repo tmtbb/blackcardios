@@ -3466,6 +3466,7 @@
                     <connections>
                         <segue destination="JWp-7d-CaF" kind="relationship" relationship="viewControllers" id="OCA-fn-Zyi"/>
                         <segue destination="Kxw-V6-hTM" kind="relationship" relationship="viewControllers" id="TrC-s5-5Tb"/>
+                        <segue destination="sMh-Po-Xqu" kind="relationship" relationship="viewControllers" id="ZVa-9A-KxA"/>
                         <segue destination="HrF-Id-06S" kind="relationship" relationship="viewControllers" id="ZDR-QJ-C55"/>
                     </connections>
                 </tabBarController>
