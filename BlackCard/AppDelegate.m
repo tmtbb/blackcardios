@@ -32,11 +32,25 @@
 }
 
 - (void)getDeviceKey {
+    OEZKeychainItemWrapper* keychain = [[OEZKeychainItemWrapper alloc] initWithIdentifier:kAppDevice_key accessGroup:nil];
     
+        [[AppAPIHelper shared].getMyAndUserAPI getRegisterDeviceWithComplete:^(id data) {
+            NSString *key = data[@"deviceKey"];
+            NSString *keyid = [NSString stringWithFormat:@"%@",data[@"deviceKeyId"]];
+            
+            
+            if (![NSString isEmpty:key] && data[@"deviceKeyId"] != nil && ![NSString isEmpty:keyid]) {
+                [keychain setObject:key forKey:CFBridgingRelease(kSecAttrAccount)];
+                OEZKeychainItemWrapper* keyidchain = [[OEZKeychainItemWrapper alloc] initWithIdentifier:kAppDevice_keyid accessGroup:nil];
+                [keyidchain setObject:keyid forKey:CFBridgingRelease(kSecAttrAccount)];
+                
+            }
+        } withError:nil];
+  
     
-    [[AppAPIHelper shared].getMyAndUserAPI getDeviceKeyWithComplete:nil withError:nil];
+
+    
    
-    
 }
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
