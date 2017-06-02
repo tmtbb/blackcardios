@@ -83,6 +83,15 @@
 		7C55C7061ED9696A000991AF /* WaiterServiceAPI.h in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C7051ED9696A000991AF /* WaiterServiceAPI.h */; };
 		7C55C7091ED969DB000991AF /* HttpWaiterService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C7081ED969DB000991AF /* HttpWaiterService.m */; };
 		7C55C70C1ED97871000991AF /* DefaultPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C70B1ED97871000991AF /* DefaultPay.m */; };
+		7C55C70F1EDE5B41000991AF /* BlackLogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C70E1EDE5B41000991AF /* BlackLogHelper.m */; };
+		7C55C7131EDEB3EA000991AF /* GuidePageOneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C7121EDEB3EA000991AF /* GuidePageOneView.m */; };
+		7C55C7151EDEB3FC000991AF /* GuidePageOneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C55C7141EDEB3FC000991AF /* GuidePageOneView.xib */; };
+		7C55C7181EDEB413000991AF /* GuidePageTwoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C7171EDEB413000991AF /* GuidePageTwoView.m */; };
+		7C55C71A1EDEB41D000991AF /* GuidePageTwoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C55C7191EDEB41D000991AF /* GuidePageTwoView.xib */; };
+		7C55C71D1EDEB46A000991AF /* GuidePageThreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C71C1EDEB46A000991AF /* GuidePageThreeView.m */; };
+		7C55C71F1EDEB473000991AF /* GuidePageThreeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C55C71E1EDEB473000991AF /* GuidePageThreeView.xib */; };
+		7C55C7221EDEB9EE000991AF /* BaseGuidePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C7211EDEB9EE000991AF /* BaseGuidePageView.m */; };
+		7C55C7251EDED001000991AF /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C7241EDED001000991AF /* GuideViewController.m */; };
 		7C71835A1EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7183591EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m */; };
 		7C71835F1EAF1BD400B40BCB /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C71835C1EAF1BD400B40BCB /* libWeChatSDK.a */; };
 		7C7183651EAF1C5600B40BCB /* PayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7183621EAF1C5600B40BCB /* PayHelper.m */; };
@@ -294,6 +303,21 @@
 		7C55C7081ED969DB000991AF /* HttpWaiterService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpWaiterService.m; sourceTree = "<group>"; };
 		7C55C70A1ED97871000991AF /* DefaultPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultPay.h; sourceTree = "<group>"; };
 		7C55C70B1ED97871000991AF /* DefaultPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultPay.m; sourceTree = "<group>"; };
+		7C55C70D1EDE5B41000991AF /* BlackLogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackLogHelper.h; sourceTree = "<group>"; };
+		7C55C70E1EDE5B41000991AF /* BlackLogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackLogHelper.m; sourceTree = "<group>"; };
+		7C55C7111EDEB3EA000991AF /* GuidePageOneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidePageOneView.h; sourceTree = "<group>"; };
+		7C55C7121EDEB3EA000991AF /* GuidePageOneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidePageOneView.m; sourceTree = "<group>"; };
+		7C55C7141EDEB3FC000991AF /* GuidePageOneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuidePageOneView.xib; sourceTree = "<group>"; };
+		7C55C7161EDEB413000991AF /* GuidePageTwoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidePageTwoView.h; sourceTree = "<group>"; };
+		7C55C7171EDEB413000991AF /* GuidePageTwoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidePageTwoView.m; sourceTree = "<group>"; };
+		7C55C7191EDEB41D000991AF /* GuidePageTwoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuidePageTwoView.xib; sourceTree = "<group>"; };
+		7C55C71B1EDEB46A000991AF /* GuidePageThreeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidePageThreeView.h; sourceTree = "<group>"; };
+		7C55C71C1EDEB46A000991AF /* GuidePageThreeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidePageThreeView.m; sourceTree = "<group>"; };
+		7C55C71E1EDEB473000991AF /* GuidePageThreeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuidePageThreeView.xib; sourceTree = "<group>"; };
+		7C55C7201EDEB9EE000991AF /* BaseGuidePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseGuidePageView.h; sourceTree = "<group>"; };
+		7C55C7211EDEB9EE000991AF /* BaseGuidePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseGuidePageView.m; sourceTree = "<group>"; };
+		7C55C7231EDED001000991AF /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
+		7C55C7241EDED001000991AF /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		7C7183581EAEF49D00B40BCB /* ConfirmApplicationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmApplicationTableViewController.h; sourceTree = "<group>"; };
 		7C7183591EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmApplicationTableViewController.m; sourceTree = "<group>"; };
 		7C71835C1EAF1BD400B40BCB /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
@@ -575,6 +599,7 @@
 		7C25A78D1EA8677A0049234E /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				7C55C7101EDEB3A7000991AF /* GuideView */,
 				7C25A82B1EA8944B0049234E /* SendVerifyCodeButton.h */,
 				7C25A82C1EA8944B0049234E /* SendVerifyCodeButton.m */,
 				7C26ADBC1ED6B2B800E32E87 /* CustomAlertController.h */,
@@ -611,6 +636,8 @@
 				7C25A8251EA88EBF0049234E /* CurrentUserHelper.m */,
 				7C25A8191EA88CAF0049234E /* BaseUserBandLogin.h */,
 				7C25A81A1EA88CAF0049234E /* BaseUserBandLogin.m */,
+				7C55C70D1EDE5B41000991AF /* BlackLogHelper.h */,
+				7C55C70E1EDE5B41000991AF /* BlackLogHelper.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -816,6 +843,26 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
+		7C55C7101EDEB3A7000991AF /* GuideView */ = {
+			isa = PBXGroup;
+			children = (
+				7C55C7201EDEB9EE000991AF /* BaseGuidePageView.h */,
+				7C55C7211EDEB9EE000991AF /* BaseGuidePageView.m */,
+				7C55C7111EDEB3EA000991AF /* GuidePageOneView.h */,
+				7C55C7121EDEB3EA000991AF /* GuidePageOneView.m */,
+				7C55C7141EDEB3FC000991AF /* GuidePageOneView.xib */,
+				7C55C7161EDEB413000991AF /* GuidePageTwoView.h */,
+				7C55C7171EDEB413000991AF /* GuidePageTwoView.m */,
+				7C55C7191EDEB41D000991AF /* GuidePageTwoView.xib */,
+				7C55C71B1EDEB46A000991AF /* GuidePageThreeView.h */,
+				7C55C71C1EDEB46A000991AF /* GuidePageThreeView.m */,
+				7C55C71E1EDEB473000991AF /* GuidePageThreeView.xib */,
+				7C55C7231EDED001000991AF /* GuideViewController.h */,
+				7C55C7241EDED001000991AF /* GuideViewController.m */,
+			);
+			path = GuideView;
+			sourceTree = "<group>";
+		};
 		7C71835B1EAF1BD400B40BCB /* WX */ = {
 			isa = PBXGroup;
 			children = (
@@ -863,8 +910,8 @@
 				7C8E787C1ED175B6000CADAA /* UserSetInfoTableViewController.h */,
 				7C8E787D1ED175B6000CADAA /* UserSetInfoTableViewController.m */,
 				7C8E787F1ED18888000CADAA /* MyPurseTableViewController.h */,
-				7C8E78821ED18F32000CADAA /* MyPurseDetailTableViewController.h */,
 				7C8E78801ED18888000CADAA /* MyPurseTableViewController.m */,
+				7C8E78821ED18F32000CADAA /* MyPurseDetailTableViewController.h */,
 				7C8E78831ED18F32000CADAA /* MyPurseDetailTableViewController.m */,
 				7C8E788B1ED195A4000CADAA /* ShoppingListLogViewController.h */,
 				7C8E788C1ED195A4000CADAA /* ShoppingListLogViewController.m */,
@@ -1139,12 +1186,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C55C7151EDEB3FC000991AF /* GuidePageOneView.xib in Resources */,
 				7CC14DE41EB9E929008B32ED /* app.jingyingheika.com.cer in Resources */,
+				7C55C71F1EDEB473000991AF /* GuidePageThreeView.xib in Resources */,
 				7C8E78A01ED2E5A0000CADAA /* AlipaySDK.bundle in Resources */,
 				7C55C7001ED94692000991AF /* ChoosePayTypeView.xib in Resources */,
 				7C25A79F1EA8677A0049234E /* Images.xcassets in Resources */,
 				7C25A79D1EA8677A0049234E /* LaunchScreen.storyboard in Resources */,
 				7C25A80C1EA886E50049234E /* EveryNoneView.xib in Resources */,
+				7C55C71A1EDEB41D000991AF /* GuidePageTwoView.xib in Resources */,
 				7C388FED1EADD7F4008023CA /* RegisterCardHScollCell.xib in Resources */,
 				7C18F0291EB03932008D247C /* area.plist in Resources */,
 				7C18F0321EB03E39008D247C /* CustomPickView.xib in Resources */,
@@ -1209,6 +1259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C55C7131EDEB3EA000991AF /* GuidePageOneView.m in Sources */,
 				7C25A81B1EA88CAF0049234E /* BaseUserBandLogin.m in Sources */,
 				7CC801A91EACAD53005B52A9 /* HttpHomePage.m in Sources */,
 				7C25A80B1EA886E50049234E /* EveryNoneView.m in Sources */,
@@ -1229,8 +1280,10 @@
 				7C8E78871ED18FAE000CADAA /* MyPurseDetailCell.m in Sources */,
 				7C8E789C1ED29CD1000CADAA /* SetPayPasswordTableViewController.m in Sources */,
 				7C8E788A1ED193D8000CADAA /* ShoppingListLogCell.m in Sources */,
+				7C55C7221EDEB9EE000991AF /* BaseGuidePageView.m in Sources */,
 				7C25A7DD1EA86A3D0049234E /* BaseCollectionViewController.m in Sources */,
 				7C25A7F91EA883B00049234E /* UINavigationController+Category.m in Sources */,
+				7C55C70F1EDE5B41000991AF /* BlackLogHelper.m in Sources */,
 				A6F46A0D1ED7C6D200D5C212 /* UIImage+ALinExtension.m in Sources */,
 				7C25A82A1EA893AE0049234E /* ValidateHelper.m in Sources */,
 				7CD68FAB1ED44D9700A3AD3E /* ModifyCardPasswordTableViewController.m in Sources */,
@@ -1240,6 +1293,7 @@
 				7C25A8211EA88E2C0049234E /* UIAlertCustomViewController.m in Sources */,
 				7C25A7F01EA86A3D0049234E /* BaseViewController.m in Sources */,
 				7C18F03B1EB20592008D247C /* WaiterViewController.m in Sources */,
+				7C55C7251EDED001000991AF /* GuideViewController.m in Sources */,
 				A62D5F111ED950EB0023E6C2 /* CardDetailBottomTableViewCell.m in Sources */,
 				7C25A7E81EA86A3D0049234E /* BaseRequestTableViewController.m in Sources */,
 				A6FAC2331ED6DA04002CB042 /* EliteLifeViewController.m in Sources */,
@@ -1253,6 +1307,7 @@
 				7CE70DD21EA79F00003772F1 /* ViewController.m in Sources */,
 				7C25A7E61EA86A3D0049234E /* BaseRefreshPageTableViewController.m in Sources */,
 				7C25A7F51EA86B100049234E /* UIViewController+Category.m in Sources */,
+				7C55C7181EDEB413000991AF /* GuidePageTwoView.m in Sources */,
 				7C18F0351EB1BEC0008D247C /* ResetPayTableViewController.m in Sources */,
 				7C25A8021EA886210049234E /* UIViewController+LoadMoreViewController.m in Sources */,
 				7C25A7D91EA86A3D0049234E /* BaseController.m in Sources */,
@@ -1296,6 +1351,7 @@
 				7C25A8111EA887F70049234E /* BaseCollectionViewCell.m in Sources */,
 				7C8E78931ED19F88000CADAA /* SetPasswordTableViewController.m in Sources */,
 				7CD68FA81ED439E000A3AD3E /* ModifyPayPasswordTableViewController.m in Sources */,
+				7C55C71D1EDEB46A000991AF /* GuidePageThreeView.m in Sources */,
 				A659F81F1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.m in Sources */,
 				7C25A7EF1EA86A3D0049234E /* BaseRequestViewController.m in Sources */,
 				7CC47CFB1EA9B2D4006FBB53 /* ShowYourNeedPageView.m in Sources */,

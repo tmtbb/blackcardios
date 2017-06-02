@@ -549,4 +549,22 @@ HELPER_SHARED(ValidateHelper)
 }
 
 
+
+- (NSString *)regularSubStrWithReg:(NSString *)reg useString:(NSString *)useStr{
+    
+    NSString *string = nil;
+    NSArray<NSTextCheckingResult*> *results = [self regularWithString:reg andDataString:useStr];
+    if( results.count > 0 ) {
+        NSTextCheckingResult *result = results[0];
+        string = [useStr substringWithRange:[result rangeAtIndex:1]];
+    }
+    return  string;
+}
+
+- ( NSArray<NSTextCheckingResult*> *)regularWithString:(NSString *)regex andDataString:(NSString *)dataStr{
+    NSRegularExpression *regular =  [[NSRegularExpression alloc] initWithPattern:regex options:NSRegularExpressionCaseInsensitive error:nil];
+    NSArray<NSTextCheckingResult*> *results = [regular matchesInString:dataStr options:0 range:NSMakeRange(0, dataStr.length)];
+    return results;
+}
+
 @end

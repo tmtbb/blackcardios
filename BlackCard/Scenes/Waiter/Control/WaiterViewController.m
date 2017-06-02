@@ -9,12 +9,11 @@
 #import "WaiterViewController.h"
 #import <QYSDK.h>
 #import "ChatTools.h"
-
+#import "ValidateHelper.h"
 
 @interface WaiterViewController ()
 @property(nonatomic)NSInteger isChat;
 @end
-
 @implementation WaiterViewController
 
 - (void)viewDidLoad {
@@ -35,8 +34,8 @@
     
     [ChatTools chatViewControllerWithTitle:nil navigation:self.navigationController];
     _isChat = 1;
-
-    // Do any additional setup after loading the view.
+  
+    
 }
 
 
@@ -89,7 +88,6 @@
 
 - (void)goToChatController {
     
-    
     if (self.navigationController.viewControllers.count < 2) {
         
         [ChatTools chatViewControllerWithTitle:nil navigation:self.navigationController];
@@ -100,20 +98,5 @@
 }
 
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

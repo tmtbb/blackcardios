@@ -28,9 +28,11 @@
 #import "CALayer+LayerColor.h"
 #import "BaseHttpAPI.h"
 #import "AppAPIHelper.h"
+#import "BlackLogHelper.h"
 #import "UIViewController+ActionCategory.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
+
 #define WEAKSELF __block typeof(self) __weak weakSelf = self;
 
 #define Dic(font) @{NSFontAttributeName: [UIFont systemFontOfSize:(font)]}
@@ -40,7 +42,7 @@
 #define kFontHeigt(font) [UIFont systemFontOfSize:font].lineHeight
 
 
-
+#define kAppVersion [NSString stringWithFormat:@"%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]
 
 
 

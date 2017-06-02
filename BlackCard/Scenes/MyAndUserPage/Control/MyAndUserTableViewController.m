@@ -98,9 +98,7 @@
         switch (indexPath.row) {
             case 2:
             case 4:{
-                [self showTips:@"敬请期待"];
-                [self pushStoryboardViewControllerIdentifier:@"OrderDetailViewController" block:nil];
-                
+                [self showTips:@"敬请期待"];                
             }
                 break;
             case 1:{

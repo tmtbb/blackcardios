@@ -242,6 +242,18 @@
     
     [self setChoosePageCount:pageIndex];
 }
+- (IBAction)rightBarButtonAction:(UIBarButtonItem *)sender {
+    
+    
+    [self pushWithIdentifier:@"WebViewController" complete:^(UIViewController *controller) {
+      [controller setValue:kHttpAPIUrl_webCallWaiter forKey:@"url"];
+    }];
+    
+    
+
+    
+    
+}
 
 
 @end
