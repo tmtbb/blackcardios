@@ -58,6 +58,7 @@
     [publishBtn setTitle:@"发布" forState:UIControlStateNormal];
     publishBtn.titleLabel.textColor=kUIColorWithRGB(0xFFFFFF);
     publishBtn.titleLabel.font=[UIFont systemFontOfSize:16];
+    publishBtn.tag=200;
     [publishBtn addTarget:self action:@selector(publishBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:publishBtn];
     
@@ -93,6 +94,7 @@
 }
 #pragma mark -发布
 -(void)publishBtnClicked {
+    UIButton *btn=[self.view viewWithTag:200];
     if (_textView.text.length==0)
     {
         UIAlertController *alert=[UIAlertController alertControllerWithTitle:nil message:@"评论不能为空" preferredStyle:UIAlertControllerStyleAlert];
@@ -102,12 +104,15 @@
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
+    btn.userInteractionEnabled=NO;
     WEAKSELF
 
     [[AppAPIHelper shared].getMyAndUserAPI postTribeCommentTribeMessageId:@"89C97C660605430C834DFADFFFA5CFE6" message:_textView.text complete:^(id data) {
+        btn.userInteractionEnabled=YES;
         [self dismissViewControllerAnimated:YES completion:nil];
         
     } error:^(NSError *error) {
+        btn.userInteractionEnabled=YES;
         [weakSelf showError:error];
     }];
 
@@ -168,7 +173,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+#pragma mark -收回键盘
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [_textView resignFirstResponder];
+}
 /*
 #pragma mark - Navigation
 

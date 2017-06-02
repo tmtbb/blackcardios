@@ -7,6 +7,7 @@
 //
 
 #import "CardTribeTableViewCell.h"
+#import "UIImageView+WebCache.h"
 
 @implementation CardTribeTableViewCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -19,9 +20,9 @@
         //名字
         _nameLabel=[[UILabel alloc] initWithFrame:CGRectMake(56, 10, 100, 20)];
         //日期
-        _dateLabel=[[UILabel alloc] initWithFrame:CGRectMake(56, 30, 100, 20)];
+        _dateLabel=[[UILabel alloc] initWithFrame:CGRectMake(56, 30, 90, 20)];
         //时间
-        _timeLabel=[[UILabel alloc] initWithFrame:CGRectMake(156, 30, 100, 20)];
+        _timeLabel=[[UILabel alloc] initWithFrame:CGRectMake(146, 30, 100, 20)];
         //白色区域
         _whiteView=[[UIView alloc] init];
         _whiteView.layer.cornerRadius=5.0f;
@@ -68,19 +69,24 @@
 }
 
 -(void)setModel:(TribeModel *)model{
-    NSLog(@"666=%d %d",model.likeNum,model.isLike);
+    NSLog(@"999=%@",model.headUrl);
     //头像
-    UIImage *image=[UIImage imageNamed:@"HomePageDefaultCard"];
-    image=[UIImage circleImage:image borderColor:[UIColor redColor] borderWidth:1.0f];
-    _headerImageView.image=image;
-    _levelImageView.image=[UIImage imageNamed:@"goldenAuthenticated"];
-    NSLog(@"999=%@",model.id);
+    if (model.headUrl)
+    {
+        [_headerImageView sd_setImageWithURL:[NSURL URLWithString:model.headUrl]];
+    }else
+    {
+        UIImage *image=[UIImage imageNamed:@"HomePageDefaultCard"];
+        image=[UIImage circleImage:image borderColor:[UIColor redColor] borderWidth:1.0f];
+        _headerImageView.image=image;
+    }
+//    _levelImageView.image=[UIImage imageNamed:@"goldenAuthenticated"];
     //名称
     _nameLabel.text=model.nickName;
     _nameLabel.font=[UIFont systemFontOfSize:14];
     _nameLabel.textAlignment=NSTextAlignmentLeft;
     //日期
-    _dateLabel.text=[NSString stringWithFormat:@"%ld",model.yearMonth];
+    _dateLabel.text=[self compareTime:model.createTime];
     _dateLabel.font=[UIFont systemFontOfSize:12];
     _dateLabel.textAlignment=NSTextAlignmentLeft;
     _dateLabel.textColor=kUIColorWithRGB(0xA6A6A6);
@@ -116,18 +122,33 @@
 //    _titleLabel.backgroundColor=[UIColor redColor];
     
     //图片区域
-   
+    if (model.tribeMessageImgs.count>0)
+    {
         _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, kMainScreenWidth-90, 160);
         _showImageView.backgroundColor=[UIColor blueColor];
-
-            for (int i=0; i<2; i++) {
-                UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(i*((kMainScreenWidth-90-10)/2+10), 10, (kMainScreenWidth-90-10)/2, (kMainScreenWidth-90-10)/2)];
-                photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
-                photo.contentMode=UIViewContentModeScaleAspectFit;
-                [_showImageView addSubview:photo];
-            
+        NSInteger imageNum;
+        if (model.tribeMessageImgs.count>2) {
+            imageNum=2;
+        }else{
+            imageNum=model.tribeMessageImgs.count;
         }
-        
+        for (int i=0; i<2; i++) {
+            UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(i*((kMainScreenWidth-90-10)/2+10), 10, (kMainScreenWidth-90-10)/2, (kMainScreenWidth-90-10)/2)];
+//            [SDWebImageManager sharedManager]
+            [photo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.tribeMessageImgs[i][@"img"]]]];
+//            photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
+            photo.contentMode=UIViewContentModeScaleAspectFit;
+            [_showImageView addSubview:photo];
+        }
+
+    }else{
+        _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, kMainScreenWidth-90, 0);
+        _showImageView.backgroundColor=[UIColor blueColor];
+    }
+    
+    
+
+    
     //点赞按钮
     _praiseBtn.frame=CGRectMake(10, _showImageView.frame.size.height+_showImageView.frame.origin.y+10, 80, 30);
     [_praiseBtn setImage:[UIImage imageNamed:@"bottomPraise"] forState:UIControlStateNormal];
@@ -156,7 +177,7 @@
     [_commentBtn addTarget:self action:@selector(commentBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     //评论数目
     _commentLabel.frame=CGRectMake(20,7, 60, 15);
-    _commentLabel.text=[NSString stringWithFormat:@"%d",10000];
+    _commentLabel.text=[NSString stringWithFormat:@"%d",model.commentNum];
     _commentLabel.font=[UIFont systemFontOfSize:12];
     _commentLabel.textColor=kUIColorWithRGB(0xA6A6A6);
     _commentLabel.textAlignment=NSTextAlignmentLeft;
@@ -254,7 +275,25 @@
 //    _whiteView.backgroundColor=kUIColorWithRGB(0xFFFFFF);
 
 }
-
+-(NSString *)compareTime:(NSInteger)myTime{
+    NSString *campareTime;
+    NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
+    NSInteger time1=(NSInteger)time;
+    NSInteger differTime=time1-myTime/1000;
+    NSInteger year=60*60*24*30*365;
+    NSInteger month=60*60*24*30;
+    NSInteger day=60*60*24;
+    if ((differTime/year)!=0) {
+        campareTime=[NSString stringWithFormat:@"%ldyear ago",differTime/year];
+    }else if ((differTime/month)!=0){
+        campareTime=[NSString stringWithFormat:@"%ldmonth ago",differTime/month];
+    }else if((differTime/day)!=0){
+        campareTime=[NSString stringWithFormat:@"%lddays ago",differTime/day];
+    }else{
+        campareTime=@"today";
+    }
+    return campareTime;
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

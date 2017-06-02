@@ -59,9 +59,6 @@
     }
 
 }
--(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 10;
-}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row==0) {
         CardDetailTopTableViewCell *cell=(CardDetailTopTableViewCell*)[self tableView:self.tableView cellForRowAtIndexPath:indexPath];
@@ -75,15 +72,22 @@
 #pragma mark -CardDetailTopCellDelegate
 -(void)praise:(CardDetailTopTableViewCell *)cell{
     WEAKSELF
+    cell.praiseBtn.userInteractionEnabled=NO;
     TribeModel *model=_myModel;
     [[AppAPIHelper shared].getMyAndUserAPI postTribePraiseTribeMessageId:model.id complete:^(id data) {
         model.likeNum=model.likeNum+1;
          model.isLike=1;
         _myModel=model;
         cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
+        if ([_delegate respondsToSelector:@selector(sendMyModel:)])
+        {
+            [_delegate sendMyModel:_myModel];
+        }
+        cell.praiseBtn.userInteractionEnabled=YES;
         [self.tableView reloadData];
     } error:^(NSError *error) {
         [weakSelf showError:error];
+        cell.praiseBtn.userInteractionEnabled=YES;
     }];
 }
 -(void)comment:(CardDetailTopTableViewCell *)cell{
@@ -94,15 +98,22 @@
 }
 -(void)deletePraise:(CardDetailTopTableViewCell *)cell{
     WEAKSELF
+    cell.praiseBtn.userInteractionEnabled=NO;
     TribeModel *model=_myModel;
     [[AppAPIHelper shared].getMyAndUserAPI deletePostTribePraiseTribeMessageId:model.id complete:^(id data) {
         model.likeNum=model.likeNum-1;
         model.isLike=0;
         _myModel=model;
         cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
+        if ([_delegate respondsToSelector:@selector(sendMyModel:)])
+        {
+            [_delegate sendMyModel:_myModel];
+        }
+        cell.praiseBtn.userInteractionEnabled=YES;
         [self.tableView reloadData];
     } error:^(NSError *error) {
         [weakSelf showError:error];
+        cell.praiseBtn.userInteractionEnabled=YES;
     }];
 }
 - (void)didReceiveMemoryWarning {
