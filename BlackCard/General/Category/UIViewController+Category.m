@@ -66,7 +66,7 @@ static char *CustomNavigationBarKey = "CustomNavigationBarKey";
         case 10003:
         case 10004:{
 #ifndef DEBUG
-            stringError = @"服务器异常，请稍后再试";
+            stringError =  @"网络不给力，请稍后再试";
 #endif
         }
             break;
