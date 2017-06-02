@@ -23,6 +23,7 @@
 - (void)didRequest:(NSInteger)pageIndex {
     
     [[AppAPIHelper shared].getMyAndUserAPI getUserShoppingListWihtPage:pageIndex complete:_completeBlock error:_errorBlock];
+    
 }
 
 - (void)didRequestComplete:(id)data {
