@@ -13,7 +13,7 @@
 - (void)payWithDefaultModel:(DefaultModel *)model {
     WEAKSELF
     
-   NSMutableDictionary *dic = [@{@"event" : @"service_pay",@"amount" : @(model.money),@"payType":@(0)} mutableCopy];
+   NSMutableDictionary *dic = [@{@"event" : @"butlerservice_pay",@"amount" : @(model.money),@"payType":@(0)} mutableCopy];
     
     [[AppAPIHelper shared].getWaiterServiceAPI getPayWithServiceNo:model.serviceNo payType:0 payPassword:model.payPassword Complete:^(PayInfoModel *data) {
         
@@ -30,7 +30,8 @@
           NSString *stringError = [[error userInfo] objectForKey:NSLocalizedDescriptionKey];
         [dic  setObject:stringError  forKey:@"returnMsg"];
         
-         [weakSelf payHelperWithType:PayTypeDefaultPay withPayStatus:PayError withData:@"支付失败"];
+         
+         [weakSelf payHelperWithType:PayTypeDefaultPay withPayStatus:PayError withData:error];
         [[BlackLogHelper shared] postPayLogHttp:dic];
 
     }];

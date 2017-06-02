@@ -52,6 +52,8 @@
   
     
     _myFootView.hidden = YES;
+    [self userInformationHandle];
+
 }
 
 
@@ -67,7 +69,6 @@
     _changeButton.title = nil;
     _changeButton.enabled = NO;
     [self userInformationSetting];
-    [self userInformationHandle];
     [super didRequestComplete:data];
 }
 
@@ -99,23 +100,28 @@
         _userPhoneField.text = _model.phoneNum;
     }
     
+    if ([NSString isEmpty:_model.identityCard]) {
+        _userIdentityField.userInteractionEnabled = YES;
+    }
+
+    
     
 }
 
 
 - (void)userInformationHandle {
-    if ([NSString isEmpty:_model.identityCard]) {
-        _userIdentityField.userInteractionEnabled = YES;
-    }
 
-
+    NSArray *field = @[_nickNameField,_companyNameField,_userJobField,_userIdentityField,_userEmailField];
     
-    
-    for (int i = 0 ; i < 5; i++) {
-        UITextField *field = [self.view viewWithTag:100 + i];
-        [field addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [field enumerateObjectsUsingBlock:^(UITextField  *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         
-    }
+    }];
+//    for (NSInteger i = 0 ; i < 5; i++) {
+//        UITextField *field = [self.tableView viewWithTag:100 + i];
+//        [field addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+//        
+//    }
     
     
 }

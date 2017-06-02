@@ -46,7 +46,7 @@
 - (void)didRequestComplete:(WaiterServiceMDetailModel *)data {
     
     _model = data;
-
+    [_handle upDate:data];
     [self detailSetting:data];
     
     [super didRequestComplete:data];

@@ -238,7 +238,7 @@ HELPER_SHARED(ValidateHelper)
 
 
 - (BOOL)isEmail:(NSString *)email{
-    NSString *regex = @"^(\\w)+(\\.\\w+)*@(\\w)+((\\.\\w+)+)$";
+    NSString *regex = @"^([a-z0-9A-Z]+[-|.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?.)+[a-zA-Z]{2,}$";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [pred evaluateWithObject:email];
     

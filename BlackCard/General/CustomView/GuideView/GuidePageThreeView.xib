@@ -21,9 +21,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guideViewThree" translatesAutoresizingMaskIntoConstraints="NO" id="EJk-ch-Kx1">
-                    <rect key="frame" x="28" y="278" width="319" height="232"/>
+                    <rect key="frame" x="55.5" y="278" width="264" height="230.5"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="EJk-ch-Kx1" secondAttribute="height" multiplier="11:8" id="TA5-gr-8go"/>
+                        <constraint firstAttribute="width" secondItem="EJk-ch-Kx1" secondAttribute="height" multiplier="528:461" id="TA5-gr-8go"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUI-5Z-1l9">
@@ -51,7 +51,7 @@
             <constraints>
                 <constraint firstItem="mp2-4S-Qna" firstAttribute="top" secondItem="DYK-hB-MZe" secondAttribute="top" id="07P-w8-tel"/>
                 <constraint firstItem="qUI-5Z-1l9" firstAttribute="leading" secondItem="DYK-hB-MZe" secondAttribute="leading" constant="12" id="0Ra-7C-wp1"/>
-                <constraint firstItem="EJk-ch-Kx1" firstAttribute="width" secondItem="mp2-4S-Qna" secondAttribute="width" multiplier="319:375" id="7LA-2h-RzQ"/>
+                <constraint firstItem="EJk-ch-Kx1" firstAttribute="width" secondItem="mp2-4S-Qna" secondAttribute="width" multiplier="264:375" id="7LA-2h-RzQ"/>
                 <constraint firstAttribute="bottom" secondItem="qUI-5Z-1l9" secondAttribute="bottom" constant="85" id="7vy-rX-c9n"/>
                 <constraint firstItem="EJk-ch-Kx1" firstAttribute="top" secondItem="DYK-hB-MZe" secondAttribute="top" constant="278" id="MQH-IA-sRE"/>
                 <constraint firstItem="mp2-4S-Qna" firstAttribute="leading" secondItem="DYK-hB-MZe" secondAttribute="leading" id="OaQ-fd-Fwz"/>

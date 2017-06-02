@@ -61,24 +61,19 @@ static char *CustomNavigationBarKey = "CustomNavigationBarKey";
             [self presentViewController:alert animated:YES completion:nil];
             
         }
-            break;
+            return;
         case 10001:
         case 10003:
         case 10004:{
 #ifndef DEBUG
-            stringError = @"服务器异常，请稍后再试";
+            stringError =  @"服务器异常，请稍后再试";
 #endif
         }
             break;
             
         default: {
-            //#ifndef DEBUG
-            //
-            //            if (error.code != 0 &&  error.code != kAppNSErrorCheckDataCode && error.code != kAppNSErrorLoginCode) {
-            //                stringError = @"网络不给力，请稍后再试";
-            //            }
-            //#endif
-            stringError = [NSString isEmpty:stringError] ? @"服务出错了!" : stringError;
+
+            stringError = [NSString isEmpty:stringError] ? @"网络不给力，请稍后再试!" : stringError;
             
             
         }

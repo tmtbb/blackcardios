@@ -21,9 +21,15 @@
 
 - (void)update:(NSString *)data {
     self.currentPurseMoneyLabel.text = [NSString stringWithFormat:@"当前可用余额¥%@",data];
+    
+    
+    
 }
 
-
+- (void)purseButtonCanUse:(BOOL)canUse {
+    
+    _myPurseButton.userInteractionEnabled = canUse;
+}
 
 
 

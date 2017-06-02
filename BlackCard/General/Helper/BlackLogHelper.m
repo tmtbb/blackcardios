@@ -24,7 +24,7 @@ HELPER_SHARED(BlackLogHelper);
 
 - (void)addPayInformation:(NSDictionary *)dic {
     if (_payLogDic) {
-        [_payLogDic setDictionary:dic];
+        [_payLogDic addEntriesFromDictionary:dic];
     }else{
         [self setPayDic:dic];
     }

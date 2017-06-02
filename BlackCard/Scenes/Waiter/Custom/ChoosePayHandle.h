@@ -19,4 +19,6 @@
 
 - (instancetype)initWithController:(UIViewController *)controller andModel:(id)model;
 - (void)handleShow;
+
+- (void)upDate:(id)data;
 @end

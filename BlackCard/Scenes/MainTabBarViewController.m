@@ -81,26 +81,27 @@
 
 
 - (void)settingTabBarImage {
-    
-    
-    UITabBar *tabBar = self.tabBar;
-    UITabBarItem *item0 = [tabBar.items objectAtIndex:0];
-    UITabBarItem *item1 = [tabBar.items objectAtIndex:1];
-    UITabBarItem *item2 = [tabBar.items objectAtIndex:3];
-    UITabBarItem *item3 = [tabBar.items objectAtIndex:2];
-    // 对item设置相应地图片
-    item0.selectedImage = [[UIImage imageNamed:@"tabbarBalckCardSel"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
-    item0.image = [[UIImage imageNamed:@"tabbarBalckCardNone"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    item1.selectedImage = [[UIImage imageNamed:@"tabbarWaiterSel"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
-    item1.image = [[UIImage imageNamed:@"tabbarWaiterNone"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    item2.selectedImage = [[UIImage imageNamed:@"tabbarMySel"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
-    item2.image = [[UIImage imageNamed:@"tabbarMySel-1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    item3.selectedImage = [[UIImage imageNamed:@"tabbarTribeSel"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
-    item3.image = [[UIImage imageNamed:@"tabbarTribeNon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
+   
+   
+//   NSArray *selectedImages = @[@"tabbarBalckCardSel",@"tabbarWaiterSel",@"tabbarTribeSel",@"tabbarMySel"];
+//   NSArray *images =    @[@"tabbarBalckCardNone",@"tabbarWaiterNone",@"tabbarTribeNon",@"tabbarMySel-1"];
+   UITabBar *tabBar = self.tabBar;
+   NSMutableArray *imageArr = [NSMutableArray arrayWithArray:
+                               @[@[@"tabbarBalckCardSel",@"tabbarBalckCardNone"],
+                                 @[@"tabbarWaiterSel",@"tabbarWaiterNone"],
+                                 @[@"tabbarMySel",@"tabbarMySel-1"]]];
+   if (tabBar.items.count == 4) {
+      [imageArr insertObject:@[@"tabbarTribeSel",@"tabbarTribeNon"] atIndex:2];
+   }
+   
+   
+   [imageArr enumerateObjectsUsingBlock:^(NSArray    * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+      UITabBarItem *item = [tabBar.items objectAtIndex:idx];
+      item.selectedImage = [[UIImage imageNamed:obj.firstObject] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+      item.image = [[UIImage imageNamed:obj.lastObject] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+   }];
+   
+
     UIColor *titleHighlightedColor = kUIColorWithRGB(0x070707);
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: titleHighlightedColor,NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
     
@@ -108,8 +109,8 @@
     
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:titleHighlightedColor, NSForegroundColorAttributeName,nil] forState:UIControlStateSelected];
    
-   
-   item1.badgeColor = [UIColor redColor];
+   UITabBarItem *item = [tabBar.items objectAtIndex:kChatIndex];
+   item.badgeColor = [UIColor redColor];
     
 }
 

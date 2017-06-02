@@ -36,5 +36,6 @@ typedef NS_ENUM(NSInteger,ChoosePayTypeViewStatus) {
 - (void)showKeyboard;
 -(void)hiddenKeyBoard;
 
+- (void)purseButtonCanUse:(BOOL)canUse;
 
 @end
