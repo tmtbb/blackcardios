@@ -97,11 +97,19 @@
     _dateLabel.font=[UIFont systemFontOfSize:12];
     _dateLabel.textAlignment=NSTextAlignmentLeft;
     _dateLabel.textColor=kUIColorWithRGB(0xA6A6A6);
+    _dateLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    CGSize maximumLabelSize2 = CGSizeMake(kMainScreenWidth-85, 20);//labelsize的最大值
+    CGSize expectSize2 = [_dateLabel sizeThatFits:maximumLabelSize2];
+    _dateLabel.frame=CGRectMake(56, 30, expectSize2.width, 20);
     //时间
     _timeLabel.text=[model.formatCreateTime substringFromIndex:11];
     _timeLabel.font=[UIFont systemFontOfSize:12];
     _timeLabel.textAlignment=NSTextAlignmentLeft;
     _timeLabel.textColor=kUIColorWithRGB(0xA6A6A6);
+    _timeLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    CGSize maximumLabelSize3 = CGSizeMake(kMainScreenWidth-85, 20);//labelsize的最大值
+    CGSize expectSize3 = [_timeLabel sizeThatFits:maximumLabelSize3];
+    _timeLabel.frame=CGRectMake(70+_dateLabel.frame.size.width, 30, expectSize3.width, 20);
     
     
     //文章内容
@@ -125,58 +133,72 @@
     //图片区域
     if (model.tribeMessageImgs.count>0)
     {
-        
-        //        _showImageView.backgroundColor=[UIColor blueColor];
-        if (model.tribeMessageImgs.count<=2)
+        if (model.tribeMessageImgs.count==1)
         {
-            for (int i=0; i<2; i++) {
-                UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(i*((kMainScreenWidth-90-10)/2+10), 10, (kMainScreenWidth-90-10)/2, (kMainScreenWidth-90-10)/2)];
-//                photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
+            _showImageView.frame=CGRectMake(0, _titleLabel.frame.size.height+20, kMainScreenWidth-90, 170);
+            UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 160, 160)];
+            photo.contentMode=UIViewContentModeScaleAspectFit;
+//            photo.image=photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
+            [photo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.tribeMessageImgs[0][@"img"]]]];
+            [_showImageView addSubview:photo];
+        }else{
+            //            _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, kMainScreenWidth-90, 160);
+            CGFloat photoWidth=(kMainScreenWidth-100)/3;
+            for (int i=0; i<model.tribeMessageImgs.count; i++) {
+                int a= i/3;
+                int b= i%3;
+                UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(10+b*(5+photoWidth), 5+a*(5+photoWidth), photoWidth,photoWidth)];
                 [photo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.tribeMessageImgs[i][@"img"]]]];
+//                photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
                 photo.contentMode=UIViewContentModeScaleAspectFit;
                 [_showImageView addSubview:photo];
             }
-            _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, kMainScreenWidth-90, 160);
-        }else{
-            for (int i=0; i<model.tribeMessageImgs.count; i++ ) {
-            int a= i/3;
-            int b= i%3;
-            UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(b*((kMainScreenWidth-90-10)/3+10), a*((kMainScreenWidth-90-10)/3+10), (kMainScreenWidth-90-10)/3, (kMainScreenWidth-90-10)/3)];
-//            photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
-            [photo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.tribeMessageImgs[i][@"img"]]]];
-            photo.contentMode=UIViewContentModeScaleAspectFit;
-            [_showImageView addSubview:photo];
+            int c;
+            if (model.tribeMessageImgs.count%3==0)
+            {
+                c=(int)(model.tribeMessageImgs.count/3);
+                
+            }else{
+                c=(int)(model.tribeMessageImgs.count/3)+1;
             }
-            NSInteger c=model.tribeMessageImgs.count/3;
-               _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, kMainScreenWidth-90, (c+1)*(kMainScreenWidth-90-10)/3+20);
-            
+            _showImageView.frame=CGRectMake(0, _titleLabel.frame.size.height+20, kMainScreenWidth-90, 5+c*(photoWidth+5));
         }
         
-        
-        
     }else{
-        _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, kMainScreenWidth-90,0);
+        _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, kMainScreenWidth-90, 0);
     }
-
     
     //点赞按钮
     _praiseBtn.frame=CGRectMake(10, _showImageView.frame.size.height+_showImageView.frame.origin.y+10, 80, 30);
-    [_praiseBtn setImage:[UIImage imageNamed:@"bottomPraise"] forState:UIControlStateNormal];
-    _praiseBtn.imageEdgeInsets=UIEdgeInsetsMake(7, 0, 8, 65);
     if (model.isLike==0)
     {
+        [_praiseBtn setImage:[UIImage imageNamed:@"bottomPraise"] forState:UIControlStateNormal];
         [_praiseBtn removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         [_praiseBtn addTarget:self action:@selector(praiseBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     }else{
+        [_praiseBtn setImage:[UIImage imageNamed:@"praised"] forState:UIControlStateNormal];
         [_praiseBtn removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         [_praiseBtn addTarget:self action:@selector(deletePraiseBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     }
+//    [_praiseBtn setImage:[UIImage imageNamed:@"bottomPraise"] forState:UIControlStateNormal];
+    _praiseBtn.imageEdgeInsets=UIEdgeInsetsMake(7, 0, 8, 65);
     //点赞数目
     _praiseLabel.frame=CGRectMake(20, 7, 60, 15);
     _praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
     _praiseLabel.font=[UIFont systemFontOfSize:12];
-    _praiseLabel.textColor=kUIColorWithRGB(0xA6A6A6);
+    if (model.isLike==0)
+    {
+        _praiseLabel.textColor=kUIColorWithRGB(0xA6A6A6);
+    }else{
+        _praiseLabel.textColor=kUIColorWithRGB(0xE3A63F);
+    }
     _praiseLabel.textAlignment=NSTextAlignmentLeft;
+    _praiseLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    CGSize maximumLabelSize4 = CGSizeMake(kMainScreenWidth-85, 15);//labelsize的最大值
+    CGSize expectSize4 = [_praiseLabel sizeThatFits:maximumLabelSize4];
+    _praiseLabel.frame=CGRectMake(20, 7, expectSize4.width, 15);
+    _praiseBtn.frame=CGRectMake(10, _showImageView.frame.size.height+_showImageView.frame.origin.y+10, 23+_timeLabel.frame.size.width, 30);
+    _praiseBtn.imageEdgeInsets=UIEdgeInsetsMake(7, 0, 8, _praiseBtn.frame.size.width-15);
     
     
     //评论按钮
@@ -190,14 +212,20 @@
     _commentLabel.font=[UIFont systemFontOfSize:12];
     _commentLabel.textColor=kUIColorWithRGB(0xA6A6A6);
     _commentLabel.textAlignment=NSTextAlignmentLeft;
+    _commentLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    CGSize maximumLabelSize5 = CGSizeMake(kMainScreenWidth-85, 15);//labelsize的最大值
+    CGSize expectSize5 = [_commentLabel sizeThatFits:maximumLabelSize5];
+    _commentLabel.frame=CGRectMake(20, 7, expectSize5.width, 15);
+    _commentBtn.frame=CGRectMake(22+_praiseBtn.frame.size.width,_praiseBtn.frame.origin.y, 23+_commentLabel.frame.size.width, 30);
+    _commentBtn.imageEdgeInsets=UIEdgeInsetsMake(7, 0, 8, _commentBtn.frame.size.width-15);
     
     //更多
-    _moreBtn.frame=CGRectMake(kMainScreenWidth-70-60, _praiseBtn.frame.origin.y, 80, 30);
+    _moreBtn.frame=CGRectMake(kMainScreenWidth-70-60, _praiseBtn.frame.origin.y, 60, 30);
     [_moreBtn setImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
-    _moreBtn.imageEdgeInsets=UIEdgeInsetsMake(7, 0, 8, 65);
+    _moreBtn.imageEdgeInsets=UIEdgeInsetsMake(7, 0, 8, 45);
     [_moreBtn addTarget:self action:@selector(moreBtnBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     //更多label
-    _moreLabel.frame=CGRectMake(20, 7, 60, 15);
+    _moreLabel.frame=CGRectMake(20, 7, 40, 15);
     _moreLabel.text=@"更多";
     _moreLabel.font=[UIFont systemFontOfSize:12];
     _moreLabel.textColor=kUIColorWithRGB(0xA6A6A6);

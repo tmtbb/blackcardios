@@ -67,6 +67,7 @@
     [self.view addSubview:myTableView];
     _cardTridDetailTableView=[[CardTribeDetailTabelViewController alloc] init];
     _cardTridDetailTableView.delegate=self;
+    _cardTridDetailTableView.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     CGRect frame=_cardTridDetailTableView.view.frame;
     frame.size.height=frame.size.height-120;
     _cardTridDetailTableView.myModel=_myModel;
@@ -77,18 +78,29 @@
 #pragma mark -设置底部图
 -(void)setupBottomContentView{
     UIView *bottomView=[[UIView alloc] initWithFrame:CGRectMake(0, kMainScreenHeight-50, kMainScreenWidth, 50)];
-    bottomView.backgroundColor=kUIColorWithRGB(0xD7D7D7);
-//    bottomView.backgroundColor=[UIColor whiteColor];
+    bottomView.backgroundColor=kUIColorWithRGB(0xFAFAFA);
+    bottomView.layer.borderColor=kUIColorWithRGB(0xD7D7D7).CGColor;
+    bottomView.layer.borderWidth=1.0f;
+//    bottomView.layer.shadowColor = kUIColorWithRGB(0xD7D7D7).CGColor;
+//    bottomView.layer.shadowRadius = 4.f;
     
     //底部点赞按钮
     UIButton *bottomPraiseBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     bottomPraiseBtn.frame=CGRectMake(0, 0, kMainScreenWidth/2, 50);
-    [bottomPraiseBtn setImage:[UIImage imageNamed:@"bottomPraise"] forState:UIControlStateNormal];
+    if (_myModel.isLike==0)
+    {
+        [bottomPraiseBtn setImage:[UIImage imageNamed:@"bottomPraise"] forState:UIControlStateNormal];
+        [bottomPraiseBtn setTitle:@"赞" forState:UIControlStateNormal];
+    }else{
+        [bottomPraiseBtn setImage:[UIImage imageNamed:@"bottomPraised"] forState:UIControlStateNormal];
+        [bottomPraiseBtn setTitle:@"取消" forState:UIControlStateNormal];
+    }
+    
     bottomPraiseBtn.imageEdgeInsets=UIEdgeInsetsMake(15, kMainScreenWidth/4-20, 15, kMainScreenWidth/4);
-    [bottomPraiseBtn setTitle:@"赞" forState:UIControlStateNormal];
+//    [bottomPraiseBtn setTitle:@"赞" forState:UIControlStateNormal];
     bottomPraiseBtn.titleLabel.font=[UIFont systemFontOfSize:14];
     [bottomPraiseBtn setTitleColor:kUIColorWithRGB(0x434343) forState:UIControlStateNormal];
-    bottomPraiseBtn.titleEdgeInsets=UIEdgeInsetsMake(15, kMainScreenWidth/4-10, 15, kMainScreenWidth/4-25);
+    bottomPraiseBtn.titleEdgeInsets=UIEdgeInsetsMake(15, kMainScreenWidth/4-10, 15, kMainScreenWidth/4-45);
     bottomPraiseBtn.tag=100;
     if (_myModel.isLike==0) {
         [bottomPraiseBtn addTarget:self action:@selector(bottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -191,6 +203,8 @@
         model.likeNum=model.likeNum+1;
         model.isLike=1;
         _myModel=model;
+        [sender setImage:[UIImage imageNamed:@"bottomPraised"] forState:UIControlStateNormal];
+        [sender setTitle:@"取消" forState:UIControlStateNormal];
         [sender removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         [sender addTarget:self action:@selector(deleteBottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [_cardTridDetailTableView.tableView reloadData];
@@ -209,6 +223,8 @@
         model.likeNum=model.likeNum-1;
         _myModel=model;
         model.isLike=0;
+        [sender setImage:[UIImage imageNamed:@"bottomPraise"] forState:UIControlStateNormal];
+        [sender setTitle:@"赞" forState:UIControlStateNormal];
         [sender removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         [sender addTarget:self action:@selector(bottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [_cardTridDetailTableView.tableView reloadData];
@@ -226,9 +242,13 @@
     _myModel=model;
     UIButton *btn=[self.view viewWithTag:100];
     if (model.isLike==1) {
+        [btn setImage:[UIImage imageNamed:@"bottomPraised"] forState:UIControlStateNormal];
+        [btn setTitle:@"取消" forState:UIControlStateNormal];
         [btn removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         [btn addTarget:self action:@selector(deleteBottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }else{
+        [btn setImage:[UIImage imageNamed:@"bottomPraise"] forState:UIControlStateNormal];
+        [btn setTitle:@"赞" forState:UIControlStateNormal];
         [btn removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
         [btn addTarget:self action:@selector(bottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }

@@ -12,6 +12,7 @@
 #import "CardTribeDetailViewController.h"
 #import "BaseHttpAPI.h"
 #import "CommentViewController.h"
+#import "CustomAlertController.h"
 
 @interface CardTribeViewController ()<CardTribeCellDelegate,PraiseRresh,CommentRefresh>
 //@property(strong,nonatomic)UITableView *cardTribeTabelView;
@@ -22,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
 //    [self.tableView registerClass:[CardTribeTableViewCell class] forCellReuseIdentifier:@"CardTribeTableViewCell"];
 //    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
 }
@@ -113,6 +115,27 @@
         [weakSelf removeMBProgressHUD];
         [weakSelf showError:error];
     }];
+}
+-(void)more:(CardTribeTableViewCell *)cell{
+    CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"更多功能" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert addCancleButton:@"取消" otherButtonTitles:@"举报",nil];
+    
+    WEAKSELF
+    [alert didClickedButtonWithHandler:^(UIAlertAction * _Nullable action, NSInteger buttonIndex) {
+        if (action.style != UIAlertActionStyleCancel) {
+            switch (buttonIndex) {
+                case 0:{
+                    
+                    
+                }
+                    break;
+               
+            }
+            
+        }
+        
+    }];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 #pragma mark -CommentReresh
 -(void)refresh:(NSDictionary *)dict{

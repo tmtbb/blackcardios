@@ -12,6 +12,7 @@
 #import "CardDetailBottomTableViewCell.h"
 #import "CardTribeViewController.h"
 #import "CommentViewController.h"
+#import "CustomAlertController.h"
 @interface CardTribeDetailTabelViewController ()<CardDetailTopCellDelegate>
 
 @end
@@ -121,6 +122,27 @@
         [weakSelf removeMBProgressHUD];
         [weakSelf showError:error];
     }];
+}
+-(void)more:(CardDetailTopTableViewCell *)cell{
+    CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"更多功能" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert addCancleButton:@"取消" otherButtonTitles:@"举报",nil];
+    
+//    WEAKSELF
+    [alert didClickedButtonWithHandler:^(UIAlertAction * _Nullable action, NSInteger buttonIndex) {
+        if (action.style != UIAlertActionStyleCancel) {
+            switch (buttonIndex) {
+                case 0:{
+                    
+                    
+                }
+                    break;
+                    
+            }
+            
+        }
+        
+    }];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

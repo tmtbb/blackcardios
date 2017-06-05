@@ -70,9 +70,10 @@
     //输入框
     _textView=[[UITextView alloc] initWithFrame:CGRectMake(10, 74, kMainScreenWidth-20, 150)];
     _textView.delegate=self;
+    _textView.backgroundColor=kUIColorWithRGB(0xF8F8F8);
     //placehoder
     _placeholderLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 25)];
-    _placeholderLabel.text=@"此刻的想法...300字内";
+    _placeholderLabel.text=@"写下你的评论...";
     _placeholderLabel.textColor=kUIColorWithRGB(0xA6A6A6);
     _placeholderLabel.font=[UIFont systemFontOfSize:14];
     _placeholderLabel.textAlignment=NSTextAlignmentLeft;
@@ -84,8 +85,13 @@
     _countLabel.font=[UIFont systemFontOfSize:12];
     _countLabel.textAlignment=NSTextAlignmentRight;
     _countLabel.textColor=kUIColorWithRGB(0xE4A63F);
+    
+    //分割线
+    UILabel *speLabel=[[UILabel alloc] initWithFrame:CGRectMake(12, 262, kMainScreenWidth-24, 1)];
+    speLabel.backgroundColor=kUIColorWithRGB(0xD7D7D7);
     [self.view addSubview:_countLabel];
     [self.view addSubview:_textView];
+    [self.view addSubview:speLabel];
     
 }
 #pragma mark -返回
