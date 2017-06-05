@@ -70,9 +70,10 @@
     //输入框
     _textView=[[UITextView alloc] initWithFrame:CGRectMake(10, 74, kMainScreenWidth-20, 150)];
     _textView.delegate=self;
+    _textView.backgroundColor=kUIColorWithRGB(0xF8F8F8);
     //placehoder
     _placeholderLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 25)];
-    _placeholderLabel.text=@"此刻的想法...300字内";
+    _placeholderLabel.text=@"写下你的评论...";
     _placeholderLabel.textColor=kUIColorWithRGB(0xA6A6A6);
     _placeholderLabel.font=[UIFont systemFontOfSize:14];
     _placeholderLabel.textAlignment=NSTextAlignmentLeft;
@@ -84,8 +85,13 @@
     _countLabel.font=[UIFont systemFontOfSize:12];
     _countLabel.textAlignment=NSTextAlignmentRight;
     _countLabel.textColor=kUIColorWithRGB(0xE4A63F);
+    
+    //分割线
+    UILabel *speLabel=[[UILabel alloc] initWithFrame:CGRectMake(12, 262, kMainScreenWidth-24, 1)];
+    speLabel.backgroundColor=kUIColorWithRGB(0xD7D7D7);
     [self.view addSubview:_countLabel];
     [self.view addSubview:_textView];
+    [self.view addSubview:speLabel];
     
 }
 #pragma mark -返回
@@ -94,7 +100,6 @@
 }
 #pragma mark -发布
 -(void)publishBtnClicked {
-    UIButton *btn=[self.view viewWithTag:200];
     if (_textView.text.length==0)
     {
         UIAlertController *alert=[UIAlertController alertControllerWithTitle:nil message:@"评论不能为空" preferredStyle:UIAlertControllerStyleAlert];
@@ -104,15 +109,27 @@
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
-    btn.userInteractionEnabled=NO;
+    [self showLoader:@"评论发布中"];
     WEAKSELF
 
-    [[AppAPIHelper shared].getMyAndUserAPI postTribeCommentTribeMessageId:@"89C97C660605430C834DFADFFFA5CFE6" message:_textView.text complete:^(id data) {
-        btn.userInteractionEnabled=YES;
+    [[AppAPIHelper shared].getMyAndUserAPI postTribeCommentTribeMessageId:_myModel.id message:_textView.text complete:^(id data) {
+        [weakSelf removeMBProgressHUD];
+        [weakSelf showTips:@"评论成功"];
+        TribeModel *model=_myModel;
+        model.commentNum=model.commentNum+1;
+        _myModel=model;
+        NSMutableDictionary *dict=[[NSMutableDictionary alloc] init];
+        [dict setValue:_id forKey:@"id"];
+        [dict setValue:_myModel forKey:@"model"];
+        if ([_delegate respondsToSelector:@selector(refresh:)])
+        {
+            [_delegate refresh:dict];
+        }
+
         [self dismissViewControllerAnimated:YES completion:nil];
         
     } error:^(NSError *error) {
-        btn.userInteractionEnabled=YES;
+        [weakSelf removeMBProgressHUD];
         [weakSelf showError:error];
     }];
 

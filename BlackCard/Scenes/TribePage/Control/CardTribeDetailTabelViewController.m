@@ -12,6 +12,7 @@
 #import "CardDetailBottomTableViewCell.h"
 #import "CardTribeViewController.h"
 #import "CommentViewController.h"
+#import "CustomAlertController.h"
 @interface CardTribeDetailTabelViewController ()<CardDetailTopCellDelegate>
 
 @end
@@ -71,8 +72,8 @@
 }
 #pragma mark -CardDetailTopCellDelegate
 -(void)praise:(CardDetailTopTableViewCell *)cell{
+    [self showLoader:@"点赞中"];
     WEAKSELF
-    cell.praiseBtn.userInteractionEnabled=NO;
     TribeModel *model=_myModel;
     [[AppAPIHelper shared].getMyAndUserAPI postTribePraiseTribeMessageId:model.id complete:^(id data) {
         model.likeNum=model.likeNum+1;
@@ -83,22 +84,27 @@
         {
             [_delegate sendMyModel:_myModel];
         }
-        cell.praiseBtn.userInteractionEnabled=YES;
-        [self.tableView reloadData];
+        [weakSelf.tableView reloadData];
+        [weakSelf removeMBProgressHUD];
+        [weakSelf showTips:@"点赞成功"];
     } error:^(NSError *error) {
+        [weakSelf removeMBProgressHUD];
         [weakSelf showError:error];
-        cell.praiseBtn.userInteractionEnabled=YES;
     }];
 }
 -(void)comment:(CardDetailTopTableViewCell *)cell{
-    TribeModel *model=_myModel;
-    CommentViewController *cvc=[[CommentViewController alloc] init];
-    cvc.id=model.id;
-    [self presentViewController:cvc animated:YES completion:nil];
+//    TribeModel *model=_myModel;
+//    CommentViewController *cvc=[[CommentViewController alloc] init];
+//    cvc.myModel=model;
+//    [self presentViewController:cvc animated:YES completion:nil];
+    if ([_delegate respondsToSelector:@selector(pushComment:)])
+    {
+        [_delegate pushComment:_myModel];
+    }
 }
 -(void)deletePraise:(CardDetailTopTableViewCell *)cell{
+    [self showLoader:@"取消点赞中"];
     WEAKSELF
-    cell.praiseBtn.userInteractionEnabled=NO;
     TribeModel *model=_myModel;
     [[AppAPIHelper shared].getMyAndUserAPI deletePostTribePraiseTribeMessageId:model.id complete:^(id data) {
         model.likeNum=model.likeNum-1;
@@ -109,12 +115,34 @@
         {
             [_delegate sendMyModel:_myModel];
         }
-        cell.praiseBtn.userInteractionEnabled=YES;
-        [self.tableView reloadData];
+        [weakSelf.tableView reloadData];
+        [weakSelf removeMBProgressHUD];
+        [weakSelf showTips:@"取消点赞成功"];
     } error:^(NSError *error) {
+        [weakSelf removeMBProgressHUD];
         [weakSelf showError:error];
-        cell.praiseBtn.userInteractionEnabled=YES;
     }];
+}
+-(void)more:(CardDetailTopTableViewCell *)cell{
+    CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"更多功能" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert addCancleButton:@"取消" otherButtonTitles:@"举报",nil];
+    
+//    WEAKSELF
+    [alert didClickedButtonWithHandler:^(UIAlertAction * _Nullable action, NSInteger buttonIndex) {
+        if (action.style != UIAlertActionStyleCancel) {
+            switch (buttonIndex) {
+                case 0:{
+                    
+                    
+                }
+                    break;
+                    
+            }
+            
+        }
+        
+    }];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

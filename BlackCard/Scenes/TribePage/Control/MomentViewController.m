@@ -9,16 +9,20 @@
 #import "MomentViewController.h"
 #import "ImageProvider.h"
 #import "CustomAlertController.h"
+#import "PhotosCollectionViewCell.h"
 
-@interface MomentViewController ()<UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface MomentViewController ()<UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property(strong,nonatomic)UITextView *textView;
 @property(strong,nonatomic)UILabel *placeholderLabel;
 @property(strong,nonatomic)UILabel *countLabel;
 @property(assign,nonatomic)NSInteger selectTag;
 @property(strong,nonatomic)NSMutableArray *imageArray;
-@property(strong,nonatomic)NSArray *myArray;
+@property(strong,nonatomic)NSMutableArray *myArray;
 @property(strong,nonatomic)NSMutableDictionary *imageDict;
 @property(nonatomic, strong)ImageProvider * imageProvider;
+@property(strong,nonatomic)UICollectionView *photoCollectionView;
+@property(assign,nonatomic)CGFloat itemWH;
+@property(assign,nonatomic)CGFloat margin;
 @end
 
 @implementation MomentViewController
@@ -27,12 +31,14 @@
     [super viewDidLoad];
     _imageArray=[NSMutableArray array];
     _imageDict=[[NSMutableDictionary alloc] init];
-    _myArray=@[@"image1",@"image2",@"image3",@"image4",@"image5",@"image6"];
+    _myArray=[NSMutableArray array];
     // 设置导航条内容
     [self setupNavgationBar];
     
     // 添加底部内容view
     [self setupBottomContentView];
+    //添加图片内容
+    [self configCollectionView];
     self.view.backgroundColor=kUIColorWithRGB(0xF8F8F8);
 }
 #pragma mark -设置导航条内容
@@ -75,9 +81,10 @@
     //输入框
     _textView=[[UITextView alloc] initWithFrame:CGRectMake(10, 74, kMainScreenWidth-20, 150)];
     _textView.delegate=self;
+    _textView.backgroundColor=kUIColorWithRGB(0xF8F8F8);
     //placehoder
     _placeholderLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 25)];
-    _placeholderLabel.text=@"此刻的想法...300字内";
+    _placeholderLabel.text=@"此刻的想法...";
     _placeholderLabel.textColor=kUIColorWithRGB(0xA6A6A6);
     _placeholderLabel.font=[UIFont systemFontOfSize:14];
     _placeholderLabel.textAlignment=NSTextAlignmentLeft;
@@ -93,35 +100,54 @@
     [self.view addSubview:_textView];
     
     //分割线
-    UILabel *partingLine=[[UILabel alloc] initWithFrame:CGRectMake(10, 255, kMainScreenWidth-20, 2)];
-    partingLine.backgroundColor=kUIColorWithRGB(0xA6A6A6);
+    UILabel *partingLine=[[UILabel alloc] initWithFrame:CGRectMake(12, 255, kMainScreenWidth-24, 1)];
+    partingLine.backgroundColor=kUIColorWithRGB(0xD7D7D7);
     [self.view addSubview:partingLine];
     
-    CGFloat width=(kMainScreenWidth-40)/3;
-    //上传图片
-    for (int i=0; i<6; i++)
-    {
-        int a= i/3;
-        int b= i%3;
-        UIButton *photo=[UIButton buttonWithType:UIButtonTypeCustom];
-        photo.frame=CGRectMake(10+b*(10+width), 265+a*(10+width), width,width );
-        [photo setBackgroundImage:[UIImage imageNamed:@"addPhotos"] forState:UIControlStateNormal];
-        [photo addTarget:self action:@selector(clickImage:) forControlEvents:UIControlEventTouchUpInside];
-        photo.tag=i+1;
-            
-        UIButton *delete=[UIButton buttonWithType:UIButtonTypeCustom];
-        delete.frame=CGRectMake(width-30, 0,30 ,30 );
-        [delete setBackgroundImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
-        [delete addTarget:self action:@selector(deleteImage:) forControlEvents:UIControlEventTouchUpInside];
-        delete.hidden=YES;
-        delete.tag=100+i+1;
-        [photo addSubview:delete];
-            
-        [self.view addSubview:photo];
+//    CGFloat width=(kMainScreenWidth-40)/3;
+//    //上传图片
+//    for (int i=0; i<6; i++)
+//    {
+//        int a= i/3;
+//        int b= i%3;
+//        UIButton *photo=[UIButton buttonWithType:UIButtonTypeCustom];
+//        photo.frame=CGRectMake(10+b*(10+width), 265+a*(10+width), width,width );
+//        [photo setBackgroundImage:[UIImage imageNamed:@"addPhotos"] forState:UIControlStateNormal];
+//        [photo addTarget:self action:@selector(clickImage:) forControlEvents:UIControlEventTouchUpInside];
+//        photo.tag=i+1;
+//            
+//        UIButton *delete=[UIButton buttonWithType:UIButtonTypeCustom];
+//        delete.frame=CGRectMake(width-30, 0,30 ,30 );
+//        [delete setBackgroundImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
+//        [delete addTarget:self action:@selector(deleteImage:) forControlEvents:UIControlEventTouchUpInside];
+//        delete.hidden=YES;
+//        delete.tag=100+i+1;
+//        [photo addSubview:delete];
+//            
+//        [self.view addSubview:photo];
+//    
+//        
+//    }
     
-        
-    }
-    
+}
+#pragma mark -设置图片
+- (void)configCollectionView {
+    // 如不需要长按排序效果，将LxGridViewFlowLayout类改成UICollectionViewFlowLayout即可
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    _margin = 4;
+    _itemWH = (kMainScreenWidth - 16-2 * _margin - 4) / 3 - _margin;
+    layout.itemSize = CGSizeMake(_itemWH, _itemWH);
+    layout.minimumInteritemSpacing = _margin;
+    layout.minimumLineSpacing = _margin;
+    _photoCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(8, 265, kMainScreenWidth-16, kMainScreenHeight - 265) collectionViewLayout:layout];
+    _photoCollectionView.alwaysBounceVertical = YES;
+    _photoCollectionView.backgroundColor = kUIColorWithRGB(0xF8F8F8);
+    _photoCollectionView.contentInset = UIEdgeInsetsMake(4, 4, 4, 4);
+    _photoCollectionView.dataSource = self;
+    _photoCollectionView.delegate = self;
+    _photoCollectionView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    [self.view addSubview:_photoCollectionView];
+    [_photoCollectionView registerClass:[PhotosCollectionViewCell class] forCellWithReuseIdentifier:@"PhotosCell"];
 }
 #pragma mark -返回
 -(void)backBtnClicked {
@@ -129,40 +155,62 @@
 }
 #pragma mark -发布
 -(void)publishBtnClicked {
-    UIButton *btn=[self.view viewWithTag:200];
-    btn.userInteractionEnabled=NO;
-    for (NSString *key in _myArray)
-    {
-        if ([_imageDict valueForKey:key] !=nil)
-        {
-            [_imageArray addObject:[_imageDict objectForKey:key]];
-        }
-    }
-    if (_textView.text.length==0&&_imageArray.count==0)
+    if (_textView.text.length==0&&_myArray.count==0)
     {
         UIAlertController *alert=[UIAlertController alertControllerWithTitle:nil message:@"内容和图片不能同时为空" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:nil];
         [alert addAction:okAction];
         
         [self presentViewController:alert animated:YES completion:nil];
-        btn.userInteractionEnabled=YES;
+        
         return;
     }
-
+    [self showLoader:@"消息发布中"];
     WEAKSELF
-    [[AppAPIHelper shared].getMyAndUserAPI postMessageWithMessage:_textView.text imageArray:_imageArray complete:^(id data) {
-        btn.userInteractionEnabled=YES;
-        [self.navigationController popViewControllerAnimated:YES];
+    [[AppAPIHelper shared].getMyAndUserAPI postMessageWithMessage:_textView.text imageArray:_myArray complete:^(id data) {
+        [weakSelf removeMBProgressHUD];
+        [weakSelf showTips:@"消息发布成功"];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     } error:^(NSError *error) {
-        btn.userInteractionEnabled=YES;
+        [weakSelf removeMBProgressHUD];
         [weakSelf showError:error];
     }];
 }
+#pragma mark -UICollectionViewDelegate
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+
+    return _imageArray.count + 1;
+    
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    PhotosCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotosCell" forIndexPath:indexPath];
+    if (indexPath.row == _imageArray.count) {
+        cell.imageView.image = [UIImage imageNamed:@"addPhotos"];
+        cell.deleteBtn.hidden = YES;
+    } else {
+        cell.imageView.image = _imageArray[indexPath.row];
+        cell.deleteBtn.hidden = NO;
+    }
+    if (_imageArray.count==9&&indexPath.row == _imageArray.count)
+    {
+        cell.hidden=YES;
+    }else{
+        cell.hidden=NO;
+    }
+    cell.deleteBtn.tag = indexPath.row;
+    [cell.deleteBtn addTarget:self action:@selector(deleteBtnClik:) forControlEvents:UIControlEventTouchUpInside];
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == _imageArray.count) {
+        [self clickImage];
+    }
+}
+
 #pragma mark -选择图片
--(void)clickImage:(UIButton *)sender{
-    _selectTag=sender.tag;
-    UIButton *btn=[self.view viewWithTag:100+sender.tag];
-    if (btn.hidden) {
+-(void)clickImage{
         CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"上传照片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         [alert addCancleButton:@"取消" otherButtonTitles:@"拍一张照片",@"从相册选择",nil];
         
@@ -188,33 +236,19 @@
         }];
         [self presentViewController:alert animated:YES completion:nil];
 
-    
-    
-    }
+}
 
-}
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [picker dismissViewControllerAnimated:YES completion:nil];
+#pragma mark -删除图片
+- (void)deleteBtnClik:(UIButton *)sender {
+    [_imageArray removeObjectAtIndex:sender.tag];
+    [_myArray removeObjectAtIndex:sender.tag];
     
-    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
-    //将image压缩
-    UIButton *btn=[self.view viewWithTag:_selectTag];
-    [btn setBackgroundImage:nil forState:UIControlStateNormal];
-    [btn setBackgroundImage:image forState:UIControlStateNormal];
-    UIButton *delBtn=[self.view viewWithTag:_selectTag+100];
-    delBtn.hidden=NO;
-    
-    NSData *imageData= UIImageJPEGRepresentation(image, 0.5);//保存图片要以data形式，ios保存图片形式，压缩系数0.5
-    
-    [_imageDict setObject:imageData forKey:_myArray[_selectTag-1]];
-}
--(void)deleteImage:(UIButton *)sender{
-    UIButton *btn=[self.view viewWithTag:sender.tag-100];
-    sender.hidden=YES;
-    [btn setBackgroundImage:nil forState:UIControlStateNormal];
-//    [_imageDict setObject:@"" forKey:_myArray[sender.tag-100-1]];
-    [_imageDict setValue:nil forKey:_myArray[sender.tag-100-1]];
-    [btn setImage:[UIImage imageNamed:@"addPhotos"] forState:UIControlStateNormal];
+    [_photoCollectionView performBatchUpdates:^{
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:sender.tag inSection:0];
+        [_photoCollectionView deleteItemsAtIndexPaths:@[indexPath]];
+    } completion:^(BOOL finished) {
+        [_photoCollectionView reloadData];
+    }];
 }
 #pragma mark -UITextView代理
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
@@ -279,18 +313,20 @@
     }
     return _imageProvider;
 }
+//选择图片
 - (void)hasSelectImage:(UIImage *)editedImage{
     
-    UIButton *btn=[self.view viewWithTag:_selectTag];
-    [btn setBackgroundImage:nil forState:UIControlStateNormal];
-    [btn setBackgroundImage:editedImage forState:UIControlStateNormal];
-    UIButton *delBtn=[self.view viewWithTag:_selectTag+100];
-    delBtn.hidden=NO;
+//    UIButton *btn=[self.view viewWithTag:_selectTag];
+//    [btn setBackgroundImage:nil forState:UIControlStateNormal];
+//    [btn setBackgroundImage:editedImage forState:UIControlStateNormal];
+//    UIButton *delBtn=[self.view viewWithTag:_selectTag+100];
+//    delBtn.hidden=NO;
     
     NSData *imageData= UIImageJPEGRepresentation(editedImage, 0.5);//保存图片要以data形式，ios保存图片形式，压缩系数0.5
 
-    
-    [_imageDict setObject:imageData forKey:_myArray[_selectTag-1]];
+    [_imageArray addObject:editedImage];
+    [_myArray addObject:imageData];
+    [_photoCollectionView reloadData];
     
     
 }

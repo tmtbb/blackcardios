@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TribeModel.h"
+@protocol CommentRefresh<NSObject>
+-(void)refresh:(NSDictionary *)dict;
+@end
 @interface CommentViewController : UIViewController
 @property(copy,nonatomic)NSString *id;
+@property(strong,nonatomic)TribeModel *myModel;
+@property(assign,nonatomic)id<CommentRefresh>delegate;
 @end

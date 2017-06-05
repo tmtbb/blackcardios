@@ -151,6 +151,7 @@
 		A659F81F1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A659F81E1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.m */; };
 		A6F46A0D1ED7C6D200D5C212 /* UIImage+ALinExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F46A0C1ED7C6D200D5C212 /* UIImage+ALinExtension.m */; };
 		A6F46A101ED811AB00D5C212 /* MomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F46A0F1ED811AB00D5C212 /* MomentViewController.m */; };
+		A6F5F46B1EE436CC004C144F /* PhotosCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F5F46A1EE436CC004C144F /* PhotosCollectionViewCell.m */; };
 		A6FAC2211ED6B18C002CB042 /* UIView+XJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC2201ED6B18C002CB042 /* UIView+XJExtension.m */; };
 		A6FAC2241ED6C16C002CB042 /* TribeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC2231ED6C16C002CB042 /* TribeModel.m */; };
 		A6FAC22D1ED6D96E002CB042 /* TribeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC22C1ED6D96E002CB042 /* TribeViewController.m */; };
@@ -436,6 +437,8 @@
 		A6F46A0C1ED7C6D200D5C212 /* UIImage+ALinExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ALinExtension.m"; sourceTree = "<group>"; };
 		A6F46A0E1ED811AB00D5C212 /* MomentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentViewController.h; sourceTree = "<group>"; };
 		A6F46A0F1ED811AB00D5C212 /* MomentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentViewController.m; sourceTree = "<group>"; };
+		A6F5F4691EE436CC004C144F /* PhotosCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosCollectionViewCell.h; sourceTree = "<group>"; };
+		A6F5F46A1EE436CC004C144F /* PhotosCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosCollectionViewCell.m; sourceTree = "<group>"; };
 		A6FAC21F1ED6B18C002CB042 /* UIView+XJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XJExtension.h"; sourceTree = "<group>"; };
 		A6FAC2201ED6B18C002CB042 /* UIView+XJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XJExtension.m"; sourceTree = "<group>"; };
 		A6FAC2221ED6C16C002CB042 /* TribeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TribeModel.h; sourceTree = "<group>"; };
@@ -1106,6 +1109,8 @@
 				A62D5F131ED9510C0023E6C2 /* CardDetailTopTableViewCell.m */,
 				A62D5F151EDBC7140023E6C2 /* EliteDetailTopTableViewCell.h */,
 				A62D5F161EDBC7140023E6C2 /* EliteDetailTopTableViewCell.m */,
+				A6F5F4691EE436CC004C144F /* PhotosCollectionViewCell.h */,
+				A6F5F46A1EE436CC004C144F /* PhotosCollectionViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1274,6 +1279,7 @@
 				7C55C70C1ED97871000991AF /* DefaultPay.m in Sources */,
 				7CC47CF51EA9AD4D006FBB53 /* HomePageCollectionViewCell.m in Sources */,
 				A6FAC2361ED6DAAF002CB042 /* CEOThinkingViewController.m in Sources */,
+				A6F5F46B1EE436CC004C144F /* PhotosCollectionViewCell.m in Sources */,
 				7C25A7E01EA86A3D0049234E /* BaseRefreshPageCollectionViewController.m in Sources */,
 				7C25A7EA1EA86A3D0049234E /* BaseCustomTableViewController.m in Sources */,
 				A6FAC22D1ED6D96E002CB042 /* TribeViewController.m in Sources */,
