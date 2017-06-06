@@ -31,16 +31,13 @@
     [[AppAPIHelper shared].getMyAndUserAPI getMyPurseDetailWihtPage:pageIndex complete:_completeBlock error:_errorBlock];
 }
 
-- (void)didRequestComplete:(id)data {
-    
-    
-    
-    [super didRequestComplete:data];
-    
+
+
+- (NSString*) emptyDataTipsContent {
+    return @"暂无相关记录";
 }
 
 - (NSString *)tableView:(UITableView *)tableView cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     return @"MyPurseDetailCell";
 }
 
