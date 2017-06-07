@@ -1163,7 +1163,7 @@
 					7CE70DC61EA79F00003772F1 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 96YGS7NXK5;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1523,7 +1523,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BlackCard/Marco/BlackCard_prefix.pch";
 				INFOPLIST_FILE = BlackCard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1531,8 +1531,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.youdian.blackcard.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "91feacd6-01a7-4c05-ab50-ada36c37b18b";
+				PROVISIONING_PROFILE_SPECIFIER = blackCardiOSDev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1543,7 +1543,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 96YGS7NXK5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1553,7 +1553,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BlackCard/Marco/BlackCard_prefix.pch";
 				INFOPLIST_FILE = BlackCard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1561,8 +1561,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.youdian.blackcard.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8a465569-f7c5-44d0-a660-d6f0ab77298f";
+				PROVISIONING_PROFILE_SPECIFIER = BlackCardiOS_AppStore;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
