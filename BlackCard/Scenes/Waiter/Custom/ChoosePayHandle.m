@@ -69,7 +69,7 @@
         
         [weakSelf.payTypeView update:money];
         
-        [weakSelf.payTypeView purseButtonCanUse:myBalance > weakSelf.model.serviceAmount];
+        [weakSelf.payTypeView purseButtonCanUse:myBalance >= weakSelf.model.serviceAmount];
     } error:nil];
     
 }
