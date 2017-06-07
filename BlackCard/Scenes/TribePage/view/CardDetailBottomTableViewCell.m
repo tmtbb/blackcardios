@@ -40,12 +40,15 @@
 }
 -(void)setModel:(CommentListModel *)model{
     //头像
-    if (model.headUrl)
+    if (model.headUrl.length)
     {
         [_headerImageView sd_setImageWithURL:[NSURL URLWithString:model.headUrl]];
+        UIImage *image=_headerImageView.image;
+        image=[UIImage circleImage:image borderColor:[UIColor redColor] borderWidth:1.0f];
+        _headerImageView.image=image;
     }else
     {
-        UIImage *image=[UIImage imageNamed:@"HomePageDefaultCard"];
+        UIImage *image=[UIImage imageNamed:@"userHeaderDefault"];
         image=[UIImage circleImage:image borderColor:[UIColor redColor] borderWidth:1.0f];
         _headerImageView.image=image;
     }
@@ -60,12 +63,20 @@
     _dateLabel.textAlignment=NSTextAlignmentLeft;
     _dateLabel.font=[UIFont systemFontOfSize:10];
     _dateLabel.textColor=kUIColorWithRGB(0xA6A6A6);
+    _dateLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    CGSize maximumLabelSize2 = CGSizeMake(kMainScreenWidth-85, 10);//labelsize的最大值
+    CGSize expectSize2 = [_dateLabel sizeThatFits:maximumLabelSize2];
+    _dateLabel.frame=CGRectMake(63, 30, expectSize2.width, 10);
     
     //时间
     _timeLabel.text=[model.formatCreateTime substringFromIndex:11];
     _timeLabel.textAlignment=NSTextAlignmentLeft;
     _timeLabel.font=[UIFont systemFontOfSize:10];
     _timeLabel.textColor=kUIColorWithRGB(0xA6A6A6);
+    _timeLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    CGSize maximumLabelSize3 = CGSizeMake(kMainScreenWidth-85, 10);//labelsize的最大值
+    CGSize expectSize3 = [_timeLabel sizeThatFits:maximumLabelSize3];
+    _timeLabel.frame=CGRectMake(78+_dateLabel.frame.size.width, 30, expectSize3.width, 10);
     
     //评论内容
     _titleLabel.text=model.comment;

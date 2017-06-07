@@ -11,6 +11,7 @@
 #import "TribeModel.h"
 @protocol sendMymodelDelegate <NSObject>
 -(void)sendMyModel:(TribeModel *)model;
+-(void)pushComment:(TribeModel *)model;
 @end
 @interface CardTribeDetailTabelViewController : BaseRefreshPageTableViewController
 @property(strong,nonatomic)TribeModel *myModel;

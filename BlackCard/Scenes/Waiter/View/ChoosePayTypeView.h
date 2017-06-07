@@ -7,7 +7,7 @@
 //
 
 #import <OEZCommSDK/OEZCommSDK.h>
-#import "PayPasswordTextField.h";
+#import "PayPasswordTextField.h"
 
 typedef NS_ENUM(NSInteger,ChoosePayTypeViewStatus) {
     

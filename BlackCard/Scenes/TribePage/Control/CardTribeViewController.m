@@ -12,8 +12,9 @@
 #import "CardTribeDetailViewController.h"
 #import "BaseHttpAPI.h"
 #import "CommentViewController.h"
+#import "CustomAlertController.h"
 
-@interface CardTribeViewController ()<CardTribeCellDelegate>
+@interface CardTribeViewController ()<CardTribeCellDelegate,PraiseRresh,CommentRefresh>
 //@property(strong,nonatomic)UITableView *cardTribeTabelView;
 //@property(strong,nonatomic)NSMutableArray *dataArray;
 @end
@@ -22,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
 //    [self.tableView registerClass:[CardTribeTableViewCell class] forCellReuseIdentifier:@"CardTribeTableViewCell"];
 //    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
 }
@@ -60,6 +62,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     CardTribeDetailViewController *cvc=[[CardTribeDetailViewController alloc] init];
     cvc.myModel=_dataArray[indexPath.row];
+    cvc.id=[NSString stringWithFormat:@"%ld",indexPath.row];
+    cvc.delegate=self;
     cvc.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:cvc animated:YES];
 }
@@ -69,44 +73,79 @@
 }
 #pragma mark -CardTribeCellDelegate
 -(void)praise:(CardTribeTableViewCell *)cell{
+    [self showLoader:@"点赞中"];
     WEAKSELF
-    cell.praiseBtn.userInteractionEnabled=NO;
     TribeModel *model=_dataArray[cell.tag];
     [[AppAPIHelper shared].getMyAndUserAPI postTribePraiseTribeMessageId:model.id complete:^(id data) {
         model.likeNum=model.likeNum+1;
         model.isLike=1;
         _dataArray[cell.tag]=model;
-        cell.praiseBtn.userInteractionEnabled=YES;
 //        [_dataArray removeObjectAtIndex:cell.tag];
 //        [_dataArray insertObject:model atIndex:cell.tag];
 //        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
-        [self.tableView reloadData];
+        [weakSelf.tableView reloadData];
+        [weakSelf removeMBProgressHUD];
+        [weakSelf showTips:@"点赞成功"];
     } error:^(NSError *error) {
-        cell.praiseBtn.userInteractionEnabled=YES;
+        [weakSelf removeMBProgressHUD];
         [weakSelf showError:error];
     }];
 }
 -(void)comment:(CardTribeTableViewCell *)cell{
     TribeModel *model=_dataArray[cell.tag];
     CommentViewController *cvc=[[CommentViewController alloc] init];
-    cvc.id=model.id;
+    cvc.myModel=model;
+    cvc.id=[NSString stringWithFormat:@"%ld",cell.tag];
+    cvc.delegate=self;
     [self presentViewController:cvc animated:YES completion:nil];
 }
 -(void)deletePraise:(CardTribeTableViewCell *)cell{
+    [self showLoader:@"取消点赞中"];
     WEAKSELF
-    cell.praiseBtn.userInteractionEnabled=NO;
     TribeModel *model=_dataArray[cell.tag];
     [[AppAPIHelper shared].getMyAndUserAPI deletePostTribePraiseTribeMessageId:model.id complete:^(id data) {
         model.likeNum=model.likeNum-1;
-        cell.praiseBtn.userInteractionEnabled=YES;
         model.isLike=0;
         _dataArray[cell.tag]=model;
 //        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
-        [self.tableView reloadData];
+        [weakSelf.tableView reloadData];
+        [weakSelf removeMBProgressHUD];
+        [weakSelf showTips:@"取消点赞成功"];
     } error:^(NSError *error) {
-        cell.praiseBtn.userInteractionEnabled=YES;
+        [weakSelf removeMBProgressHUD];
         [weakSelf showError:error];
     }];
+}
+-(void)more:(CardTribeTableViewCell *)cell{
+    CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"更多功能" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert addCancleButton:@"取消" otherButtonTitles:@"举报",nil];
+    
+    WEAKSELF
+    [alert didClickedButtonWithHandler:^(UIAlertAction * _Nullable action, NSInteger buttonIndex) {
+        if (action.style != UIAlertActionStyleCancel) {
+            switch (buttonIndex) {
+                case 0:{
+                    
+                    
+                }
+                    break;
+               
+            }
+            
+        }
+        
+    }];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+#pragma mark -CommentReresh
+-(void)refresh:(NSDictionary *)dict{
+    _dataArray[[dict[@"id"] integerValue]]=[dict valueForKey:@"model"];
+    [self.tableView reloadData];
+}
+#pragma mark -PraiseRresh
+-(void)cardTribeRefresh:(NSDictionary *)dict{
+    _dataArray[[dict[@"id"] integerValue]]=[dict valueForKey:@"model"];
+    [self.tableView reloadData];
 }
 /*
 #pragma mark - Navigation

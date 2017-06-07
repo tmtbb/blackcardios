@@ -133,9 +133,6 @@ typedef NS_ENUM(NSInteger,RechargeTableViewControllerPayType){
 
 
 - (void)payHelperWithType:(PayType)type withPayStatus:(PayStatus)payStatus withData:(id)data {
-    
-    
-    
 
     switch (payStatus) {
         case PayOK:{

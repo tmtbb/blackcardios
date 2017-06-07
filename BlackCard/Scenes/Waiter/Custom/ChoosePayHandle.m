@@ -14,6 +14,7 @@
 @property(strong,nonatomic)ChoosePayTypeView *payTypeView;
 @property(weak,nonatomic)UIViewController *controller;
 @property(strong,nonatomic)WaiterServiceMDetailModel *model;
+@property (assign,nonatomic)double myBalance;
 @end
 @implementation ChoosePayHandle
 
@@ -64,13 +65,11 @@
 - (void)showWithDefaultPay {
     WEAKSELF
     [[AppAPIHelper shared].getMyAndUserAPI getUserBlanceComplete:^(id data) {
-        double myBalance = [data[@"balance"] doubleValue];
-        NSString *money = [NSString stringWithFormat:@"%.2f",myBalance];
+        weakSelf.myBalance = [data[@"balance"] doubleValue];
+        NSString *money = [NSString stringWithFormat:@"%.2f",weakSelf.myBalance];
         
         [weakSelf.payTypeView update:money];
-        
-        [weakSelf.payTypeView purseButtonCanUse:myBalance >= weakSelf.model.serviceAmount];
-    } error:nil];
+            } error:nil];
     
 }
 
@@ -91,7 +90,12 @@
         }
             break;
         case ChoosePayTypeViewStatus_PursePay:{
-            [self.payTypeView showKeyboard];
+            if( _myBalance >= _model.serviceAmount ) {
+                [self.payTypeView showKeyboard];
+            }
+            else {
+                [_controller showTips:@"你的账户余额不足，无法完成支付"];
+            }
 
         }
             break;
