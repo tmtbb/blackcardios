@@ -8,7 +8,6 @@
 
 #import "UserSetInfoTableViewController.h"
 #import "MyAndUserModel.h"
-#import "CustomAlertController.h"
 #import "ValidateHelper.h"
 #import "ImageProvider.h"
 #import "UIViewController+Category.h"

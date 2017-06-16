@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="TitleView" id="iN0-l3-epB" customClass="TitleView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dks-xf-74f">
+                    <rect key="frame" x="104" y="0.0" width="80" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="cxZ-2H-Xf7"/>
+                        <constraint firstAttribute="height" constant="35" id="dTJ-MP-gLj"/>
+                    </constraints>
+                    <attributedString key="attributedText">
+                        <fragment content="相机胶卷">
+                            <attributes>
+                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <font key="NSFont" metaFont="system" size="17"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_public_icon" translatesAutoresizingMaskIntoConstraints="NO" id="hpI-OK-CxG">
+                    <rect key="frame" x="186" y="6" width="12" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="12" id="aOz-cG-laA"/>
+                        <constraint firstAttribute="height" constant="24" id="oOR-tu-j4f"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="hpI-OK-CxG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2la-7e-cV1"/>
+                <constraint firstItem="Dks-xf-74f" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Dx6-tv-Pg2"/>
+                <constraint firstItem="hpI-OK-CxG" firstAttribute="leading" secondItem="Dks-xf-74f" secondAttribute="trailing" constant="2" id="NGR-Jy-3At"/>
+                <constraint firstItem="Dks-xf-74f" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-16" id="gcR-CW-dHC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="titleIV" destination="hpI-OK-CxG" id="8qp-eX-SLQ"/>
+                <outlet property="titleL" destination="Dks-xf-74f" id="2O9-FA-HXj"/>
+            </connections>
+            <point key="canvasLocation" x="143" y="152.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow_public_icon" width="10" height="6"/>
+    </resources>
+</document>

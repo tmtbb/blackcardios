@@ -18,7 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _ceoTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, self.view.frame.size.height-123) style:UITableViewStylePlain];
+    self.view.backgroundColor = kAppBackgroundColor;
+    _ceoTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, self.view.frame.size.height-123) style:UITableViewStylePlain];
     _ceoTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     _ceoTableView.showsVerticalScrollIndicator=NO;
     [self.view addSubview:_ceoTableView];

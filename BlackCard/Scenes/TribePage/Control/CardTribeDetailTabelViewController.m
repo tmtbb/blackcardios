@@ -12,7 +12,6 @@
 #import "CardDetailBottomTableViewCell.h"
 #import "CardTribeViewController.h"
 #import "CommentViewController.h"
-#import "CustomAlertController.h"
 @interface CardTribeDetailTabelViewController ()<CardDetailTopCellDelegate>
 
 @end
@@ -23,7 +22,7 @@
 }
 - (void)didRequest:(NSInteger)pageIndex {
     
-     [[AppAPIHelper shared].getMyAndUserAPI getTribeCommentListWihtPage:pageIndex tribeMessageId:_myModel.id complete:_completeBlock error:_errorBlock];
+     [[AppAPIHelper shared].getMyAndUserAPI getTribeCommentListWihtPage:pageIndex tribeMessageId:_myModel.tribeId complete:_completeBlock error:_errorBlock];
 }
 
 - (void)didRequestComplete:(id)data {
@@ -75,22 +74,22 @@
     [self showLoader:@"点赞中"];
     WEAKSELF
     TribeModel *model=_myModel;
-    [[AppAPIHelper shared].getMyAndUserAPI postTribePraiseTribeMessageId:model.id complete:^(id data) {
-        model.likeNum=model.likeNum+1;
-         model.isLike=1;
-        _myModel=model;
-        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
-        if ([_delegate respondsToSelector:@selector(sendMyModel:)])
-        {
-            [_delegate sendMyModel:_myModel];
-        }
-        [weakSelf.tableView reloadData];
-        [weakSelf removeMBProgressHUD];
-        [weakSelf showTips:@"点赞成功"];
-    } error:^(NSError *error) {
-        [weakSelf removeMBProgressHUD];
-        [weakSelf showError:error];
-    }];
+//    [[AppAPIHelper shared].getMyAndUserAPI postTribePraiseTribeMessageId:model.tribeId complete:^(id data) {
+//        model.likeNum=model.likeNum+1;
+//         model.isLike=1;
+//        _myModel=model;
+//        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
+//        if ([_delegate respondsToSelector:@selector(sendMyModel:)])
+//        {
+//            [_delegate sendMyModel:_myModel];
+//        }
+//        [weakSelf.tableView reloadData];
+//        [weakSelf removeMBProgressHUD];
+//        [weakSelf showTips:@"点赞成功"];
+//    } error:^(NSError *error) {
+//        [weakSelf removeMBProgressHUD];
+//        [weakSelf showError:error];
+//    }];
 }
 -(void)comment:(CardDetailTopTableViewCell *)cell{
 //    TribeModel *model=_myModel;
@@ -106,22 +105,22 @@
     [self showLoader:@"取消点赞中"];
     WEAKSELF
     TribeModel *model=_myModel;
-    [[AppAPIHelper shared].getMyAndUserAPI deletePostTribePraiseTribeMessageId:model.id complete:^(id data) {
-        model.likeNum=model.likeNum-1;
-        model.isLike=0;
-        _myModel=model;
-        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
-        if ([_delegate respondsToSelector:@selector(sendMyModel:)])
-        {
-            [_delegate sendMyModel:_myModel];
-        }
-        [weakSelf.tableView reloadData];
-        [weakSelf removeMBProgressHUD];
-        [weakSelf showTips:@"取消点赞成功"];
-    } error:^(NSError *error) {
-        [weakSelf removeMBProgressHUD];
-        [weakSelf showError:error];
-    }];
+//    [[AppAPIHelper shared].getMyAndUserAPI deletePostTribePraiseTribeMessageId:model.tribeId complete:^(id data) {
+//        model.likeNum=model.likeNum-1;
+//        model.isLike=0;
+//        _myModel=model;
+//        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
+//        if ([_delegate respondsToSelector:@selector(sendMyModel:)])
+//        {
+//            [_delegate sendMyModel:_myModel];
+//        }
+//        [weakSelf.tableView reloadData];
+//        [weakSelf removeMBProgressHUD];
+//        [weakSelf showTips:@"取消点赞成功"];
+//    } error:^(NSError *error) {
+//        [weakSelf removeMBProgressHUD];
+//        [weakSelf showError:error];
+//    }];
 }
 -(void)more:(CardDetailTopTableViewCell *)cell{
     CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"更多功能" message:nil preferredStyle:UIAlertControllerStyleActionSheet];

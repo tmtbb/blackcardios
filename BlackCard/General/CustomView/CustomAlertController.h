@@ -22,5 +22,5 @@
 
 - (void)didClickedButtonWithHandler:(void (^ __nullable)(UIAlertAction * _Nullable action,NSInteger buttonIndex))handler;
 
-
+- (void)show:(UIViewController *)control didClicked:(void (^ __nullable)(UIAlertAction *action,NSInteger buttonIndex))handler;
 @end

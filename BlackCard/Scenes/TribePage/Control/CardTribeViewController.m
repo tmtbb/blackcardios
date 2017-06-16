@@ -9,55 +9,41 @@
 #import "CardTribeViewController.h"
 #import "TribeModel.h"
 #import "CardTribeTableViewCell.h"
+#import "TribeCardTableViewCell.h"
 #import "CardTribeDetailViewController.h"
-#import "BaseHttpAPI.h"
 #import "CommentViewController.h"
-#import "CustomAlertController.h"
+#import "ImageBrowseViewController.h"
 
-@interface CardTribeViewController ()<CardTribeCellDelegate,PraiseRresh,CommentRefresh>
-//@property(strong,nonatomic)UITableView *cardTribeTabelView;
-//@property(strong,nonatomic)NSMutableArray *dataArray;
+@interface CardTribeViewController ()<PraiseRresh,CommentRefresh>
+
 @end
 
 @implementation CardTribeViewController
 
 - (void)viewDidLoad {
+
+    
     [super viewDidLoad];
-    self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-//    [self.tableView registerClass:[CardTribeTableViewCell class] forCellReuseIdentifier:@"CardTribeTableViewCell"];
-//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+
+    
 }
+
+
 - (void)didRequest:(NSInteger)pageIndex {
     
-        [[AppAPIHelper shared].getMyAndUserAPI getTribeListWihtPage:pageIndex complete:_completeBlock error:_errorBlock];
+        [[AppAPIHelper shared].getTribeAPI getTribeListWihtPage:pageIndex complete:_completeBlock error:_errorBlock];
 }
 - (void)didRequestComplete:(id)data {
+ 
     [super didRequestComplete:data];
+}
+
+- (NSString *)tableView:(UITableView *)tableView cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    return @"TribeCardTableViewCell";
 }
-//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return _dataArray.count;
-//}
-//- (NSString *)tableView:(UITableView *)tableView cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"=======================");
-//    
-//    return @"UITableViewCell";
-//}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CardTribeTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"order"];
-    if (!cell) {
-        cell=[[CardTribeTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"order"];
-    }
-    cell.model=_dataArray[indexPath.row];
-    cell.tag=indexPath.row;
-    cell.delegate=self;
-    cell.selectionStyle =UITableViewCellSelectionStyleNone;
-    return cell;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CardTribeTableViewCell *cell=(CardTribeTableViewCell*)[self tableView:self.tableView cellForRowAtIndexPath:indexPath];
-    return cell.frame.size.height;
-}
+
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     CardTribeDetailViewController *cvc=[[CardTribeDetailViewController alloc] init];
@@ -67,94 +53,114 @@
     cvc.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:cvc animated:YES];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-#pragma mark -CardTribeCellDelegate
--(void)praise:(CardTribeTableViewCell *)cell{
-    [self showLoader:@"点赞中"];
-    WEAKSELF
-    TribeModel *model=_dataArray[cell.tag];
-    [[AppAPIHelper shared].getMyAndUserAPI postTribePraiseTribeMessageId:model.id complete:^(id data) {
-        model.likeNum=model.likeNum+1;
-        model.isLike=1;
-        _dataArray[cell.tag]=model;
-//        [_dataArray removeObjectAtIndex:cell.tag];
-//        [_dataArray insertObject:model atIndex:cell.tag];
-//        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
-        [weakSelf.tableView reloadData];
-        [weakSelf removeMBProgressHUD];
-        [weakSelf showTips:@"点赞成功"];
-    } error:^(NSError *error) {
-        [weakSelf removeMBProgressHUD];
-        [weakSelf showError:error];
-    }];
-}
--(void)comment:(CardTribeTableViewCell *)cell{
-    TribeModel *model=_dataArray[cell.tag];
-    CommentViewController *cvc=[[CommentViewController alloc] init];
-    cvc.myModel=model;
-    cvc.id=[NSString stringWithFormat:@"%ld",cell.tag];
-    cvc.delegate=self;
-    [self presentViewController:cvc animated:YES completion:nil];
-}
--(void)deletePraise:(CardTribeTableViewCell *)cell{
-    [self showLoader:@"取消点赞中"];
-    WEAKSELF
-    TribeModel *model=_dataArray[cell.tag];
-    [[AppAPIHelper shared].getMyAndUserAPI deletePostTribePraiseTribeMessageId:model.id complete:^(id data) {
-        model.likeNum=model.likeNum-1;
-        model.isLike=0;
-        _dataArray[cell.tag]=model;
-//        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
-        [weakSelf.tableView reloadData];
-        [weakSelf removeMBProgressHUD];
-        [weakSelf showTips:@"取消点赞成功"];
-    } error:^(NSError *error) {
-        [weakSelf removeMBProgressHUD];
-        [weakSelf showError:error];
-    }];
-}
--(void)more:(CardTribeTableViewCell *)cell{
-    CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"更多功能" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    [alert addCancleButton:@"取消" otherButtonTitles:@"举报",nil];
+
+
+- (void)tableView:(UITableView *)tableView rowAtIndexPath:(NSIndexPath *)indexPath didAction:(NSInteger)action data:(id)data {
     
-    WEAKSELF
-    [alert didClickedButtonWithHandler:^(UIAlertAction * _Nullable action, NSInteger buttonIndex) {
-        if (action.style != UIAlertActionStyleCancel) {
-            switch (buttonIndex) {
-                case 0:{
-                    
-                    
-                }
-                    break;
-               
-            }
+    switch (action) {
+        case TribeType_ImageAction:{
+           
+//            NSDictionary *dic = data;
+//            ImageBrowseViewController *imageb = [[ImageBrowseViewController alloc]init];
+//            imageb.index = [dic[@"index"] integerValue];
+//            imageb.rectArray = dic[@"frames"];
+//            TribeModel *model = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
+//            
+//            
+//            
+//            [self presentViewController:imageb animated:YES completion:nil];
+            
+            
             
         }
+            break;
+        case TribeType_PraiseAction:{
+            [self praise:indexPath];
+            
+        }
+            break;
+        case TribeType_CommentAction:
+            [self comment:indexPath];
+            break;
+        case TribeType_MoreAction:
+            [self more:indexPath];
+            break;
+    }
+    
+}
+
+
+#pragma mark -CardTribeCellDelegate
+-(void)praise:(NSIndexPath *)path{
+    WEAKSELF
+    TribeModel *model = [self tableView:self.tableView cellDataForRowAtIndexPath:path];
+    BOOL isLike = model.isLike;
+    [[AppAPIHelper shared].getTribeAPI doTribePraiseTribeMessageId:model.tribeId isLike:isLike complete:^(id data) {
+        model.isLike = !isLike;
+        NSString *show = @"点赞成功";
+        NSInteger count = 1;
+        if (isLike) {
+            show = @"已取消点赞";
+            count = -1;
+        }
+        model.likeNum += count;
+        [weakSelf.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+        [weakSelf showTips:show];
+        
+    } error:^(NSError *error) {
+        [weakSelf showError:error];
+    }];
+}
+-(void)comment:(NSIndexPath *)path{
+    TribeModel *model= [self tableView:self.tableView cellDataForRowAtIndexPath:path];
+    
+    WEAKSELF
+    [self presentViewControllerWithIdentifier:@"CommentViewController" isNavigation:YES block:^(UIViewController *viewController) {
+        [viewController setValue:model forKey:@"myModel"];
+        [viewController setValue:path forKey:@"path"];
+        [viewController setValue:weakSelf forKey:@"delegate"];
         
     }];
-    [self presentViewController:alert animated:YES completion:nil];
+    
+
+}
+-(void)more:(NSIndexPath *)path{
+    CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"更多功能" message:nil preferredStyle:UIAlertControllerStyleActionSheet cancelButtonTitle:@"取消" otherButtonTitles:@"举报",nil];
+    WEAKSELF
+    [alert show:self didClicked:^(UIAlertAction *action, NSInteger buttonIndex) {
+        if (action.style != UIAlertActionStyleCancel) {
+            TribeModel *model =  [weakSelf tableView:weakSelf.tableView cellDataForRowAtIndexPath:path];
+            [weakSelf toReport:model];
+        }
+
+    }];
+    
+}
+
+- (void)toReport:(TribeModel *)model {
+    if (model.tribeId  == nil) {
+        [self showTips:@"举报内容不存在"];
+        return;
+    }
+    [self showLoader:@"正在举报..."];
+    WEAKSELF
+    [[AppAPIHelper shared].getTribeAPI toReportMessageId:model.tribeId complete:^(id data) {
+        [weakSelf showTips:@"举报成功"];
+    } error:^(NSError *error) {
+        [weakSelf showError:error];
+    }];
+    
 }
 #pragma mark -CommentReresh
--(void)refresh:(NSDictionary *)dict{
-    _dataArray[[dict[@"id"] integerValue]]=[dict valueForKey:@"model"];
-    [self.tableView reloadData];
+-(void)refresh:(NSIndexPath *)path{
+    [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
 }
 #pragma mark -PraiseRresh
 -(void)cardTribeRefresh:(NSDictionary *)dict{
     _dataArray[[dict[@"id"] integerValue]]=[dict valueForKey:@"model"];
     [self.tableView reloadData];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end

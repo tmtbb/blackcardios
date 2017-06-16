@@ -29,9 +29,6 @@
    [self unReadCount:[QYSDK sharedSDK].conversationManager.allUnreadCount];
     [[QYSDK sharedSDK].conversationManager setDelegate:self];
    
-   
-
-   
 }
 
 
@@ -109,9 +106,6 @@
     
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:titleHighlightedColor, NSForegroundColorAttributeName,nil] forState:UIControlStateSelected];
    
-   UITabBarItem *item = [tabBar.items objectAtIndex:kChatIndex];
-   item.badgeColor = [UIColor redColor];
-    
 }
 
 

@@ -14,7 +14,7 @@
 - (void)awakeFromNib {
     
     [super awakeFromNib];
-    self.backgroundColor = kUIColorWithRGB(0xf8f8f8);
+    self.backgroundColor = kAppBackgroundColor;
     self.layer.borderWidth = 1;
     self.layer.borderColor = kUIColorWithRGB(0xd7d7d7).CGColor;
 }

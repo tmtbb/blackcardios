@@ -12,7 +12,11 @@
 #define SelectedColor kUIColorWithRGB(0xE3A63F)//选中颜色
 #define NormoarlColor kUIColorWithRGB(0xA6A6A6)//默认颜色
 
+
 #import "TribeViewController.h"
+#import <HMSegmentedControl.h>
+
+
 #import "CardTribeViewController.h"
 #import "EliteLifeViewController.h"
 #import "CEOThinkingViewController.h"
@@ -20,249 +24,210 @@
 #import "MomentViewController.h"
 #import "CommentViewController.h"
 
-static NSString * const ID = @"CELL";
-@interface TribeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface TribeViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
 
-/** 顶部控件*/
-@property (nonatomic, weak) UIScrollView *topView;
-/** 下划线 */
-@property (nonatomic, weak) UIView *lineView;
-/** 滚动视图 */
-@property (nonatomic, weak) UICollectionView *collectionView;
-/** 当前选中的按钮 */
-@property (nonatomic, weak) UIButton *selectButton;
-/** 按钮数组 */
-@property (nonatomic, strong) NSMutableArray *titleButtons;
+
+@property(strong,nonatomic)HMSegmentedControl *segmentControl;
+
+
+@property(strong,nonatomic)CardTribeViewController *cardTribeControl;
+@property(strong,nonatomic)EliteLifeViewController *eliteLifeControl;
+@property(strong,nonatomic)CEOThinkingViewController *ceoControl;
+
+@property (strong,nonatomic) UIPageViewController *pageViewController;
 
 @end
 
 @implementation TribeViewController
 
 - (void)viewDidLoad {
-    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+
     [super viewDidLoad];
+    
+
     // 设置导航条内容
-    [self setupNavgationBar];
+//    [self setupNavgationBar];
     
-    // 添加底部内容view
-    [self setupBottomContentView];
+    [self setTitleSegment];
     
-    // 添加所有子控制器
-    [self setupAllChildViewController];
+  [self.pageViewController setViewControllers:@[self.cardTribeControl] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     
-    [self setupAllTitle];
-    self.navigationController.navigationBar.hidden=YES;
-    // 不添加额外滚动区域
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    self.view.backgroundColor=kUIColorWithRGB(0xF8F8F8);
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.barTintColor =  [UIColor whiteColor];
+
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+     self.navigationController.navigationBar.barTintColor  = kUIColorWithRGB(0x434343);
+
+
+
 }
 
 #pragma mark - 添加所有的子控制器
-- (void)setupAllChildViewController {
-    
-    CardTribeViewController *cardVc = [[CardTribeViewController alloc] init];
-    cardVc.title = @"卡友部落";
-    cardVc.view.backgroundColor = kUIColorWithRGB(0xF8F8F8);
-    [self addChildViewController:cardVc];
-    
-    
-    EliteLifeViewController *eliteVc = [[EliteLifeViewController alloc] init];
-    eliteVc.title = @"精英生活";
-    eliteVc.view.backgroundColor = kUIColorWithRGB(0xF8F8F8);
-    [self addChildViewController:eliteVc];
-    
-    //
-    CEOThinkingViewController *ceoVc = [[CEOThinkingViewController alloc] init];
-    ceoVc.title = @"总裁思维";
-    ceoVc.view.backgroundColor = kUIColorWithRGB(0xF8F8F8);
-    [self addChildViewController:ceoVc];
-}
 
-#pragma mark - 设置导航条内容
-- (void)setupNavgationBar {
-    UIView *myTopView=[[UIView alloc] initWithFrame:CGRectMake(0,0, kMainScreenWidth, NavBarHeight)];
-    UIButton *cameraBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    cameraBtn.frame=CGRectMake(kMainScreenWidth-45, 20, 40, 40);
-//    [cameraBtn setBackgroundImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
-    [cameraBtn setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
-    cameraBtn.imageEdgeInsets=UIEdgeInsetsMake(10, 8, 10, 7);
-    [cameraBtn addTarget:self action:@selector(momentClicked) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIScrollView *topView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 0, kMainScreenWidth-70, NavBarHeight)];
-    myTopView.backgroundColor = kUIColorWithRGB(0xFFFFFF);
-    _topView = topView;
-    UIView *blackView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 20)];
-    blackView.backgroundColor=[UIColor blackColor];
-    [myTopView addSubview:topView];
-    [myTopView addSubview:blackView];
-    [myTopView addSubview:cameraBtn];
-    [self.view addSubview:myTopView];
-}
-
-#pragma mark - 按钮被点击
-- (void)titleClick:(UIButton *)titleButton{
-    
-    NSInteger i = titleButton.tag;
-    // 重复点击标题按钮的时候,刷新当前界面
-    if (titleButton == _selectButton) {
-    }
-    
-    [self selButton:titleButton];
-    
-    //滚动collectionView 修改偏移量
-    CGFloat offsetX = i * YYScreenW;
-    _collectionView.contentOffset = CGPointMake(offsetX, 0);
-}
-
-#pragma mark - 选中标题按钮
-- (void)selButton:(UIButton *)titleButton{
-    
-    _selectButton.selected = NO;
-    titleButton.selected = YES;
-    _selectButton = titleButton;
-    
-    // 移动下划线的位置
-    [UIView animateWithDuration:0.25 animations:^{
-        [titleButton.titleLabel sizeToFit];
-        _lineView.xj_width = titleButton.titleLabel.xj_width;
-        _lineView.xj_centerX = titleButton.xj_centerX;
+- (void)setTitleSegment {
+    UIView *all = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kMainScreenWidth - 16, 43)];
+    HMSegmentedControl *control = [[HMSegmentedControl alloc]initWithSectionTitles:@[@"卡友部落",@"精英生活",@"邀请函"]];
+    control.frame = CGRectMake(32, 11, kMainScreenWidth - 40 - 53, 32);
+    control.type = HMSegmentedControlTypeText;
+    control.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+    control.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
+    //        control.selectionIndicatorEdgeInsets = UIEdgeInsetsMake(0, 10, 0,-10);
+    control.selectionIndicatorHeight = 1.5;
+    control.selectionIndicatorColor = kUIColorWithRGB(0xE3A63F);
+    control.backgroundColor = [UIColor clearColor];
+    control.titleTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName :  kUIColorWithRGB(0xA6A6A6)};
+    control.selectedTitleTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName :kUIColorWithRGB(0xE3A63F)};
+    WEAKSELF
+    [control setIndexChangeBlock:^(NSInteger index) {
+        [weakSelf changeChildController:index];
     }];
+    
+    [all addSubview:control];
+    [all addSubview:[self buttonSetting]];
+    _segmentControl = control;
+    
+    
+    
+    
+    self.navigationItem.titleView = all;
+    
+    
 }
+- (UIButton *)buttonSetting {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(kMainScreenWidth - 56, 0, 40, 43);
+    [button setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
+    button.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    button.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 9, 4);
+    [button addTarget:self action:@selector(momentClicked) forControlEvents:UIControlEventTouchUpInside];
+    return button;
+}
+
+
+
+
+
+
 #pragma mark - 发布此刻心情
 -(void)momentClicked{
     MomentViewController *mvc=[[MomentViewController alloc] init];
     mvc.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:mvc animated:YES];
 }
-#pragma mark - 添加标题
-- (void)setupAllTitle{
+
+- (void)changeChildController:(NSInteger)index {
     
-    NSUInteger count = self.childViewControllers.count;
-    CGFloat btnX = 0;
-    CGFloat btnW = (kMainScreenWidth-70)/count;
-    for (int i = 0; i < count; i++) {
-        UIButton *titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        titleButton.tag = i;
-        
-        UIViewController *vc = self.childViewControllers[i];
-        [titleButton setTitle:vc.title forState:UIControlStateNormal];
-        // 设置标题颜色
-        [titleButton setTitleColor:SelectedColor forState:UIControlStateSelected];
-        [titleButton setTitleColor:NormoarlColor forState:UIControlStateNormal];
-        
-        // 设置标题字体
-        titleButton.titleLabel.font = [UIFont systemFontOfSize:14];
-        
-        btnX = i * btnW;
-        
-        titleButton.frame = CGRectMake(btnX, 20, btnW, 40);
-        
-        // 监听按钮点击
-        [titleButton addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [_topView addSubview:titleButton];
-        
-        if (i == 0) {
-            // 添加下划线
-            // 下划线宽度 = 按钮文字宽度
-            // 下划线中心点x = 按钮中心点x
-            CGFloat h = 2;
-            CGFloat y = 62;
-            UIView *lineView =[[UIView alloc] init];
-            // 位置和尺寸
-            lineView.xj_height = h;
-            // 先计算文字尺寸,在给label去赋值
-            [titleButton.titleLabel sizeToFit];
-            lineView.xj_width = titleButton.titleLabel.xj_width;
-            lineView.xj_centerX = titleButton.xj_centerX;
-            lineView.xj_y = y;
-            lineView.backgroundColor = SelectedColor;
-            _lineView = lineView;
-            [_topView addSubview:lineView];
+    switch (index) {
+        case 0:
+  [self.pageViewController setViewControllers:@[self.cardTribeControl] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+            break;
+        case 1:{
             
-            [self titleClick:titleButton];
+            UIPageViewControllerNavigationDirection naviD = self.pageViewController.viewControllers.firstObject == self.cardTribeControl ? UIPageViewControllerNavigationDirectionForward :UIPageViewControllerNavigationDirectionReverse;
+            [self.pageViewController setViewControllers:@[self.eliteLifeControl] direction:naviD  animated:YES completion:nil];
+
+            
         }
-        [self.titleButtons addObject:titleButton];
+            
+            break;
+        case 2:
+        [self.pageViewController setViewControllers:@[self.ceoControl] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+            break;
     }
 }
 
-#pragma mark - 添加底部内容view
-- (void)setupBottomContentView
-{
-    // 创建一个流水布局
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(YYScreenW, YYScreenH-123);
-    
-    // 设置水平滚动方向
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.minimumInteritemSpacing = 0;
-    layout.minimumLineSpacing = 0;
-    
-    // 创建UICollectionView
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,74, YYScreenW, YYScreenH-123) collectionViewLayout:layout];
-    collectionView.backgroundColor = kUIColorWithRGB(0xF8F8F8);
-    [self.view addSubview:collectionView];
-    _collectionView = collectionView;
-    collectionView.scrollsToTop = NO;
-    collectionView.scrollEnabled = YES;
-    // 开启分页
-    collectionView.pagingEnabled = YES;
-    collectionView.showsHorizontalScrollIndicator = NO;
-    collectionView.bounces = NO;
-    
-    // 展示cell
-    collectionView.dataSource = self;
-    collectionView.delegate = self;
-    
-    // 注册cell
-    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ID];
-}
 
-#pragma mark - UICollectionViewDelegate
-// 滚动完成的时候就会调用
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    // 获取角标
-    NSInteger i = scrollView.contentOffset.x / YYScreenW;
-    
-    // 获取选中标题
-    UIButton *selButton = self.titleButtons[i];
-    
-    // 选中标题
-    [self selButton:selButton];
-}
 
-#pragma mark - UICollectionViewDataSource
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    
-    return self.childViewControllers.count;
-}
-
-// 只要有新的cell出现的时候才会调用
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    
-    // 移除之前子控制器view
-    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
-    // 取出对应的子控制器添加到对应cell上
-    UIViewController *vc = self.childViewControllers[indexPath.row];
-    CGRect frame=vc.view.frame;
-    frame.size.height=frame.size.height-130;
-    vc.view.frame=frame;
-    [cell.contentView addSubview:vc.view];
-    
-    return cell;
-}
 
 #pragma mark - 懒加载
-- (NSMutableArray *)titleButtons {
-    if (_titleButtons==nil) {
-        _titleButtons = [NSMutableArray array];
+
+- (CardTribeViewController *)cardTribeControl {
+    if (_cardTribeControl == nil) {
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        _cardTribeControl = [sb instantiateViewControllerWithIdentifier:@"CardTribeViewController"];
     }
-    return _titleButtons;
+    return _cardTribeControl;
 }
+
+
+- (EliteLifeViewController *)eliteLifeControl {
+    if (_eliteLifeControl == nil) {
+      _eliteLifeControl =   [[EliteLifeViewController alloc] init];
+    }
+    return _eliteLifeControl;
+}
+
+- (CEOThinkingViewController *)ceoControl {
+    
+    if (_ceoControl == nil) {
+        _ceoControl = [[CEOThinkingViewController alloc] init];
+    }
+    return _ceoControl;
+}
+
+
+
+
+-(UIPageViewController *)pageViewController
+{
+    if (!_pageViewController) {
+        _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+        _pageViewController.view.backgroundColor = kUIColor_Red;
+        _pageViewController.delegate = self;
+        _pageViewController.dataSource = self;
+        [self.view addSubview:_pageViewController.view];
+        [self addChildViewController:_pageViewController];
+    }
+    return _pageViewController;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
+}
+
+#pragma mark -PageViewController DataSource
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+{
+    if (viewController == self.cardTribeControl) {
+        return nil;
+    }else {
+        
+        return viewController == self.eliteLifeControl ? self.cardTribeControl : self.eliteLifeControl;
+    }
+    
+    
+}
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+{
+    if (viewController == self.ceoControl) {
+        return nil;
+    }else {
+        return viewController == self.cardTribeControl ? self.eliteLifeControl : self.ceoControl;
+    }
+    
+}
+
+#pragma mark -PageViewController Delegate
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    if (completed) {
+        UIViewController *control = pageViewController.viewControllers.firstObject;
+        NSInteger pageCount = control== self.cardTribeControl ? 0 : (control == self.eliteLifeControl ? 1 : 2);
+        self.segmentControl.selectedSegmentIndex = pageCount;
+        
+    }
+
+}
+
 
 
 @end

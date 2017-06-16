@@ -9,7 +9,7 @@
 #ifndef HttpHeader_h
 #define HttpHeader_h
 
-//#define Development  //开发环境宏,注掉时开启正式 生产环境
+#define Development  //开发环境宏,注掉时开启正式 生产环境
 
 /**
  * API host
@@ -96,4 +96,6 @@
 #define kHttpAPIUrl_tribeLikeDel         kHttpAPIUrl_HOST@"/api/tribe/message/like/delete.json"
 //点赞列表
 #define kHttpAPIUrl_tribeLikeList        kHttpAPIUrl_HOST@"/api/tribe/message/like/list.json"
+
+#define kHttpAPIUrl_toReport       kHttpAPIUrl_HOST@"/api/tribe/message/report.json"
 #endif /* HttpHeader_h */

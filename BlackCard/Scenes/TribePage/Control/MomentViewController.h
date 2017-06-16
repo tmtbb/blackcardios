@@ -6,8 +6,8 @@
 //  Copyright © 2017年 abx’s mac. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseWriteTextViewController.h"
 
-@interface MomentViewController : UIViewController
+@interface MomentViewController : BaseWriteTextViewController
 
 @end

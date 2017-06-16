@@ -39,7 +39,7 @@
         [_whitView addSubview:_partingLine];
         [_whitView addSubview:_allBtn];
         [self.contentView addSubview:_whitView];
-        self.backgroundColor=kUIColorWithRGB(0xF8F8F8);
+        self.backgroundColor=kAppBackgroundColor;
         _whitView.backgroundColor=kUIColorWithRGB(0xFFFFFF);
         _whitView.layer.cornerRadius=5.0f;
         

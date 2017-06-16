@@ -149,6 +149,13 @@ typedef  void (^ __nullable CustomIndexHandle)(UIAlertAction *action,NSInteger b
  
 }
 
+- (void)show:(UIViewController *)control didClicked:(void (^ __nullable)(UIAlertAction *action,NSInteger buttonIndex))handler{
+    _indexBlock = handler;
+    [control presentViewController:self animated:YES completion:nil];
+    
+}
+
+
 - (void)clcikButtonWithAction:(UIAlertAction *)action andButtonIndex:(NSInteger)buttonIndex{
     
     if (_indexBlock) {

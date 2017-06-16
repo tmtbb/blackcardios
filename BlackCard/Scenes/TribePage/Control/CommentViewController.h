@@ -6,13 +6,16 @@
 //  Copyright © 2017年 abx’s mac. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseWriteTextViewController.h"
 #import "TribeModel.h"
 @protocol CommentRefresh<NSObject>
--(void)refresh:(NSDictionary *)dict;
+-(void)refresh:(NSIndexPath *)path;
 @end
-@interface CommentViewController : UIViewController
-@property(copy,nonatomic)NSString *id;
+@interface CommentViewController : BaseWriteTextViewController
+@property(strong,nonatomic)NSIndexPath *path;
 @property(strong,nonatomic)TribeModel *myModel;
 @property(assign,nonatomic)id<CommentRefresh>delegate;
+
+
+-(void)publishBtnClicked;
 @end

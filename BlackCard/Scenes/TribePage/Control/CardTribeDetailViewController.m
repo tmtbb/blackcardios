@@ -31,7 +31,7 @@
     // 添加底部内容view
     [self setupBottomContentView];
     self.hidesBottomBarWhenPushed=YES;
-    self.view.backgroundColor=kUIColorWithRGB(0xF8F8F8);
+    self.view.backgroundColor=kAppBackgroundColor;
     
 }
 
@@ -188,54 +188,54 @@
 }
 #pragma mark -下部视图点击事件
 -(void)bottomCommentBtnClicked {
-    CommentViewController *cvc=[[CommentViewController alloc] init];
-    cvc.myModel=_myModel;
-    cvc.delegate=self;
-    cvc.id=@"0";
-    [self presentViewController:cvc animated:YES completion:nil];
+//    CommentViewController *cvc=[[CommentViewController alloc] init];
+//    cvc.myModel=_myModel;
+//    cvc.delegate=self;
+//    cvc.id=@"0";
+//    [self presentViewController:cvc animated:YES completion:nil];
     
 }
 -(void)bottomPraiseBtnClicked:(UIButton *)sender {
     [self showLoader:@"点赞中"];
     WEAKSELF
-    TribeModel *model=_myModel;
-    [[AppAPIHelper shared].getMyAndUserAPI postTribePraiseTribeMessageId:model.id complete:^(id data) {
-        model.likeNum=model.likeNum+1;
-        model.isLike=1;
-        _myModel=model;
-        [sender setImage:[UIImage imageNamed:@"bottomPraised"] forState:UIControlStateNormal];
-        [sender setTitle:@"取消" forState:UIControlStateNormal];
-        [sender removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
-        [sender addTarget:self action:@selector(deleteBottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [_cardTridDetailTableView.tableView reloadData];
-        [weakSelf removeMBProgressHUD];
-        [weakSelf showTips:@"点赞成功"];
-    } error:^(NSError *error) {
-        [weakSelf removeMBProgressHUD];
-        [weakSelf showError:error];
-    }];
+//    TribeModel *model=_myModel;
+//    [[AppAPIHelper shared].getMyAndUserAPI postTribePraiseTribeMessageId:model.tribeId complete:^(id data) {
+//        model.likeNum=model.likeNum+1;
+//        model.isLike=1;
+//        _myModel=model;
+//        [sender setImage:[UIImage imageNamed:@"bottomPraised"] forState:UIControlStateNormal];
+//        [sender setTitle:@"取消" forState:UIControlStateNormal];
+//        [sender removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+//        [sender addTarget:self action:@selector(deleteBottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+//        [_cardTridDetailTableView.tableView reloadData];
+//        [weakSelf removeMBProgressHUD];
+//        [weakSelf showTips:@"点赞成功"];
+//    } error:^(NSError *error) {
+//        [weakSelf removeMBProgressHUD];
+//        [weakSelf showError:error];
+//    }];
 }
 -(void)deleteBottomPraiseBtnClicked:(UIButton *)sender{
     [self showLoader:@"取消点赞中"];
     WEAKSELF
     TribeModel *model=_myModel;
-    [[AppAPIHelper shared].getMyAndUserAPI deletePostTribePraiseTribeMessageId:model.id complete:^(id data) {
-        model.likeNum=model.likeNum-1;
-        _myModel=model;
-        model.isLike=0;
-        [sender setImage:[UIImage imageNamed:@"bottomPraise"] forState:UIControlStateNormal];
-        [sender setTitle:@"赞" forState:UIControlStateNormal];
-        [sender removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
-        [sender addTarget:self action:@selector(bottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [_cardTridDetailTableView.tableView reloadData];
-        [weakSelf removeMBProgressHUD];
-        [weakSelf showTips:@"取消点赞成功"];
-//        CardDetailTopTableViewCell *cell=[self.view viewWithTag:1];
-//        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
-    } error:^(NSError *error) {
-        [weakSelf removeMBProgressHUD];
-        [weakSelf showError:error];
-    }];
+//    [[AppAPIHelper shared].getMyAndUserAPI deletePostTribePraiseTribeMessageId:model.tribeId complete:^(id data) {
+//        model.likeNum=model.likeNum-1;
+//        _myModel=model;
+//        model.isLike=0;
+//        [sender setImage:[UIImage imageNamed:@"bottomPraise"] forState:UIControlStateNormal];
+//        [sender setTitle:@"赞" forState:UIControlStateNormal];
+//        [sender removeTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+//        [sender addTarget:self action:@selector(bottomPraiseBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+//        [_cardTridDetailTableView.tableView reloadData];
+//        [weakSelf removeMBProgressHUD];
+//        [weakSelf showTips:@"取消点赞成功"];
+////        CardDetailTopTableViewCell *cell=[self.view viewWithTag:1];
+////        cell.praiseLabel.text=[NSString stringWithFormat:@"%d",model.likeNum];
+//    } error:^(NSError *error) {
+//        [weakSelf removeMBProgressHUD];
+//        [weakSelf showError:error];
+//    }];
 }
 #pragma mark -sendMymodelDelegate
 -(void)sendMyModel:(TribeModel *)model{
@@ -254,11 +254,11 @@
     }
 }
 -(void)pushComment:(TribeModel *)model{
-    CommentViewController *cvc=[[CommentViewController alloc] init];
-    cvc.myModel=model;
-    cvc.id=@"0";
-    cvc.delegate=self;
-    [self presentViewController:cvc animated:YES completion:nil];
+//    CommentViewController *cvc=[[CommentViewController alloc] init];
+//    cvc.myModel=model;
+//    cvc.id=@"0";
+//    cvc.delegate=self;
+//    [self presentViewController:cvc animated:YES completion:nil];
 }
 -(void)refresh:(NSDictionary *)dict{
     _myModel=[dict objectForKey:@"model"];

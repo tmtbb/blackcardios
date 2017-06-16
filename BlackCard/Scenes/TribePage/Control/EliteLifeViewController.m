@@ -19,7 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _elteLiftTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, self.view.frame.size.height-123) style:UITableViewStylePlain];
+    self.view.backgroundColor = kAppBackgroundColor;
+    _elteLiftTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, self.view.frame.size.height-123) style:UITableViewStylePlain];
     _elteLiftTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     _elteLiftTableView.showsVerticalScrollIndicator=NO;
     [self.view addSubview:_elteLiftTableView];

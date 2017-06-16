@@ -214,20 +214,19 @@
     }
     
 }
--(void)postTribePraiseTribeMessageId:(NSString *)tribeMessageId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock{
+
+
+- (void)doTribePraiseTribeMessageId:(NSString *)tribeMessageId isLike:(BOOL)islike complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:tribeMessageId forKey:@"tribeMessageId"];
     if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
-        [self postRequest:kHttpAPIUrl_tribeLikeAdd parameters:parameters complete:complete error:errorBlock];
+        NSString *url = islike ? kHttpAPIUrl_tribeLikeDel : kHttpAPIUrl_tribeLikeAdd;
+        [self postRequest:url parameters:parameters complete:complete error:errorBlock];
     }
+    
+    
 }
--(void)deletePostTribePraiseTribeMessageId:(NSString *)tribeMessageId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock{
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    [parameters setObject:tribeMessageId forKey:@"tribeMessageId"];
-    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
-        [self postRequest:kHttpAPIUrl_tribeLikeDel parameters:parameters complete:complete error:errorBlock];
-    }
-}
+
 - (void)getTribeCommentListWihtPage:(NSInteger)page tribeMessageId:(NSString *)tribeMessageId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock{
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:@(page) forKey:@"page"];

@@ -25,7 +25,7 @@
 //    
 //    // 添加底部内容view
 //    [self setupBottomContentView];
-//    self.view.backgroundColor=kUIColorWithRGB(0xF8F8F8);
+//    self.view.backgroundColor=kAppBackgroundColor;
 }
 - (void)didRequest:(NSInteger)pageIndex {
     

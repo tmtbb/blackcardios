@@ -31,7 +31,7 @@
         [self.contentView addSubview:_timeLabel];
         [_whiteView addSubview:_titleLabel];
         [self.contentView addSubview:_whiteView];
-        self.backgroundColor=kUIColorWithRGB(0xF8F8F8);
+        self.backgroundColor=kAppBackgroundColor;
         _whiteView.backgroundColor=kUIColorWithRGB(0xFFFFFF);
         self.userInteractionEnabled=YES;
 //        self.isUserInteractionEnabled=YES;

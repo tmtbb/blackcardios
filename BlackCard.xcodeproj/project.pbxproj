@@ -92,6 +92,27 @@
 		7C55C71F1EDEB473000991AF /* GuidePageThreeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C55C71E1EDEB473000991AF /* GuidePageThreeView.xib */; };
 		7C55C7221EDEB9EE000991AF /* BaseGuidePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C7211EDEB9EE000991AF /* BaseGuidePageView.m */; };
 		7C55C7251EDED001000991AF /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C7241EDED001000991AF /* GuideViewController.m */; };
+		7C67C8CE1EEF7DDF004AA6CE /* TribeCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8CD1EEF7DDF004AA6CE /* TribeCardTableViewCell.m */; };
+		7C67C8D11EEF86A8004AA6CE /* TribeCardImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8D01EEF86A8004AA6CE /* TribeCardImageView.m */; };
+		7C67C8D71EF17F2B004AA6CE /* TribeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8D61EF17F2B004AA6CE /* TribeNavigationController.m */; };
+		7C67C8DB1EF23A2B004AA6CE /* HttpTribe.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8DA1EF23A2B004AA6CE /* HttpTribe.m */; };
+		7C67C8DE1EF25314004AA6CE /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8DC1EF25314004AA6CE /* CustomTextView.m */; };
+		7C67C8E11EF27019004AA6CE /* BaseWriteTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8E01EF27019004AA6CE /* BaseWriteTextViewController.m */; };
+		7C67C8FB1EF2794D004AA6CE /* ALAssetsLibraryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8E51EF2794C004AA6CE /* ALAssetsLibraryHelper.m */; };
+		7C67C8FC1EF2794D004AA6CE /* ImageGroupPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8E71EF2794C004AA6CE /* ImageGroupPickerView.m */; };
+		7C67C8FD1EF2794D004AA6CE /* ImageGroupPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C67C8E81EF2794C004AA6CE /* ImageGroupPickerView.xib */; };
+		7C67C8FE1EF2794D004AA6CE /* ImagePickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8EA1EF2794C004AA6CE /* ImagePickerTableViewController.m */; };
+		7C67C8FF1EF2794D004AA6CE /* SCImageGroupPickerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8EC1EF2794C004AA6CE /* SCImageGroupPickerObject.m */; };
+		7C67C9001EF2794D004AA6CE /* SCImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8EE1EF2794C004AA6CE /* SCImagePickerCell.m */; };
+		7C67C9011EF2794D004AA6CE /* SCImagePickerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8F01EF2794D004AA6CE /* SCImagePickerObject.m */; };
+		7C67C9021EF2794D004AA6CE /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8F21EF2794D004AA6CE /* TitleView.m */; };
+		7C67C9031EF2794D004AA6CE /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C67C8F31EF2794D004AA6CE /* TitleView.xib */; };
+		7C67C9041EF2794D004AA6CE /* ImageBrowseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8F51EF2794D004AA6CE /* ImageBrowseViewCell.m */; };
+		7C67C9051EF2794D004AA6CE /* ImageBrowseViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C67C8F61EF2794D004AA6CE /* ImageBrowseViewCell.xib */; };
+		7C67C9061EF2794D004AA6CE /* ImageBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8F81EF2794D004AA6CE /* ImageBrowseViewController.m */; };
+		7C67C9071EF2794D004AA6CE /* ImagesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8FA1EF2794D004AA6CE /* ImagesModel.m */; };
+		7C67C90A1EF27BFC004AA6CE /* CacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C9081EF27BFC004AA6CE /* CacheHelper.m */; };
+		7C67C90D1EF27E59004AA6CE /* UIViewController+LeeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C90B1EF27E59004AA6CE /* UIViewController+LeeBase.m */; };
 		7C71835A1EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7183591EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m */; };
 		7C71835F1EAF1BD400B40BCB /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C71835C1EAF1BD400B40BCB /* libWeChatSDK.a */; };
 		7C7183651EAF1C5600B40BCB /* PayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7183621EAF1C5600B40BCB /* PayHelper.m */; };
@@ -320,6 +341,46 @@
 		7C55C7211EDEB9EE000991AF /* BaseGuidePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseGuidePageView.m; sourceTree = "<group>"; };
 		7C55C7231EDED001000991AF /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		7C55C7241EDED001000991AF /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		7C67C8CC1EEF7DDF004AA6CE /* TribeCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TribeCardTableViewCell.h; sourceTree = "<group>"; };
+		7C67C8CD1EEF7DDF004AA6CE /* TribeCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TribeCardTableViewCell.m; sourceTree = "<group>"; };
+		7C67C8CF1EEF86A8004AA6CE /* TribeCardImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TribeCardImageView.h; sourceTree = "<group>"; };
+		7C67C8D01EEF86A8004AA6CE /* TribeCardImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TribeCardImageView.m; sourceTree = "<group>"; };
+		7C67C8D51EF17F2B004AA6CE /* TribeNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TribeNavigationController.h; sourceTree = "<group>"; };
+		7C67C8D61EF17F2B004AA6CE /* TribeNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TribeNavigationController.m; sourceTree = "<group>"; };
+		7C67C8D81EF239CF004AA6CE /* TribeAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TribeAPI.h; sourceTree = "<group>"; };
+		7C67C8D91EF23A2B004AA6CE /* HttpTribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpTribe.h; sourceTree = "<group>"; };
+		7C67C8DA1EF23A2B004AA6CE /* HttpTribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpTribe.m; sourceTree = "<group>"; };
+		7C67C8DC1EF25314004AA6CE /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
+		7C67C8DD1EF25314004AA6CE /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
+		7C67C8DF1EF27019004AA6CE /* BaseWriteTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWriteTextViewController.h; sourceTree = "<group>"; };
+		7C67C8E01EF27019004AA6CE /* BaseWriteTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWriteTextViewController.m; sourceTree = "<group>"; };
+		7C67C8E41EF2794C004AA6CE /* ALAssetsLibraryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAssetsLibraryHelper.h; sourceTree = "<group>"; };
+		7C67C8E51EF2794C004AA6CE /* ALAssetsLibraryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetsLibraryHelper.m; sourceTree = "<group>"; };
+		7C67C8E61EF2794C004AA6CE /* ImageGroupPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageGroupPickerView.h; sourceTree = "<group>"; };
+		7C67C8E71EF2794C004AA6CE /* ImageGroupPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageGroupPickerView.m; sourceTree = "<group>"; };
+		7C67C8E81EF2794C004AA6CE /* ImageGroupPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageGroupPickerView.xib; sourceTree = "<group>"; };
+		7C67C8E91EF2794C004AA6CE /* ImagePickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerTableViewController.h; sourceTree = "<group>"; };
+		7C67C8EA1EF2794C004AA6CE /* ImagePickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerTableViewController.m; sourceTree = "<group>"; };
+		7C67C8EB1EF2794C004AA6CE /* SCImageGroupPickerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageGroupPickerObject.h; sourceTree = "<group>"; };
+		7C67C8EC1EF2794C004AA6CE /* SCImageGroupPickerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageGroupPickerObject.m; sourceTree = "<group>"; };
+		7C67C8ED1EF2794C004AA6CE /* SCImagePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImagePickerCell.h; sourceTree = "<group>"; };
+		7C67C8EE1EF2794C004AA6CE /* SCImagePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImagePickerCell.m; sourceTree = "<group>"; };
+		7C67C8EF1EF2794D004AA6CE /* SCImagePickerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImagePickerObject.h; sourceTree = "<group>"; };
+		7C67C8F01EF2794D004AA6CE /* SCImagePickerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImagePickerObject.m; sourceTree = "<group>"; };
+		7C67C8F11EF2794D004AA6CE /* TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleView.h; sourceTree = "<group>"; };
+		7C67C8F21EF2794D004AA6CE /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
+		7C67C8F31EF2794D004AA6CE /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
+		7C67C8F41EF2794D004AA6CE /* ImageBrowseViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBrowseViewCell.h; sourceTree = "<group>"; };
+		7C67C8F51EF2794D004AA6CE /* ImageBrowseViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageBrowseViewCell.m; sourceTree = "<group>"; };
+		7C67C8F61EF2794D004AA6CE /* ImageBrowseViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageBrowseViewCell.xib; sourceTree = "<group>"; };
+		7C67C8F71EF2794D004AA6CE /* ImageBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBrowseViewController.h; sourceTree = "<group>"; };
+		7C67C8F81EF2794D004AA6CE /* ImageBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageBrowseViewController.m; sourceTree = "<group>"; };
+		7C67C8F91EF2794D004AA6CE /* ImagesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesModel.h; sourceTree = "<group>"; };
+		7C67C8FA1EF2794D004AA6CE /* ImagesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesModel.m; sourceTree = "<group>"; };
+		7C67C9081EF27BFC004AA6CE /* CacheHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheHelper.m; sourceTree = "<group>"; };
+		7C67C9091EF27BFC004AA6CE /* CacheHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheHelper.h; sourceTree = "<group>"; };
+		7C67C90B1EF27E59004AA6CE /* UIViewController+LeeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LeeBase.m"; sourceTree = "<group>"; };
+		7C67C90C1EF27E59004AA6CE /* UIViewController+LeeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LeeBase.h"; sourceTree = "<group>"; };
 		7C7183581EAEF49D00B40BCB /* ConfirmApplicationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmApplicationTableViewController.h; sourceTree = "<group>"; };
 		7C7183591EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmApplicationTableViewController.m; sourceTree = "<group>"; };
 		7C71835C1EAF1BD400B40BCB /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
@@ -524,6 +585,7 @@
 		7C25A7881EA8677A0049234E /* General */ = {
 			isa = PBXGroup;
 			children = (
+				7C67C8E21EF2794C004AA6CE /* BrowsePicture */,
 				7C25A7891EA8677A0049234E /* AppAPI */,
 				7C25A78A1EA8677A0049234E /* Base */,
 				7C25A78B1EA8677A0049234E /* Category */,
@@ -539,6 +601,7 @@
 			children = (
 				7CC8019C1EAC578C005B52A9 /* Http */,
 				7CC8019B1EAC578C005B52A9 /* MyAndUserAPI.h */,
+				7C67C8D81EF239CF004AA6CE /* TribeAPI.h */,
 				7CC801A61EACAB6C005B52A9 /* HomePageAPI.h */,
 				7C55C7051ED9696A000991AF /* WaiterServiceAPI.h */,
 			);
@@ -564,6 +627,8 @@
 			children = (
 				A6F46A0B1ED7C6D200D5C212 /* UIImage+ALinExtension.h */,
 				A6F46A0C1ED7C6D200D5C212 /* UIImage+ALinExtension.m */,
+				7C67C90C1EF27E59004AA6CE /* UIViewController+LeeBase.h */,
+				7C67C90B1EF27E59004AA6CE /* UIViewController+LeeBase.m */,
 				A6FAC21F1ED6B18C002CB042 /* UIView+XJExtension.h */,
 				A6FAC2201ED6B18C002CB042 /* UIView+XJExtension.m */,
 				7C25A8131EA8887F0049234E /* UIViewController+ActionCategory.h */,
@@ -598,6 +663,8 @@
 				7C25A8201EA88E2C0049234E /* UIAlertCustomViewController.m */,
 				7C25A8161EA88A6C0049234E /* AppNavigationController.h */,
 				7C25A8171EA88A6C0049234E /* AppNavigationController.m */,
+				7C67C8D51EF17F2B004AA6CE /* TribeNavigationController.h */,
+				7C67C8D61EF17F2B004AA6CE /* TribeNavigationController.m */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -608,6 +675,8 @@
 				7C55C7101EDEB3A7000991AF /* GuideView */,
 				7C25A82B1EA8944B0049234E /* SendVerifyCodeButton.h */,
 				7C25A82C1EA8944B0049234E /* SendVerifyCodeButton.m */,
+				7C67C8DD1EF25314004AA6CE /* CustomTextView.h */,
+				7C67C8DC1EF25314004AA6CE /* CustomTextView.m */,
 				7C26ADBC1ED6B2B800E32E87 /* CustomAlertController.h */,
 				7C26ADBD1ED6B2B800E32E87 /* CustomAlertController.m */,
 				7C8E78971ED27F80000CADAA /* PayPasswordTextField.h */,
@@ -634,6 +703,8 @@
 				7C7183601EAF1C5600B40BCB /* PayHelper */,
 				7CC801981EAC577F005B52A9 /* AppAPIHelper.h */,
 				7CC801991EAC577F005B52A9 /* AppAPIHelper.m */,
+				7C67C9081EF27BFC004AA6CE /* CacheHelper.m */,
+				7C67C9091EF27BFC004AA6CE /* CacheHelper.h */,
 				7C25A8281EA893AE0049234E /* ValidateHelper.h */,
 				7C25A8291EA893AE0049234E /* ValidateHelper.m */,
 				7C25A8221EA88EBF0049234E /* CurrentUserActionHelper.h */,
@@ -871,6 +942,44 @@
 			path = GuideView;
 			sourceTree = "<group>";
 		};
+		7C67C8E21EF2794C004AA6CE /* BrowsePicture */ = {
+			isa = PBXGroup;
+			children = (
+				7C67C8E31EF2794C004AA6CE /* CustomImagePicker */,
+				7C67C8F41EF2794D004AA6CE /* ImageBrowseViewCell.h */,
+				7C67C8F51EF2794D004AA6CE /* ImageBrowseViewCell.m */,
+				7C67C8F61EF2794D004AA6CE /* ImageBrowseViewCell.xib */,
+				7C67C8F71EF2794D004AA6CE /* ImageBrowseViewController.h */,
+				7C67C8F81EF2794D004AA6CE /* ImageBrowseViewController.m */,
+				7C67C8F91EF2794D004AA6CE /* ImagesModel.h */,
+				7C67C8FA1EF2794D004AA6CE /* ImagesModel.m */,
+			);
+			path = BrowsePicture;
+			sourceTree = "<group>";
+		};
+		7C67C8E31EF2794C004AA6CE /* CustomImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				7C67C8E41EF2794C004AA6CE /* ALAssetsLibraryHelper.h */,
+				7C67C8E51EF2794C004AA6CE /* ALAssetsLibraryHelper.m */,
+				7C67C8E61EF2794C004AA6CE /* ImageGroupPickerView.h */,
+				7C67C8E71EF2794C004AA6CE /* ImageGroupPickerView.m */,
+				7C67C8E81EF2794C004AA6CE /* ImageGroupPickerView.xib */,
+				7C67C8E91EF2794C004AA6CE /* ImagePickerTableViewController.h */,
+				7C67C8EA1EF2794C004AA6CE /* ImagePickerTableViewController.m */,
+				7C67C8EB1EF2794C004AA6CE /* SCImageGroupPickerObject.h */,
+				7C67C8EC1EF2794C004AA6CE /* SCImageGroupPickerObject.m */,
+				7C67C8ED1EF2794C004AA6CE /* SCImagePickerCell.h */,
+				7C67C8EE1EF2794C004AA6CE /* SCImagePickerCell.m */,
+				7C67C8EF1EF2794D004AA6CE /* SCImagePickerObject.h */,
+				7C67C8F01EF2794D004AA6CE /* SCImagePickerObject.m */,
+				7C67C8F11EF2794D004AA6CE /* TitleView.h */,
+				7C67C8F21EF2794D004AA6CE /* TitleView.m */,
+				7C67C8F31EF2794D004AA6CE /* TitleView.xib */,
+			);
+			path = CustomImagePicker;
+			sourceTree = "<group>";
+		};
 		7C71835B1EAF1BD400B40BCB /* WX */ = {
 			isa = PBXGroup;
 			children = (
@@ -1002,6 +1111,8 @@
 				7CC801A81EACAD53005B52A9 /* HttpHomePage.m */,
 				7C55C7071ED969DB000991AF /* HttpWaiterService.h */,
 				7C55C7081ED969DB000991AF /* HttpWaiterService.m */,
+				7C67C8D91EF23A2B004AA6CE /* HttpTribe.h */,
+				7C67C8DA1EF23A2B004AA6CE /* HttpTribe.m */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -1086,6 +1197,8 @@
 				A6F46A0F1ED811AB00D5C212 /* MomentViewController.m */,
 				A616F0D41ED85EB2004EAA42 /* CommentViewController.h */,
 				A616F0D51ED85EB2004EAA42 /* CommentViewController.m */,
+				7C67C8DF1EF27019004AA6CE /* BaseWriteTextViewController.h */,
+				7C67C8E01EF27019004AA6CE /* BaseWriteTextViewController.m */,
 				A62D5F061ED94E840023E6C2 /* EliteDetailViewController.h */,
 				A62D5F071ED94E840023E6C2 /* EliteDetailViewController.m */,
 				A62D5F091ED950800023E6C2 /* CardTribeDetailViewController.h */,
@@ -1101,6 +1214,10 @@
 			children = (
 				A6FAC2371ED6E1A4002CB042 /* CardTribeTableViewCell.h */,
 				A6FAC2381ED6E1A4002CB042 /* CardTribeTableViewCell.m */,
+				7C67C8CC1EEF7DDF004AA6CE /* TribeCardTableViewCell.h */,
+				7C67C8CD1EEF7DDF004AA6CE /* TribeCardTableViewCell.m */,
+				7C67C8CF1EEF86A8004AA6CE /* TribeCardImageView.h */,
+				7C67C8D01EEF86A8004AA6CE /* TribeCardImageView.m */,
 				A616F0D11ED85E37004EAA42 /* EliteLifeTableViewCell.h */,
 				A616F0D21ED85E37004EAA42 /* EliteLifeTableViewCell.m */,
 				A62D5F0F1ED950EB0023E6C2 /* CardDetailBottomTableViewCell.h */,
@@ -1197,6 +1314,8 @@
 			files = (
 				7C55C7151EDEB3FC000991AF /* GuidePageOneView.xib in Resources */,
 				7CC14DE41EB9E929008B32ED /* app.jingyingheika.com.cer in Resources */,
+				7C67C9031EF2794D004AA6CE /* TitleView.xib in Resources */,
+				7C67C8FD1EF2794D004AA6CE /* ImageGroupPickerView.xib in Resources */,
 				7C55C71F1EDEB473000991AF /* GuidePageThreeView.xib in Resources */,
 				7C8E78A01ED2E5A0000CADAA /* AlipaySDK.bundle in Resources */,
 				7C55C7001ED94692000991AF /* ChoosePayTypeView.xib in Resources */,
@@ -1205,6 +1324,7 @@
 				7C25A80C1EA886E50049234E /* EveryNoneView.xib in Resources */,
 				7C55C71A1EDEB41D000991AF /* GuidePageTwoView.xib in Resources */,
 				7C388FED1EADD7F4008023CA /* RegisterCardHScollCell.xib in Resources */,
+				7C67C9051EF2794D004AA6CE /* ImageBrowseViewCell.xib in Resources */,
 				7C18F0291EB03932008D247C /* area.plist in Resources */,
 				7C18F0321EB03E39008D247C /* CustomPickView.xib in Resources */,
 				7C18F02A1EB03932008D247C /* city.plist in Resources */,
@@ -1278,10 +1398,13 @@
 				7C7183651EAF1C5600B40BCB /* PayHelper.m in Sources */,
 				7C55C70C1ED97871000991AF /* DefaultPay.m in Sources */,
 				7CC47CF51EA9AD4D006FBB53 /* HomePageCollectionViewCell.m in Sources */,
+				7C67C8E11EF27019004AA6CE /* BaseWriteTextViewController.m in Sources */,
 				A6FAC2361ED6DAAF002CB042 /* CEOThinkingViewController.m in Sources */,
 				A6F5F46B1EE436CC004C144F /* PhotosCollectionViewCell.m in Sources */,
 				7C25A7E01EA86A3D0049234E /* BaseRefreshPageCollectionViewController.m in Sources */,
+				7C67C8D11EEF86A8004AA6CE /* TribeCardImageView.m in Sources */,
 				7C25A7EA1EA86A3D0049234E /* BaseCustomTableViewController.m in Sources */,
+				7C67C9041EF2794D004AA6CE /* ImageBrowseViewCell.m in Sources */,
 				A6FAC22D1ED6D96E002CB042 /* TribeViewController.m in Sources */,
 				A62D5F0B1ED950800023E6C2 /* CardTribeDetailViewController.m in Sources */,
 				A6FAC2301ED6D9A6002CB042 /* CardTribeViewController.m in Sources */,
@@ -1290,22 +1413,26 @@
 				7C8E78871ED18FAE000CADAA /* MyPurseDetailCell.m in Sources */,
 				7C8E789C1ED29CD1000CADAA /* SetPayPasswordTableViewController.m in Sources */,
 				7C8E788A1ED193D8000CADAA /* ShoppingListLogCell.m in Sources */,
+				7C67C9071EF2794D004AA6CE /* ImagesModel.m in Sources */,
 				7C55C7221EDEB9EE000991AF /* BaseGuidePageView.m in Sources */,
 				7C25A7DD1EA86A3D0049234E /* BaseCollectionViewController.m in Sources */,
 				7C25A7F91EA883B00049234E /* UINavigationController+Category.m in Sources */,
 				7C55C70F1EDE5B41000991AF /* BlackLogHelper.m in Sources */,
 				A6F46A0D1ED7C6D200D5C212 /* UIImage+ALinExtension.m in Sources */,
 				7C25A82A1EA893AE0049234E /* ValidateHelper.m in Sources */,
+				7C67C8CE1EEF7DDF004AA6CE /* TribeCardTableViewCell.m in Sources */,
 				7CD68FAB1ED44D9700A3AD3E /* ModifyCardPasswordTableViewController.m in Sources */,
 				7CD68FA21ED3CF1900A3AD3E /* PayManagerHelper.m in Sources */,
 				7C8488721EAB4E790001EC82 /* RegisterCollectionViewCell.m in Sources */,
 				7C55C6FE1ED94686000991AF /* ChoosePayTypeView.m in Sources */,
 				7C25A8211EA88E2C0049234E /* UIAlertCustomViewController.m in Sources */,
+				7C67C8DE1EF25314004AA6CE /* CustomTextView.m in Sources */,
 				7C25A7F01EA86A3D0049234E /* BaseViewController.m in Sources */,
 				7C18F03B1EB20592008D247C /* WaiterViewController.m in Sources */,
 				7C55C7251EDED001000991AF /* GuideViewController.m in Sources */,
 				A62D5F111ED950EB0023E6C2 /* CardDetailBottomTableViewCell.m in Sources */,
 				7C25A7E81EA86A3D0049234E /* BaseRequestTableViewController.m in Sources */,
+				7C67C9021EF2794D004AA6CE /* TitleView.m in Sources */,
 				A6FAC2331ED6DA04002CB042 /* EliteLifeViewController.m in Sources */,
 				A62D5F141ED9510C0023E6C2 /* CardDetailTopTableViewCell.m in Sources */,
 				7CC801A51EAC8A7E005B52A9 /* LoginTableViewCell.m in Sources */,
@@ -1325,6 +1452,8 @@
 				7C25A7ED1EA86A3D0049234E /* BaseRefreshPageCustomTableViewController.m in Sources */,
 				A6F46A101ED811AB00D5C212 /* MomentViewController.m in Sources */,
 				7C25A79C1EA8677A0049234E /* BlackCard_const.m in Sources */,
+				7C67C8FB1EF2794D004AA6CE /* ALAssetsLibraryHelper.m in Sources */,
+				7C67C8D71EF17F2B004AA6CE /* TribeNavigationController.m in Sources */,
 				7C25A83F1EA8C1E10049234E /* WaiterModel.m in Sources */,
 				7C25A81E1EA88D380049234E /* MyAndUserModel.m in Sources */,
 				7C25A8261EA88EBF0049234E /* CurrentUserActionHelper.m in Sources */,
@@ -1332,6 +1461,7 @@
 				A62D5F081ED94E840023E6C2 /* EliteDetailViewController.m in Sources */,
 				7C25A82D1EA8944B0049234E /* SendVerifyCodeButton.m in Sources */,
 				7C71836F1EAF2CD100B40BCB /* ResetPasswordTableViewController.m in Sources */,
+				7C67C9011EF2794D004AA6CE /* SCImagePickerObject.m in Sources */,
 				7CC47CFF1EA9B2F8006FBB53 /* HomePageTableViewController.m in Sources */,
 				7C8E78811ED18888000CADAA /* MyPurseTableViewController.m in Sources */,
 				7C25A8391EA8B62B0049234E /* UIView+SimpleFrame.m in Sources */,
@@ -1352,9 +1482,12 @@
 				7C25A7FF1EA885A80049234E /* NSString+Category.m in Sources */,
 				7C84886F1EAB4DD50001EC82 /* RegisterWithCollectionView.m in Sources */,
 				7C25A8121EA887F70049234E /* BaseTableViewHScrollCell.m in Sources */,
+				7C67C9001EF2794D004AA6CE /* SCImagePickerCell.m in Sources */,
 				7C25A7E21EA86A3D0049234E /* BaseRefreshCustomCollectionViewController.m in Sources */,
 				7C26ADC81ED6DBD500E32E87 /* ImageProvider.m in Sources */,
 				7C8E78961ED19FA8000CADAA /* RechargeTableViewController.m in Sources */,
+				7C67C90A1EF27BFC004AA6CE /* CacheHelper.m in Sources */,
+				7C67C9061EF2794D004AA6CE /* ImageBrowseViewController.m in Sources */,
 				7C25A8061EA886340049234E /* LoadMoreView.m in Sources */,
 				7C25A8181EA88A6C0049234E /* AppNavigationController.m in Sources */,
 				7C388FEB1EADD4CD008023CA /* RegisterCardCell.m in Sources */,
@@ -1370,11 +1503,13 @@
 				7C55C7061ED9696A000991AF /* WaiterServiceAPI.h in Sources */,
 				7CC801A21EAC8744005B52A9 /* LoginViewController.m in Sources */,
 				7C25A7EB1EA86A3D0049234E /* BaseRefreshCustomTableViewController.m in Sources */,
+				7C67C8FF1EF2794D004AA6CE /* SCImageGroupPickerObject.m in Sources */,
 				7C8E78841ED18F32000CADAA /* MyPurseDetailTableViewController.m in Sources */,
 				7C25A7DE1EA86A3D0049234E /* BaseRefreshCollectionViewController.m in Sources */,
 				A6FAC2211ED6B18C002CB042 /* UIView+XJExtension.m in Sources */,
 				7C26ADBE1ED6B2B800E32E87 /* CustomAlertController.m in Sources */,
 				7C8E787E1ED175B6000CADAA /* UserSetInfoTableViewController.m in Sources */,
+				7C67C8FE1EF2794D004AA6CE /* ImagePickerTableViewController.m in Sources */,
 				7C3324841EB307730065B5C3 /* WebViewController.m in Sources */,
 				7C25A7E51EA86A3D0049234E /* BaseRefreshListTableViewController.m in Sources */,
 				7C7183661EAF1C5600B40BCB /* WXPay.m in Sources */,
@@ -1388,6 +1523,7 @@
 				7CC8019A1EAC577F005B52A9 /* AppAPIHelper.m in Sources */,
 				7C18F02D1EB039AE008D247C /* AreaModel.m in Sources */,
 				7CD68FA51ED3E26E00A3AD3E /* DisableTextField.m in Sources */,
+				7C67C8FC1EF2794D004AA6CE /* ImageGroupPickerView.m in Sources */,
 				7C8E78991ED27F80000CADAA /* PayPasswordTextField.m in Sources */,
 				7CC47CF21EA9AD0B006FBB53 /* SubviewWithCollectionView.m in Sources */,
 				7C55C7091ED969DB000991AF /* HttpWaiterService.m in Sources */,
@@ -1397,6 +1533,8 @@
 				7C25A7DA1EA86A3D0049234E /* BaseHttpAPI.m in Sources */,
 				7C25A7E31EA86A3D0049234E /* BaseRefreshListCustomCollectionViewController.m in Sources */,
 				7C25A7EE1EA86A3D0049234E /* BasePhoneVerifyCodeTableViewController.m in Sources */,
+				7C67C8DB1EF23A2B004AA6CE /* HttpTribe.m in Sources */,
+				7C67C90D1EF27E59004AA6CE /* UIViewController+LeeBase.m in Sources */,
 				7C8E788D1ED195A4000CADAA /* ShoppingListLogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1513,7 +1651,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 96YGS7NXK5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1531,8 +1669,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.youdian.blackcard.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "91feacd6-01a7-4c05-ab50-ada36c37b18b";
-				PROVISIONING_PROFILE_SPECIFIER = blackCardiOSDev;
+				PROVISIONING_PROFILE = "8a465569-f7c5-44d0-a660-d6f0ab77298f";
+				PROVISIONING_PROFILE_SPECIFIER = BlackCardiOS_AppStore;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;

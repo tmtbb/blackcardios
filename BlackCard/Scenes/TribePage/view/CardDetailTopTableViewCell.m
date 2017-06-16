@@ -64,7 +64,7 @@
         [self.contentView addSubview:_listTitle];
         [self.contentView addSubview:_underLine];
         [self.contentView addSubview:_whiteView];
-        self.backgroundColor=kUIColorWithRGB(0xF8F8F8);
+        self.backgroundColor=kAppBackgroundColor;
         _whiteView.backgroundColor=kUIColorWithRGB(0xFFFFFF);
         
         
@@ -139,7 +139,7 @@
             UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 160, 160)];
             photo.contentMode=UIViewContentModeScaleAspectFit;
 //            photo.image=photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
-            [photo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.tribeMessageImgs[0][@"img"]]]];
+            [photo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.tribeMessageImgs[0].img]]];
             [_showImageView addSubview:photo];
         }else{
             //            _showImageView.frame=CGRectMake(10, _titleLabel.frame.size.height+20, kMainScreenWidth-90, 160);
@@ -148,7 +148,7 @@
                 int a= i/3;
                 int b= i%3;
                 UIImageView *photo=[[UIImageView alloc] initWithFrame:CGRectMake(10+b*(5+photoWidth), 5+a*(5+photoWidth), photoWidth,photoWidth)];
-                [photo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.tribeMessageImgs[i][@"img"]]]];
+                [photo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.tribeMessageImgs[i].img]]];
 //                photo.image=[UIImage imageNamed:@"HomePageDefaultCard"];
                 photo.contentMode=UIViewContentModeScaleAspectFit;
                 [_showImageView addSubview:photo];
