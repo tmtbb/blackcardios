@@ -328,30 +328,30 @@
     
     imageView.userInteractionEnabled = YES;
     
-//    WEAKSELF
-//    if (_rectArray && dismissNeedAnimation)
-//        [UIView animateWithDuration:0.5 animations:^{
-//            if (_rectArray != nil)
-//                imageView.frame =CGRectFromString( [_rectArray objectAtIndex:_index]);
-//            else if (_index == _oldIndex && _imageRect.size.height != 0)
-//                imageView.frame = _imageRect;
-//            else
-//            {
-//                imageView.layer.cornerRadius = 6;
-//                imageView.transform = CGAffineTransformMakeScale(0.8, 0.8);
-//                imageView.alpha = 0.1;
-//            }
-//        } completion:^(BOOL finished) {
+    WEAKSELF
+    if (_rectArray && dismissNeedAnimation)
+        [UIView animateWithDuration:0.5 animations:^{
+            if (_rectArray != nil)
+                imageView.frame =CGRectFromString( [_rectArray objectAtIndex:_index]);
+            else if (_index == _oldIndex && _imageRect.size.height != 0)
+                imageView.frame = _imageRect;
+            else
+            {
+                imageView.layer.cornerRadius = 6;
+                imageView.transform = CGAffineTransformMakeScale(0.8, 0.8);
+                imageView.alpha = 0.1;
+            }
+        } completion:^(BOOL finished) {
             [imageView removeFromSuperview];
             [self.view.window.layer removeAllAnimations];
             [UIApplication sharedApplication].statusBarHidden=NO;
-//        }];
-//    else {
-//        [imageView removeFromSuperview];
-//        [weakSelf.view.window.layer removeAllAnimations];
-//        [UIApplication sharedApplication].statusBarHidden=NO;
-//    }
-    
+        }];
+    else {
+        [imageView removeFromSuperview];
+        [weakSelf.view.window.layer removeAllAnimations];
+        [UIApplication sharedApplication].statusBarHidden=NO;
+    }
+
     [super viewWillDisappear:animated];
 }
 

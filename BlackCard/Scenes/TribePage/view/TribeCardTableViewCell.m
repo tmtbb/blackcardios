@@ -9,7 +9,7 @@
 #import "TribeCardTableViewCell.h"
 #import "TribeCardImageView.h"
 #import "TribeModel.h"
-
+#define kMaxDetailHeight  (kFontHeigt(14) * 3 + 1)
 
 
 @interface TribeCardTableViewCell ()<OEZViewActionProtocol>
@@ -20,18 +20,18 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.imagesView.delegate = self;
-    
+
 }
 
 - (void)update:(TribeModel *)data {
     _model = data;
-    [self.headerIconButton sd_setImageWithURL:[NSURL URLWithString:data.headUrl] forState:UIControlStateNormal];
+    [self.headerIconButton sd_setImageWithURL:[NSURL URLWithString:data.headUrl] forState:UIControlStateNormal placeholderImage:kUIImage_DefaultIcon];
     self.userNameLabel.text = data.nickName;
     self.deteLabel.text = data.formatCreateTime;
     self.detailLabel.text = data.message.trim;
-    [self.imagesView update:data.tribeMessageImgs];
+    [self.imagesView update:data.circleMessageImgs];
     self.detailTop.constant = [NSString isEmpty:data.message.trim] ? 0 : 9;
-    self.imagesTop.constant = data.tribeMessageImgs.count > 0 ? 10 : 0;
+    self.imagesTop.constant = data.circleMessageImgs.count > 0 ? 10 : 0;
     self.topButton.hidden = !data.isTop;
     [self updateForButton:data];
     
@@ -62,17 +62,9 @@
 + (CGFloat)calculateHeightWithData:(TribeModel *)data {
     
     if (!data.hasHeight){
-        NSString *detail = data.message.trim;
-        CGFloat messageHeight = 9;
-        CGFloat imagesHeight = [TribeCardImageView computeImageHeigth:data.tribeMessageImgs];
-        if ([NSString isEmpty:detail]) {
-            messageHeight = 0;
-        }else {
-            
-            CGSize size = BoundIngRectWithText(detail, CGSizeMake(kMainScreenWidth - 100, MAXFLOAT), 14);
-            CGFloat maxHeight = kFontHeigt(14) * 3 + 1;
-            messageHeight += size.height >  maxHeight ? maxHeight : size.height;
-        }
+        CGFloat imagesHeight = [TribeCardImageView computeImageHeigth:data.circleMessageImgs];
+        imagesHeight  = imagesHeight == 0 ? 0 : imagesHeight + 10;
+        CGFloat messageHeight = [self detailHeight:data];
         
         [data setHeigth:67 + 39 + messageHeight + imagesHeight];
         
@@ -82,6 +74,22 @@
     return  data.modelHeight;
 
 }
+
++ (CGFloat)detailHeight:(TribeModel *)data {
+    NSString *detail = data.message.trim;
+    CGFloat messageHeight = 9;
+    if ([NSString isEmpty:detail]) {
+        messageHeight = 0;
+    }else {
+        CGSize size = BoundIngRectWithText(detail, CGSizeMake(kMainScreenWidth - 100, MAXFLOAT), 14);
+        CGFloat maxHeight = kMaxDetailHeight ;
+        messageHeight += size.height >  maxHeight ? maxHeight : size.height;
+    }
+    
+    return messageHeight;
+}
+
+
 - (IBAction)buttonAction:(UIButton *)sender {
     NSInteger type = 0;
     

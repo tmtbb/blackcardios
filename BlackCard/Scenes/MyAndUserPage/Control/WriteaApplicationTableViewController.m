@@ -197,6 +197,7 @@ typedef NS_ENUM(NSInteger,WriteaApplicationType) {
     
 }
 
+
 - (void)locationButtonSetting:(CityLocationModel *)model {
     UIColor   *color = nil;
     NSString * string = nil;

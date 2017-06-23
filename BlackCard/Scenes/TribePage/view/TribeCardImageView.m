@@ -10,8 +10,8 @@
 #import "TribeModel.h"
 
 #define kImageWidth ((kMainScreenWidth - 95) / 3.0 - 5.0)
-#define kMaxWidth (kMainScreenWidth - 100)
-#define kMaxHeight (kMaxWidth * 9.0 / 16.0)
+#define kMaxWidth (kMainScreenWidth  / 2.0)
+#define kMaxHeight (kMaxWidth)
 
 
 
@@ -86,6 +86,7 @@ static const NSInteger kMaxCount =  9;
 
 
 - (void)setButtonImage:(UIButton *)button model:(TribeMessageImgsModel *)model index:(NSUInteger)index {
+
     [button sd_setImageWithURL:[NSURL URLWithString:model.img] forState:UIControlStateNormal placeholderImage:nil];
     button.tag = 100 + index;
     
@@ -109,8 +110,7 @@ static const NSInteger kMaxCount =  9;
             [TribeCardImageView computeImageSize:array.firstObject button:button1];
         }
             break;
-        default:
-            button1.contentMode = UIViewContentModeScaleAspectFit;
+            
         case 4:{
             UIButton *button3 = [_buttonArray objectAtIndex:2];
             UIButton *button4 = [_buttonArray objectAtIndex:3];
@@ -118,6 +118,8 @@ static const NSInteger kMaxCount =  9;
             [self setButtonFrame:button4 index:4];
             
         }
+            break;
+        default:
             break;
             
     }
@@ -147,11 +149,11 @@ static const NSInteger kMaxCount =  9;
         case 6:
         case 7:
         case 8:{
-            NSInteger cloum = array.count / 3 ;
-            return (kImageWidth + kEdge) * cloum + kImageWidth;
+            NSInteger cloum = (array.count - 1)/ 3.0 ;
+            return (kImageWidth + kImageEdge) * cloum + kImageWidth;
         }
         default:
-            return  kImageWidth * 3 + kEdge * 2;
+            return  kImageWidth * 3.0 + kImageEdge * 2.0;
     }
     
     
@@ -165,36 +167,38 @@ static const NSInteger kMaxCount =  9;
     CGFloat heigth = [array.lastObject floatValue] / 2.0;
     if (width == 0 || width == 0) {
         button.frame = CGRectMake(12, 0, kImageWidth, kImageWidth);
-        button.contentMode = UIViewContentModeScaleAspectFit;
         return CGSizeMake(kImageWidth, kImageWidth);
     }else {
         
         double scale = width / heigth;
         CGFloat minWidth =  kImageWidth / 2.0 ;
-        if (scale >= 9.0 / 16.0) {
+        if (scale >= kMaxWidth / kMaxHeight) {
             if (width > kMaxWidth) {
-                heigth =   heigth * kMaxWidth / width;
-                if (heigth < minWidth) {
-                    heigth = minWidth;
-                    button.contentMode = UIViewContentModeScaleAspectFit;
-                }else button.contentMode = UIViewContentModeScaleToFill;
+                CGFloat scaleHeight =   heigth * kMaxWidth / width;
+                if (scaleHeight < minWidth) {
+                    heigth = heigth < kMaxHeight ? heigth : minWidth;
+                }else {
+                   heigth = scaleHeight;
+                }
+        
                 width = kMaxWidth;
-            }else  button.contentMode = UIViewContentModeScaleToFill;
+            }
             
             
         }else {
             if (heigth > kMaxHeight) {
-                width = width * kMaxHeight / heigth;
-                width = width < minWidth ? minWidth : width;
-                if (width < minWidth) {
-                    width = minWidth;
-                    button.contentMode = UIViewContentModeScaleAspectFit;
-                    
-                }else   button.contentMode = UIViewContentModeScaleToFill;
+                
+                CGFloat scaleWidth =   width * kMaxHeight / heigth;
+                if (scaleWidth < minWidth) {
+                    width = width < kMaxWidth ? width : minWidth;
+                }else {
+                    width = scaleWidth;
+                }
+                
                 
                 heigth = kMaxHeight;
                 
-            }else  button.contentMode = UIViewContentModeScaleToFill;
+            }
         }
         
         button.frame = CGRectMake(12, 0, width, heigth);
@@ -206,9 +210,10 @@ static const NSInteger kMaxCount =  9;
 
 
 - (UIButton *)createImageButton{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.clipsToBounds = YES;
-    button.contentMode = UIViewContentModeScaleAspectFit;
+    ImageFillButton *button = [ImageFillButton buttonWithType:UIButtonTypeCustom];
+    button.imageView.clipsToBounds = YES;
+    button.contentMode = UIViewContentModeScaleToFill;
+    button.imageView.contentMode = UIViewContentModeScaleAspectFill;
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     return button;
@@ -219,8 +224,8 @@ static const NSInteger kMaxCount =  9;
 - (void)buttonAction:(UIButton *)button {
     NSMutableArray *frameArray = [NSMutableArray array];
     for (int i = 0 ; i < _imagesCount; i++) {
-        UIButton *button = [_buttonArray objectAtIndex:i];
-        CGRect rect = [self.window convertRect: button.frame fromView:button]; ;
+        UIButton *button =  [_buttonArray objectAtIndex:i];
+        CGRect rect = [button convertRect: button.bounds toView:self.window]; ;
         
         NSString *string = NSStringFromCGRect(rect);
         [frameArray addObject:string];
@@ -234,3 +239,15 @@ static const NSInteger kMaxCount =  9;
 
 
 @end
+
+
+@implementation ImageFillButton
+
+
+- (CGRect)imageRectForContentRect:(CGRect)contentRect {
+    
+    return self.bounds;
+}
+
+@end
+

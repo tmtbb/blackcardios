@@ -8,6 +8,8 @@
 
 #import "MainTabBarViewController.h"
 #import "WaiterViewController.h"
+#import "CustomAlertController.h"
+#import "MyAndUserModel.h"
 #import <QYSDK.h>
 #define kChatIndex  1
 @interface MainTabBarViewController ()<UITabBarControllerDelegate,CurrentUserActionDelegate,QYConversationManagerDelegate>
@@ -28,6 +30,15 @@
    
    [self unReadCount:[QYSDK sharedSDK].conversationManager.allUnreadCount];
     [[QYSDK sharedSDK].conversationManager setDelegate:self];
+   WEAKSELF
+   NSString *build = [[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleVersion"];
+   [[AppAPIHelper shared].getMyAndUserAPI checkVersionWithBuild:build complete:^(id data) {
+      
+      [weakSelf checkVersion:data];
+      
+   } error:nil];
+   
+
    
 }
 
@@ -115,6 +126,23 @@
    
     
 }
+- (void)checkVersion:(VersionModel *)model {
+   if (model.isUpdate == 1) {
+      NSString *title = [NSString stringWithFormat:@"发现新版本 v%@",model.version];
+      NSString *cancleButton = model.isForce == 1 ? nil :@"取消";
+      CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:title message:model.describe preferredStyle:UIAlertControllerStyleAlert cancelButtonTitle:cancleButton otherButtonTitles:@"确定",nil];
+      [alert show:[UIApplication sharedApplication].keyWindow.rootViewController didClicked:^(UIAlertAction *action, NSInteger buttonIndex) {
+         if (action.style != UIAlertActionStyleCancel) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:model.url]];
+            exit(0);
+         }
+      }];
+      
+   }
+   
+   
+}
+
 
 
 @end

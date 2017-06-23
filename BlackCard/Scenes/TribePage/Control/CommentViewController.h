@@ -9,7 +9,7 @@
 #import "BaseWriteTextViewController.h"
 #import "TribeModel.h"
 @protocol CommentRefresh<NSObject>
--(void)refresh:(NSIndexPath *)path;
+-(void)commentRefresh:(NSIndexPath *)path data:(id)data;
 @end
 @interface CommentViewController : BaseWriteTextViewController
 @property(strong,nonatomic)NSIndexPath *path;

@@ -16,23 +16,21 @@
 #import "TribeViewController.h"
 #import <HMSegmentedControl.h>
 
-
+#import "TheArticleTableViewController.h"
 #import "CardTribeViewController.h"
-#import "EliteLifeViewController.h"
-#import "CEOThinkingViewController.h"
 #import "UIView+XJExtension.h"
-#import "MomentViewController.h"
 #import "CommentViewController.h"
+#import "ManorViewController.h"
 
 @interface TribeViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
 
 
 @property(strong,nonatomic)HMSegmentedControl *segmentControl;
-
+@property(strong,nonatomic)UIButton *rightButton;
 
 @property(strong,nonatomic)CardTribeViewController *cardTribeControl;
-@property(strong,nonatomic)EliteLifeViewController *eliteLifeControl;
-@property(strong,nonatomic)CEOThinkingViewController *ceoControl;
+@property(strong,nonatomic)TheArticleTableViewController *articleControl;
+@property(strong,nonatomic)ManorViewController  *manorControl;
 
 @property (strong,nonatomic) UIPageViewController *pageViewController;
 
@@ -74,7 +72,7 @@
 
 - (void)setTitleSegment {
     UIView *all = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kMainScreenWidth - 16, 43)];
-    HMSegmentedControl *control = [[HMSegmentedControl alloc]initWithSectionTitles:@[@"卡友部落",@"精英生活",@"邀请函"]];
+    HMSegmentedControl *control = [[HMSegmentedControl alloc]initWithSectionTitles:@[@"精英生活",@"邀请函",@"卡友部落"]];
     control.frame = CGRectMake(32, 11, kMainScreenWidth - 40 - 53, 32);
     control.type = HMSegmentedControlTypeText;
     control.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
@@ -91,7 +89,8 @@
     }];
     
     [all addSubview:control];
-    [all addSubview:[self buttonSetting]];
+    self.rightButton = [self buttonSetting];
+    [all addSubview: _rightButton];
     _segmentControl = control;
     
     
@@ -119,13 +118,20 @@
 
 #pragma mark - 发布此刻心情
 -(void)momentClicked{
-    MomentViewController *mvc=[[MomentViewController alloc] init];
-    mvc.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:mvc animated:YES];
+    
+    WEAKSELF
+    [self pushWithIdentifier:@"MomentViewController" complete:^(UIViewController *controller) {
+        controller.hidesBottomBarWhenPushed = YES;
+        [controller setValue:@"此刻" forKey:@"name"];
+        [controller setValue:weakSelf.cardTribeControl forKey:@"delegate"];
+        
+    }];
+
 }
 
 - (void)changeChildController:(NSInteger)index {
-    
+    self.rightButton.hidden = index != 0;
+
     switch (index) {
         case 0:
   [self.pageViewController setViewControllers:@[self.cardTribeControl] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
@@ -133,14 +139,14 @@
         case 1:{
             
             UIPageViewControllerNavigationDirection naviD = self.pageViewController.viewControllers.firstObject == self.cardTribeControl ? UIPageViewControllerNavigationDirectionForward :UIPageViewControllerNavigationDirectionReverse;
-            [self.pageViewController setViewControllers:@[self.eliteLifeControl] direction:naviD  animated:YES completion:nil];
+            [self.pageViewController setViewControllers:@[self.articleControl] direction:naviD  animated:YES completion:nil];
 
             
         }
             
             break;
         case 2:
-        [self.pageViewController setViewControllers:@[self.ceoControl] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        [self.pageViewController setViewControllers:@[self.manorControl] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
             break;
     }
 }
@@ -159,21 +165,21 @@
 }
 
 
-- (EliteLifeViewController *)eliteLifeControl {
-    if (_eliteLifeControl == nil) {
-      _eliteLifeControl =   [[EliteLifeViewController alloc] init];
+- (TheArticleTableViewController *)articleControl {
+    if (_articleControl == nil) {
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        _articleControl = [sb instantiateViewControllerWithIdentifier:@"TheArticleTableViewController"];
     }
-    return _eliteLifeControl;
+    return _articleControl;
 }
-
-- (CEOThinkingViewController *)ceoControl {
+- (ManorViewController  *)manorControl {
     
-    if (_ceoControl == nil) {
-        _ceoControl = [[CEOThinkingViewController alloc] init];
+    if (_manorControl == nil) {
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        _manorControl = [sb instantiateViewControllerWithIdentifier:@"ManorViewController"];
     }
-    return _ceoControl;
+    return _manorControl;
 }
-
 
 
 
@@ -181,7 +187,6 @@
 {
     if (!_pageViewController) {
         _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-        _pageViewController.view.backgroundColor = kUIColor_Red;
         _pageViewController.delegate = self;
         _pageViewController.dataSource = self;
         [self.view addSubview:_pageViewController.view];
@@ -201,17 +206,18 @@
         return nil;
     }else {
         
-        return viewController == self.eliteLifeControl ? self.cardTribeControl : self.eliteLifeControl;
+        return viewController == self.articleControl ? self.cardTribeControl : self.articleControl;
     }
-    
+    return nil;
     
 }
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    if (viewController == self.ceoControl) {
+    
+    if (viewController == self.manorControl) {
         return nil;
     }else {
-        return viewController == self.cardTribeControl ? self.eliteLifeControl : self.ceoControl;
+        return viewController == self.cardTribeControl ? self.articleControl    : self.manorControl;
     }
     
 }
@@ -221,12 +227,16 @@
 {
     if (completed) {
         UIViewController *control = pageViewController.viewControllers.firstObject;
-        NSInteger pageCount = control== self.cardTribeControl ? 0 : (control == self.eliteLifeControl ? 1 : 2);
+        NSInteger pageCount = control== self.cardTribeControl ? 0 : (control == self.articleControl ? 1 : 2);
         self.segmentControl.selectedSegmentIndex = pageCount;
+        self.rightButton.hidden = pageCount != 0;
+        
         
     }
 
 }
+
+
 
 
 

@@ -32,6 +32,10 @@
 //#define kHttpAPIUrl_HOST @""
 #endif
 
+
+
+
+#define kHttpAPIUrl_newVersion      kHttpAPIUrl_HOST@"/api/check/app/version.json"
 /**
  *  首页
  *
@@ -83,19 +87,42 @@
 #define kHttpAPIUrl_webCallWaiter         @"http://www.jingyingheika.com/"
 
 //消息列表
-#define kHttpAPIUrl_tribeList             kHttpAPIUrl_HOST@"/api/tribe/message/list.json"
+#define kHttpAPIUrl_tribeList             kHttpAPIUrl_HOST@"/api/circle/message/list.json"
 //发布评论
-#define kHttpAPIUrl_tribeComment         kHttpAPIUrl_HOST@"/api/tribe/message/comment/add.json"
+#define kHttpAPIUrl_tribeComment         kHttpAPIUrl_HOST@"/api/circle/message/comment/add.json"
 //评论列表
-#define kHttpAPIUrl_tribeCommentList     kHttpAPIUrl_HOST@"/api/tribe/message/comment/list.json"
+#define kHttpAPIUrl_tribeCommentList     kHttpAPIUrl_HOST@"/api/circle/message/comment/list.json"
 //发布消息
-#define kHttpAPIUrl_tribeAdd             kHttpAPIUrl_HOST@"/api/tribe/message/add.json"
+#define kHttpAPIUrl_tribeAdd             kHttpAPIUrl_HOST@"/api/circle/message/add.json"
 //点赞
-#define kHttpAPIUrl_tribeLikeAdd         kHttpAPIUrl_HOST@"/api/tribe/message/like/add.json"
+#define kHttpAPIUrl_tribeLikeAdd         kHttpAPIUrl_HOST@"/api/circle/message/like/add.json"
 //删除点赞
-#define kHttpAPIUrl_tribeLikeDel         kHttpAPIUrl_HOST@"/api/tribe/message/like/delete.json"
+#define kHttpAPIUrl_tribeLikeDel         kHttpAPIUrl_HOST@"/api/circle/message/like/delete.json"
 //点赞列表
-#define kHttpAPIUrl_tribeLikeList        kHttpAPIUrl_HOST@"/api/tribe/message/like/list.json"
+#define kHttpAPIUrl_tribeLikeList        kHttpAPIUrl_HOST@"/api/circle/message/like/list.json"
+//举报
+#define kHttpAPIUrl_toReport       kHttpAPIUrl_HOST@"/api/circle/message/report.json"
+// 文章列表
+#define kHttpAPIUrl_articleList       kHttpAPIUrl_HOST@"/api/article/list.json"
+//文章详情
+#define kHttpAPIUrl_articleDetail       kHttpAPIUrl_HOST@"/api/article/info.json"
+//文章评论列表
+#define kHttpAPIUrl_articleDetailCommentList       kHttpAPIUrl_HOST@"/api/article/comment/list.json"
+//文章评论
+#define kHttpAPIUrl_articleDetailComment      kHttpAPIUrl_HOST@"/api/article/comment/add.json"
+// 领地列表
+#define kHttpAPIUrl_manorDescribeList     kHttpAPIUrl_HOST@"/api/tribe/user/index.json"
+// 领地成员列表
+#define kHttpAPIUrl_manorPersonList    kHttpAPIUrl_HOST@"/api/tribe/member/list.json"
+//领地创建
+#define kHttpAPIUrl_manorCreate    kHttpAPIUrl_HOST@"/api/tribe/add.json"
+//领地信息
+#define kHttpAPIUrl_manorInfo    kHttpAPIUrl_HOST@"/api/tribe/info.json"
+// 申请加入领地
+#define kHttpAPIUrl_personAddManor    kHttpAPIUrl_HOST@"/api/tribe/member/add.json"
+// 退出领地
+#define kHttpAPIUrl_personDelManor    kHttpAPIUrl_HOST@"/api/tribe/member/delete.json"
 
-#define kHttpAPIUrl_toReport       kHttpAPIUrl_HOST@"/api/tribe/message/report.json"
+//审核成员
+#define kHttpAPIUrl_auditManorPerson    kHttpAPIUrl_HOST@"/api/tribe/member/verify.json"
 #endif /* HttpHeader_h */

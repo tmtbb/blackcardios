@@ -171,7 +171,7 @@
 /**
  *  监测版本号
  */
-- (void)checkVersionWithCheckVersion:(NSString*) channel complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+- (void)checkVersionWithBuild:(NSString*)build complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 /**
  *  监测token是否有效
  */
@@ -185,15 +185,7 @@
  *  @param errorBlock    <#errorBlock description#>
  */
 - (void)userBandWith:(UserBandModel *)userBandModel withComplete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
-//获取消息列表
-- (void)getTribeListWihtPage:(NSInteger)page complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
-//发表评论
--(void)postTribeCommentTribeMessageId:(NSString *)tribeMessageId message:(NSString *)message  complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
-//获取评论列表
-- (void)getTribeCommentListWihtPage:(NSInteger)page tribeMessageId:(NSString *)tribeMessageId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 
-//点赞
-- (void)doTribePraiseTribeMessageId:(NSString *)tribeMessageId isLike:(BOOL)islike complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
-//发布消息
--(void)postMessageWithMessage:(NSString *)message imageArray:(NSArray *)imageArray complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+
 @end

@@ -63,7 +63,11 @@ typedef NS_ENUM(NSInteger, TribeType) {
     TribeType_ImageAction      = 199199,
     TribeType_PraiseAction,
     TribeType_CommentAction,
-    TribeType_MoreAction
+    TribeType_MoreAction,
+    TribeType_WebFinish,
+    TribeType_WebError,
+    TribeType_ManorAgreeMemberJoin,
+    TribeType_ManorRefuseMemberJoin,
 
     
 };

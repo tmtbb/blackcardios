@@ -10,6 +10,7 @@
 @class TribeModel;
 @class TribeCardImageView;
 @interface TribeCardTableViewCell : OEZTableViewCell<OEZTableViewCellProtocol>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerButtonTop;
 
 @property (weak, nonatomic) IBOutlet UIButton *headerIconButton;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -27,4 +28,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *praiseButton;
 
 
++ (CGFloat)detailHeight:(TribeModel *)data;
 @end

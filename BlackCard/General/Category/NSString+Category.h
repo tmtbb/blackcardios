@@ -4,7 +4,17 @@
 //
 
 #import <Foundation/Foundation.h>
-
+typedef NS_ENUM(NSInteger,MonthsTime) {
+    
+    MonthsTime_OtherYear,
+    MonthsTime_OtherMonth,
+    MonthsTime_ThisMonth,
+    MonthsTime_OtherWeek,
+    MonthsTime_ThisWeek,
+    MonthsTime_Yesterday,
+    MonthsTime_Today
+    
+};
 /**
 * NSString扩展
 */
@@ -52,6 +62,7 @@
 
 // 毫秒转时间
 + (NSString *)convertStrToTime:(NSString *)timeStr;
++ (NSString *)convertWeekToTime:(NSString *)timeStr;
 + (NSString *)convertStrToTime:(NSString *)timeStr timeStyle:(NSString *)style;
 @end
 

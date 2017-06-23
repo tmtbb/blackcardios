@@ -298,8 +298,9 @@ typedef NS_ENUM(NSInteger, ImageUrl)
             url = data;
         
         
-        NSString *bigStringUrl = [url stringByReplacingOccurrencesOfString:@"small" withString:@"big"];
-        
+//        NSString *bigStringUrl = [url stringByReplacingOccurrencesOfString:@"small" withString:@"big"];
+        NSString *bigStringUrl = [url stringByReplacingOccurrencesOfString:@"_thumb" withString:@""];
+
         if ([bigStringUrl hasPrefix:@"/var"]) {
             NSURL * url = [NSURL fileURLWithPath:bigStringUrl];
             [imageView sd_setImageWithURL:url placeholderImage:nil completed:^(UIImage * image , NSError * error , SDImageCacheType cacheType , NSURL * imageURL){

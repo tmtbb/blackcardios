@@ -61,6 +61,17 @@
 
 
 
+@interface VersionModel : OEZModel
+@property(copy,nonatomic)NSString  *describe;      //升级描述
+@property(copy,nonatomic)NSString  *url;      //iOS：appstore地址
+@property(copy,nonatomic)NSString  *version;      //最新版本
+@property(assign,nonatomic)NSInteger  isForce;      //是否强制 1：强制升级
+@property(assign,nonatomic)NSInteger  isUpdate;      //是否有更新 1：有更新
+@property(assign,nonatomic)NSInteger  versionCode;      //最新版本code
+
+
+@end
+
 
 //
 ///**

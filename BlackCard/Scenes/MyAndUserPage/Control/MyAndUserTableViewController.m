@@ -47,7 +47,7 @@
 }
 
 - (void)update:(MyAndUserModel *)model {
-    [self.userIconButton sd_setBackgroundImageWithURL:[NSURL URLWithString:model.headpic] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"userHeaderDefault"]];
+    [self.userIconButton sd_setBackgroundImageWithURL:[NSURL URLWithString:model.headpic] forState:UIControlStateNormal placeholderImage:kUIImage_DefaultIcon];
 
     self.userNameLabel.text = model.username;
     self.userLevelLabel.text = model.blackCardName;

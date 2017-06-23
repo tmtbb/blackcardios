@@ -10,4 +10,10 @@
 
 @interface ImagesModel : OEZModel
 @property(nonatomic,copy)NSString *url;
+@property(nonatomic,copy)NSString *size;
+@property(nonatomic,strong)UIImage *image;
+
+
++(instancetype)imageWithUrl:(NSString *)url size:(NSString *)size image:(UIImage *)image;
+
 @end

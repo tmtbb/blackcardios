@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"此刻";
+    self.title = _name ? _name : @"此刻";
     _imageArray=[NSMutableArray array];
        //添加图片内容
     [self configCollectionView];
@@ -97,13 +97,15 @@
     NSMutableArray *array = [NSMutableArray array];
     [self.imageArray enumerateObjectsUsingBlock:^(SCImagePickerObject * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
-      NSData *imageData= UIImageJPEGRepresentation(obj.picImage, 0.5);//保存图片要以data形式，ios保存图片形式，压缩系数0.5
+        UIImage * fullImage = [UIImage imageWithCGImage:obj.result.defaultRepresentation.fullScreenImage scale:1 orientation:UIImageOrientationUp];
+     NSData *imageData= UIImageJPEGRepresentation(fullImage ? fullImage : obj.picImage, 0.5);//保存图片要以data形式，ios保存图片形式，压缩系数0.5
         [array addObject:imageData];
     }];
     
-    [[AppAPIHelper shared].getMyAndUserAPI postMessageWithMessage:str imageArray:array complete:^(id data) {
+    [[AppAPIHelper shared].getTribeAPI postMessageWithMessage:str imageArray:array circleId:_circleId ? _circleId : @"0" complete:^(id data) {
         [weakSelf removeMBProgressHUD];
         [weakSelf showTips:@"消息发布成功"];
+        [weakSelf pushComplete:data];
         [weakSelf.navigationController popViewControllerAnimated:YES];
     } error:^(NSError *error) {
         [weakSelf removeMBProgressHUD];
@@ -180,6 +182,13 @@
     }];
 }
 
+
+- (void)pushComplete:(id)data {
+    if ([self.delegate respondsToSelector:@selector(pushMomentComplete:)]) {
+        [self.delegate pushMomentComplete:data];
+    }
+    
+}
 
 
 @end

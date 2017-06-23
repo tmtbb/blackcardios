@@ -1,3 +1,4 @@
+
 //
 //  EliteLifeViewController.h
 //  BlackCard
@@ -6,8 +7,10 @@
 //  Copyright © 2017年 abx’s mac. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
-@interface EliteLifeViewController : UIViewController
+#import "BaseRefreshPageCustomTableViewController.h"
+
+
+@interface TheArticleTableViewController : BaseRefreshPageCustomTableViewController
 
 @end

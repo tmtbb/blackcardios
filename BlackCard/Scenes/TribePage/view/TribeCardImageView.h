@@ -14,3 +14,9 @@
 
 + (CGFloat)computeImageHeigth:(NSArray<TribeMessageImgsModel*> *)array;
 @end
+
+
+
+@interface ImageFillButton : UIButton
+
+@end

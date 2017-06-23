@@ -39,10 +39,10 @@
     [self showLoader:@"评论发布中"];
     WEAKSELF
 
-    [[AppAPIHelper shared].getMyAndUserAPI postTribeCommentTribeMessageId:_myModel.tribeId message:str complete:^(id data) {
+    [[AppAPIHelper shared].getTribeAPI postTribeCommentTribeMessageId:_myModel.circleId message:str complete:^(id data) {
         [weakSelf showTips:@"评论成功"];
         weakSelf.myModel.commentNum += 1;
-        [weakSelf refreshWihtPath];
+        [weakSelf refreshWihtPath:data];
 
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
         
@@ -52,10 +52,10 @@
 
 }
 
-- (void)refreshWihtPath{
-    if ([_delegate respondsToSelector:@selector(refresh:)])
+- (void)refreshWihtPath:(id)data{
+    if ([_delegate respondsToSelector:@selector(commentRefresh:data:)])
     {
-        [_delegate refresh:_path];
+        [_delegate commentRefresh:_path data:data];
     }
     
 }

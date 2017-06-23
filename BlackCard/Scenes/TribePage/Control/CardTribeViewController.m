@@ -8,13 +8,12 @@
 
 #import "CardTribeViewController.h"
 #import "TribeModel.h"
-#import "CardTribeTableViewCell.h"
-#import "TribeCardTableViewCell.h"
 #import "CardTribeDetailViewController.h"
 #import "CommentViewController.h"
-#import "ImageBrowseViewController.h"
-
-@interface CardTribeViewController ()<PraiseRresh,CommentRefresh>
+#import "PictureShowViewController.h"
+#import "CardTribeHandle.h"
+#import "MomentViewController.h"
+@interface CardTribeViewController ()<CardTribeDetailProcotol,CommentRefresh,MomentViewControllerDelegate>
 
 @end
 
@@ -25,13 +24,13 @@
     
     [super viewDidLoad];
 
-    
+    [self.tableView registerNib:[UINib nibWithNibName:@"TribeCardTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"TribeCardTableViewCell"];
 }
 
 
 - (void)didRequest:(NSInteger)pageIndex {
     
-        [[AppAPIHelper shared].getTribeAPI getTribeListWihtPage:pageIndex complete:_completeBlock error:_errorBlock];
+        [[AppAPIHelper shared].getTribeAPI getTribeListWihtPage:pageIndex circleId:@"0" complete:_completeBlock error:_errorBlock];
 }
 - (void)didRequestComplete:(id)data {
  
@@ -46,12 +45,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    CardTribeDetailViewController *cvc=[[CardTribeDetailViewController alloc] init];
-    cvc.myModel=_dataArray[indexPath.row];
-    cvc.id=[NSString stringWithFormat:@"%ld",indexPath.row];
-    cvc.delegate=self;
-    cvc.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:cvc animated:YES];
+    
+    TribeModel *model = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
+    WEAKSELF
+    [self pushStoryboardViewControllerIdentifier:@"CardTribeDetailViewController" block:^(UIViewController *viewController) {
+        [viewController setValue:model forKey:@"myModel"];
+        [viewController setValue:indexPath forKey:@"path"];
+        [viewController setValue:weakSelf forKey:@"delegate"];
+    }];
+
 }
 
 
@@ -60,16 +62,24 @@
     switch (action) {
         case TribeType_ImageAction:{
            
-//            NSDictionary *dic = data;
-//            ImageBrowseViewController *imageb = [[ImageBrowseViewController alloc]init];
-//            imageb.index = [dic[@"index"] integerValue];
-//            imageb.rectArray = dic[@"frames"];
-//            TribeModel *model = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
-//            
-//            
-//            
-//            [self presentViewController:imageb animated:YES completion:nil];
+            NSDictionary *dic = data;
+            NSInteger index = [dic[@"index"] integerValue];
+            NSArray *rects = dic[@"frames"];
+            TribeModel *model = [self tableView:tableView cellDataForRowAtIndexPath:indexPath];
+            NSMutableArray *array = [NSMutableArray array];
             
+            
+            [model.circleMessageImgs enumerateObjectsUsingBlock:^(TribeMessageImgsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                ImagesModel *model = [ImagesModel new];
+                model.url = obj.img;
+                model.size = obj.size;
+                
+                
+                [array addObject:model];
+            }];
+            
+            
+            [self presentImageBrowseViewController:array index:index andRect:rects];
             
             
         }
@@ -88,77 +98,60 @@
     }
     
 }
+-(void) presentImageBrowseViewController:(NSArray*) images index:(NSInteger) index andRect:(NSArray *)rects{
 
+    [PictureShowViewController showInControl:self imageArray:images rectArray:rects index:@(index)];
+
+}
 
 #pragma mark -CardTribeCellDelegate
 -(void)praise:(NSIndexPath *)path{
     WEAKSELF
     TribeModel *model = [self tableView:self.tableView cellDataForRowAtIndexPath:path];
-    BOOL isLike = model.isLike;
-    [[AppAPIHelper shared].getTribeAPI doTribePraiseTribeMessageId:model.tribeId isLike:isLike complete:^(id data) {
-        model.isLike = !isLike;
-        NSString *show = @"点赞成功";
-        NSInteger count = 1;
-        if (isLike) {
-            show = @"已取消点赞";
-            count = -1;
-        }
-        model.likeNum += count;
-        [weakSelf.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-        [weakSelf showTips:show];
-        
-    } error:^(NSError *error) {
-        [weakSelf showError:error];
+    
+    [CardTribeHandle doPraise:self model:model complete:^{
+  [weakSelf.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+
     }];
+    
 }
 -(void)comment:(NSIndexPath *)path{
     TribeModel *model= [self tableView:self.tableView cellDataForRowAtIndexPath:path];
     
-    WEAKSELF
-    [self presentViewControllerWithIdentifier:@"CommentViewController" isNavigation:YES block:^(UIViewController *viewController) {
-        [viewController setValue:model forKey:@"myModel"];
-        [viewController setValue:path forKey:@"path"];
-        [viewController setValue:weakSelf forKey:@"delegate"];
-        
-    }];
     
+    [CardTribeHandle doComment:self indexPath:path model:model complete:nil];
+
 
 }
 -(void)more:(NSIndexPath *)path{
-    CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"更多功能" message:nil preferredStyle:UIAlertControllerStyleActionSheet cancelButtonTitle:@"取消" otherButtonTitles:@"举报",nil];
-    WEAKSELF
-    [alert show:self didClicked:^(UIAlertAction *action, NSInteger buttonIndex) {
-        if (action.style != UIAlertActionStyleCancel) {
-            TribeModel *model =  [weakSelf tableView:weakSelf.tableView cellDataForRowAtIndexPath:path];
-            [weakSelf toReport:model];
-        }
+    TribeModel *model =  [self tableView:self.tableView cellDataForRowAtIndexPath:path];
+    [CardTribeHandle doMore:self model:model];
 
-    }];
     
 }
 
-- (void)toReport:(TribeModel *)model {
-    if (model.tribeId  == nil) {
-        [self showTips:@"举报内容不存在"];
-        return;
-    }
-    [self showLoader:@"正在举报..."];
-    WEAKSELF
-    [[AppAPIHelper shared].getTribeAPI toReportMessageId:model.tribeId complete:^(id data) {
-        [weakSelf showTips:@"举报成功"];
-    } error:^(NSError *error) {
-        [weakSelf showError:error];
-    }];
-    
-}
+
 #pragma mark -CommentReresh
--(void)refresh:(NSIndexPath *)path{
+-(void)commentRefresh:(NSIndexPath *)path data:(id)data{
     [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
 }
 #pragma mark -PraiseRresh
--(void)cardTribeRefresh:(NSDictionary *)dict{
-    _dataArray[[dict[@"id"] integerValue]]=[dict valueForKey:@"model"];
+
+
+- (void)changeTribeIndexPath:(NSIndexPath *)path model:(TribeModel *)model {
+    
+    [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+
+
+#pragma mark -MomentViewController Delegate
+
+- (void)pushMomentComplete:(id)data {
+    
+    [_dataArray insertObject:data atIndex:0];
     [self.tableView reloadData];
+    
 }
 
 

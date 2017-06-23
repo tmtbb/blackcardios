@@ -10,4 +10,19 @@
 
 @implementation ImagesModel
 
+- (instancetype)initWithUrl:(NSString *)url size:(NSString *)size image:(UIImage *)image {
+    self = [super init];
+    if (self) {
+        self.url = url;
+        self.size = size;
+        self.image = image;
+    }
+    
+    return self;
+}
+
++ (instancetype)imageWithUrl:(NSString *)url size:(NSString *)size image:(UIImage *)image {
+    
+    return [ImagesModel imageWithUrl:url size:size image:image];
+}
 @end

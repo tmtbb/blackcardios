@@ -9,39 +9,21 @@
 #import "TribeModel.h"
 #import "NSString+Category.h"
 
-@interface TribeModel ()
+@interface BaseTribeModel ()
 @property(nonatomic)CGFloat tribeHeight;
 @end
-@implementation TribeModel
+@implementation BaseTribeModel
 
-
-+(NSDictionary *)jsonKeysByPropertyKey
-{
-    return @{
-             @"tribeId":@"id",
-             };
-    
-    
-}
-
-+ (Class)tribeMessageImgsModelClass {
-    
-    return [TribeMessageImgsModel class];
-}
 
 - (NSString *)formatCreateTime {
-    
     if (_formatCreateTime == nil) {
-        _formatCreateTime = [NSString convertStrToTime:_createTime timeStyle:@"yyyy-MM-dd   HH:mm"];
+        NSString *time = [self giveTime];
+        _formatCreateTime = [NSString convertWeekToTime:time];
     }
     return _formatCreateTime;
 }
-
-- (NSInteger)yearMonth {
-    if (_yearMonth == 0) {
-        _yearMonth = [NSString convertStrToTime:_createTime timeStyle:@"yyyyMM"].integerValue;
-    }
-    return _yearMonth;
+- (NSString *)giveTime {
+    return @"";
 }
 
 
@@ -57,6 +39,39 @@
     
     return _tribeHeight != 0;
 }
+@end
+
+
+@implementation TribeModel
+
+
++(NSDictionary *)jsonKeysByPropertyKey
+{
+    return @{
+             @"circleId":@"id",
+             };
+    
+    
+}
+
++ (Class)circleMessageImgsModelClass {
+    
+    return [TribeMessageImgsModel class];
+}
+
+- (NSString *)giveTime {
+    
+    return _createTime;
+}
+- (NSInteger)yearMonth {
+    if (_yearMonth == 0) {
+        _yearMonth = [NSString convertStrToTime:_createTime timeStyle:@"yyyyMM"].integerValue;
+    }
+    return _yearMonth;
+}
+
+
+
 
 @end
 
@@ -65,6 +80,7 @@
 +(NSDictionary *)jsonKeysByPropertyKey
 {
     return @{
+             @"img" : @"imgUrl"
              };
     
     
@@ -73,24 +89,148 @@
 
 @end
 
-@implementation EliteLifeModel
+@implementation TheArticleModel
++(NSDictionary *)jsonKeysByPropertyKey
+{
+    return @{
+             @"articleId":@"id",
+             };
+    
+    
+}
+- (NSString *)giveTime {
+    
+    return _createTime;
+}
+@end
+
+@implementation TheArticleDetailModel
+
+
 
 @end
 
 @implementation CommentListModel
-- (NSString *)formatCreateTime {
+
+
+- (NSString *)giveTime {
     
-    if (_formatCreateTime == nil) {
-        _formatCreateTime = [NSString convertStrToTime:[NSString stringWithFormat:@"%ld",_createTime]];
-    }
-    return _formatCreateTime;
+    return _createTime;
 }
 
 - (NSInteger)yearMonth {
     if (_yearMonth == 0) {
-        _yearMonth = [NSString convertStrToTime:[NSString stringWithFormat:@"%ld",_createTime] timeStyle:@"yyyyMM"].integerValue;
+        _yearMonth = [NSString convertStrToTime:_createTime timeStyle:@"yyyyMM"].integerValue;
     }
     return _yearMonth;
 }
 
 @end
+
+
+
+@implementation ManorModel
+
+
++ (Class)recommendTribesModelClass {
+    
+    return [ManorDescribeModel class];
+}
+
++ (Class)userTribesModelClass {
+    
+    return [ManorDescribeModel class];
+}
+
+
+
+@end
+
+@implementation ManorStatusModel
+
++(NSDictionary *)jsonKeysByPropertyKey
+{
+    return @{
+             @"tribeId":@"id",
+             };
+    
+    
+}
+
+@end
+
+@implementation ManorDescribeModel
+
++(NSDictionary *)jsonKeysByPropertyKey
+{
+    return @{
+             @"tribeId":@"id",
+             @"describe":@"description",
+             };
+    
+    
+}
+
+@end
+
+@implementation ManorPersonModel
++(NSDictionary *)jsonKeysByPropertyKey
+{
+    return @{
+             @"personId":@"id",
+             };
+    
+    
+}
+
+- (NSString *)giveTime {
+    
+    return _createTime;
+}
+
+
+@end
+
+@implementation ManorInfoModel
++(NSDictionary *)jsonKeysByPropertyKey
+{
+    return @{
+
+             };
+    
+    
+}
+
+
+@end
+
+@implementation ManorDetailModel
++(NSDictionary *)jsonKeysByPropertyKey
+{
+    return @{
+             @"tribeId":@"id",
+             @"describe":@"description",
+             };
+    
+    
+}
+
+
+@end
+
+
+@implementation ManorMemberInfoModel
+
++(NSDictionary *)jsonKeysByPropertyKey
+{
+    return @{
+             
+             };
+    
+    
+}
+
+@end
+
+
+

@@ -8,6 +8,15 @@
 
 #import "BaseWriteTextViewController.h"
 
+
+@protocol MomentViewControllerDelegate <NSObject>
+
+- (void)pushMomentComplete:(id)data;
+
+@end
 @interface MomentViewController : BaseWriteTextViewController
 
+@property(copy,nonatomic)NSString *circleId;
+@property(copy,nonatomic)NSString *name;
+@property(weak,nonatomic)id<MomentViewControllerDelegate> delegate;
 @end
