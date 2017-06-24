@@ -7,16 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TribeModel.h"
-#import "UIImage+ALinExtension.h"
 
-@interface CardDetailBottomTableViewCell : UITableViewCell
-@property(strong,nonatomic)UIImageView *headerImageView;
-@property(strong,nonatomic)UILabel *nameLabel;
-@property(strong,nonatomic)UILabel *dateLabel;
-@property(strong,nonatomic)UILabel *timeLabel;
-@property(strong,nonatomic)UIView *whiteView;
-@property(strong,nonatomic)UILabel *titleLabel;
+@interface CardDetailBottomTableViewCell : OEZTableViewCell<OEZTableViewCellProtocol>
+@property (weak, nonatomic) IBOutlet UIButton *headerButton;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 
-@property(strong,nonatomic)CommentListModel *model;
 @end

@@ -76,6 +76,7 @@
 		7C388FEB1EADD4CD008023CA /* RegisterCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C388FEA1EADD4CD008023CA /* RegisterCardCell.m */; };
 		7C388FED1EADD7F4008023CA /* RegisterCardHScollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C388FEC1EADD7F4008023CA /* RegisterCardHScollCell.xib */; };
 		7C388FF01EADF300008023CA /* WriteaApplicationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C388FEF1EADF300008023CA /* WriteaApplicationTableViewController.m */; };
+		7C41C6A71EF96CCF00F443EA /* TheAriticleCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C41C6A61EF96CCF00F443EA /* TheAriticleCommentViewController.m */; };
 		7C55C6FB1ED93875000991AF /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C6FA1ED93875000991AF /* OrderDetailViewController.m */; };
 		7C55C6FE1ED94686000991AF /* ChoosePayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C6FD1ED94686000991AF /* ChoosePayTypeView.m */; };
 		7C55C7001ED94692000991AF /* ChoosePayTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C55C6FF1ED94691000991AF /* ChoosePayTypeView.xib */; };
@@ -92,6 +93,35 @@
 		7C55C71F1EDEB473000991AF /* GuidePageThreeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C55C71E1EDEB473000991AF /* GuidePageThreeView.xib */; };
 		7C55C7221EDEB9EE000991AF /* BaseGuidePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C7211EDEB9EE000991AF /* BaseGuidePageView.m */; };
 		7C55C7251EDED001000991AF /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C55C7241EDED001000991AF /* GuideViewController.m */; };
+		7C67C8CE1EEF7DDF004AA6CE /* TribeCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8CD1EEF7DDF004AA6CE /* TribeCardTableViewCell.m */; };
+		7C67C8D11EEF86A8004AA6CE /* TribeCardImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8D01EEF86A8004AA6CE /* TribeCardImageView.m */; };
+		7C67C8D71EF17F2B004AA6CE /* TribeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8D61EF17F2B004AA6CE /* TribeNavigationController.m */; };
+		7C67C8DB1EF23A2B004AA6CE /* HttpTribe.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8DA1EF23A2B004AA6CE /* HttpTribe.m */; };
+		7C67C8DE1EF25314004AA6CE /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8DC1EF25314004AA6CE /* CustomTextView.m */; };
+		7C67C8E11EF27019004AA6CE /* BaseWriteTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8E01EF27019004AA6CE /* BaseWriteTextViewController.m */; };
+		7C67C8FB1EF2794D004AA6CE /* ALAssetsLibraryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8E51EF2794C004AA6CE /* ALAssetsLibraryHelper.m */; };
+		7C67C8FC1EF2794D004AA6CE /* ImageGroupPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8E71EF2794C004AA6CE /* ImageGroupPickerView.m */; };
+		7C67C8FD1EF2794D004AA6CE /* ImageGroupPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C67C8E81EF2794C004AA6CE /* ImageGroupPickerView.xib */; };
+		7C67C8FE1EF2794D004AA6CE /* ImagePickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8EA1EF2794C004AA6CE /* ImagePickerTableViewController.m */; };
+		7C67C8FF1EF2794D004AA6CE /* SCImageGroupPickerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8EC1EF2794C004AA6CE /* SCImageGroupPickerObject.m */; };
+		7C67C9001EF2794D004AA6CE /* SCImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8EE1EF2794C004AA6CE /* SCImagePickerCell.m */; };
+		7C67C9011EF2794D004AA6CE /* SCImagePickerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8F01EF2794D004AA6CE /* SCImagePickerObject.m */; };
+		7C67C9021EF2794D004AA6CE /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8F21EF2794D004AA6CE /* TitleView.m */; };
+		7C67C9031EF2794D004AA6CE /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C67C8F31EF2794D004AA6CE /* TitleView.xib */; };
+		7C67C9041EF2794D004AA6CE /* ImageBrowseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8F51EF2794D004AA6CE /* ImageBrowseViewCell.m */; };
+		7C67C9051EF2794D004AA6CE /* ImageBrowseViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C67C8F61EF2794D004AA6CE /* ImageBrowseViewCell.xib */; };
+		7C67C9061EF2794D004AA6CE /* ImageBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8F81EF2794D004AA6CE /* ImageBrowseViewController.m */; };
+		7C67C9071EF2794D004AA6CE /* ImagesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C8FA1EF2794D004AA6CE /* ImagesModel.m */; };
+		7C67C90A1EF27BFC004AA6CE /* CacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C9081EF27BFC004AA6CE /* CacheHelper.m */; };
+		7C67C90D1EF27E59004AA6CE /* UIViewController+LeeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C90B1EF27E59004AA6CE /* UIViewController+LeeBase.m */; };
+		7C67C9101EF3AE3C004AA6CE /* PictureShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C90F1EF3AE3C004AA6CE /* PictureShowViewController.m */; };
+		7C67C9131EF3B7BB004AA6CE /* PictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C9121EF3B7BB004AA6CE /* PictureController.m */; };
+		7C67C9161EF3C0A5004AA6CE /* PictureHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C9151EF3C0A5004AA6CE /* PictureHandle.m */; };
+		7C67C9191EF7C559004AA6CE /* TribeCardDetailHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C9181EF7C559004AA6CE /* TribeCardDetailHeaderTableViewCell.m */; };
+		7C67C91C1EF7E9A2004AA6CE /* CardTribeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C91B1EF7E9A2004AA6CE /* CardTribeHandle.m */; };
+		7C67C91F1EF92142004AA6CE /* TheArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C91E1EF92142004AA6CE /* TheArticleDetailViewController.m */; };
+		7C67C9271EF9360C004AA6CE /* TheAriticleCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C9261EF9360C004AA6CE /* TheAriticleCommentCell.m */; };
+		7C67C92A1EF95A7D004AA6CE /* WKWebViewToos.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C67C9291EF95A7D004AA6CE /* WKWebViewToos.m */; };
 		7C71835A1EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7183591EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m */; };
 		7C71835F1EAF1BD400B40BCB /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C71835C1EAF1BD400B40BCB /* libWeChatSDK.a */; };
 		7C7183651EAF1C5600B40BCB /* PayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7183621EAF1C5600B40BCB /* PayHelper.m */; };
@@ -121,6 +151,14 @@
 		7C8E78A51ED2E602000CADAA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E78A41ED2E602000CADAA /* libz.tbd */; };
 		7C8E78A71ED2EB22000CADAA /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E78A61ED2EB22000CADAA /* CoreMotion.framework */; };
 		7C8E78AA1ED2EBDD000CADAA /* ALiPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E78A81ED2EBDD000CADAA /* ALiPay.m */; };
+		7C9FA77C1EFA13DD001A6A36 /* ManorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9FA77B1EFA13DD001A6A36 /* ManorViewController.m */; };
+		7C9FA77F1EFA1413001A6A36 /* ManorViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9FA77E1EFA1413001A6A36 /* ManorViewCell.m */; };
+		7C9FA7821EFA698E001A6A36 /* ManorCreateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9FA7811EFA698E001A6A36 /* ManorCreateTableViewController.m */; };
+		7C9FA7851EFA8528001A6A36 /* ManorTirbeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9FA7841EFA8528001A6A36 /* ManorTirbeViewController.m */; };
+		7C9FA7881EFB5AC6001A6A36 /* UINavigationBar+AtWillBackgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9FA7871EFB5AC6001A6A36 /* UINavigationBar+AtWillBackgroundColor.m */; };
+		7C9FA78A1EFB7E5A001A6A36 /* TribeCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9FA7891EFB7E5A001A6A36 /* TribeCardTableViewCell.xib */; };
+		7C9FA78D1EFBA362001A6A36 /* ManorMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9FA78C1EFBA362001A6A36 /* ManorMemberCell.m */; };
+		7C9FA7901EFBA798001A6A36 /* ManorMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9FA78F1EFBA798001A6A36 /* ManorMembersViewController.m */; };
 		7CA9455D1EAAFB52002AA1E1 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA9455C1EAAFB52002AA1E1 /* MainTabBarViewController.m */; };
 		7CC14DE41EB9E929008B32ED /* app.jingyingheika.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 7CC14DE31EB9E929008B32ED /* app.jingyingheika.com.cer */; };
 		7CC47CF21EA9AD0B006FBB53 /* SubviewWithCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC47CF11EA9AD0B006FBB53 /* SubviewWithCollectionView.m */; };
@@ -139,16 +177,12 @@
 		7CD68FAB1ED44D9700A3AD3E /* ModifyCardPasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD68FAA1ED44D9700A3AD3E /* ModifyCardPasswordTableViewController.m */; };
 		7CE70DCC1EA79F00003772F1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE70DCB1EA79F00003772F1 /* main.m */; };
 		7CE70DCF1EA79F00003772F1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE70DCE1EA79F00003772F1 /* AppDelegate.m */; };
-		7CE70DD21EA79F00003772F1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE70DD11EA79F00003772F1 /* ViewController.m */; };
 		7CF8437C1ED569DF0032C9E1 /* PurchaseHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF8437B1ED569DF0032C9E1 /* PurchaseHistoryModel.m */; };
-		A616F0D31ED85E37004EAA42 /* EliteLifeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A616F0D21ED85E37004EAA42 /* EliteLifeTableViewCell.m */; };
+		A616F0D31ED85E37004EAA42 /* TheArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A616F0D21ED85E37004EAA42 /* TheArticleTableViewCell.m */; };
 		A616F0D61ED85EB2004EAA42 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A616F0D51ED85EB2004EAA42 /* CommentViewController.m */; };
-		A62D5F081ED94E840023E6C2 /* EliteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D5F071ED94E840023E6C2 /* EliteDetailViewController.m */; };
 		A62D5F0B1ED950800023E6C2 /* CardTribeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D5F0A1ED950800023E6C2 /* CardTribeDetailViewController.m */; };
 		A62D5F111ED950EB0023E6C2 /* CardDetailBottomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D5F101ED950EB0023E6C2 /* CardDetailBottomTableViewCell.m */; };
 		A62D5F141ED9510C0023E6C2 /* CardDetailTopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D5F131ED9510C0023E6C2 /* CardDetailTopTableViewCell.m */; };
-		A62D5F171EDBC7140023E6C2 /* EliteDetailTopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D5F161EDBC7140023E6C2 /* EliteDetailTopTableViewCell.m */; };
-		A659F81F1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A659F81E1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.m */; };
 		A6F46A0D1ED7C6D200D5C212 /* UIImage+ALinExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F46A0C1ED7C6D200D5C212 /* UIImage+ALinExtension.m */; };
 		A6F46A101ED811AB00D5C212 /* MomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F46A0F1ED811AB00D5C212 /* MomentViewController.m */; };
 		A6F5F46B1EE436CC004C144F /* PhotosCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F5F46A1EE436CC004C144F /* PhotosCollectionViewCell.m */; };
@@ -156,9 +190,7 @@
 		A6FAC2241ED6C16C002CB042 /* TribeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC2231ED6C16C002CB042 /* TribeModel.m */; };
 		A6FAC22D1ED6D96E002CB042 /* TribeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC22C1ED6D96E002CB042 /* TribeViewController.m */; };
 		A6FAC2301ED6D9A6002CB042 /* CardTribeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC22F1ED6D9A6002CB042 /* CardTribeViewController.m */; };
-		A6FAC2331ED6DA04002CB042 /* EliteLifeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC2321ED6DA04002CB042 /* EliteLifeViewController.m */; };
-		A6FAC2361ED6DAAF002CB042 /* CEOThinkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC2351ED6DAAF002CB042 /* CEOThinkingViewController.m */; };
-		A6FAC2391ED6E1A4002CB042 /* CardTribeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC2381ED6E1A4002CB042 /* CardTribeTableViewCell.m */; };
+		A6FAC2331ED6DA04002CB042 /* TheArticleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAC2321ED6DA04002CB042 /* TheArticleTableViewController.m */; };
 		B025A8131EE115610032DBF6 /* DeviceKeyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B025A8121EE115610032DBF6 /* DeviceKeyHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -292,6 +324,8 @@
 		7C388FEC1EADD7F4008023CA /* RegisterCardHScollCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterCardHScollCell.xib; sourceTree = "<group>"; };
 		7C388FEE1EADF300008023CA /* WriteaApplicationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteaApplicationTableViewController.h; sourceTree = "<group>"; };
 		7C388FEF1EADF300008023CA /* WriteaApplicationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteaApplicationTableViewController.m; sourceTree = "<group>"; };
+		7C41C6A51EF96CCF00F443EA /* TheAriticleCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheAriticleCommentViewController.h; sourceTree = "<group>"; };
+		7C41C6A61EF96CCF00F443EA /* TheAriticleCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheAriticleCommentViewController.m; sourceTree = "<group>"; };
 		7C55C6F81ED919CD000991AF /* BlackCard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlackCard.entitlements; sourceTree = "<group>"; };
 		7C55C6F91ED93875000991AF /* OrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		7C55C6FA1ED93875000991AF /* OrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
@@ -320,6 +354,63 @@
 		7C55C7211EDEB9EE000991AF /* BaseGuidePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseGuidePageView.m; sourceTree = "<group>"; };
 		7C55C7231EDED001000991AF /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		7C55C7241EDED001000991AF /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		7C67C8CC1EEF7DDF004AA6CE /* TribeCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TribeCardTableViewCell.h; sourceTree = "<group>"; };
+		7C67C8CD1EEF7DDF004AA6CE /* TribeCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TribeCardTableViewCell.m; sourceTree = "<group>"; };
+		7C67C8CF1EEF86A8004AA6CE /* TribeCardImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TribeCardImageView.h; sourceTree = "<group>"; };
+		7C67C8D01EEF86A8004AA6CE /* TribeCardImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TribeCardImageView.m; sourceTree = "<group>"; };
+		7C67C8D51EF17F2B004AA6CE /* TribeNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TribeNavigationController.h; sourceTree = "<group>"; };
+		7C67C8D61EF17F2B004AA6CE /* TribeNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TribeNavigationController.m; sourceTree = "<group>"; };
+		7C67C8D81EF239CF004AA6CE /* TribeAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TribeAPI.h; sourceTree = "<group>"; };
+		7C67C8D91EF23A2B004AA6CE /* HttpTribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpTribe.h; sourceTree = "<group>"; };
+		7C67C8DA1EF23A2B004AA6CE /* HttpTribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpTribe.m; sourceTree = "<group>"; };
+		7C67C8DC1EF25314004AA6CE /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
+		7C67C8DD1EF25314004AA6CE /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
+		7C67C8DF1EF27019004AA6CE /* BaseWriteTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWriteTextViewController.h; sourceTree = "<group>"; };
+		7C67C8E01EF27019004AA6CE /* BaseWriteTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWriteTextViewController.m; sourceTree = "<group>"; };
+		7C67C8E41EF2794C004AA6CE /* ALAssetsLibraryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAssetsLibraryHelper.h; sourceTree = "<group>"; };
+		7C67C8E51EF2794C004AA6CE /* ALAssetsLibraryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetsLibraryHelper.m; sourceTree = "<group>"; };
+		7C67C8E61EF2794C004AA6CE /* ImageGroupPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageGroupPickerView.h; sourceTree = "<group>"; };
+		7C67C8E71EF2794C004AA6CE /* ImageGroupPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageGroupPickerView.m; sourceTree = "<group>"; };
+		7C67C8E81EF2794C004AA6CE /* ImageGroupPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageGroupPickerView.xib; sourceTree = "<group>"; };
+		7C67C8E91EF2794C004AA6CE /* ImagePickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerTableViewController.h; sourceTree = "<group>"; };
+		7C67C8EA1EF2794C004AA6CE /* ImagePickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerTableViewController.m; sourceTree = "<group>"; };
+		7C67C8EB1EF2794C004AA6CE /* SCImageGroupPickerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageGroupPickerObject.h; sourceTree = "<group>"; };
+		7C67C8EC1EF2794C004AA6CE /* SCImageGroupPickerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageGroupPickerObject.m; sourceTree = "<group>"; };
+		7C67C8ED1EF2794C004AA6CE /* SCImagePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImagePickerCell.h; sourceTree = "<group>"; };
+		7C67C8EE1EF2794C004AA6CE /* SCImagePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImagePickerCell.m; sourceTree = "<group>"; };
+		7C67C8EF1EF2794D004AA6CE /* SCImagePickerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImagePickerObject.h; sourceTree = "<group>"; };
+		7C67C8F01EF2794D004AA6CE /* SCImagePickerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImagePickerObject.m; sourceTree = "<group>"; };
+		7C67C8F11EF2794D004AA6CE /* TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleView.h; sourceTree = "<group>"; };
+		7C67C8F21EF2794D004AA6CE /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
+		7C67C8F31EF2794D004AA6CE /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
+		7C67C8F41EF2794D004AA6CE /* ImageBrowseViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBrowseViewCell.h; sourceTree = "<group>"; };
+		7C67C8F51EF2794D004AA6CE /* ImageBrowseViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageBrowseViewCell.m; sourceTree = "<group>"; };
+		7C67C8F61EF2794D004AA6CE /* ImageBrowseViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageBrowseViewCell.xib; sourceTree = "<group>"; };
+		7C67C8F71EF2794D004AA6CE /* ImageBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBrowseViewController.h; sourceTree = "<group>"; };
+		7C67C8F81EF2794D004AA6CE /* ImageBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageBrowseViewController.m; sourceTree = "<group>"; };
+		7C67C8F91EF2794D004AA6CE /* ImagesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesModel.h; sourceTree = "<group>"; };
+		7C67C8FA1EF2794D004AA6CE /* ImagesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesModel.m; sourceTree = "<group>"; };
+		7C67C9081EF27BFC004AA6CE /* CacheHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheHelper.m; sourceTree = "<group>"; };
+		7C67C9091EF27BFC004AA6CE /* CacheHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheHelper.h; sourceTree = "<group>"; };
+		7C67C90B1EF27E59004AA6CE /* UIViewController+LeeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LeeBase.m"; sourceTree = "<group>"; };
+		7C67C90C1EF27E59004AA6CE /* UIViewController+LeeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LeeBase.h"; sourceTree = "<group>"; };
+		7C67C90E1EF3AE3C004AA6CE /* PictureShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureShowViewController.h; sourceTree = "<group>"; };
+		7C67C90F1EF3AE3C004AA6CE /* PictureShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureShowViewController.m; sourceTree = "<group>"; };
+		7C67C9111EF3B7BB004AA6CE /* PictureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureController.h; sourceTree = "<group>"; };
+		7C67C9121EF3B7BB004AA6CE /* PictureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureController.m; sourceTree = "<group>"; };
+		7C67C9141EF3C0A5004AA6CE /* PictureHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureHandle.h; sourceTree = "<group>"; };
+		7C67C9151EF3C0A5004AA6CE /* PictureHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureHandle.m; sourceTree = "<group>"; };
+		7C67C9171EF7C559004AA6CE /* TribeCardDetailHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TribeCardDetailHeaderTableViewCell.h; sourceTree = "<group>"; };
+		7C67C9181EF7C559004AA6CE /* TribeCardDetailHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TribeCardDetailHeaderTableViewCell.m; sourceTree = "<group>"; };
+		7C67C91A1EF7E9A2004AA6CE /* CardTribeHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTribeHandle.h; sourceTree = "<group>"; };
+		7C67C91B1EF7E9A2004AA6CE /* CardTribeHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTribeHandle.m; sourceTree = "<group>"; };
+		7C67C91D1EF92142004AA6CE /* TheArticleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheArticleDetailViewController.h; sourceTree = "<group>"; };
+		7C67C91E1EF92142004AA6CE /* TheArticleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheArticleDetailViewController.m; sourceTree = "<group>"; };
+		7C67C9231EF92433004AA6CE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		7C67C9251EF9360C004AA6CE /* TheAriticleCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheAriticleCommentCell.h; sourceTree = "<group>"; };
+		7C67C9261EF9360C004AA6CE /* TheAriticleCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheAriticleCommentCell.m; sourceTree = "<group>"; };
+		7C67C9281EF95A7D004AA6CE /* WKWebViewToos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewToos.h; sourceTree = "<group>"; };
+		7C67C9291EF95A7D004AA6CE /* WKWebViewToos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewToos.m; sourceTree = "<group>"; };
 		7C7183581EAEF49D00B40BCB /* ConfirmApplicationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmApplicationTableViewController.h; sourceTree = "<group>"; };
 		7C7183591EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmApplicationTableViewController.m; sourceTree = "<group>"; };
 		7C71835C1EAF1BD400B40BCB /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
@@ -374,6 +465,21 @@
 		7C8E78A61ED2EB22000CADAA /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		7C8E78A81ED2EBDD000CADAA /* ALiPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALiPay.m; sourceTree = "<group>"; };
 		7C8E78A91ED2EBDD000CADAA /* ALiPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALiPay.h; sourceTree = "<group>"; };
+		7C9FA77A1EFA13DD001A6A36 /* ManorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManorViewController.h; sourceTree = "<group>"; };
+		7C9FA77B1EFA13DD001A6A36 /* ManorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManorViewController.m; sourceTree = "<group>"; };
+		7C9FA77D1EFA1413001A6A36 /* ManorViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManorViewCell.h; sourceTree = "<group>"; };
+		7C9FA77E1EFA1413001A6A36 /* ManorViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManorViewCell.m; sourceTree = "<group>"; };
+		7C9FA7801EFA698E001A6A36 /* ManorCreateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManorCreateTableViewController.h; sourceTree = "<group>"; };
+		7C9FA7811EFA698E001A6A36 /* ManorCreateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManorCreateTableViewController.m; sourceTree = "<group>"; };
+		7C9FA7831EFA8528001A6A36 /* ManorTirbeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManorTirbeViewController.h; sourceTree = "<group>"; };
+		7C9FA7841EFA8528001A6A36 /* ManorTirbeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManorTirbeViewController.m; sourceTree = "<group>"; };
+		7C9FA7861EFB5AC6001A6A36 /* UINavigationBar+AtWillBackgroundColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+AtWillBackgroundColor.h"; sourceTree = "<group>"; };
+		7C9FA7871EFB5AC6001A6A36 /* UINavigationBar+AtWillBackgroundColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+AtWillBackgroundColor.m"; sourceTree = "<group>"; };
+		7C9FA7891EFB7E5A001A6A36 /* TribeCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TribeCardTableViewCell.xib; sourceTree = "<group>"; };
+		7C9FA78B1EFBA362001A6A36 /* ManorMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManorMemberCell.h; sourceTree = "<group>"; };
+		7C9FA78C1EFBA362001A6A36 /* ManorMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManorMemberCell.m; sourceTree = "<group>"; };
+		7C9FA78E1EFBA798001A6A36 /* ManorMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManorMembersViewController.h; sourceTree = "<group>"; };
+		7C9FA78F1EFBA798001A6A36 /* ManorMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManorMembersViewController.m; sourceTree = "<group>"; };
 		7CA9455B1EAAFB52002AA1E1 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		7CA9455C1EAAFB52002AA1E1 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		7CC14DE31EB9E929008B32ED /* app.jingyingheika.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = app.jingyingheika.com.cer; sourceTree = "<group>"; };
@@ -412,27 +518,19 @@
 		7CE70DCB1EA79F00003772F1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7CE70DCD1EA79F00003772F1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7CE70DCE1EA79F00003772F1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7CE70DD01EA79F00003772F1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7CE70DD11EA79F00003772F1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7CE70DDB1EA79F00003772F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CF8437A1ED569DF0032C9E1 /* PurchaseHistoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseHistoryModel.h; sourceTree = "<group>"; };
 		7CF8437B1ED569DF0032C9E1 /* PurchaseHistoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseHistoryModel.m; sourceTree = "<group>"; };
-		A616F0D11ED85E37004EAA42 /* EliteLifeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EliteLifeTableViewCell.h; sourceTree = "<group>"; };
-		A616F0D21ED85E37004EAA42 /* EliteLifeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EliteLifeTableViewCell.m; sourceTree = "<group>"; };
+		A616F0D11ED85E37004EAA42 /* TheArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheArticleTableViewCell.h; sourceTree = "<group>"; };
+		A616F0D21ED85E37004EAA42 /* TheArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheArticleTableViewCell.m; sourceTree = "<group>"; };
 		A616F0D41ED85EB2004EAA42 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		A616F0D51ED85EB2004EAA42 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
-		A62D5F061ED94E840023E6C2 /* EliteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EliteDetailViewController.h; sourceTree = "<group>"; };
-		A62D5F071ED94E840023E6C2 /* EliteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EliteDetailViewController.m; sourceTree = "<group>"; };
 		A62D5F091ED950800023E6C2 /* CardTribeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTribeDetailViewController.h; sourceTree = "<group>"; };
 		A62D5F0A1ED950800023E6C2 /* CardTribeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTribeDetailViewController.m; sourceTree = "<group>"; };
 		A62D5F0F1ED950EB0023E6C2 /* CardDetailBottomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailBottomTableViewCell.h; sourceTree = "<group>"; };
 		A62D5F101ED950EB0023E6C2 /* CardDetailBottomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailBottomTableViewCell.m; sourceTree = "<group>"; };
 		A62D5F121ED9510C0023E6C2 /* CardDetailTopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailTopTableViewCell.h; sourceTree = "<group>"; };
 		A62D5F131ED9510C0023E6C2 /* CardDetailTopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailTopTableViewCell.m; sourceTree = "<group>"; };
-		A62D5F151EDBC7140023E6C2 /* EliteDetailTopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EliteDetailTopTableViewCell.h; sourceTree = "<group>"; };
-		A62D5F161EDBC7140023E6C2 /* EliteDetailTopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EliteDetailTopTableViewCell.m; sourceTree = "<group>"; };
-		A659F81D1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTribeDetailTabelViewController.h; sourceTree = "<group>"; };
-		A659F81E1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTribeDetailTabelViewController.m; sourceTree = "<group>"; };
 		A6F46A0B1ED7C6D200D5C212 /* UIImage+ALinExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ALinExtension.h"; sourceTree = "<group>"; };
 		A6F46A0C1ED7C6D200D5C212 /* UIImage+ALinExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ALinExtension.m"; sourceTree = "<group>"; };
 		A6F46A0E1ED811AB00D5C212 /* MomentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentViewController.h; sourceTree = "<group>"; };
@@ -447,12 +545,8 @@
 		A6FAC22C1ED6D96E002CB042 /* TribeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TribeViewController.m; sourceTree = "<group>"; };
 		A6FAC22E1ED6D9A6002CB042 /* CardTribeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTribeViewController.h; sourceTree = "<group>"; };
 		A6FAC22F1ED6D9A6002CB042 /* CardTribeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTribeViewController.m; sourceTree = "<group>"; };
-		A6FAC2311ED6DA04002CB042 /* EliteLifeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EliteLifeViewController.h; sourceTree = "<group>"; };
-		A6FAC2321ED6DA04002CB042 /* EliteLifeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EliteLifeViewController.m; sourceTree = "<group>"; };
-		A6FAC2341ED6DAAF002CB042 /* CEOThinkingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEOThinkingViewController.h; sourceTree = "<group>"; };
-		A6FAC2351ED6DAAF002CB042 /* CEOThinkingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEOThinkingViewController.m; sourceTree = "<group>"; };
-		A6FAC2371ED6E1A4002CB042 /* CardTribeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTribeTableViewCell.h; sourceTree = "<group>"; };
-		A6FAC2381ED6E1A4002CB042 /* CardTribeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTribeTableViewCell.m; sourceTree = "<group>"; };
+		A6FAC2311ED6DA04002CB042 /* TheArticleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheArticleTableViewController.h; sourceTree = "<group>"; };
+		A6FAC2321ED6DA04002CB042 /* TheArticleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheArticleTableViewController.m; sourceTree = "<group>"; };
 		B025A8111EE115610032DBF6 /* DeviceKeyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceKeyHelper.h; sourceTree = "<group>"; };
 		B025A8121EE115610032DBF6 /* DeviceKeyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceKeyHelper.m; sourceTree = "<group>"; };
 		B6C1A4FAC8EA97F0871A0026 /* Pods-BlackCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackCard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlackCard/Pods-BlackCard.debug.xcconfig"; sourceTree = "<group>"; };
@@ -524,6 +618,7 @@
 		7C25A7881EA8677A0049234E /* General */ = {
 			isa = PBXGroup;
 			children = (
+				7C67C8E21EF2794C004AA6CE /* BrowsePicture */,
 				7C25A7891EA8677A0049234E /* AppAPI */,
 				7C25A78A1EA8677A0049234E /* Base */,
 				7C25A78B1EA8677A0049234E /* Category */,
@@ -539,6 +634,7 @@
 			children = (
 				7CC8019C1EAC578C005B52A9 /* Http */,
 				7CC8019B1EAC578C005B52A9 /* MyAndUserAPI.h */,
+				7C67C8D81EF239CF004AA6CE /* TribeAPI.h */,
 				7CC801A61EACAB6C005B52A9 /* HomePageAPI.h */,
 				7C55C7051ED9696A000991AF /* WaiterServiceAPI.h */,
 			);
@@ -564,6 +660,8 @@
 			children = (
 				A6F46A0B1ED7C6D200D5C212 /* UIImage+ALinExtension.h */,
 				A6F46A0C1ED7C6D200D5C212 /* UIImage+ALinExtension.m */,
+				7C67C90C1EF27E59004AA6CE /* UIViewController+LeeBase.h */,
+				7C67C90B1EF27E59004AA6CE /* UIViewController+LeeBase.m */,
 				A6FAC21F1ED6B18C002CB042 /* UIView+XJExtension.h */,
 				A6FAC2201ED6B18C002CB042 /* UIView+XJExtension.m */,
 				7C25A8131EA8887F0049234E /* UIViewController+ActionCategory.h */,
@@ -584,6 +682,8 @@
 				7C25A8381EA8B62B0049234E /* UIView+SimpleFrame.m */,
 				7C8488761EAB61F30001EC82 /* CALayer+LayerColor.h */,
 				7C8488771EAB61F30001EC82 /* CALayer+LayerColor.m */,
+				7C9FA7861EFB5AC6001A6A36 /* UINavigationBar+AtWillBackgroundColor.h */,
+				7C9FA7871EFB5AC6001A6A36 /* UINavigationBar+AtWillBackgroundColor.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -598,6 +698,8 @@
 				7C25A8201EA88E2C0049234E /* UIAlertCustomViewController.m */,
 				7C25A8161EA88A6C0049234E /* AppNavigationController.h */,
 				7C25A8171EA88A6C0049234E /* AppNavigationController.m */,
+				7C67C8D51EF17F2B004AA6CE /* TribeNavigationController.h */,
+				7C67C8D61EF17F2B004AA6CE /* TribeNavigationController.m */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -608,6 +710,8 @@
 				7C55C7101EDEB3A7000991AF /* GuideView */,
 				7C25A82B1EA8944B0049234E /* SendVerifyCodeButton.h */,
 				7C25A82C1EA8944B0049234E /* SendVerifyCodeButton.m */,
+				7C67C8DD1EF25314004AA6CE /* CustomTextView.h */,
+				7C67C8DC1EF25314004AA6CE /* CustomTextView.m */,
 				7C26ADBC1ED6B2B800E32E87 /* CustomAlertController.h */,
 				7C26ADBD1ED6B2B800E32E87 /* CustomAlertController.m */,
 				7C8E78971ED27F80000CADAA /* PayPasswordTextField.h */,
@@ -634,6 +738,8 @@
 				7C7183601EAF1C5600B40BCB /* PayHelper */,
 				7CC801981EAC577F005B52A9 /* AppAPIHelper.h */,
 				7CC801991EAC577F005B52A9 /* AppAPIHelper.m */,
+				7C67C9081EF27BFC004AA6CE /* CacheHelper.m */,
+				7C67C9091EF27BFC004AA6CE /* CacheHelper.h */,
 				7C25A8281EA893AE0049234E /* ValidateHelper.h */,
 				7C25A8291EA893AE0049234E /* ValidateHelper.m */,
 				7C25A8221EA88EBF0049234E /* CurrentUserActionHelper.h */,
@@ -871,6 +977,50 @@
 			path = GuideView;
 			sourceTree = "<group>";
 		};
+		7C67C8E21EF2794C004AA6CE /* BrowsePicture */ = {
+			isa = PBXGroup;
+			children = (
+				7C67C8E31EF2794C004AA6CE /* CustomImagePicker */,
+				7C67C8F41EF2794D004AA6CE /* ImageBrowseViewCell.h */,
+				7C67C8F51EF2794D004AA6CE /* ImageBrowseViewCell.m */,
+				7C67C8F61EF2794D004AA6CE /* ImageBrowseViewCell.xib */,
+				7C67C8F71EF2794D004AA6CE /* ImageBrowseViewController.h */,
+				7C67C8F81EF2794D004AA6CE /* ImageBrowseViewController.m */,
+				7C67C90E1EF3AE3C004AA6CE /* PictureShowViewController.h */,
+				7C67C90F1EF3AE3C004AA6CE /* PictureShowViewController.m */,
+				7C67C9111EF3B7BB004AA6CE /* PictureController.h */,
+				7C67C9121EF3B7BB004AA6CE /* PictureController.m */,
+				7C67C9141EF3C0A5004AA6CE /* PictureHandle.h */,
+				7C67C9151EF3C0A5004AA6CE /* PictureHandle.m */,
+				7C67C8F91EF2794D004AA6CE /* ImagesModel.h */,
+				7C67C8FA1EF2794D004AA6CE /* ImagesModel.m */,
+			);
+			path = BrowsePicture;
+			sourceTree = "<group>";
+		};
+		7C67C8E31EF2794C004AA6CE /* CustomImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				7C67C8E41EF2794C004AA6CE /* ALAssetsLibraryHelper.h */,
+				7C67C8E51EF2794C004AA6CE /* ALAssetsLibraryHelper.m */,
+				7C67C8E61EF2794C004AA6CE /* ImageGroupPickerView.h */,
+				7C67C8E71EF2794C004AA6CE /* ImageGroupPickerView.m */,
+				7C67C8E81EF2794C004AA6CE /* ImageGroupPickerView.xib */,
+				7C67C8E91EF2794C004AA6CE /* ImagePickerTableViewController.h */,
+				7C67C8EA1EF2794C004AA6CE /* ImagePickerTableViewController.m */,
+				7C67C8EB1EF2794C004AA6CE /* SCImageGroupPickerObject.h */,
+				7C67C8EC1EF2794C004AA6CE /* SCImageGroupPickerObject.m */,
+				7C67C8ED1EF2794C004AA6CE /* SCImagePickerCell.h */,
+				7C67C8EE1EF2794C004AA6CE /* SCImagePickerCell.m */,
+				7C67C8EF1EF2794D004AA6CE /* SCImagePickerObject.h */,
+				7C67C8F01EF2794D004AA6CE /* SCImagePickerObject.m */,
+				7C67C8F11EF2794D004AA6CE /* TitleView.h */,
+				7C67C8F21EF2794D004AA6CE /* TitleView.m */,
+				7C67C8F31EF2794D004AA6CE /* TitleView.xib */,
+			);
+			path = CustomImagePicker;
+			sourceTree = "<group>";
+		};
 		7C71835B1EAF1BD400B40BCB /* WX */ = {
 			isa = PBXGroup;
 			children = (
@@ -1002,6 +1152,8 @@
 				7CC801A81EACAD53005B52A9 /* HttpHomePage.m */,
 				7C55C7071ED969DB000991AF /* HttpWaiterService.h */,
 				7C55C7081ED969DB000991AF /* HttpWaiterService.m */,
+				7C67C8D91EF23A2B004AA6CE /* HttpTribe.h */,
+				7C67C8DA1EF23A2B004AA6CE /* HttpTribe.m */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -1037,8 +1189,6 @@
 				7C25A79B1EA8677A0049234E /* Scenes */,
 				7CE70DCD1EA79F00003772F1 /* AppDelegate.h */,
 				7CE70DCE1EA79F00003772F1 /* AppDelegate.m */,
-				7CE70DD01EA79F00003772F1 /* ViewController.h */,
-				7CE70DD11EA79F00003772F1 /* ViewController.m */,
 				7CE70DDB1EA79F00003772F1 /* Info.plist */,
 				7CE70DCA1EA79F00003772F1 /* Supporting Files */,
 			);
@@ -1078,20 +1228,32 @@
 				A6FAC22C1ED6D96E002CB042 /* TribeViewController.m */,
 				A6FAC22E1ED6D9A6002CB042 /* CardTribeViewController.h */,
 				A6FAC22F1ED6D9A6002CB042 /* CardTribeViewController.m */,
-				A6FAC2311ED6DA04002CB042 /* EliteLifeViewController.h */,
-				A6FAC2321ED6DA04002CB042 /* EliteLifeViewController.m */,
-				A6FAC2341ED6DAAF002CB042 /* CEOThinkingViewController.h */,
-				A6FAC2351ED6DAAF002CB042 /* CEOThinkingViewController.m */,
+				A62D5F091ED950800023E6C2 /* CardTribeDetailViewController.h */,
+				A62D5F0A1ED950800023E6C2 /* CardTribeDetailViewController.m */,
+				7C67C91A1EF7E9A2004AA6CE /* CardTribeHandle.h */,
+				7C67C91B1EF7E9A2004AA6CE /* CardTribeHandle.m */,
+				A6FAC2311ED6DA04002CB042 /* TheArticleTableViewController.h */,
+				A6FAC2321ED6DA04002CB042 /* TheArticleTableViewController.m */,
+				7C67C91D1EF92142004AA6CE /* TheArticleDetailViewController.h */,
+				7C67C91E1EF92142004AA6CE /* TheArticleDetailViewController.m */,
+				7C67C9281EF95A7D004AA6CE /* WKWebViewToos.h */,
+				7C67C9291EF95A7D004AA6CE /* WKWebViewToos.m */,
 				A6F46A0E1ED811AB00D5C212 /* MomentViewController.h */,
 				A6F46A0F1ED811AB00D5C212 /* MomentViewController.m */,
 				A616F0D41ED85EB2004EAA42 /* CommentViewController.h */,
 				A616F0D51ED85EB2004EAA42 /* CommentViewController.m */,
-				A62D5F061ED94E840023E6C2 /* EliteDetailViewController.h */,
-				A62D5F071ED94E840023E6C2 /* EliteDetailViewController.m */,
-				A62D5F091ED950800023E6C2 /* CardTribeDetailViewController.h */,
-				A62D5F0A1ED950800023E6C2 /* CardTribeDetailViewController.m */,
-				A659F81D1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.h */,
-				A659F81E1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.m */,
+				7C41C6A51EF96CCF00F443EA /* TheAriticleCommentViewController.h */,
+				7C41C6A61EF96CCF00F443EA /* TheAriticleCommentViewController.m */,
+				7C67C8DF1EF27019004AA6CE /* BaseWriteTextViewController.h */,
+				7C67C8E01EF27019004AA6CE /* BaseWriteTextViewController.m */,
+				7C9FA77A1EFA13DD001A6A36 /* ManorViewController.h */,
+				7C9FA77B1EFA13DD001A6A36 /* ManorViewController.m */,
+				7C9FA7831EFA8528001A6A36 /* ManorTirbeViewController.h */,
+				7C9FA7841EFA8528001A6A36 /* ManorTirbeViewController.m */,
+				7C9FA78E1EFBA798001A6A36 /* ManorMembersViewController.h */,
+				7C9FA78F1EFBA798001A6A36 /* ManorMembersViewController.m */,
+				7C9FA7801EFA698E001A6A36 /* ManorCreateTableViewController.h */,
+				7C9FA7811EFA698E001A6A36 /* ManorCreateTableViewController.m */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -1099,16 +1261,25 @@
 		A6FAC22A1ED6D91F002CB042 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				A6FAC2371ED6E1A4002CB042 /* CardTribeTableViewCell.h */,
-				A6FAC2381ED6E1A4002CB042 /* CardTribeTableViewCell.m */,
-				A616F0D11ED85E37004EAA42 /* EliteLifeTableViewCell.h */,
-				A616F0D21ED85E37004EAA42 /* EliteLifeTableViewCell.m */,
+				7C67C8CC1EEF7DDF004AA6CE /* TribeCardTableViewCell.h */,
+				7C67C8CD1EEF7DDF004AA6CE /* TribeCardTableViewCell.m */,
+				7C9FA7891EFB7E5A001A6A36 /* TribeCardTableViewCell.xib */,
+				7C67C9171EF7C559004AA6CE /* TribeCardDetailHeaderTableViewCell.h */,
+				7C67C9181EF7C559004AA6CE /* TribeCardDetailHeaderTableViewCell.m */,
+				7C67C8CF1EEF86A8004AA6CE /* TribeCardImageView.h */,
+				7C67C8D01EEF86A8004AA6CE /* TribeCardImageView.m */,
+				A616F0D11ED85E37004EAA42 /* TheArticleTableViewCell.h */,
+				A616F0D21ED85E37004EAA42 /* TheArticleTableViewCell.m */,
+				7C67C9251EF9360C004AA6CE /* TheAriticleCommentCell.h */,
+				7C67C9261EF9360C004AA6CE /* TheAriticleCommentCell.m */,
 				A62D5F0F1ED950EB0023E6C2 /* CardDetailBottomTableViewCell.h */,
 				A62D5F101ED950EB0023E6C2 /* CardDetailBottomTableViewCell.m */,
+				7C9FA77D1EFA1413001A6A36 /* ManorViewCell.h */,
+				7C9FA77E1EFA1413001A6A36 /* ManorViewCell.m */,
+				7C9FA78B1EFBA362001A6A36 /* ManorMemberCell.h */,
+				7C9FA78C1EFBA362001A6A36 /* ManorMemberCell.m */,
 				A62D5F121ED9510C0023E6C2 /* CardDetailTopTableViewCell.h */,
 				A62D5F131ED9510C0023E6C2 /* CardDetailTopTableViewCell.m */,
-				A62D5F151EDBC7140023E6C2 /* EliteDetailTopTableViewCell.h */,
-				A62D5F161EDBC7140023E6C2 /* EliteDetailTopTableViewCell.m */,
 				A6F5F4691EE436CC004C144F /* PhotosCollectionViewCell.h */,
 				A6F5F46A1EE436CC004C144F /* PhotosCollectionViewCell.m */,
 			);
@@ -1118,6 +1289,7 @@
 		B3E26985AF0BADBBE494E5D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C67C9231EF92433004AA6CE /* WebKit.framework */,
 				7C8E78A61ED2EB22000CADAA /* CoreMotion.framework */,
 				7C8E78A41ED2E602000CADAA /* libz.tbd */,
 				7C8E78A21ED2E5E6000CADAA /* libc++.tbd */,
@@ -1195,8 +1367,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C9FA78A1EFB7E5A001A6A36 /* TribeCardTableViewCell.xib in Resources */,
 				7C55C7151EDEB3FC000991AF /* GuidePageOneView.xib in Resources */,
 				7CC14DE41EB9E929008B32ED /* app.jingyingheika.com.cer in Resources */,
+				7C67C9031EF2794D004AA6CE /* TitleView.xib in Resources */,
+				7C67C8FD1EF2794D004AA6CE /* ImageGroupPickerView.xib in Resources */,
 				7C55C71F1EDEB473000991AF /* GuidePageThreeView.xib in Resources */,
 				7C8E78A01ED2E5A0000CADAA /* AlipaySDK.bundle in Resources */,
 				7C55C7001ED94692000991AF /* ChoosePayTypeView.xib in Resources */,
@@ -1205,6 +1380,7 @@
 				7C25A80C1EA886E50049234E /* EveryNoneView.xib in Resources */,
 				7C55C71A1EDEB41D000991AF /* GuidePageTwoView.xib in Resources */,
 				7C388FED1EADD7F4008023CA /* RegisterCardHScollCell.xib in Resources */,
+				7C67C9051EF2794D004AA6CE /* ImageBrowseViewCell.xib in Resources */,
 				7C18F0291EB03932008D247C /* area.plist in Resources */,
 				7C18F0321EB03E39008D247C /* CustomPickView.xib in Resources */,
 				7C18F02A1EB03932008D247C /* city.plist in Resources */,
@@ -1278,10 +1454,15 @@
 				7C7183651EAF1C5600B40BCB /* PayHelper.m in Sources */,
 				7C55C70C1ED97871000991AF /* DefaultPay.m in Sources */,
 				7CC47CF51EA9AD4D006FBB53 /* HomePageCollectionViewCell.m in Sources */,
-				A6FAC2361ED6DAAF002CB042 /* CEOThinkingViewController.m in Sources */,
+				7C67C8E11EF27019004AA6CE /* BaseWriteTextViewController.m in Sources */,
+				7C9FA78D1EFBA362001A6A36 /* ManorMemberCell.m in Sources */,
+				7C67C9131EF3B7BB004AA6CE /* PictureController.m in Sources */,
 				A6F5F46B1EE436CC004C144F /* PhotosCollectionViewCell.m in Sources */,
 				7C25A7E01EA86A3D0049234E /* BaseRefreshPageCollectionViewController.m in Sources */,
+				7C67C8D11EEF86A8004AA6CE /* TribeCardImageView.m in Sources */,
 				7C25A7EA1EA86A3D0049234E /* BaseCustomTableViewController.m in Sources */,
+				7C67C91F1EF92142004AA6CE /* TheArticleDetailViewController.m in Sources */,
+				7C67C9041EF2794D004AA6CE /* ImageBrowseViewCell.m in Sources */,
 				A6FAC22D1ED6D96E002CB042 /* TribeViewController.m in Sources */,
 				A62D5F0B1ED950800023E6C2 /* CardTribeDetailViewController.m in Sources */,
 				A6FAC2301ED6D9A6002CB042 /* CardTribeViewController.m in Sources */,
@@ -1290,23 +1471,28 @@
 				7C8E78871ED18FAE000CADAA /* MyPurseDetailCell.m in Sources */,
 				7C8E789C1ED29CD1000CADAA /* SetPayPasswordTableViewController.m in Sources */,
 				7C8E788A1ED193D8000CADAA /* ShoppingListLogCell.m in Sources */,
+				7C67C9071EF2794D004AA6CE /* ImagesModel.m in Sources */,
 				7C55C7221EDEB9EE000991AF /* BaseGuidePageView.m in Sources */,
 				7C25A7DD1EA86A3D0049234E /* BaseCollectionViewController.m in Sources */,
 				7C25A7F91EA883B00049234E /* UINavigationController+Category.m in Sources */,
+				7C9FA77C1EFA13DD001A6A36 /* ManorViewController.m in Sources */,
 				7C55C70F1EDE5B41000991AF /* BlackLogHelper.m in Sources */,
 				A6F46A0D1ED7C6D200D5C212 /* UIImage+ALinExtension.m in Sources */,
 				7C25A82A1EA893AE0049234E /* ValidateHelper.m in Sources */,
+				7C67C8CE1EEF7DDF004AA6CE /* TribeCardTableViewCell.m in Sources */,
 				7CD68FAB1ED44D9700A3AD3E /* ModifyCardPasswordTableViewController.m in Sources */,
 				7CD68FA21ED3CF1900A3AD3E /* PayManagerHelper.m in Sources */,
 				7C8488721EAB4E790001EC82 /* RegisterCollectionViewCell.m in Sources */,
 				7C55C6FE1ED94686000991AF /* ChoosePayTypeView.m in Sources */,
 				7C25A8211EA88E2C0049234E /* UIAlertCustomViewController.m in Sources */,
+				7C67C8DE1EF25314004AA6CE /* CustomTextView.m in Sources */,
 				7C25A7F01EA86A3D0049234E /* BaseViewController.m in Sources */,
 				7C18F03B1EB20592008D247C /* WaiterViewController.m in Sources */,
 				7C55C7251EDED001000991AF /* GuideViewController.m in Sources */,
 				A62D5F111ED950EB0023E6C2 /* CardDetailBottomTableViewCell.m in Sources */,
 				7C25A7E81EA86A3D0049234E /* BaseRequestTableViewController.m in Sources */,
-				A6FAC2331ED6DA04002CB042 /* EliteLifeViewController.m in Sources */,
+				7C67C9021EF2794D004AA6CE /* TitleView.m in Sources */,
+				A6FAC2331ED6DA04002CB042 /* TheArticleTableViewController.m in Sources */,
 				A62D5F141ED9510C0023E6C2 /* CardDetailTopTableViewCell.m in Sources */,
 				7CC801A51EAC8A7E005B52A9 /* LoginTableViewCell.m in Sources */,
 				A6FAC2241ED6C16C002CB042 /* TribeModel.m in Sources */,
@@ -1314,10 +1500,11 @@
 				7C84886C1EAB4D9B0001EC82 /* MyAndUserTableViewController.m in Sources */,
 				7C55C7041ED95DD0000991AF /* ChoosePayHandle.m in Sources */,
 				7C26ADC11ED6D92700E32E87 /* UpLoadModel.m in Sources */,
-				7CE70DD21EA79F00003772F1 /* ViewController.m in Sources */,
+				7C67C9191EF7C559004AA6CE /* TribeCardDetailHeaderTableViewCell.m in Sources */,
 				7C25A7E61EA86A3D0049234E /* BaseRefreshPageTableViewController.m in Sources */,
 				7C25A7F51EA86B100049234E /* UIViewController+Category.m in Sources */,
 				7C55C7181EDEB413000991AF /* GuidePageTwoView.m in Sources */,
+				7C67C9161EF3C0A5004AA6CE /* PictureHandle.m in Sources */,
 				7C18F0351EB1BEC0008D247C /* ResetPayTableViewController.m in Sources */,
 				7C25A8021EA886210049234E /* UIViewController+LoadMoreViewController.m in Sources */,
 				7C25A7D91EA86A3D0049234E /* BaseController.m in Sources */,
@@ -1325,21 +1512,23 @@
 				7C25A7ED1EA86A3D0049234E /* BaseRefreshPageCustomTableViewController.m in Sources */,
 				A6F46A101ED811AB00D5C212 /* MomentViewController.m in Sources */,
 				7C25A79C1EA8677A0049234E /* BlackCard_const.m in Sources */,
+				7C67C8FB1EF2794D004AA6CE /* ALAssetsLibraryHelper.m in Sources */,
+				7C67C8D71EF17F2B004AA6CE /* TribeNavigationController.m in Sources */,
 				7C25A83F1EA8C1E10049234E /* WaiterModel.m in Sources */,
 				7C25A81E1EA88D380049234E /* MyAndUserModel.m in Sources */,
 				7C25A8261EA88EBF0049234E /* CurrentUserActionHelper.m in Sources */,
 				7CF8437C1ED569DF0032C9E1 /* PurchaseHistoryModel.m in Sources */,
-				A62D5F081ED94E840023E6C2 /* EliteDetailViewController.m in Sources */,
 				7C25A82D1EA8944B0049234E /* SendVerifyCodeButton.m in Sources */,
 				7C71836F1EAF2CD100B40BCB /* ResetPasswordTableViewController.m in Sources */,
+				7C67C9011EF2794D004AA6CE /* SCImagePickerObject.m in Sources */,
 				7CC47CFF1EA9B2F8006FBB53 /* HomePageTableViewController.m in Sources */,
 				7C8E78811ED18888000CADAA /* MyPurseTableViewController.m in Sources */,
 				7C25A8391EA8B62B0049234E /* UIView+SimpleFrame.m in Sources */,
 				7C388FF01EADF300008023CA /* WriteaApplicationTableViewController.m in Sources */,
+				7C67C92A1EF95A7D004AA6CE /* WKWebViewToos.m in Sources */,
 				7C18F0301EB03E2A008D247C /* CustomPickView.m in Sources */,
 				7C25A7E41EA86A3D0049234E /* BaseRefreshPageCustomCollectionViewController.m in Sources */,
 				7C25A7E91EA86A3D0049234E /* BaseTableViewController.m in Sources */,
-				A6FAC2391ED6E1A4002CB042 /* CardTribeTableViewCell.m in Sources */,
 				7C8488781EAB61F30001EC82 /* CALayer+LayerColor.m in Sources */,
 				7C25A7E11EA86A3D0049234E /* BaseReqeustCollectionViewController.m in Sources */,
 				7C25A7EC1EA86A3D0049234E /* BaseRefreshListCustomTableViewController.m in Sources */,
@@ -1347,47 +1536,59 @@
 				B025A8131EE115610032DBF6 /* DeviceKeyHelper.m in Sources */,
 				7CA9455D1EAAFB52002AA1E1 /* MainTabBarViewController.m in Sources */,
 				7C55C6FB1ED93875000991AF /* OrderDetailViewController.m in Sources */,
+				7C9FA7821EFA698E001A6A36 /* ManorCreateTableViewController.m in Sources */,
 				7C8488751EAB53490001EC82 /* RegisterTableViewController.m in Sources */,
-				A62D5F171EDBC7140023E6C2 /* EliteDetailTopTableViewCell.m in Sources */,
 				7C25A7FF1EA885A80049234E /* NSString+Category.m in Sources */,
+				7C67C9271EF9360C004AA6CE /* TheAriticleCommentCell.m in Sources */,
 				7C84886F1EAB4DD50001EC82 /* RegisterWithCollectionView.m in Sources */,
 				7C25A8121EA887F70049234E /* BaseTableViewHScrollCell.m in Sources */,
+				7C9FA7881EFB5AC6001A6A36 /* UINavigationBar+AtWillBackgroundColor.m in Sources */,
+				7C67C9001EF2794D004AA6CE /* SCImagePickerCell.m in Sources */,
 				7C25A7E21EA86A3D0049234E /* BaseRefreshCustomCollectionViewController.m in Sources */,
 				7C26ADC81ED6DBD500E32E87 /* ImageProvider.m in Sources */,
 				7C8E78961ED19FA8000CADAA /* RechargeTableViewController.m in Sources */,
+				7C67C90A1EF27BFC004AA6CE /* CacheHelper.m in Sources */,
+				7C67C9061EF2794D004AA6CE /* ImageBrowseViewController.m in Sources */,
 				7C25A8061EA886340049234E /* LoadMoreView.m in Sources */,
 				7C25A8181EA88A6C0049234E /* AppNavigationController.m in Sources */,
 				7C388FEB1EADD4CD008023CA /* RegisterCardCell.m in Sources */,
+				7C67C91C1EF7E9A2004AA6CE /* CardTribeHandle.m in Sources */,
 				A616F0D61ED85EB2004EAA42 /* CommentViewController.m in Sources */,
 				7C25A8111EA887F70049234E /* BaseCollectionViewCell.m in Sources */,
 				7C8E78931ED19F88000CADAA /* SetPasswordTableViewController.m in Sources */,
+				7C9FA7901EFBA798001A6A36 /* ManorMembersViewController.m in Sources */,
 				7CD68FA81ED439E000A3AD3E /* ModifyPayPasswordTableViewController.m in Sources */,
 				7C55C71D1EDEB46A000991AF /* GuidePageThreeView.m in Sources */,
-				A659F81F1EDE4FAD00BCAF11 /* CardTribeDetailTabelViewController.m in Sources */,
 				7C25A7EF1EA86A3D0049234E /* BaseRequestViewController.m in Sources */,
 				7CC47CFB1EA9B2D4006FBB53 /* ShowYourNeedPageView.m in Sources */,
 				7C25A7F61EA86B100049234E /* UIViewController+RefreshViewController.m in Sources */,
 				7C55C7061ED9696A000991AF /* WaiterServiceAPI.h in Sources */,
 				7CC801A21EAC8744005B52A9 /* LoginViewController.m in Sources */,
 				7C25A7EB1EA86A3D0049234E /* BaseRefreshCustomTableViewController.m in Sources */,
+				7C67C8FF1EF2794D004AA6CE /* SCImageGroupPickerObject.m in Sources */,
+				7C67C9101EF3AE3C004AA6CE /* PictureShowViewController.m in Sources */,
+				7C9FA77F1EFA1413001A6A36 /* ManorViewCell.m in Sources */,
 				7C8E78841ED18F32000CADAA /* MyPurseDetailTableViewController.m in Sources */,
 				7C25A7DE1EA86A3D0049234E /* BaseRefreshCollectionViewController.m in Sources */,
 				A6FAC2211ED6B18C002CB042 /* UIView+XJExtension.m in Sources */,
 				7C26ADBE1ED6B2B800E32E87 /* CustomAlertController.m in Sources */,
 				7C8E787E1ED175B6000CADAA /* UserSetInfoTableViewController.m in Sources */,
+				7C67C8FE1EF2794D004AA6CE /* ImagePickerTableViewController.m in Sources */,
 				7C3324841EB307730065B5C3 /* WebViewController.m in Sources */,
 				7C25A7E51EA86A3D0049234E /* BaseRefreshListTableViewController.m in Sources */,
 				7C7183661EAF1C5600B40BCB /* WXPay.m in Sources */,
 				7C25A7E71EA86A3D0049234E /* BaseRefreshTableViewController.m in Sources */,
 				7C71836C1EAF1EFC00B40BCB /* PayHelperModel.m in Sources */,
-				A616F0D31ED85E37004EAA42 /* EliteLifeTableViewCell.m in Sources */,
+				A616F0D31ED85E37004EAA42 /* TheArticleTableViewCell.m in Sources */,
 				7CC8019F1EAC578C005B52A9 /* HttpMyAndUser.m in Sources */,
+				7C41C6A71EF96CCF00F443EA /* TheAriticleCommentViewController.m in Sources */,
 				7C25A8151EA8887F0049234E /* UIViewController+ActionCategory.m in Sources */,
 				7C3324871EB31B8B0065B5C3 /* ChatTools.m in Sources */,
 				7C71835A1EAEF49D00B40BCB /* ConfirmApplicationTableViewController.m in Sources */,
 				7CC8019A1EAC577F005B52A9 /* AppAPIHelper.m in Sources */,
 				7C18F02D1EB039AE008D247C /* AreaModel.m in Sources */,
 				7CD68FA51ED3E26E00A3AD3E /* DisableTextField.m in Sources */,
+				7C67C8FC1EF2794D004AA6CE /* ImageGroupPickerView.m in Sources */,
 				7C8E78991ED27F80000CADAA /* PayPasswordTextField.m in Sources */,
 				7CC47CF21EA9AD0B006FBB53 /* SubviewWithCollectionView.m in Sources */,
 				7C55C7091ED969DB000991AF /* HttpWaiterService.m in Sources */,
@@ -1397,7 +1598,10 @@
 				7C25A7DA1EA86A3D0049234E /* BaseHttpAPI.m in Sources */,
 				7C25A7E31EA86A3D0049234E /* BaseRefreshListCustomCollectionViewController.m in Sources */,
 				7C25A7EE1EA86A3D0049234E /* BasePhoneVerifyCodeTableViewController.m in Sources */,
+				7C67C8DB1EF23A2B004AA6CE /* HttpTribe.m in Sources */,
+				7C67C90D1EF27E59004AA6CE /* UIViewController+LeeBase.m in Sources */,
 				7C8E788D1ED195A4000CADAA /* ShoppingListLogViewController.m in Sources */,
+				7C9FA7851EFA8528001A6A36 /* ManorTirbeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1531,7 +1735,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.youdian.blackcard.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "91feacd6-01a7-4c05-ab50-ada36c37b18b";
+				PROVISIONING_PROFILE = "c6cb6e37-643e-47de-981c-05b16d312ba9";
 				PROVISIONING_PROFILE_SPECIFIER = blackCardiOSDev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1543,7 +1747,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 96YGS7NXK5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1561,8 +1765,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.youdian.blackcard.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8a465569-f7c5-44d0-a660-d6f0ab77298f";
-				PROVISIONING_PROFILE_SPECIFIER = BlackCardiOS_AppStore;
+				PROVISIONING_PROFILE = "c6cb6e37-643e-47de-981c-05b16d312ba9";
+				PROVISIONING_PROFILE_SPECIFIER = blackCardiOSDev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

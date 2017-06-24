@@ -45,7 +45,12 @@ typedef NS_ENUM(NSInteger, PayStatus){
     PayNone = 6 //错误未知
 };
 
-
+typedef NS_ENUM(NSInteger, AppIntegrationStatus) {
+    kAction_ImageGroup  = 0x10000,
+    kAction_ImageGroupViewDismiss,
+    
+    
+};
 
 typedef NS_ENUM(NSInteger, PayType) {
     PayTypeDefaultPay,//默认 余额支付
@@ -53,4 +58,19 @@ typedef NS_ENUM(NSInteger, PayType) {
     PayTypeALiPay,//支付宝支付
     
 };
+
+typedef NS_ENUM(NSInteger, TribeType) {
+    TribeType_ImageAction      = 199199,
+    TribeType_PraiseAction,
+    TribeType_CommentAction,
+    TribeType_MoreAction,
+    TribeType_WebFinish,
+    TribeType_WebError,
+    TribeType_ManorAgreeMemberJoin,
+    TribeType_ManorRefuseMemberJoin,
+
+    
+};
+
+
 #endif

@@ -8,7 +8,6 @@
 
 #import "UserSetInfoTableViewController.h"
 #import "MyAndUserModel.h"
-#import "CustomAlertController.h"
 #import "ValidateHelper.h"
 #import "ImageProvider.h"
 #import "UIViewController+Category.h"
@@ -73,7 +72,7 @@
 }
 
 - (void)userInformationSetting {
-    [_userIconVidew sd_setImageWithURL:[NSURL URLWithString:_model.headUrl] placeholderImage:[UIImage imageNamed:@"userHeaderDefault"]];
+    [_userIconVidew sd_setImageWithURL:[NSURL URLWithString:_model.headUrl] placeholderImage:kUIImage_DefaultIcon];
     
     _blackCardNumField.text = _model.blackCardNo;
     _userTrueNameField.text = _model.fullName;

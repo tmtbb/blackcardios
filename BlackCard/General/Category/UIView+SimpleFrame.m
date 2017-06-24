@@ -27,6 +27,30 @@
     return self.frame.size.height;
 }
 
+
+- (CGSize)frameSize{
+    
+    return self.frame.size;
+}
+
+- (CGPoint)frameOrigin {
+    
+    return  self.frame.origin;
+}
+
+- (void)setFrameSize:(CGSize)size {
+    
+    CGRect rect  = self.frame;
+    rect.size = size;
+    self.frame = rect;
+}
+
+- (void)setFrameOrigin:(CGPoint)point {
+    
+    CGRect rect  = self.frame;
+    rect.origin = point;
+    self.frame = rect;
+}
 - (void)setFrameX:(CGFloat)framex {
     CGRect rect  = self.frame;
     rect.origin.x = framex;

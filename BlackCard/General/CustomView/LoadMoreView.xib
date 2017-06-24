@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,6 +24,9 @@
                 </activityIndicatorView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加载数据中..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfo-wG-Hjc">
                     <rect key="frame" x="259" y="0.0" width="83" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="1hh-kr-eYO"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -31,7 +34,6 @@
             </subviews>
             <constraints>
                 <constraint firstItem="Qfo-wG-Hjc" firstAttribute="leading" secondItem="FUz-2d-LKm" secondAttribute="trailing" constant="2" id="bkY-XT-mA1"/>
-                <constraint firstAttribute="bottom" secondItem="Qfo-wG-Hjc" secondAttribute="bottom" id="dhe-iI-5Jz"/>
                 <constraint firstItem="FUz-2d-LKm" firstAttribute="centerY" secondItem="Qfo-wG-Hjc" secondAttribute="centerY" id="eho-T0-5ds"/>
                 <constraint firstAttribute="centerX" secondItem="Qfo-wG-Hjc" secondAttribute="centerX" id="s1G-Wj-c4P"/>
                 <constraint firstItem="Qfo-wG-Hjc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tJp-ce-z7S"/>

@@ -6,14 +6,16 @@
 //  Copyright © 2017年 abx’s mac. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "TribeModel.h"
-#import "BaseRefreshPageTableViewController.h"
-@protocol PraiseRresh<NSObject>
--(void)cardTribeRefresh:(NSDictionary *)dict;
+#import "BaseRefreshPageCustomTableViewController.h"
+@class TribeModel;
+@protocol CardTribeDetailProcotol<NSObject>
+
+
+
+- (void)changeTribeIndexPath:(NSIndexPath *)path model:(TribeModel *)model;
 @end
-@interface CardTribeDetailViewController : UIViewController
+@interface CardTribeDetailViewController : BaseRefreshPageCustomTableViewController
 @property(strong,nonatomic)TribeModel *myModel;
-@property(copy,nonatomic)NSString *id;
-@property(assign,nonatomic)id<PraiseRresh>delegate;
+@property(strong,nonatomic)NSIndexPath *path;
+@property(assign,nonatomic)id<CardTribeDetailProcotol>delegate;
 @end

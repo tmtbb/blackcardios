@@ -64,6 +64,17 @@
 
 
 
+@implementation VersionModel
++(NSDictionary *)jsonKeysByPropertyKey
+{
+    return @{ @"describe" : @"description"
+             
+             };
+}
+
+
+@end
+
 
 
 @implementation UserBandModel

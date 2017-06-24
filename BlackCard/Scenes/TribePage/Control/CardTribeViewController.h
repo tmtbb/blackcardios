@@ -6,8 +6,7 @@
 //  Copyright © 2017年 abx’s mac. All rights reserved.
 //
 
-#import "BaseRefreshPageTableViewController.h"
+#import "BaseRefreshPageCustomTableViewController.h"
 
-@interface CardTribeViewController : BaseRefreshPageTableViewController
-
+@interface CardTribeViewController : BaseRefreshPageCustomTableViewController
 @end

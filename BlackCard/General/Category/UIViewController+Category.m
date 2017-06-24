@@ -8,7 +8,6 @@
 //#import "UIAlertView+Block.h"
 #import "UINavigationController+Category.h"
 #import "UIViewController+ActionCategory.h"
-#import "CustomAlertController.h"
 //#import "LoginChooseView.h"
 //#import "NoServerView.h"
 //#import "UIAlertCustomViewController.h"

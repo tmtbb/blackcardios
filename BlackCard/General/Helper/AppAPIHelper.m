@@ -10,12 +10,15 @@
 #import "HttpMyAndUser.h"
 #import "HttpHomePage.h"
 #import "HttpWaiterService.h"
+#import "HttpTribe.h"
 
 @implementation AppAPIHelper
 {
     id<MyAndUserAPI> _myAndUserAPI;
     id<HomePageAPI>_myHomePageAPI;
     id<WaiterServiceAPI>_myWaiterServiceAPI;
+    id<TribeAPI>_myTribeAPI;
+
  
 }
 
@@ -27,6 +30,7 @@ HELPER_SHARED(AppAPIHelper);
         _myAndUserAPI = [[HttpMyAndUser alloc] init];
         _myHomePageAPI = [[HttpHomePage alloc]init];
         _myWaiterServiceAPI = [[HttpWaiterService  alloc]init];
+        _myTribeAPI = [[HttpTribe alloc]init];
     }
     
     return self; 
@@ -46,6 +50,12 @@ HELPER_SHARED(AppAPIHelper);
 {
     return _myWaiterServiceAPI;
 }
+
+- (id <TribeAPI>)getTribeAPI
+{
+    return _myTribeAPI;
+}
+
 
 
 @end

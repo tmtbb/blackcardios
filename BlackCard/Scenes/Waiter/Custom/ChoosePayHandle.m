@@ -69,9 +69,7 @@
         NSString *money = [NSString stringWithFormat:@"%.2f",weakSelf.myBalance];
         
         [weakSelf.payTypeView update:money];
-        
-//        [weakSelf.payTypeView purseButtonCanUse:myBalance >= weakSelf.model.serviceAmount];
-    } error:nil];
+            } error:nil];
     
 }
 

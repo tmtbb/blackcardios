@@ -62,6 +62,8 @@
         _detailLabel.textAlignment = NSTextAlignmentCenter;
         
         
+        
+        
         _goButton = [UIButton buttonWithType:UIButtonTypeSystem];
         _goButton.frame = CGRectMake(30 * scale, _detailLabel.frameY + _detailLabel.frameHeight + 18 * scale, width - 60 * scale, 45 * scale);
         _goButton.layer.masksToBounds = YES;
@@ -114,7 +116,12 @@
     }
        
     _titleLabel.text = model.privilegeName;
+    
+    CGSize size = BoundIngRectWithText(model.privilegeDescribe, CGSizeMake(_detailLabel.frameWidth, MAXFLOAT), 14);
+    _detailLabel.textAlignment = size.height > kFontHeigt(14) + 1 ? NSTextAlignmentLeft : NSTextAlignmentCenter;
     _detailLabel.text = model.privilegeDescribe;
+    
+
     
 }
 

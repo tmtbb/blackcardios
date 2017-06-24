@@ -73,8 +73,10 @@
 
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
+
     return UIStatusBarStyleLightContent;
 }
+
 
 - (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item {
     if ([self.topViewController conformsToProtocol:@protocol(UINavigationBarDelegate)]

@@ -26,8 +26,10 @@
     [[QYSDK sharedSDK] registerAppId:KQiYuAppKey appName:KQiYuAppName];
     [[AppAPIHelper shared].getMyAndUserAPI getDeviceKeyWithComplete:nil withError:nil];
     [self registerUserNotificationSettings];
-   
+    
+        
     [self guidePageView];
+
     return YES;
 }
 
@@ -159,5 +161,26 @@
     
 }
 
+
+//- (void)clearWebView {
+//    
+//    if ([[[UIDevice currentDevice] systemVersion]intValue ] > 8) {
+//        NSArray * types =@[WKWebsiteDataTypeMemoryCache,WKWebsiteDataTypeDiskCache]; // 9.0之后才有的
+//        NSSet *websiteDataTypes = [NSSet setWithArray:types];
+//        NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
+//    
+//        [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
+//            
+//        }];
+//    }else{
+//        NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,NSUserDomainMask, YES) objectAtIndex:0];
+//        
+//        NSString *cookiesFolderPath = [libraryPath stringByAppendingString:@"/Cookies"];
+//        NSError *errors;
+//        
+//        [[NSFileManager defaultManager] removeItemAtPath:cookiesFolderPath error:&errors];
+//    }
+//    
+//}
 
 @end

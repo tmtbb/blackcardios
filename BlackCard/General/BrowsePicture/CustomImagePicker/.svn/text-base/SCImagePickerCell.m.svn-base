@@ -1,0 +1,118 @@
+//
+//  SCImagePickerCell.m
+//  SecretChat
+//
+//  Created by soyeaios2 on 15/3/1.
+//  Copyright (c) 2015年 Patrick.Coin. All rights reserved.
+//
+
+#import "SCImagePickerCell.h"
+#import "SCImagePickerObject.h"
+
+#define RowPicCount 3// 图片每行放3个
+#define PicWideAndHeight (kMainScreenWidth - 4 * PicBtw) / RowPicCount
+#define PicBtw 5
+
+@implementation SCImagePickerCell
+
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self){
+    }
+    return self;
+}
+
+-(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self setupSubViews];
+    }
+    return self;
+}
+
+-(void)setupSubViews {
+    self.logoArray = [[NSMutableArray alloc]init];
+    self.isSelectArray = [[NSMutableArray alloc]init];
+    for (int i = 0; i < RowPicCount; i ++) {
+        UIImageView *logoIV = [[UIImageView alloc]initWithFrame:CGRectMake((PicWideAndHeight + PicBtw)*i + PicBtw, PicBtw, PicWideAndHeight, PicWideAndHeight)];
+        logoIV.userInteractionEnabled = YES;
+        logoIV.clipsToBounds = YES;
+        logoIV.contentMode = UIViewContentModeScaleAspectFill;
+        
+        logoIV.image = nil;
+        UIImageView *selectIconIV = [[UIImageView alloc] initWithFrame:CGRectMake(PicWideAndHeight - 5 - 22, 5, 22, 22)];
+        selectIconIV.userInteractionEnabled = YES;
+        selectIconIV.image = nil;
+        [self.logoArray addObject:logoIV];
+        [self.isSelectArray addObject:selectIconIV];
+        [logoIV addSubview:selectIconIV];
+        [self.contentView addSubview:logoIV];
+    }
+    //点击事件
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(isCheckTapBlock:)];
+    [self.contentView addGestureRecognizer:tap];
+
+}
+
++(CGFloat)cellHeight {
+    return PicWideAndHeight + PicBtw * 2;
+}
+
+
+-(void)update:(id)data start:( NSInteger )startInt end:(NSInteger)endInt {
+    
+    if ([data isKindOfClass:[NSMutableArray class]]) {
+        NSMutableArray *objArray = (NSMutableArray*)data;
+        for (NSInteger i = startInt; i < endInt + 1; i ++) {
+            //照片
+            SCImagePickerObject *imagePickerObj = objArray[i];
+            UIImageView *logoIV = self.logoArray[i - startInt];
+            if (i == 0) {
+                logoIV.image = imagePickerObj.picImage;
+                continue;
+            }
+            if (kSystemVersion >= 9.0) {
+                logoIV.image = (imagePickerObj.result.aspectRatioThumbnail == NULL) ? nil: [UIImage imageWithCGImage:imagePickerObj.result.aspectRatioThumbnail] ;
+            }else {
+                logoIV.image = [UIImage imageWithCGImage:[imagePickerObj.result thumbnail]];
+            }
+            
+            //选择
+            UIImageView *isSelectIV = self.isSelectArray[i - startInt];
+            if (i == 0) {
+                isSelectIV.hidden = YES;
+            } else {
+                isSelectIV.hidden = NO;
+                isSelectIV.image = imagePickerObj.isChecked == YES ? [UIImage imageNamed:@"cm_addressBookYes"]:[UIImage imageNamed:@"cm_addressBookNone"];
+            }
+            
+        }
+        //多余空白图片处理（不显示）（重用时会出现这个问题）
+        if (endInt - startInt < RowPicCount - 1) {
+            for (int i = RowPicCount; i > endInt - startInt + 1; i -- ) {
+                UIImageView *logoIV = self.logoArray[i - 1];
+                logoIV.image = nil;
+                UIImageView *isSelectIV = self.isSelectArray[i - 1];
+                isSelectIV.image = nil;
+            }
+        }
+    }
+}
+
+#pragma mark - Action
+-(void)isCheckTapBlock:(UITapGestureRecognizer*)tap {
+    CGPoint point = [tap locationInView:self.contentView];
+    for (int i = 0; i < RowPicCount; i ++) {
+        if (point.x > i*(PicWideAndHeight + PicBtw)+ PicBtw && point.x < (i + 1)*(PicWideAndHeight + PicBtw)) {
+            if (self.isCheckedBlock) {
+                self.isCheckedBlock(i);
+            }
+        }
+    }
+}
+
+
+
+
+
+@end

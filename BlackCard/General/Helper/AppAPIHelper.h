@@ -10,6 +10,7 @@
 #import "MyAndUserAPI.h"
 #import "HomePageAPI.h"
 #import "WaiterServiceAPI.h"
+#import "TribeAPI.h"
 
 @protocol MessageAPI;
 
@@ -27,4 +28,6 @@
 - (id<HomePageAPI>)getHomePageAPI;
 
 - (id<WaiterServiceAPI>)getWaiterServiceAPI;
+- (id<TribeAPI>)getTribeAPI;
+
 @end

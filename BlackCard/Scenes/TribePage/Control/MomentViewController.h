@@ -6,8 +6,17 @@
 //  Copyright © 2017年 abx’s mac. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseWriteTextViewController.h"
 
-@interface MomentViewController : UIViewController
 
+@protocol MomentViewControllerDelegate <NSObject>
+
+- (void)pushMomentComplete:(id)data;
+
+@end
+@interface MomentViewController : BaseWriteTextViewController
+
+@property(copy,nonatomic)NSString *circleId;
+@property(copy,nonatomic)NSString *name;
+@property(weak,nonatomic)id<MomentViewControllerDelegate> delegate;
 @end

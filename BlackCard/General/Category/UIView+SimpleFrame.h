@@ -16,6 +16,13 @@
 - (CGFloat)frameWidth;
 
 - (CGFloat)frameHeight;
+- (CGSize)frameSize;
+
+- (CGPoint)frameOrigin;
+
+- (void)setFrameSize:(CGSize)size;
+
+- (void)setFrameOrigin:(CGPoint)point;
 
 - (void)setFrameX:(CGFloat)framex;
 - (void)setFrameY:(CGFloat)framey;
