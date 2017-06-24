@@ -20,12 +20,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self settingWebView];
     self.title = _articleModel.title;
-    _webToos =[[WKWebViewToos alloc]initWithWebViewFrame:self.tableView.bounds];
+    
+    
+}
+
+- (void)settingWebView{
+    CGRect rect = self.tableView.bounds;
+    rect.size.height = kMainScreenHeight - 104;;
+    _webToos =[[WKWebViewToos alloc]initWithWebViewFrame:rect];
     _webToos.isOnceLoad = YES;
     self.tableView.tableHeaderView = _webToos.webView;
     _webToos.webView.scrollView.scrollEnabled = NO;
-    
 }
 
 
@@ -52,6 +59,8 @@
 //    [self sectonHeaderSetTitleNumber:detailModel.commentNum];
 //    
 //}
+
+
 
 - (void)reloadWebView:(TheArticleDetailModel *)model; {
     WEAKSELF
@@ -81,7 +90,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return  1;
+    return  _dataArray.count > 0 ? 1 : 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -164,6 +173,8 @@
     }
     [self.tableView reloadData];
 }
+
+
 
 
 @end
