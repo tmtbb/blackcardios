@@ -13,7 +13,6 @@
 @interface TheArticleDetailViewController ()<TheAriticleCommentProtocol>
 @property(strong,nonatomic)TheArticleDetailModel *detailModel;
 @property(strong,nonatomic)WKWebViewToos *webToos;
-@property(assign,nonatomic)BOOL isReloadedWeb;
 @property(strong,nonatomic)UIView *sectionHeaderView;
 @end
 
@@ -23,6 +22,7 @@
     [super viewDidLoad];
     self.title = _articleModel.title;
     _webToos =[[WKWebViewToos alloc]initWithWebViewFrame:self.tableView.bounds];
+    _webToos.isOnceLoad = YES;
     self.tableView.tableHeaderView = _webToos.webView;
     _webToos.webView.scrollView.scrollEnabled = NO;
     
@@ -34,38 +34,35 @@
       
         WEAKSELF
        [[AppAPIHelper shared].getTribeAPI getArticleId:_articleModel.articleId complete:^(id data) {
-           [weakSelf settingDetailModel:data];
+           [weakSelf setDetailModel:data];
            [weakSelf reloadWebView:data];
        } error:_errorBlock];
-    }else {
         
+        
+        
+    }else {
         [[AppAPIHelper shared].getTribeAPI getArticleCommentListId:_articleModel.articleId page:pageIndex complete:_completeBlock error:_errorBlock];
         
     }
     
 }
 
-- (void)settingDetailModel:(TheArticleDetailModel *)detailModel {
-    _detailModel = detailModel;
-    [self sectonHeaderSetTitleNumber:detailModel.commentNum];
-    
-}
+//- (void)setDetailModel:(TheArticleDetailModel *)detailModel {
+//    _detailModel = detailModel;
+//    [self sectonHeaderSetTitleNumber:detailModel.commentNum];
+//    
+//}
 
 - (void)reloadWebView:(TheArticleDetailModel *)model; {
     WEAKSELF
-    if (!_isReloadedWeb) {
+    
+    
+    [_webToos loadRequest:model.detailUrl withReponse:^(WKWebView *webView, id response, NSError *error) {
+        webView.frameHeight = [response floatValue];
+        weakSelf.tableView.tableHeaderView = webView;
+        weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
         
-        [_webToos loadRequest:model.coverUrl withReponse:^(WKWebView *webView, id response, NSError *error) {
-            webView.frameHeight = [response floatValue];
-            weakSelf.tableView.tableHeaderView = webView;
-            [weakSelf.tableView reloadData];
-            weakSelf.isReloadedWeb = YES;
-            weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
-            
-        }];
-    }
-    
-    
+    }];
     
     [[AppAPIHelper shared].getTribeAPI getArticleCommentListId:_articleModel.articleId page:1 complete:_completeBlock    error:_errorBlock];
     
@@ -84,7 +81,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return _isReloadedWeb ? 1 : 0;
+    return  1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -104,7 +101,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
+    [self sectonHeaderSetTitleNumber:_detailModel.commentNum];
     return self.sectionHeaderView;
 }
 

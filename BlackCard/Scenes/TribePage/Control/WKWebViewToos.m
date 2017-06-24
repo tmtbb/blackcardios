@@ -12,6 +12,7 @@
 @property(strong,nonatomic)WKWebView *wkWeb;
 @property(strong,nonatomic)UIProgressView *proressView;
 @property(copy,nonatomic)WKWebViewToosBlock myBlock;
+@property(nonatomic)BOOL loadFinish;
 @end
 @implementation WKWebViewToos
 
@@ -39,9 +40,12 @@
 }
 
 - (void)loadRequest:(NSString *)url withReponse:(void(^)(WKWebView *webView,id response,NSError *error))block {
-    _myBlock = block;
-     [_wkWeb loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
-        
+    
+    
+    if (!_isOnceLoad  || !_loadFinish ) {
+        _myBlock = block;
+        [_wkWeb loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+    }
     
 }
 
@@ -57,7 +61,7 @@
         }
 
     }];
-    
+    _loadFinish = YES;
     
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

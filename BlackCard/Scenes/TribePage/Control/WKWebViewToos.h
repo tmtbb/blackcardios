@@ -12,7 +12,7 @@
 typedef void(^WKWebViewToosBlock)(WKWebView *webView,id response,NSError *error);
 
 @interface WKWebViewToos : NSObject
-
+@property(nonatomic)BOOL isOnceLoad;
 - (WKWebView *)webView ;
 - (instancetype)initWithWebViewFrame:(CGRect)rect;
 - (void)loadRequest:(NSString *)url withReponse:(void(^)(WKWebView *webView,id response,NSError *error))block;
