@@ -168,7 +168,48 @@
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    CommentListModel *model = [self tableView:self.tableView cellDataForRowAtIndexPath:indexPath];
+    
+    if ([model.userId isEqualToString:[CurrentUserHelper shared].uid]) {
+       
+        CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert addButtonWithTitle:@"删除" andStyle:UIAlertActionStyleDestructive];
+        [alert addCancleButton:@"取消"];
+        WEAKSELF
+        [alert show:self didClicked:^(UIAlertAction *action, NSInteger buttonIndex) {
+            if (action.style == UIAlertActionStyleDestructive) {
+                [weakSelf doDeleteComment:model indexPath:indexPath];
+            }
+        }];
+        
+    }
+    
+    
+    
+    
+    
+}
 
+
+- (void)doDeleteComment:(CommentListModel *)model indexPath:(NSIndexPath *)path{
+    __weak NSMutableArray *array = _dataArray;
+    WEAKSELF
+    [self showLoader:@"评论删除中..."];
+    [[AppAPIHelper shared].getTribeAPI doDeleteCircleWithCommentId:model.commentId complete:^(id data) {
+        [array removeObjectAtIndex:path.row];
+        weakSelf.myModel.commentNum -= 1;
+        [weakSelf.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+        [weakSelf.tableView reloadSections: [NSIndexSet indexSetWithIndex:0]  withRowAnimation:UITableViewRowAnimationFade];
+        [weakSelf showTips:@"评论删除成功"];
+        [weakSelf changeTribeModel:weakSelf.myModel];
+        
+    } error:^(NSError *error) {
+        [weakSelf showError:error];
+    }];
+
+}
 #pragma mark -CardTribeCellDelegate
 -(void)praise:(NSIndexPath *)path{
     WEAKSELF
@@ -192,7 +233,26 @@
 }
 -(void)more:(NSIndexPath *)path{
     TribeModel *model =  [self tableView:self.tableView cellDataForRowAtIndexPath:path];
-    [CardTribeHandle doMore:self model:model];
+    WEAKSELF
+    [CardTribeHandle doMore:self model:model block:^(BOOL isDelete, id data, NSError *error) {
+        if (error) {
+            [weakSelf showError:error];
+        }else {
+            
+            if (isDelete) {
+                [weakSelf showTips:@"删除成功"];
+                [weakSelf deleteMyPush];
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+                
+            }else {
+                [weakSelf showTips:@"举报成功"];
+                
+            }
+            
+        }
+        
+        
+    }];
     
 }
 
@@ -221,5 +281,11 @@
     }
 }
 
+- (void)deleteMyPush {
+    
+    if ([self.delegate respondsToSelector:@selector(deleteMyPushWihtPath:)]) {
+        [self.delegate deleteMyPushWihtPath:_path];
+    }
+}
 
 @end

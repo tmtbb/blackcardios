@@ -204,5 +204,36 @@
     
 }
 
+- (void)doDeleteCircleWihtId:(NSString *)cricleId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:cricleId forKey:@"circleMessageId"];
+    
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postRequest:kHttpAPIUrl_deleteCircle parameters:parameters complete:complete error:errorBlock];
+    }
+    
+}
+
+- (void)doDeleteCircleWithCommentId:(NSString *)commentId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:commentId forKey:@"commentId"];
+    
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postRequest:kHttpAPIUrl_deleteCircleComment parameters:parameters complete:complete error:errorBlock];
+    }
+    
+}
+
+- (void)doDeleteArticleWithCommentId:(NSString *)commentId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock {
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:commentId forKey:@"commentId"];
+    
+    if ([self addCurrentUserToken:parameters isMustToken:YES error:errorBlock]) {
+        [self postRequest:kHttpAPIUrl_deleteArticleComment parameters:parameters complete:complete error:errorBlock];
+    }
+    
+    
+}
 
 @end

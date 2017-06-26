@@ -125,4 +125,11 @@
 
 //审核成员
 #define kHttpAPIUrl_auditManorPerson    kHttpAPIUrl_HOST@"/api/tribe/member/verify.json"
+
+// 圈子删除
+#define kHttpAPIUrl_deleteCircle    kHttpAPIUrl_HOST@"/api/circle/message/delete.json"
+//圈子评论删除
+#define kHttpAPIUrl_deleteCircleComment    kHttpAPIUrl_HOST@"/api/circle/message/comment/delete.json"
+//文章评论删除
+#define kHttpAPIUrl_deleteArticleComment    kHttpAPIUrl_HOST@"/api/article/comment/delete.json"
 #endif /* HttpHeader_h */

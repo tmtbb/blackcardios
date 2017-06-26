@@ -56,26 +56,68 @@
     
 }
 
-+ (void)doMore:(UIViewController *)control model:(TribeModel *)model {
++ (void)doMore:(UIViewController *)control model:(TribeModel *)model  block:(CardTribeHandleBlock)block{
     
+    CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"更多功能" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    BOOL isMe = [model.userId isEqualToString:[CurrentUserHelper shared].uid];
+    [alert addButtonWithTitle:isMe ? @"删除" : @"举报" andStyle:UIAlertActionStyleDestructive];
+    [alert addCancleButton:@"取消"];
     
-    CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"更多功能" message:nil preferredStyle:UIAlertControllerStyleActionSheet cancelButtonTitle:@"取消" otherButtonTitles:@"举报",nil];
+    WEAKSELF
     [alert show:control didClicked:^(UIAlertAction *action, NSInteger buttonIndex) {
         if (action.style != UIAlertActionStyleCancel) {
-            if (model.circleId  == nil) {
-                [control showTips:@"举报内容不存在"];
-                return;
+            if (isMe) {
+                [weakSelf doDeleteCircleWihtModel:model control:control block:block];
+                
+            }else {
+                [weakSelf   doReportWihtModel:model control:control block:block];
+                
             }
-            [control showLoader:@"正在举报..."];
-            [[AppAPIHelper shared].getTribeAPI toReportMessageId:model.circleId complete:^(id data) {
-                [control showTips:@"举报成功"];
-            } error:^(NSError *error) {
-                [control showError:error];
-            }];
+            
         }
         
     }];
 
 }
+
++ (void)doDeleteCircleWihtModel:(TribeModel *)model control:(UIViewController *)controller  block:(CardTribeHandleBlock)block {
+    [controller showLoader:@"正在删除"];
+   [[AppAPIHelper shared].getTribeAPI doDeleteCircleWihtId:model.circleId complete:^(id data) {
+       if (block) {
+           block(YES,data,nil);
+       }
+   } error:^(NSError *error) {
+       if (block) {
+           block(YES,nil,error);
+       }
+   }];
+    
+}
+
++ (void)doReportWihtModel:(TribeModel *)model control:(UIViewController *)controller  block:(CardTribeHandleBlock)block{
+    
+    if (model.circleId  == nil) {
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"举报内容不存在" forKey:NSLocalizedDescriptionKey];
+        NSError  *error = [NSError errorWithDomain:kAppNSErrorDomain code:kAppNSErrorCheckDataCode userInfo:userInfo];
+        if (block) {
+            block(NO,nil,error);
+        }
+        return;
+    }
+    [controller showLoader:@"正在举报..."];
+    [[AppAPIHelper shared].getTribeAPI toReportMessageId:model.circleId complete:^(id data) {
+        block(NO,data,nil);
+        if (block) {
+            block(NO,data,nil);
+        }
+    } error:^(NSError *error) {
+        if (block) {
+            block(NO,nil,error);
+        }
+    }];
+    
+}
+
+
 @end
 

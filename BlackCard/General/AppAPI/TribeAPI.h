@@ -59,4 +59,14 @@ file	是	stream	图片流
 // 管理成员
 - (void)doAuditManorPerson:(NSString *)personId type:(NSString *)type complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 
+// 圈子删除发布
+
+- (void)doDeleteCircleWihtId:(NSString *)cricleId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+// 圈子删除评论
+
+-(void)doDeleteCircleWithCommentId:(NSString *)commentId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
+
+// 文章删除评论
+- (void)doDeleteArticleWithCommentId:(NSString *)commentId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 @end

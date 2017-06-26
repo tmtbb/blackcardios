@@ -17,6 +17,10 @@
     NSMutableArray *_dataArray;
 }
 
+-(NSString*) emptyDataTipsContent;
+
+- (EveryNoneType) emptyImageType;
+
 /**
  *  空数据时显示view
  *

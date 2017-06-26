@@ -112,7 +112,14 @@
 
 @implementation CommentListModel
 
-
++(NSDictionary *)jsonKeysByPropertyKey
+{
+    return @{
+             @"commentId":@"id",
+             };
+    
+    
+}
 - (NSString *)giveTime {
     
     return _createTime;

@@ -75,7 +75,6 @@ static char* kContentScrollView = "kContentScrollView";
     UIScrollView *contentView = [self contentScrollView];
     if( headerView == nil && contentView ) {
         headerView = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(didRequest)];
-        //        headerView.scrollView = self.contentScrollView;
         self.contentScrollView.mj_header = headerView;
         //        headerView.delegate = (id<MJRefreshBaseViewDelegate>)self;
         //        if( [self refreshWhiteMode] )
@@ -89,7 +88,6 @@ static char* kContentScrollView = "kContentScrollView";
 {
     if( objc_getAssociatedObject(self, KRefreshHeaderView) ) {
         [[self refreshHeaderView ] removeFromSuperview];
-//        [[self refreshHeaderView] free];
         UIEdgeInsets contentInset = self.contentScrollView.contentInset;
         if( contentInset.top != 0 ) {
             contentInset.top = 0;
@@ -100,10 +98,6 @@ static char* kContentScrollView = "kContentScrollView";
     }
 }
 
-
-- (void)refreshViewBeginRefreshing:(MJRefreshComponent *)refreshView {
-    [self didRequest];
-}
 
 - (void)didRequest {
 

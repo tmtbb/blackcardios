@@ -40,7 +40,7 @@
     
     [[AppAPIHelper shared].getTribeAPI pushArticleCommentId:_model.articleId comment:str complete:^(id data) {
         [weakSelf showTips:@"评论成功"];
-        weakSelf.model.commentNum = [NSString stringWithFormat:@"%@",@(weakSelf.model.commentNum.integerValue + 1)];
+        weakSelf.model.commentNum += 1;
         [weakSelf refreshWihtData:data];
         [weakSelf.navigationController popViewControllerAnimated:YES];
         

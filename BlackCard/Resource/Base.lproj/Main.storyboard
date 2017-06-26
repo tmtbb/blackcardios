@@ -5822,6 +5822,7 @@
                                             <outlet property="detailLabel" destination="Jx1-vG-oWU" id="1TY-Ha-XBu"/>
                                             <outlet property="headerButton" destination="9pm-Jr-QRj" id="FHY-xZ-2CU"/>
                                             <outlet property="nameLabel" destination="lBF-Ob-jRu" id="sgf-pS-b90"/>
+                                            <outlet property="showView" destination="0pE-fW-LwF" id="rIF-Um-tEp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -5897,10 +5898,10 @@
             </objects>
             <point key="canvasLocation" x="-3077.5999999999999" y="3330.5847076461773"/>
         </scene>
-        <!--Title-->
+        <!--TheArticleDetailViewController-->
         <scene sceneID="gwI-A4-U7x">
             <objects>
-                <viewController storyboardIdentifier="TheArticleDetailViewController" hidesBottomBarWhenPushed="YES" id="PL6-kt-6MK" customClass="TheArticleDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TheArticleDetailViewController" hidesBottomBarWhenPushed="YES" id="PL6-kt-6MK" userLabel="TheArticleDetailViewController" customClass="TheArticleDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vPh-tJ-9Lj"/>
                         <viewControllerLayoutGuide type="bottom" id="UaU-un-3hT"/>
@@ -5996,6 +5997,7 @@
                                             <outlet property="detailLabel" destination="lXI-hf-X5t" id="bBW-8F-ybU"/>
                                             <outlet property="headerButton" destination="fNQ-3j-NVB" id="hAk-xb-cSG"/>
                                             <outlet property="nameLabel" destination="IxT-Zq-eRO" id="WpM-am-GCG"/>
+                                            <outlet property="showView" destination="Ry5-X2-Rfz" id="1Xd-gO-slQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

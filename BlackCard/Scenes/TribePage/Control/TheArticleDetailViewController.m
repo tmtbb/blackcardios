@@ -28,7 +28,7 @@
 
 - (void)settingWebView{
     CGRect rect = self.tableView.bounds;
-    rect.size.height = kMainScreenHeight - 104;;
+    rect.size.height = kMainScreenHeight - 64;
     _webToos =[[WKWebViewToos alloc]initWithWebViewFrame:rect];
     _webToos.isOnceLoad = YES;
     self.tableView.tableHeaderView = _webToos.webView;
@@ -87,11 +87,11 @@
 
     
 }
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-    return  _dataArray.count > 0 ? 1 : 0;
-}
+//
+//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    
+//    return  _dataArray.count > 0 ? 1 : 0;
+//}
 
 - (NSString *)tableView:(UITableView *)tableView cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -120,6 +120,44 @@
        
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    CommentListModel *model = [self tableView:self.tableView cellDataForRowAtIndexPath:indexPath];
+    
+    if ([model.userId isEqualToString:[CurrentUserHelper shared].uid]) {
+        
+        CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert addButtonWithTitle:@"删除" andStyle:UIAlertActionStyleDestructive];
+        [alert addCancleButton:@"取消"];
+        WEAKSELF
+        [alert show:self didClicked:^(UIAlertAction *action, NSInteger buttonIndex) {
+            if (action.style == UIAlertActionStyleDestructive) {
+                [weakSelf doDeleteComment:model indexPath:indexPath];
+            }
+        }];
+        
+    }
+    
+}
+
+- (void)doDeleteComment:(CommentListModel *)model indexPath:(NSIndexPath *)path{
+    __weak NSMutableArray *array = _dataArray;
+    WEAKSELF
+    [self showLoader:@"评论删除中..."];
+    [[AppAPIHelper shared].getTribeAPI doDeleteArticleWithCommentId:model.commentId complete:^(id data) {
+        [array removeObjectAtIndex:path.row];
+        [weakSelf.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+        weakSelf.detailModel.commentNum  -=1;
+        [weakSelf sectonHeaderSetTitleNumber:weakSelf.detailModel.commentNum];
+        [weakSelf showTips:@"评论删除成功"];
+        
+    } error:^(NSError *error) {
+        [weakSelf showError:error];
+    }];
+    
+}
+
 - (UIView *)sectionHeaderView {
     
     if (_sectionHeaderView == nil) {
@@ -145,10 +183,10 @@
 }
 
 
-- (void)sectonHeaderSetTitleNumber:(NSString *)number {
+- (void)sectonHeaderSetTitleNumber:(NSInteger )number {
     UILabel *label = [self.sectionHeaderView viewWithTag:100];
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc]initWithString:@"评论" attributes:@{NSForegroundColorAttributeName : kUIColorWithRGB(0x434343),NSFontAttributeName : [UIFont systemFontOfSize:14]}];
-    [string appendAttributedString:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"(%@)",number] attributes:@{NSForegroundColorAttributeName : kUIColorWithRGB(0x434343),NSFontAttributeName : [UIFont systemFontOfSize:12]}]];
+    [string appendAttributedString:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"(%@)",@(number)] attributes:@{NSForegroundColorAttributeName : kUIColorWithRGB(0x434343),NSFontAttributeName : [UIFont systemFontOfSize:12]}]];
     
     label.attributedText = string;
     [label sizeToFit];
@@ -174,6 +212,18 @@
     [self.tableView reloadData];
 }
 
+
+//- (UIView *)showEmptyDataCustomTipsView {
+//    
+//    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 40)];
+//    label.textAlignment = NSTextAlignmentCenter;
+//    label.text = @"暂无评论哦";
+//    label.font = [UIFont systemFontOfSize:14];
+//    label.textColor = kUIColorWithRGB(0xa6a6a6);
+//    return label;
+//    
+//    
+//}
 
 
 

@@ -11,6 +11,7 @@
 @protocol CardTribeDetailProcotol<NSObject>
 
 
+- (void)deleteMyPushWihtPath:(NSIndexPath *)path;
 
 - (void)changeTribeIndexPath:(NSIndexPath *)path model:(TribeModel *)model;
 @end
