@@ -36,12 +36,12 @@
 - (void)pushArticleCommentId:(NSString *)articleId comment:(NSString *)comment complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 
 
-// 领地列表
+// 部落列表
 - (void)getManorDescribeListComplete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 //成员列表
 - (void)getManorPersonListTribeId:(NSString *)tribeId page:(NSInteger)page complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 
-//创建领地
+//创建部落
 /*
 token	是	string	登录获得的token
 name	是	string	部落名称
@@ -52,9 +52,9 @@ description	是	string	描述
 file	是	stream	图片流
  */
 - (void)doCreateManorWihtDic:(NSDictionary*)dic complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
-// 领地信息
+// 部落信息
 - (void)getManorInfoWihtManorId:(NSString *)manorId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
-// 加入退出领地
+// 加入退出部落
 - (void)doJoinOrOutManorPerson:(BOOL)inOrOut manorId:(NSString *)manorId complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;
 // 管理成员
 - (void)doAuditManorPerson:(NSString *)personId type:(NSString *)type complete:(CompleteBlock)complete error:(ErrorBlock)errorBlock;

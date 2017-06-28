@@ -29,7 +29,7 @@
 - (void)settingWebView{
     CGRect rect = self.tableView.bounds;
     rect.size.height = kMainScreenHeight - 64;
-    _webToos =[[WKWebViewToos alloc]initWithWebViewFrame:rect];
+    _webToos =[[WKWebViewToos alloc]initWithWebViewFrame:rect controller:self];
     _webToos.isOnceLoad = YES;
     self.tableView.tableHeaderView = _webToos.webView;
     _webToos.webView.scrollView.scrollEnabled = NO;

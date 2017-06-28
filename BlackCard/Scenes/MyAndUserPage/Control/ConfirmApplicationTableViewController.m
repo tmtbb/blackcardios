@@ -42,7 +42,7 @@
     UIFont *font = [UIFont systemFontOfSize:12];
     
     NSMutableAttributedString *baseStr = [[NSMutableAttributedString alloc]initWithString:@"我已经完全阅读并同意" attributes:@{NSFontAttributeName : font,NSForegroundColorAttributeName:kUIColorWithRGB(0xA6A6A6)}];
-    [baseStr appendAttributedString:[[NSAttributedString alloc]initWithString:@"《精英黑卡会籍服务章程》" attributes:@{NSFontAttributeName : font,NSForegroundColorAttributeName:kUIColorWithRGB(0xE3A63F)}]];
+    [baseStr appendAttributedString:[[NSAttributedString alloc]initWithString:@"《无限黑卡会籍服务章程》" attributes:@{NSFontAttributeName : font,NSForegroundColorAttributeName:kUIColorWithRGB(0xE3A63F)}]];
     [self.serviceButton setAttributedTitle:baseStr forState:UIControlStateNormal];
     
 }
@@ -192,9 +192,9 @@
 }
 - (IBAction)showWedAction:(UIButton *)sender {
     
-    [self pushWithIdentifier:@"WebViewController" complete:^(UIViewController *controller) {
+    [self pushWithIdentifier:@"WKWebViewController" complete:^(UIViewController *controller) {
         [controller setValue:kHttpAPIUrl_userAgreement forKey:@"url"];
-        [controller setValue:@"《精英黑卡会籍服务章程》" forKey:@"webTitle"];
+        [controller setValue:@"《无限黑卡会籍服务章程》" forKey:@"webTitle"];
     }];
     
 }

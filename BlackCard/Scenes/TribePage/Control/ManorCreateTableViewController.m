@@ -92,18 +92,18 @@
     NSString *workType = self.workTypeField.text.trim;
     NSString *detail = self.detailTextView.text.trim;
     if ([NSString isEmpty:name]) {
-        [self showTips:@"请输入领地名称"];
+        [self showTips:@"请输入部落名称"];
     }else if (!_manorImage){
         
-        [self showTips:@"请选择领地背景图"];
+        [self showTips:@"请选择部落背景图"];
         
     }else if (!_locationModel) {
         
-        [self showTips:@"请选择领地地址"];
+        [self showTips:@"请选择部落地址"];
         
     }else if ([NSString isEmpty:workType]){
         
-        [self showTips:@"请输入领地行业"];
+        [self showTips:@"请输入部落行业"];
     }else if ([NSString isEmpty:detail]){
         
         [self showTips:@"请输入简介"];
@@ -163,10 +163,10 @@
     UIColor   *color = nil;
     NSString * string = nil;
     if (model) {
-        string =  [NSString stringWithFormat:@"领地地址：%@-%@ ",model.state,model.city];
+        string =  [NSString stringWithFormat:@"部落地址：%@-%@ ",model.state,model.city];
         color = kUIColorWithRGB(0x434343);
     }else {
-        string =  @"选择领地地址";
+        string =  @"选择部落地址";
         color =kUIColorWithRGB(0xa6a6a6);
         
     }

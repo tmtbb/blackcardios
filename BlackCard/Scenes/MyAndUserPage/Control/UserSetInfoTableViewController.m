@@ -332,7 +332,7 @@
         [self showError:error];
     }else if([NSString isEmpty:_model.nickName] ){
         [self showTips:@"昵称不能为空"];
-    }else if (![[ValidateHelper shared] checkPersonIdentityNumebr:_model.identityCard error:&error]){
+    }else if (![NSString isEmpty:_model.identityCard] && ![[ValidateHelper shared] checkPersonIdentityNumebr:_model.identityCard error:&error]){
         
         [self showError:error];
     }else {

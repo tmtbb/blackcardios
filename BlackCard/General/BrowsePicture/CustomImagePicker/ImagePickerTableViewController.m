@@ -335,7 +335,7 @@
 - (void) alertPower {
     //无权限提示
     CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"提示"
-                                                                           message:@"请在iPhone的\"设置-隐私-照片\"选项中,允许精英管家访问你的照片" preferredStyle:UIAlertControllerStyleAlert cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                                                           message:@"请在iPhone的\"设置-隐私-照片\"选项中,允许无限黑卡访问你的照片" preferredStyle:UIAlertControllerStyleAlert cancelButtonTitle:@"确定" otherButtonTitles:nil];
     WEAKSELF
    [alert show:self didClicked:^(UIAlertAction *action, NSInteger buttonIndex) {
        [weakSelf.navigationController popViewControllerAnimated:YES];

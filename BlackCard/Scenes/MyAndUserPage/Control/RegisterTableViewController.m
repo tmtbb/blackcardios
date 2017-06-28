@@ -245,7 +245,7 @@
 - (IBAction)rightBarButtonAction:(UIBarButtonItem *)sender {
     
     
-    [self pushWithIdentifier:@"WebViewController" complete:^(UIViewController *controller) {
+    [self pushWithIdentifier:@"WKWebViewController" complete:^(UIViewController *controller) {
       [controller setValue:kHttpAPIUrl_webCallWaiter forKey:@"url"];
     }];
     

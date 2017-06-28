@@ -8,11 +8,12 @@
 
 #import "WKWebViewToos.h"
 
-@interface WKWebViewToos ()<WKNavigationDelegate>
+@interface WKWebViewToos ()<WKNavigationDelegate,WKUIDelegate>
 @property(strong,nonatomic)WKWebView *wkWeb;
 @property(strong,nonatomic)UIProgressView *proressView;
 @property(copy,nonatomic)WKWebViewToosBlock myBlock;
 @property(nonatomic)BOOL loadFinish;
+@property(weak,nonatomic)UIViewController *viewController;
 @end
 @implementation WKWebViewToos
 
@@ -26,6 +27,7 @@
         web.backgroundColor = kAppBackgroundColor;
         web.navigationDelegate = self;
         web.allowsBackForwardNavigationGestures = YES;
+        web.UIDelegate = self;
         [web addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
         _wkWeb = web;
         _proressView = [[UIProgressView alloc]initWithFrame:CGRectMake(0, 0,_wkWeb.frameWidth, 2)];
@@ -39,6 +41,13 @@
     return self;
 }
 
+- (instancetype)initWithWebViewFrame:(CGRect)rect controller:(UIViewController *)controller {
+    self = [self initWithWebViewFrame:rect];
+    if (self) {
+        _viewController = controller;
+    }
+    return self;
+}
 - (void)loadRequest:(NSString *)url withReponse:(void(^)(WKWebView *webView,id response,NSError *error))block {
     
     
@@ -88,5 +97,26 @@
     
     return _wkWeb;
     
+}
+
+
+-(WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
+{
+    NSLog(@"createWebViewWithConfiguration");
+    if (!navigationAction.targetFrame.isMainFrame) {
+        
+        [_viewController pushWithIdentifier:@"WKWebViewController" complete:^(UIViewController *controller) {
+            
+            [controller setValue:navigationAction.request.URL.absoluteString forKey:@"url"];
+
+        }];
+//        [_viewController presentViewControllerWithIdentifier:@"WKWebViewController" isNavigation:YES block:^(UIViewController *viewController) {
+//            [viewController setValue:navigationAction.request.URL.absoluteString forKey:@"url"];
+//            [viewController setValue:@(YES) forKey:@"needBack"];
+//        }];
+        
+    }
+    
+    return nil;
 }
 @end
