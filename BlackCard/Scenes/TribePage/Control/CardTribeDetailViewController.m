@@ -170,6 +170,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    if( indexPath.section != 1 ) {
+        return ;
+    }
     CommentListModel *model = [self tableView:self.tableView cellDataForRowAtIndexPath:indexPath];
     
     if ([model.userId isEqualToString:[CurrentUserHelper shared].uid]) {
