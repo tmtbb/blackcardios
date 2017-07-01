@@ -50,7 +50,7 @@
 
 @interface TheArticleModel : BaseTribeModel
 
-@property(copy,nonatomic)NSString *commentNum;  //评论数
+@property(assign,nonatomic)NSInteger commentNum;  //评论数
 @property(copy,nonatomic)NSString *summary;     //摘要
 @property(copy,nonatomic)NSString *articleId;   //id
 @property(copy,nonatomic)NSString *title;       //标题
@@ -71,10 +71,10 @@
 @interface CommentListModel : BaseTribeModel
 @property(copy,nonatomic)NSString *createTime;//创建时间
 @property(copy,nonatomic)NSString *nickName;//评论人别称
-@property(assign,nonatomic)NSInteger userId;//评论人id
+@property(copy,nonatomic)NSString *userId;//评论人id
 @property(copy,nonatomic)NSString *headUrl;//评论人头像
 @property(copy,nonatomic)NSString *comment;//评论内容
-
+@property(copy,nonatomic)NSString *commentId;//评论ID
 
 
 @property(nonatomic)NSInteger yearMonth;// 格式化取出 年月

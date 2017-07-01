@@ -8,6 +8,7 @@
 //#import "UIAlertView+Block.h"
 #import "UINavigationController+Category.h"
 #import "UIViewController+ActionCategory.h"
+#import "CustomAlertController.h"
 //#import "LoginChooseView.h"
 //#import "NoServerView.h"
 //#import "UIAlertCustomViewController.h"
@@ -128,17 +129,18 @@ static char *CustomNavigationBarKey = "CustomNavigationBarKey";
 //    if ( [self respondsToSelector:@selector(tokenExpired)] ) {
 //        [self performSelector:@selector(tokenExpired)];
 //    }
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"账号在别处登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录", nil];
+    
+    
+    CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"提示" message:@"账号在别处登录" preferredStyle:UIAlertControllerStyleAlert cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
     WEAKSELF
-    [alertView showWithCompleteBlock:^(NSInteger buttonIndex) {
-        if (buttonIndex != alertView.cancelButtonIndex) {
-            //                [self pushMainStoryboardViewControllerIdentifier:@"LoginTableViewController" checkLogin:NO block:nil];
-            if (![weakSelf.view.window.rootViewController isMemberOfClass:NSClassFromString(@"LoginViewController")]) {
-                [weakSelf setMainRootViewController:@"LoginViewController"];
-            }
-            
-        }
-    }];
+   [alert show:self didClicked:^(UIAlertAction *action, NSInteger buttonIndex) {
+       //                [self pushMainStoryboardViewControllerIdentifier:@"LoginTableViewController" checkLogin:NO block:nil];
+       if (![weakSelf.view.window.rootViewController isMemberOfClass:NSClassFromString(@"LoginViewController")]) {
+           [weakSelf setMainRootViewController:@"LoginViewController"];
+       }
+
+   }];
+   
 
     
     

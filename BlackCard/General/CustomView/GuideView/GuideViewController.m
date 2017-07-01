@@ -7,11 +7,12 @@
 //
 
 #import "GuideViewController.h"
-#import "GuidePageOneView.h"
-#import "GuidePageTwoView.h"
-#import "GuidePageThreeView.h"
+#import "GuideSubviewController.h"
+@interface GuideViewController ()<GuideSubviewControllerDelegate,UIPageViewControllerDelegate,UIPageViewControllerDataSource>
+@property (strong,nonatomic) UIPageViewController *pageViewController;
+@property(nonatomic)NSInteger page;
+@property(strong,nonatomic)NSArray<NSString *> *imageArray;
 
-@interface GuideViewController ()<OEZViewActionProtocol>
 
 @end
 
@@ -20,54 +21,74 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    [self createView];
-    
-    
-    
-    
-}
-
-- (void)createView {
-    WEAKSELF
-    dispatch_async(dispatch_get_main_queue(), ^{
-        CGRect frame = CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight);
-        UIScrollView   *scrollView = [[UIScrollView alloc]initWithFrame:frame];
-        CGFloat width = 3 * kMainScreenWidth;
-        scrollView.contentSize = CGSizeMake(width,kMainScreenHeight);
-        scrollView.showsHorizontalScrollIndicator = NO;
-        scrollView.showsVerticalScrollIndicator = NO;
-        scrollView.pagingEnabled = YES;
-        
-        [weakSelf.view addSubview:scrollView];
-        
-        
-        GuidePageOneView *one = [GuidePageOneView loadFromNib];
-        one.delegate = weakSelf;
-        one.frame = frame;
-        GuidePageTwoView *two = [GuidePageTwoView loadFromNib];
-        frame.origin.x += kMainScreenWidth;
-        two.frame = frame;
-        two.delegate = weakSelf;
-        GuidePageTwoView *three = [GuidePageThreeView loadFromNib];
-        frame.origin.x += kMainScreenWidth;
-        three.delegate = weakSelf;
-        three.frame = frame;
-        
-        [scrollView addSubview:one];
-        [scrollView addSubview:two];
-        [scrollView addSubview:three];
-        
-    });
-    
-    
+    _imageArray = [NSArray arrayWithObjects:@"guideViewOne",@"guideViewTwo",@"guideViewThree",@"guideViewFour", nil];
+    GuideSubviewController *subController = [self createGuidSubViewController:0];
+    [self.pageViewController setViewControllers:@[subController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
 
-- (void)view:(UIView *)view didAction:(NSInteger)action data:(id)data {
+- (void)didAction:(NSInteger)action data:(id)data {
     if ([self.delegate respondsToSelector:@selector(guideViewClose)]) {
         [self.delegate guideViewClose];
     }
     
+}
+
+-(UIPageViewController *)pageViewController
+{
+    if (!_pageViewController) {
+        _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+        _pageViewController.delegate = self;
+        _pageViewController.dataSource = self;
+        [self.view addSubview:_pageViewController.view];
+        [self addChildViewController:_pageViewController];
+    }
+    return _pageViewController;
+}
+#pragma mark -PageViewController DataSource
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+{
+    NSInteger page = _page - 1;
+    if (page < 0) {
+        return nil;
+    }else {
+        GuideSubviewController *subController = [self createGuidSubViewController:page];
+        return subController;
+    }
     
 }
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+{
+    
+    NSInteger page = _page + 1;
+    if (page > _imageArray.count -1 ) {
+        return nil;
+    }else {
+        GuideSubviewController *subController = [self createGuidSubViewController:page];
+        return subController;
+    }
+    
+}
+
+#pragma mark -PageViewController Delegate
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    if (completed) {
+        GuideSubviewController *subController = pageViewController.viewControllers.firstObject;
+        _page = subController.tag;
+    }
+    
+}
+
+- (GuideSubviewController *)createGuidSubViewController:(NSInteger )tag {
+    
+    GuideSubviewController *subController = [GuideSubviewController guideSubViewImageNamed: [_imageArray objectAtIndex:tag]];
+    subController.tag = tag;
+    subController.delegate = self;
+    [subController showBottomButton:tag == _imageArray.count - 1 ];
+    
+    return subController;
+
+}
+
 @end

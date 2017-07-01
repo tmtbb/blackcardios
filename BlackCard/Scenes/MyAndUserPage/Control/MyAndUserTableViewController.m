@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userBackImage;
 @property (weak, nonatomic) IBOutlet UILabel *userLevelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userMoneyLabel;
+@property (weak, nonatomic) IBOutlet UIView *tribeReadView;
 
 @end
 
@@ -96,26 +97,33 @@
     
     if (indexPath.section == 1) {
         switch (indexPath.row) {
-            case 2:
-            case 4:{
+                
+            case 0:{
+                [self pushStoryboardViewControllerIdentifier:@"ManorViewController" block:^(UIViewController *viewController) {
+                    
+                }];
+            }
+                break;
+            case 3:
+            case 5:{
                 [self showTips:@"敬请期待"];                
             }
                 break;
-            case 1:{
+            case 2:{
                 [self pushStoryboardViewControllerIdentifier:@"ShoppingListLogViewController" block:nil];
             }
                 break;
                 
-            case 3:{
+            case 4:{
                 WEAKSELF
                 [self pushStoryboardViewControllerIdentifier:@"UserSetInfoTableViewController" block:^(UIViewController *viewController) {
                     [viewController setValue:weakSelf forKey:@"delegate"];
                 }];
             }
                 break;
-            case 5: {
+            case 6: {
                 
-                    [self  presentViewControllerWithIdentifier:@"WebViewController" isNavigation:YES  block:^(UIViewController *viewController) {
+                    [self  presentViewControllerWithIdentifier:@"WKWebViewController" isNavigation:YES  block:^(UIViewController *viewController) {
                         [viewController setValue:kHttpAPIUrl_aboutMe forKey:@"url"];
                         [viewController setValue:@"关于我们" forKey:@"webTitle"];
                         [viewController setValue:@(YES) forKey:@"needBack"];

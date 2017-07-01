@@ -110,19 +110,26 @@
 #define kHttpAPIUrl_articleDetailCommentList       kHttpAPIUrl_HOST@"/api/article/comment/list.json"
 //文章评论
 #define kHttpAPIUrl_articleDetailComment      kHttpAPIUrl_HOST@"/api/article/comment/add.json"
-// 领地列表
+// 部落列表
 #define kHttpAPIUrl_manorDescribeList     kHttpAPIUrl_HOST@"/api/tribe/user/index.json"
-// 领地成员列表
+// 部落成员列表
 #define kHttpAPIUrl_manorPersonList    kHttpAPIUrl_HOST@"/api/tribe/member/list.json"
-//领地创建
+//部落创建
 #define kHttpAPIUrl_manorCreate    kHttpAPIUrl_HOST@"/api/tribe/add.json"
-//领地信息
+//部落信息
 #define kHttpAPIUrl_manorInfo    kHttpAPIUrl_HOST@"/api/tribe/info.json"
-// 申请加入领地
+// 申请加入部落
 #define kHttpAPIUrl_personAddManor    kHttpAPIUrl_HOST@"/api/tribe/member/add.json"
-// 退出领地
+// 退出部落
 #define kHttpAPIUrl_personDelManor    kHttpAPIUrl_HOST@"/api/tribe/member/delete.json"
 
 //审核成员
 #define kHttpAPIUrl_auditManorPerson    kHttpAPIUrl_HOST@"/api/tribe/member/verify.json"
+
+// 圈子删除
+#define kHttpAPIUrl_deleteCircle    kHttpAPIUrl_HOST@"/api/circle/message/delete.json"
+//圈子评论删除
+#define kHttpAPIUrl_deleteCircleComment    kHttpAPIUrl_HOST@"/api/circle/message/comment/delete.json"
+//文章评论删除
+#define kHttpAPIUrl_deleteArticleComment    kHttpAPIUrl_HOST@"/api/article/comment/delete.json"
 #endif /* HttpHeader_h */

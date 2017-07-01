@@ -85,6 +85,7 @@
 
 - (void)didRequestComplete:(id)data {
     self.headerView.hidden = NO;
+    [self bottomButtonSetting:_infoModel];
     [super didRequestComplete:data];
     
 }
@@ -120,13 +121,16 @@
     
     
     
-    _bottomButtom.hidden = NO;
-    _bottomButtonBottom.constant = 0;
+   
+    
+    
+}
+
+- (void)bottomButtonSetting:(ManorInfoModel *)info  {
+    
     BOOL canNotPush = info.tribeInfo.status == 1 || info.memberInfo.status != 2 ;
     _bottomButtom.hidden = canNotPush;
     _bottomButtonBottom.constant = canNotPush ? -51 : 0;
-    
-    
 }
 
 
@@ -178,7 +182,7 @@
             case TribeType_PraiseAction:
             case TribeType_CommentAction:
             case TribeType_MoreAction:{
-                [self showTips:@"您尚未加入该领地"];
+                [self showTips:@"您尚未加入该部落"];
             }
                 break;
             case TribeType_ImageAction:

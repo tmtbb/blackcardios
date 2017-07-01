@@ -125,7 +125,25 @@
 }
 -(void)more:(NSIndexPath *)path{
     TribeModel *model =  [self tableView:self.tableView cellDataForRowAtIndexPath:path];
-    [CardTribeHandle doMore:self model:model];
+    WEAKSELF
+    [CardTribeHandle doMore:self model:model block:^(BOOL isDelete, id data, NSError *error) {
+        if (error) {
+            [weakSelf showError:error];
+        }else {
+            
+            if (isDelete) {
+                [weakSelf deleteMyPushWihtPath:path];
+                [weakSelf showTips:@"删除成功"];
+                
+            }else {
+                [weakSelf showTips:@"举报成功"];
+                
+            }
+            
+        }
+        
+        
+    }];
 
     
 }
@@ -144,6 +162,11 @@
 }
 
 
+- (void)deleteMyPushWihtPath:(NSIndexPath *)path {
+    [_dataArray removeObjectAtIndex:path.row];
+    [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+    
+}
 
 #pragma mark -MomentViewController Delegate
 

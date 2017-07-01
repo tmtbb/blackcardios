@@ -15,5 +15,6 @@ typedef void(^WKWebViewToosBlock)(WKWebView *webView,id response,NSError *error)
 @property(nonatomic)BOOL isOnceLoad;
 - (WKWebView *)webView ;
 - (instancetype)initWithWebViewFrame:(CGRect)rect;
+- (instancetype)initWithWebViewFrame:(CGRect)rect controller:(UIViewController *)controller;
 - (void)loadRequest:(NSString *)url withReponse:(void(^)(WKWebView *webView,id response,NSError *error))block;
 @end

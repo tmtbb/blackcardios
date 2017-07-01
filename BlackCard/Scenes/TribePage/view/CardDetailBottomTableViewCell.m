@@ -11,7 +11,11 @@
 
 @implementation CardDetailBottomTableViewCell
 
+- (void)awakeFromNib {
+    
+    [super awakeFromNib];
 
+}
 
 - (void)update:(CommentListModel *)data {
     
@@ -36,4 +40,11 @@
     
     return data.modelHeight;
 }
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    
+    self.showView.backgroundColor = highlighted ? kUIColorWithRGB(0xd7d7d7) : [UIColor whiteColor];
+    
+}
+
 @end

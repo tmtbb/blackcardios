@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 @class TribeModel;
+
+typedef void(^CardTribeHandleBlock)(BOOL isDelete,id data,NSError *error);
 @interface CardTribeHandle : NSObject
 
 
@@ -15,6 +17,5 @@
 
 +(void)doComment:(UIViewController *)control indexPath:(NSIndexPath *)path model:(TribeModel *)model complete:(void(^)(NSIndexPath *path))complete;
 
-+(void)doMore:(UIViewController *)control  model:(TribeModel *)model;
-
++ (void)doMore:(UIViewController *)control model:(TribeModel *)model  block:(CardTribeHandleBlock)block;
 @end

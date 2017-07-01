@@ -8,7 +8,6 @@
 
 #import "BaseRefreshPageCustomTableViewController.h"
 #import "UIViewController+LoadMoreViewController.h"
-#import "UIViewController+RefreshViewController.h"
 @interface BaseRefreshPageCustomTableViewController ()
 
 @end
@@ -56,23 +55,22 @@
 - (void)didRequestComplete:(id)data {
 
     NSInteger count = [data count];
+    [self setIsLoadData:YES];
         if (_pageIndex == 1) {
             _dataArray = [[NSMutableArray alloc] initWithArray:data];
-            [self endRefreshing];
         }
         else
         {
             if ( count > 0  ) {
-                [self performSelector:@selector(endLoadMore) withObject:nil afterDelay:0.5];
+                [self endLoadMore];
                 [_dataArray addObjectsFromArray:data];
                 
             }
             else {
-                [self performSelector:@selector(notLoadMore) withObject:nil afterDelay:0.5];
+                [self notLoadMore];
             }
         }
     [super didRequestComplete:_dataArray];
-    [self setIsLoadData:YES];
 }
 
 - (void) dealloc {

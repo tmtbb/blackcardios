@@ -51,7 +51,8 @@
 }
 
 - (void)didRequestComplete:(id)data {
-    
+    [self setIsLoadData:YES];
+
     NSInteger count = [data count];
     if (_pageIndex == 1) {
         _dataArray = [[NSMutableArray alloc] initWithArray:data];
@@ -59,16 +60,15 @@
     else
     {
         if ( count > 0  ) {
-            [self performSelector:@selector(endLoadMore) withObject:nil afterDelay:0.5];
+            [self endLoadMore];
             [_dataArray addObjectsFromArray:data];
-            
+
         }
         else {
-            [self performSelector:@selector(notLoadMore) withObject:nil afterDelay:0.5];
+            [self notLoadMore];
         }
     }
     [super didRequestComplete:_dataArray];
-    [self setIsLoadData:YES];
 }
 
 - (void) dealloc {
