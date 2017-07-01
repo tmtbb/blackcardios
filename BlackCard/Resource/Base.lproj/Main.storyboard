@@ -3799,7 +3799,7 @@
         <!--新增部落-->
         <scene sceneID="HWa-Wt-eHc">
             <objects>
-                <tableViewController storyboardIdentifier="ManorCreateTableViewController" title="新增部落" id="IdR-sK-ilr" customClass="ManorCreateTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ManorCreateTableViewController" title="新增部落" hidesBottomBarWhenPushed="YES" id="IdR-sK-ilr" customClass="ManorCreateTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gdb-Bo-uwC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

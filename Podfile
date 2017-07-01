@@ -3,7 +3,7 @@ platform :ios, '7.0'
 
 target 'BlackCard' do
 pod 'AFNetworking','2.6.3'
-pod 'SDWebImage'
+pod 'SDWebImage','~> 3.7'
 pod 'HMSegmentedControl'
 pod 'TTTAttributedLabel'
 pod 'MJRefresh'

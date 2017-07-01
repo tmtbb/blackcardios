@@ -238,7 +238,7 @@
 - (ImageProvider *)imageProvider {
     if (_imageProvider  == nil) {
         _imageProvider=[[ImageProvider alloc] init];
-        _imageProvider.editPhotoFrame = CGRectMake(0, 0, kMainScreenWidth, kMainScreenWidth);
+        _imageProvider.editPhotoFrame = CGRectMake(0, 0, kMainScreenWidth, kMainScreenWidth * 450 / 750);
         [_imageProvider setImageDelegate:self];
     }
     return _imageProvider;
