@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userBackImage;
 @property (weak, nonatomic) IBOutlet UILabel *userLevelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userMoneyLabel;
-@property (weak, nonatomic) IBOutlet UIView *tribeReadView;
+//@property (weak, nonatomic) IBOutlet UIView *tribeReadView;
 
 @end
 
@@ -100,7 +100,7 @@
                 
             case 0:{
                 [self pushStoryboardViewControllerIdentifier:@"ManorViewController" block:^(UIViewController *viewController) {
-                    
+                    viewController.hidesBottomBarWhenPushed = YES;
                 }];
             }
                 break;

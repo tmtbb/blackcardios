@@ -95,7 +95,7 @@
     switch (indexPath.section) {
         case 0:
             
-            return _myModel;
+            return  _myModel;
             
         default:
             return [super tableView:tableView cellDataForRowAtIndexPath:indexPath];
@@ -287,5 +287,6 @@
         [self.delegate deleteMyPushWihtPath:_path];
     }
 }
+
 
 @end

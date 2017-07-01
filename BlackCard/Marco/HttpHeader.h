@@ -9,7 +9,7 @@
 #ifndef HttpHeader_h
 #define HttpHeader_h
 
-#define Development  //开发环境宏,注掉时开启正式 生产环境
+//#define Development  //开发环境宏,注掉时开启正式 生产环境
 
 /**
  * API host
