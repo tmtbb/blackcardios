@@ -146,42 +146,21 @@
                             </tableViewSection>
                             <tableViewSection headerTitle=" " id="JTc-6b-h85">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="sXc-Lr-m9j">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="eSX-S3-6FS" style="IBUITableViewCellStyleDefault" id="sXc-Lr-m9j">
                                         <rect key="frame" x="0.0" y="350" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sXc-Lr-m9j" id="Odb-Ub-Gvl">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gM0-LA-Vtg">
-                                                    <rect key="frame" x="335" y="18" width="7" height="7"/>
-                                                    <color key="backgroundColor" red="0.85882352939999995" green="0.27450980390000002" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="7" id="53k-fK-iwK"/>
-                                                        <constraint firstAttribute="width" constant="7" id="Yao-m7-JpS"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <real key="value" value="3.5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的部落" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdW-gf-Mdo">
-                                                    <rect key="frame" x="15" y="0.0" width="305" height="43.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="我的部落" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eSX-S3-6FS">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="fdW-gf-Mdo" firstAttribute="leading" secondItem="Odb-Ub-Gvl" secondAttribute="leading" constant="15" id="4dE-DP-U55"/>
-                                                <constraint firstItem="gM0-LA-Vtg" firstAttribute="leading" secondItem="fdW-gf-Mdo" secondAttribute="trailing" constant="15" id="Lhc-6K-D0c"/>
-                                                <constraint firstAttribute="bottom" secondItem="fdW-gf-Mdo" secondAttribute="bottom" id="QaL-CL-8FT"/>
-                                                <constraint firstAttribute="trailing" secondItem="gM0-LA-Vtg" secondAttribute="trailing" id="W6e-X4-aSl"/>
-                                                <constraint firstItem="fdW-gf-Mdo" firstAttribute="top" secondItem="Odb-Ub-Gvl" secondAttribute="top" id="XEX-Up-j8i"/>
-                                                <constraint firstItem="gM0-LA-Vtg" firstAttribute="centerY" secondItem="Odb-Ub-Gvl" secondAttribute="centerY" id="ba4-0E-gUO"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="qc2-sN-WBo" style="IBUITableViewCellStyleDefault" id="hEg-A3-6y6">
@@ -301,7 +280,6 @@
                     <tabBarItem key="tabBarItem" title="我的" image="tabbarMySel-1" selectedImage="tabbarMySel" id="88c-7c-FJe"/>
                     <navigationItem key="navigationItem" id="oGS-T7-ldf"/>
                     <connections>
-                        <outlet property="tribeReadView" destination="gM0-LA-Vtg" id="EEg-B1-mbC"/>
                         <outlet property="userBackImage" destination="z2f-0H-lxh" id="ovu-Mr-8XL"/>
                         <outlet property="userIconButton" destination="cEj-VL-5zO" id="Zc9-fy-qlw"/>
                         <outlet property="userLevelLabel" destination="67Z-PK-iBQ" id="fnQ-s6-Xqr"/>

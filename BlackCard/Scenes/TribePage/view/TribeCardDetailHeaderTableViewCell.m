@@ -13,15 +13,16 @@
 
 + (CGFloat)calculateHeightWithData:(TribeModel *)data {
     
+    if (data) {
+        CGFloat imagesHeight = [TribeCardImageView computeImageHeigth:data.circleMessageImgs];
+        imagesHeight  = imagesHeight == 0 ? 0 : imagesHeight + 10;
+        CGFloat messageHeight = [self detailHeight:data];
+        CGFloat height = 62 + 39 + messageHeight + imagesHeight;
+        return height ;
+    }else {
+        return 0;
+    }
     
-    CGFloat imagesHeight = [TribeCardImageView computeImageHeigth:data.circleMessageImgs];
-    imagesHeight  = imagesHeight == 0 ? 0 : imagesHeight + 10;
-    CGFloat messageHeight = [self detailHeight:data];
-    
-    [data setHeigth:67 + 39 + messageHeight + imagesHeight];
-
-    CGFloat height = 62 + 39 + messageHeight + imagesHeight;
-    return height ;
 }
 
 + (CGFloat)detailHeight:(TribeModel *)data {

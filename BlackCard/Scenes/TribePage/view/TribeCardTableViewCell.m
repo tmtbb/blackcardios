@@ -9,7 +9,7 @@
 #import "TribeCardTableViewCell.h"
 #import "TribeCardImageView.h"
 #import "TribeModel.h"
-#define kMaxDetailHeight  (kFontHeigt(14) * 3 + 1)
+#define kMaxDetailHeight  (kFontHeigt(14) * 6 + 1)
 
 
 @interface TribeCardTableViewCell ()<OEZViewActionProtocol>

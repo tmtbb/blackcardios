@@ -163,8 +163,13 @@
 
 
 - (void)deleteMyPushWihtPath:(NSIndexPath *)path {
-    [_dataArray removeObjectAtIndex:path.row];
-    [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+    if (path && path.row < _dataArray.count) {
+        [_dataArray removeObjectAtIndex:path.row];
+        [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+
+    }else {
+        [self didRequest];
+    }
     
 }
 
