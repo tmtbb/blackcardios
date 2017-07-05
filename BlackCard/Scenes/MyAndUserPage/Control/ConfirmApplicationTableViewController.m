@@ -106,7 +106,6 @@
 
 - (void)registerWithData:(id)data {
     NSInteger isPay = [data[@"isPay"] integerValue];
-
     if (isPay == 0) {
         [self hiddenProgress];
         CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"注册成功" message:@"" preferredStyle:UIAlertControllerStyleAlert cancelButtonTitle:@"确定" otherButtonTitles:nil];
