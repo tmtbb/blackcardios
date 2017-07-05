@@ -10,6 +10,7 @@
 #import "HomePageModel.h"
 #import "PayModel.h"
 #import "PayManagerHelper.h"
+#import "CustomAlertController.h"
 #define kButtonRePayAction 999
 
 @interface ConfirmApplicationTableViewController ()<PayHelperDelegate>
@@ -63,8 +64,8 @@
     [string appendAttributedString:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"¥%.2f",payMoney] attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13],NSForegroundColorAttributeName : kUIColorWithRGB(0xE3A63F)}]];
     
     self.payMoneyLabel.attributedText = string;
-    
-    
+    [_registerPayButton setTitle:payMoney > 0? @"确认支付": @"立即注册"   forState:UIControlStateNormal];
+
 }
 - (IBAction)registerButtonAction:(UIButton *)sender {
     
@@ -89,21 +90,37 @@
     WEAKSELF
     
     [[AppAPIHelper shared].getMyAndUserAPI registerWithRegisterModel:dic complete:^(id data) {
-        [weakSelf showLoader:@"注册成功,等待支付"];
-        weakSelf.tokenDic  = data;
         
-        [weakSelf payWithDic:data];
+        [weakSelf registerWithData:data];
         
     } error:^(NSError *error) {
         [weakSelf showError:error];
-
         if (error.code == 10017) {
             [weakSelf lastPayWihtPush];
-            
         }
         
         
     }];
+    
+}
+
+- (void)registerWithData:(id)data {
+    NSInteger isPay = [data[@"isPay"] integerValue];
+    if (isPay == 0) {
+        [self hiddenProgress];
+        CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:@"注册成功" message:@"" preferredStyle:UIAlertControllerStyleAlert cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        WEAKSELF
+        [alert show:self didClicked:^(UIAlertAction * _Nullable action, NSInteger buttonIndex) {
+           [weakSelf.navigationController  dismissViewControllerAnimated:YES completion:nil];
+        }];
+        
+    }else if (isPay == 1){
+        [self showLoader:@"注册成功,等待支付"];
+        self.tokenDic  = data;
+        [self payWithDic:data];
+        
+    }
+
     
 }
 
@@ -137,44 +154,47 @@
 
 - (void)payHelperWithType:(PayType)type withPayStatus:(PayStatus)payStatus withData:(id)data {
     [self LogPayStatus:payStatus withData:data];
+    NSString *title = @"";
+    NSString *message = @"";
     switch (payStatus) {
         case PayError: {  //支付失败
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付失败" message:@"请重新支付" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-            [alert show];
-            [self payButtonSetting];
+            title = @"支付失败";
+            message = @"请重新支付";
+
         }
             break;
         case PayOK:{ //支付成功
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付成功" message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-            WEAKSELF
-            [alert showWithCompleteBlock:^(NSInteger buttonIndex) {
-                [weakSelf.navigationController  dismissViewControllerAnimated:YES completion:nil];
-                
-                
-            }];
-            
-            
-            
+            title = @"支付成功";
         }
             break;
         case PayCancel:{//支付取消
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付已取消" message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-            [alert show];
-            [self payButtonSetting];
+            title = @"支付已取消";
         }
             break;
         default:{
+            title = @"支付出错";
             if ([data isKindOfClass:[NSString class]]) {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"支付出错" message:data delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                [alert show];
-                [self payButtonSetting];
+                message = data;
             }
-            
         }
             break;
 
     }
-
+   
+    CustomAlertController *alert = [CustomAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    
+    if (payStatus == PayOK) {
+        WEAKSELF
+        [alert show:self didClicked:^(UIAlertAction *action, NSInteger buttonIndex) {
+             [weakSelf.navigationController  dismissViewControllerAnimated:YES completion:nil];
+        }];
+        
+    }else {
+        [self payButtonSetting];
+        [alert show:self];
+    }
+  
+    
 }
 
 

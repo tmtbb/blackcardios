@@ -155,6 +155,10 @@ typedef  void (^ __nullable CustomIndexHandle)(UIAlertAction *action,NSInteger b
     
 }
 
+- (void)show:(UIViewController *)control {
+    [control presentViewController:self animated:YES completion:nil];
+    
+}
 
 - (void)clcikButtonWithAction:(UIAlertAction *)action andButtonIndex:(NSInteger)buttonIndex{
     
