@@ -4887,6 +4887,7 @@
                         <outlet property="nameField" destination="ayh-Az-n0z" id="0au-i9-Anb"/>
                         <outlet property="pageCountView" destination="NhU-5W-WfG" id="qCX-MD-pe8"/>
                         <outlet property="subCollctionView" destination="RlM-ab-CKx" id="AoZ-Ay-ZHu"/>
+                        <outlet property="useNameButton" destination="G61-Ul-zWy" id="8PJ-M6-bW0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n7K-er-job" userLabel="First Responder" sceneMemberID="firstResponder"/>

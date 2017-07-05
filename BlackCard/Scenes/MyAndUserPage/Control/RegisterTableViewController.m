@@ -11,6 +11,10 @@
 #import "HomePageModel.h"
 #import "RegisterCardCell.h"
 #import "ValidateHelper.h"
+
+#define kRegisterControllerCustomName 101
+#define kRegisterControllerNoName 100
+
 @interface RegisterTableViewController ()<UITextFieldDelegate,SubviewWithCollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet RegisterWithCollectionView *subCollctionView;
 @property (weak, nonatomic) IBOutlet RegisterCardCell *cardCell;
@@ -24,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIView *pageCountView;
 @property (weak, nonatomic) IBOutlet UILabel *levelLabel;
+@property (weak, nonatomic) IBOutlet UIButton *useNameButton;
 @property(nonatomic)NSInteger pageCount;
 @property(nonatomic)NSInteger chooseCount;
 
@@ -36,7 +41,7 @@
     _chooseLevel = [PrivilegePowerPoint new];
     _subCollctionView.myDelegate = self;
     [self backButtonSetting];
-    [self setNameButtonTransformWithTag:101];
+    [self setNameButtonTransformWithTag:kRegisterControllerCustomName];
 }
 
 - (void)didRequest {
@@ -126,6 +131,12 @@
     [_subCollctionView  reloadData];
     
     
+    if (_cardModel.blackcardPrice == 0) {
+        
+        [self  setNameButtonTransformWithTag:kRegisterControllerNoName];
+    }
+    
+    
 }
 
 
@@ -139,8 +150,13 @@
 //}
 
 - (IBAction)nameButtonAction:(UIButton *)sender {
-
-    [self setNameButtonTransformWithTag:sender.tag];
+    if (_cardModel.blackcardPrice > 0) {
+        [self setNameButtonTransformWithTag:sender.tag];
+  
+    }else {
+        NSString *tips = [NSString stringWithFormat:@"%@暂不支持定制姓名",_cardModel.blackcardName];
+        [self showTips:tips afterDelay:2.5];
+    }
     
 }
 - (IBAction)backButtonAction:(id)sender {
