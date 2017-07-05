@@ -111,8 +111,8 @@ typedef NS_ENUM(NSInteger,WriteaApplicationType) {
         model.customName = self.customizeName ? _customizeName : @"";
         NSString *identity = self.identityNumberField.text.trim;
         model.identityCard = identity ? identity : @"";
-        model.addr = self.detailAddressField.text;
-        model.addr1 = self.markField.text;
+        model.addr = self.detailAddressField.text.trim;
+        model.addr1 = self.markField.text.trim;
         
         
         model.province = _locationModel.state;
@@ -149,10 +149,12 @@ typedef NS_ENUM(NSInteger,WriteaApplicationType) {
     }
     else if ([NSString isEmpty:self.detailAddressField.text]) {
         [self showTips:@"请请输入详细地址"];
-    }else if ([NSString isEmpty:self.markField.text]) {
-         [self showTips:@"请输入备注"];
-        
-    }else if ([NSString isEmpty:self.trueNameField.text]) {
+    }
+//    else if ( [NSString isEmpty:self.markField.text]) {
+//         [self showTips:@"请输入备注"];
+//        
+//    }
+    else if ([NSString isEmpty:self.trueNameField.text]) {
          [self showTips:@"请输入姓名"];
 
     }else if (![NSString isEmpty:self.identityNumberField.text.trim]  && ![[ValidateHelper shared] checkPersonIdentityNumebr:self.identityNumberField.text error:&error]){
